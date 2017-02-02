@@ -11,10 +11,11 @@
 ----
 **How to contribute ?**
 * Prepare your example as a pull-request. Basically, you need to clone this repository with your github account, commit your example in your cloned repository, then ask us to integrate your proposal via the "New pull request" button. 
+* Your simulation must be in a separate folder. You can put it in the folder `imaging` or `dosimetry` or `misc`. 
 * Example **must** contains:
   * a `readme.md` file that describe the example, the authors, the date and Gate version
   * 3 folders `mac/` `data/` `output/`. The first will contains all macros (`.mac` files), the second all data files needed as input for the simulations. Results should be written in the `output/` folder. 
-  * Simulation should be run by a command such as `Gate mac/main.mac`
+  * Simulation should be run by a command such as `Gate mac/main.mac` 
 
 
 ----
