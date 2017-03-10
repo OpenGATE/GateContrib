@@ -21,13 +21,10 @@ COMPUTE THE ARF TABLES FROM ARF DATA
 
 DIGITIZER PART OF THE ARF SENSISTIVE DETECTOR
 
-`/gate/systems/SPECThead/ARFTables/setEnergyDepositionThreshHold       328. keV`
-
-`/gate/systems/SPECThead/ARFTables/setEnergyDepositionUpHold           400. keV`
-
-`/gate/systems/SPECThead/ARFTables/setEnergyResolution                 0.10`
-
-`/gate/systems/SPECThead/ARFTables/setEnergyOfReference                140. keV`
+`/gate/systems/SPECThead/ARFTables/setEnergyDepositionThreshHold       328. keV`<br/>
+`/gate/systems/SPECThead/ARFTables/setEnergyDepositionUpHold           400. keV`<br/>
+`/gate/systems/SPECThead/ARFTables/setEnergyResolution                 0.10`<br/>
+`/gate/systems/SPECThead/ARFTables/setEnergyOfReference                140. keV`<br/>
 
 Here we shot 364.5 keV photons. We choose an energy resolution of 10% from which we obtain 328 keV and 400 keV as the energy window boundaries. The energy of reference is chosen to be 140 keV which allows to define the FWHM of the response of the detector as FWHM = 0.10 x sqrt(140. x Edep ), where Edep is the photon deposited energy.
 
@@ -49,14 +46,14 @@ NOW WE ARE READY TO COMPUTE THE ARF TABLES
 
 The ARFData.txt file reads like this :
 
-`# This file contains all the energy windows computed during first step with their associated root files`
-`# It has to be formatted the following way :`
-`# [Emin,Emax] is the energy window of the incident photons`
-`# The Base FileName is the the name of the root files name.root, name_1.root name_2.root ...`
-`# The number of these files has to be given as the last parameter.`
-`#`
-`# Enter the datas for each energy window :`
-`# Inident Energy Window : Emin (keV) - Emax (keV) | Associated Root Base FileName | number of these files`
+`# This file contains all the energy windows computed during first step with their associated root files`<br/>
+`# It has to be formatted the following way :`<br/>
+`# [Emin,Emax] is the energy window of the incident photons`<br/>
+`# The Base FileName is the the name of the root files name.root, name_1.root name_2.root ...`<br/>
+`# The number of these files has to be given as the last parameter.`<br/>
+`#`<br/>
+`# Enter the datas for each energy window :`<br/>
+`# Inident Energy Window : Emin (keV) - Emax (keV) | Associated Root Base FileName | number of these files`<br/>
 
 `0.    365.    test1head    20`
 
