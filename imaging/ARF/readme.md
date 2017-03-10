@@ -15,14 +15,19 @@ Computation of the ARF tables from ARF data (previous step)
 
 Now that the data have been stored to ROOT files, we may compute the tables and store them to a binary file :
 
-`# COMPUTE THE ARF TABLES FROM ARF DATA
-/gate/systems/SPECThead/arf/setARFStage computeTables`
+COMPUTE THE ARF TABLES FROM ARF DATA
 
-`# DIGITIZER PART OF THE ARF SENSISTIVE DETECTOR
-/gate/systems/SPECThead/ARFTables/setEnergyDepositionThreshHold      328. keV
-/gate/systems/SPECThead/ARFTables/setEnergyDepositionUpHold          400. keV
-/gate/systems/SPECThead/ARFTables/setEnergyResolution                  0.10
-/gate/systems/SPECThead/ARFTables/setEnergyOfReference               140. keV`
+`/gate/systems/SPECThead/arf/setARFStage computeTables`
+
+DIGITIZER PART OF THE ARF SENSISTIVE DETECTOR
+
+`/gate/systems/SPECThead/ARFTables/setEnergyDepositionThreshHold      328. keV
+
+/gate/systems/SPECThead/ARFTables/setEnergyDepositionUpHold           400. keV
+
+/gate/systems/SPECThead/ARFTables/setEnergyResolution                 0.10
+
+/gate/systems/SPECThead/ARFTables/setEnergyOfReference                140. keV`
 
 Here we shot 364.5 keV photons. We choose an energy resolution of 10% from which we obtain 328 keV and 400 keV as the energy window boundaries. The energy of reference is chosen to be 140 keV which allows to define the FWHM of the response of the detector as FWHM = 0.10 x sqrt(140. x Edep ), where Edep is the photon deposited energy.
 
