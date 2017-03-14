@@ -1,3 +1,6 @@
+Author:
+ - Thomas DESCHLER (thomas@deschler.fr)
+
 DICOM Series provided by:
  - Jérôme Suhard (jerome@suhard.fr)
 
