@@ -1,6 +1,9 @@
 This example is dedicated to test the activation of the fluorescence process in function of the physicsList. 
+
 The phantom is either geometric (box) or voxelized and its material is Iodine and Tungsten.
+
 The source is an isotropic monoenergetic gamma emission. 
+
 The EnergySpectrumActor with a gamma filter is used to obtain the histogram of the number of gamma detected in the volume as a 
 function of the energy. If fluorescence is activated, the fluorescence x-ray lines as well as the incident energy peak are visible.
 
