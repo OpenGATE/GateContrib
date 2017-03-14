@@ -1,0 +1,115 @@
+# Collimator definition
+/gate/SPECThead/daughters/name collimator
+/gate/SPECThead/daughters/insert trpd
+/gate/collimator/geometry/setX2Length 56.8 cm
+/gate/collimator/geometry/setY2Length 42.8 cm
+/gate/collimator/geometry/setX1Length 57.6 cm
+/gate/collimator/geometry/setY1Length 44.6 cm
+/gate/collimator/geometry/setZLength 4.18 cm
+/gate/collimator/geometry/setZBoxPos 0. cm 
+/gate/collimator/geometry/setYBoxPos 21.3 cm 
+/gate/collimator/geometry/setXBoxPos 3.2 cm 
+/gate/collimator/geometry/setYBoxLength 0.01 cm 
+/gate/collimator/geometry/setXBoxLength 0.01 cm 
+/gate/collimator/geometry/setZBoxLength 0.01 cm 
+# Define the position of the collimator volume
+/gate/collimator/placement/setTranslation   5.56875  0. 0. cm
+
+# Set the material of the collimator volume
+/gate/collimator/setMaterial Air
+/gate/collimator/placement/setRotationAxis    0 1 0
+/gate/collimator/placement/setRotationAngle 90 deg 
+
+# Define some visualisation options
+/gate/collimator/vis/setColor red
+/gate/collimator/vis/forceWireframe
+
+# Aluminum thickness aluminiumPSD
+/gate/collimator/daughters/name aluminiumPSD
+/gate/collimator/daughters/insert box
+/gate/aluminiumPSD/geometry/setYLength 40 cm
+/gate/aluminiumPSD/geometry/setXLength 54 cm
+/gate/aluminiumPSD/geometry/setZLength 0.1 cm
+
+/gate/aluminiumPSD/placement/setTranslation 0. 0. 2.04  cm
+/gate/aluminiumPSD/setMaterial Aluminium
+/gate/aluminiumPSD/vis/setColor green
+/gate/aluminiumPSD/vis/forceWireframe
+
+
+# PVC layer thickness
+/gate/collimator/daughters/name pvcLayer
+/gate/collimator/daughters/insert box
+/gate/pvcLayer/geometry/setYLength 40. cm
+/gate/pvcLayer/geometry/setXLength 54. cm
+/gate/pvcLayer/geometry/setZLength 0.15 cm
+
+/gate/pvcLayer/placement/setTranslation 0. 0. 1.915  cm
+/gate/pvcLayer/setMaterial PVC
+/gate/pvcLayer/vis/setColor red
+/gate/pvcLayer/vis/forceWireframe
+
+
+# Gap air
+/gate/collimator/daughters/name airGap
+/gate/collimator/daughters/insert box
+/gate/airGap/geometry/setYLength 40 cm
+/gate/airGap/geometry/setXLength 54 cm
+/gate/airGap/geometry/setZLength 0.38 cm
+
+/gate/airGap/placement/setTranslation  0.  0. 1.65  cm
+/gate/airGap/setMaterial Air
+/gate/airGap/vis/setColor blue
+/gate/airGap/vis/forceSolid
+
+
+# Collimator
+/gate/collimator/daughters/name collimatorCore
+/gate/collimator/daughters/insert box
+/gate/collimatorCore/geometry/setYLength 40 cm
+/gate/collimatorCore/geometry/setXLength 54 cm
+/gate/collimatorCore/geometry/setZLength 3.5 cm
+/gate/collimatorCore/placement/setTranslation  0. 0. -0.29  cm
+/gate/collimatorCore/setMaterial Lead
+/gate/collimatorCore/vis/setColor blue
+/gate/collimatorCore/vis/forceSolid
+
+# Holes
+# Show the construction of holes
+/gate/collimatorCore/vis/forceWireframe
+
+# Insert a first hole
+/gate/collimatorCore/daughters/name holeg1
+/gate/collimatorCore/daughters/insert hexagone
+/gate/holeg1/geometry/setHeight 3.5 cm
+/gate/holeg1/geometry/setRadius 0.075 cm
+/gate/holeg1/setMaterial Air
+# Repeat the first hole in an array
+/gate/holeg1/repeaters/insert cubicArray
+/gate/holeg1/cubicArray/setRepeatNumberY 134
+/gate/holeg1/cubicArray/setRepeatNumberX 316
+/gate/holeg1/cubicArray/setRepeatNumberZ 1
+/gate/holeg1/cubicArray/setRepeatVector 0.17 0.29436  0 cm
+
+# Repeat these holes in a linear
+/gate/holeg1/repeaters/insert linear
+/gate/holeg1/linear/setRepeatNumber 2
+/gate/holeg1/linear/setRepeatVector 0.085 0.14718   0. cm
+# Hide the details of collimator
+/gate/collimatorCore/vis/forceWireframe
+
+# Aluminum thickness
+/gate/collimator/daughters/name collimatorAluminiumCover
+/gate/collimator/daughters/insert box
+/gate/collimatorAluminiumCover/geometry/setYLength 40 cm
+/gate/collimatorAluminiumCover/geometry/setXLength 54 cm
+/gate/collimatorAluminiumCover/geometry/setZLength 0.05 cm
+/gate/collimatorAluminiumCover/placement/setTranslation 0. 0. -2.065  cm
+/gate/collimatorAluminiumCover/setMaterial Aluminium
+/gate/collimatorAluminiumCover/vis/setColor blue
+/gate/collimatorAluminiumCover/vis/forceWireframe
+
+
+
+
+

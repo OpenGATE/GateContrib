@@ -1,0 +1,79 @@
+
+# Visualisation
+/vis/disable
+#/control/execute mac/visualisation.mac
+
+# SPECT
+/control/execute mac/fullSPECT.mac
+/control/execute mac/collimatorSPECT.mac
+
+# Voxelised phantom
+/gate/world/daughters/name phantom
+/gate/world/daughters/insert   ImageNestedParametrisedVolume
+/gate/phantom/geometry/setImage data/cube.mhd
+/gate/phantom/geometry/setHUToMaterialFile   data/PhantomMaterialsWater.dat
+/gate/phantom/geometry/TranslateTheImageAtThisIsoCenter 0. 0. 0. mm
+/gate/physics/Gamma/SetCutInRegion      phantom 0.1 mm
+/gate/physics/Electron/SetCutInRegion   phantom 1 km
+/gate/physics/Positron/SetCutInRegion   phantom 1 km
+
+# Adder
+/gate/digitizer/Singles/insert adder
+/gate/digitizer/Singles/insert readout
+/gate/digitizer/Singles/readout/setDepth 2
+/gate/digitizer/Singles/insert spblurring
+/gate/digitizer/Singles/spblurring/setSpresolution 5 mm
+/gate/digitizer/Singles/spblurring/verbose 0
+
+#Tcm-99 : 140.5 keV window
+/gate/digitizer/Singles/insert thresholder
+/gate/digitizer/Singles/thresholder/setThreshold 126.45 keV
+#Tcm-99 : scatter window
+#/gate/digitizer/Singles/thresholder/setThreshold 114. keV
+/gate/digitizer/Singles/insert upholder
+/gate/digitizer/Singles/upholder/setUphold 154.55 keV
+#Tcm-99 : scatter window
+#/gate/digitizer/Singles/upholder/setUphold 126. keV
+
+# Statistics actor
+/gate/actor/addActor  SimulationStatisticActor stat
+/gate/actor/stat/save output/stat_montecarlo_spect.txt
+
+# Initialize
+/gate/run/initialize
+
+# Square source
+/gate/source/addSource gammaSource
+/gate/source/gammaSource/gps/type Volume
+/gate/source/gammaSource/gps/shape Para
+/gate/source/gammaSource/gps/halfx 50 mm
+/gate/source/gammaSource/gps/halfy 50 mm
+/gate/source/gammaSource/gps/halfz 50 mm
+/gate/source/gammaSource/gps/paralp 0
+/gate/source/gammaSource/gps/parthe 0
+/gate/source/gammaSource/gps/parphi 0
+/gate/source/gammaSource/gps/centre 0. 0. 0. cm
+
+# Source emission
+/gate/source/gammaSource/gps/particle gamma
+/gate/source/gammaSource/gps/energy 140.5 keV
+/gate/source/gammaSource/setActivity 1000000. Bq
+/gate/source/gammaSource/gps/angtype iso
+
+# Random
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/random/verbose 0
+
+# Output
+/gate/output/projection/enable
+/gate/output/projection/pixelSizeX 0.4 cm
+/gate/output/projection/pixelSizeY 0.4 cm
+/gate/output/projection/pixelNumberX 100
+/gate/output/projection/pixelNumberY 100
+/gate/output/projection/projectionPlane YZ
+/gate/output/projection/setFileName output/montecarlo_spect
+
+/gate/application/setTimeStart 0. s
+/gate/application/setTotalNumberOfPrimaries 1000
+/gate/application/start

@@ -1,0 +1,78 @@
+/control/execute mac/headSPECT.mac
+
+# Set the material of the collimator volume
+/gate/SPECThead/placement/setRotationAxis    0 1 0
+/gate/SPECThead/placement/setRotationAngle 180 deg 
+
+# Shielding
+/gate/SPECThead/daughters/name shielding
+/gate/SPECThead/daughters/insert box
+/gate/shielding/geometry/setYLength 44.6 cm
+/gate/shielding/geometry/setZLength 57.6 cm
+/gate/shielding/geometry/setXLength 11.1375 cm
+
+/gate/shielding/placement/setTranslation  -2.09 0. -0. cm
+/gate/shielding/setMaterial Lead
+/gate/shielding/vis/setColor red
+/gate/shielding/vis/forceWireframe
+
+# First layer of steel
+/gate/shielding/daughters/name steelCover
+/gate/shielding/daughters/insert box
+/gate/steelCover/geometry/setYLength 40.6 cm
+/gate/steelCover/geometry/setZLength 57.6 cm
+/gate/steelCover/geometry/setXLength  10.1375 cm
+
+/gate/steelCover/placement/setTranslation  0.5 0. 0. cm
+/gate/steelCover/setMaterial Steel
+/gate/steelCover/vis/forceWireframe
+
+# Aluminum thickness :: Do not comment.
+/gate/steelCover/daughters/name shieldingAluminiumCover
+/gate/steelCover/daughters/insert box
+/gate/shieldingAluminiumCover/geometry/setYLength 40. cm
+/gate/shieldingAluminiumCover/geometry/setZLength 54. cm
+/gate/shieldingAluminiumCover/geometry/setXLength 0.13 cm
+/gate/shieldingAluminiumCover/placement/setTranslation 5.00375 0. 0. cm
+/gate/shieldingAluminiumCover/setMaterial Aluminium
+/gate/shieldingAluminiumCover/vis/setColor blue
+/gate/shieldingAluminiumCover/vis/forceWireframe
+
+# Reflector TiO2
+/gate/steelCover/daughters/name reflector
+/gate/steelCover/daughters/insert box
+/gate/reflector/geometry/setYLength 40. cm
+/gate/reflector/geometry/setZLength 54. cm
+/gate/reflector/geometry/setXLength  0.12 cm
+/gate/reflector/placement/setTranslation  3.29125 0. 0. cm
+/gate/reflector/setMaterial TiO2
+/gate/reflector/vis/setColor blue
+/gate/reflector/vis/forceWireframe
+
+# Crystal
+/gate/steelCover/daughters/name crystalVolume
+/gate/steelCover/daughters/insert box
+/gate/crystalVolume/geometry/setYLength 40. cm
+/gate/crystalVolume/geometry/setZLength 54. cm
+/gate/crystalVolume/geometry/setXLength  1.5875 cm
+/gate/crystalVolume/placement/setTranslation  4.145 0 0 cm
+/gate/crystalVolume/setMaterial NaI
+/gate/crystalVolume/vis/setColor yellow
+/gate/crystalVolume/vis/forceSolid
+/gate/crystalVolume/attachCrystalSD
+
+# Backside
+# The back-side is fairly complex, and has a strong influence on the spectrum: the model shown here is very poor
+/gate/steelCover/daughters/name backSide
+/gate/steelCover/daughters/insert box
+/gate/backSide/geometry/setYLength 40. cm
+/gate/backSide/geometry/setZLength 54. cm
+/gate/backSide/geometry/setXLength  8. cm
+/gate/backSide/vis/setColor red
+
+/gate/backSide/placement/setTranslation -0.76875 0. 0. cm
+/gate/backSide/setMaterial Pyrex66
+/gate/SPECThead/vis/forceWireframe
+
+
+

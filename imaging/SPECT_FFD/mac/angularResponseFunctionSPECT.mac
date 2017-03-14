@@ -1,0 +1,64 @@
+/vis/disable
+#/control/execute mac/visualisation.mac
+/control/execute mac/headSPECT.mac
+
+# ARF table
+/gate/systems/SPECThead/arf/setARFStage useTables
+/gate/systems/SPECThead/setProjectionPlane -2.555 cm
+/gate/systems/SPECThead/attachToARFSD
+/gate/systems/SPECThead/ARFTables/loadARFTablesFromBinaryFile data/ArfTable_Tc_Primary_100000000.bin
+# Scatter window
+#/gate/systems/SPECThead/ARFTables/loadARFTablesFromBinaryFile data/ArfTable_Tc_Secondary_100000000.bin
+
+# Voxelised phantom
+/gate/world/daughters/name phantom
+/gate/world/daughters/insert   ImageNestedParametrisedVolume
+/gate/phantom/geometry/setImage data/cube.mhd
+/gate/phantom/geometry/setHUToMaterialFile   data/PhantomMaterialsWater.dat
+/gate/phantom/geometry/TranslateTheImageAtThisIsoCenter 0. 0. 0. mm
+/gate/physics/Gamma/SetCutInRegion      phantom 0.1 mm
+/gate/physics/Electron/SetCutInRegion   phantom 1 km
+/gate/physics/Positron/SetCutInRegion   phantom 1 km
+
+# Statistics actor
+/gate/actor/addActor  SimulationStatisticActor stat
+/gate/actor/stat/save output/stat_arf_spect.txt
+
+# Initialize
+/gate/run/initialize
+
+# Square source
+/gate/source/addSource gammaSource
+/gate/source/gammaSource/gps/type Volume
+/gate/source/gammaSource/gps/shape Para
+/gate/source/gammaSource/gps/halfx 50 mm
+/gate/source/gammaSource/gps/halfy 50 mm
+/gate/source/gammaSource/gps/halfz 50 mm
+/gate/source/gammaSource/gps/paralp 0
+/gate/source/gammaSource/gps/parthe 0
+/gate/source/gammaSource/gps/parphi 0
+/gate/source/gammaSource/gps/centre 0. 0. 0. cm
+
+# Source emission
+/gate/source/gammaSource/gps/particle gamma
+/gate/source/gammaSource/gps/energy 140.5 keV
+/gate/source/gammaSource/setActivity 1000000. Bq
+/gate/source/gammaSource/gps/angtype iso
+
+#  Random
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/random/verbose 0
+
+# Output
+/gate/output/projection/enable
+/gate/output/projection/pixelSizeX 0.4 cm
+/gate/output/projection/pixelSizeY 0.4 cm
+/gate/output/projection/pixelNumberX 100
+/gate/output/projection/pixelNumberY 100
+/gate/output/projection/projectionPlane YZ
+/gate/output/projection/setFileName output/arf_spect
+
+/gate/application/setTimeStart 0. s
+/gate/application/setTotalNumberOfPrimaries 1000000
+/gate/application/start
