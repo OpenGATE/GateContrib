@@ -1,3 +1,8 @@
+Authors:  
+* Q.T. Pham, Y. Perrot, L. Maigne<br>
+Laboratoire de Physique Corpusculaire de Clermont-Ferrand, CNRS/IN2P3 - Clermont University, France<br>
+Corresponding author: maigne@clermont.in2p3.fr
+
 !! Be careful you must use the so-called "G4_WATER" material while using Geant4 DNA processes and models !!
 
 ## Description
