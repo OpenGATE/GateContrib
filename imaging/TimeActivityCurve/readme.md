@@ -3,4 +3,4 @@ associate Time Activity Curves (TAC)** so as to reproduce the organ activity var
 
 Note that input data are provided as a tar.gz archive. Before running the example, you have to decompress this file:
 * `cd PATH_TO/imaging/TimeActivityCurve/data`
-* `tar -xzf NCAT_atnFiles.tar.gz`
+* `tar -xzf NCAT_atnfiles.tar.gz`
