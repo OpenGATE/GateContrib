@@ -4,7 +4,7 @@ In this step, the data needed to generate the ARF tables are computed from a rec
 
 `/gate/systems/SPECThead/arf/setARFStage generateData`
 
-The ARF data are stored in the ROOT format from the GATE command output :
+The ARF data are stored in the ROOT format from the GATE command output:
 
 `/gate/output/arf/root/setARFDataFileName testARFdata`
 
@@ -13,13 +13,13 @@ By default the maximum size of a ROOT file is 1.8 Gb. Once the file has reached 
 A template macro file is provided in gate_v4.0.0/examples/example_ARF/generateARFdata.mac which summarizes the commands listed before.
 Computation of the ARF tables from ARF data (previous step)
 
-Now that the data have been stored to ROOT files, we may compute the tables and store them to a binary file :
+Now that the data have been stored to ROOT files, we may compute the tables and store them to a binary file:
 
-COMPUTE THE ARF TABLES FROM ARF DATA
+#COMPUTE THE ARF TABLES FROM ARF DATA#
 
 `/gate/systems/SPECThead/arf/setARFStage computeTables`
 
-DIGITIZER PART OF THE ARF SENSISTIVE DETECTOR
+#DIGITIZER PART OF THE ARF SENSISTIVE DETECTOR#
 
 `/gate/systems/SPECThead/ARFTables/setEnergyDepositionThreshHold       328. keV`<br/>
 `/gate/systems/SPECThead/ARFTables/setEnergyDepositionUpHold           400. keV`<br/>
@@ -32,19 +32,19 @@ If we do not want to consider photons which deposit less than 130 keV we may use
 
 `/gate/systems/SPECThead/setEnergyDepositionThreshHold 130. keV`
 
-The ARF tables depend strongly on the distance from the detector to the source. We have to enter this parameter to get proper tables. The detector plane is set to be the half—middle plan of the detector part of the SPECT head. In the given example, we set the translation of the SPECT head to be 34.5 cm along the X direction (radial axis), the detector is 2 cm wide along X and its center is located at X = 1.5 cm with respect to the SPECThead frame. This is what we call the detector plane ( x = 1.5 cm ). So the distance from the source to the detector plane is 34.5 +1.5 = 36 cm :
+The ARF tables depend strongly on the distance from the detector to the source. We have to enter this parameter to get proper tables. The detector plane is set to be the half—middle plan of the detector part of the SPECT head. In the given example, we set the translation of the SPECT head to be 34.5 cm along the X direction (radial axis), the detector is 2 cm wide along X and its center is located at X = 1.5 cm with respect to the SPECThead frame. This is what we call the detector plane ( x = 1.5 cm ). So the distance from the source to the detector plane is 34.5 +1.5 = 36 cm:
 
-DISTANCE FROM SOURCE TO DETECTOR PLANE TAKEN TO BE THE PLANE AT HALF DIMENSION OF THE CRYSTAL RESPECTIVELY TO THE SPECTHEAD FRAME
+#DISTANCE FROM SOURCE TO DETECTOR PLANE TAKEN TO BE THE PLANE AT HALF DIMENSION OF THE CRYSTAL RESPECTIVELY TO THE SPECTHEAD FRAME#
 
 `/gate/systems/SPECThead/ARFTables/setDistanceFromSourceToDetector 36 cm`
 
 Now we compute the ARF tables from a text file which contains informations regarding the incident photons called ARFData.txt (provided in gate/examples/example_ARF).
 
-NOW WE ARE READY TO COMPUTE THE ARF TABLES
+#NOW WE ARE READY TO COMPUTE THE ARF TABLES#
 
 `/gate/systems/SPECThead/ARFTables/ComputeTablesFromEnergyWindows ARFData.txt`
 
-The ARFData.txt file reads like this :
+The ARFData.txt file reads like this:
 
 `# This file contains all the energy windows computed during first step with their associated root files`<br/>
 `# It has to be formatted the following way :`<br/>
@@ -59,24 +59,25 @@ The ARFData.txt file reads like this :
 
 Here we have only one incident energy window for which we want to compute the corresponding ARF tables. The data for the first one are stored inside 20 files whose base file name is test1head which were generated in the previous stage. It means the ARF data are stored in test1head.root, test1head_1.root ... test1head_20.root.
 
-Finally we store the computed tables to a binary file :
+Finally we store the computed tables to a binary file:
 
 `/gate/systems/SPECThead/ARFTables/list`
 
-SAVE ARF TABLES TO A BINARY FILE FOR PRODUCTION USE
+#SAVE ARF TABLES TO A BINARY FILE FOR PRODUCTION USE#
+
 `/gate/systems/SPECThead/ARFTables/saveARFTablesToBinaryFile ARFSPECTBench.bin`
 
 **Use of the ARF Tables**
 
-The command to tell GATE to use the ARF tables is :
+The command to tell GATE to use the ARF tables is:
 
 `/gate/systems/SPECThead/arf/setARFStage useTables`
 
-The ARF sensitive detector is attached to the SPECThead :
+The ARF sensitive detector is attached to the SPECThead:
 
 `/gate/SPECThead/attachARFSD`
 
-These tables are loaded from binary files with :
+These tables are loaded from binary files with:
 
 `/gate/systems/SPECThead/ARFTables/loadARFTablesFromBinaryFile ARFTables.bin`
 
