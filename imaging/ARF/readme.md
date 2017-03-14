@@ -1,4 +1,4 @@
-**Angular Response Function (ARF) Tables Data computation**
+## Angular Response Function (ARF) Tables Data computation
 
 In this step, the data needed to generate the ARF tables are computed from a rectangular source located at the center of the field of view. The SPECT head is duplicated twice and located at roughly 30 cm from the axial axis. The command to tell GATE to compute the ARF data is:
 
@@ -67,7 +67,7 @@ Finally we store the computed tables to a binary file:
 
 `/gate/systems/SPECThead/ARFTables/saveARFTablesToBinaryFile ARFSPECTBench.bin`
 
-**Use of the ARF Tables**
+## Use of the ARF Tables
 
 The command to tell GATE to use the ARF tables is:
 
