@@ -4,6 +4,10 @@ Author:
 DICOM Series provided by:
  - Jérôme Suhard (jerome@suhard.fr)
 
+Note that DICOM series are provided as a tar.gz archive. Before running the example, you have to decompress this file:
+`cd PATH_TO/imaging/DICOM/mhd-dcm-comparison/data`<br>
+`tar -xzf dataDICOM.tar.gz`
+
 ### Informations:
   * The main simulation files are constructed as follows : `main-[series name]-[input format].mac`<br>
     `[series name] : ffp, ffs, hfp, hfs`<br>
