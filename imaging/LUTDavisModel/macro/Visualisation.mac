@@ -1,0 +1,40 @@
+#  *********************************************************************
+#  * DISCLAIMER                                                        *
+#  *                                                                   *
+#  * Neither the authors of this software system, nor their employing  *
+#  * institutes, nor the agencies providing financial support for this *
+#  * work make any representation or warranty, express or implied,     *
+#  * regarding this software system or assume any liability for its    *
+#  * use.                                                              *
+#  *                                                                   *
+#  * This code implementation is the intellectual property of the      *
+#  * OpenGATE collaboration.                                           *
+#  * By copying, distributing or modifying the Program (or any work    *
+#  * based on the Program) you indicate your acceptance of this        *
+#  * statement, and all its terms.                                     *
+#  *********************************************************************
+# SET OF THE VISUALISATION CHARACTERISTICS##########
+
+#/vis/open                           OGL 1000x1000
+#/vis/viewer/update
+##/vis/viewer/panTo  				0 3  mm
+#/vis/viewer/set/viewpointThetaPhi 	30 60 
+#/vis/viewer/zoom                   5.0
+#/vis/drawVolume 
+#/tracking/storeTrajectory 
+#/vis/scene/add/trajectories  
+##/vis/disable
+
+#####################################################
+
+#/vis/scene/create	
+#/vis/open VRML2FILE
+#/vis/viewer/flush
+#/vis/viewer/set/viewpointThetaPhi 10 120 deg
+#/vis/viewer/zoom 5
+##/vis/viewer/pan -10  40 cm
+#/vis/drawVolume
+#/vis/scene/add/trajectories
+#/vis/scene/endOfEventAction accumulate
+#/vis/viewer/update
+#/vis/viewer/flush

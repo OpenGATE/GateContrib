@@ -1,0 +1,53 @@
+#  *********************************************************************
+#  * DISCLAIMER                                                        *
+#  *                                                                   *
+#  * Neither the authors of this software system, nor their employing  *
+#  * institutes, nor the agencies providing financial support for this *
+#  * work make any representation or warranty, express or implied,     *
+#  * regarding this software system or assume any liability for its    *
+#  * use.                                                              *
+#  *                                                                   *
+#  * This code implementation is the intellectual property of the      *
+#  * OpenGATE collaboration.                                           *
+#  * By copying, distributing or modifying the Program (or any work    *
+#  * based on the Program) you indicate your acceptance of this        *
+#  * statement, and all its terms.                                     *
+#  *********************************************************************
+
+
+# === optical system ===
+
+/gate/world/daughters/name                      OpticalSystem
+/gate/world/daughters/insert                    box
+/gate/OpticalSystem/geometry/setXLength         7.0 cm
+/gate/OpticalSystem/geometry/setYLength         7.0 cm
+/gate/OpticalSystem/geometry/setZLength         7.0 cm
+/gate/OpticalSystem/placement/setTranslation    0 0 0.0 cm
+/gate/OpticalSystem/setMaterial                 Air
+
+/gate/OpticalSystem/daughters/name              crystal
+/gate/OpticalSystem/daughters/insert            box
+/gate/crystal/geometry/setXLength               3. mm
+/gate/crystal/geometry/setYLength               3. mm
+/gate/crystal/geometry/setZLength               20. mm
+/gate/crystal/placement/setTranslation          0 0 10 mm
+/gate/crystal/setMaterial                       LSO
+/gate/crystal/vis/setColor                      red
+/gate/crystal/vis/forceSolid
+/gate/crystal/attachCrystalSD
+/gate/systems/OpticalSystem/crystal/attach      crystal
+
+/gate/OpticalSystem/daughters/name              pixel
+/gate/OpticalSystem/daughters/insert            box
+/gate/pixel/geometry/setXLength           		3.  mm
+/gate/pixel/geometry/setYLength           		3.	mm
+/gate/pixel/geometry/setZLength           		1. mm
+/gate/pixel/setMaterial                  		G4_SILICON_DIOXIDE                 
+/gate/pixel/placement/setTranslation      		0 0 -0.5 mm
+/gate/pixel/vis/setColor                  		yellow
+/gate/pixel/vis/forceSolid
+/gate/systems/OpticalSystem/pixel/attach        pixel
+
+	
+
+
