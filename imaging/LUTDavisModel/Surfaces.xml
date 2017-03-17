@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding='utf-8'?>
+<surfaces>
+  
+   <surface model="DAVIS" name="Rough_LUT" type="dielectric_LUTDAVIS" finish="Rough_LUT">
+  </surface>
+  
+   <surface model="DAVIS" name="RoughTeflon_LUT" type="dielectric_LUTDAVIS" finish="RoughTeflon_LUT">
+  </surface>
+  
+   <surface model="DAVIS" name="RoughESR_LUT" type="dielectric_LUTDAVIS" finish="RoughESR_LUT">
+  </surface>
+  
+   <surface model="DAVIS" name="RoughESRGrease_LUT" type="dielectric_LUTDAVIS" finish="RoughESRGrease_LUT">
+  </surface>
+  
+   <surface model="DAVIS" name="Polished_LUT" type="dielectric_LUTDAVIS" finish="Polished_LUT">
+  </surface>
+  
+   <surface model="DAVIS" name="PolishedTeflon_LUT" type="dielectric_LUTDAVIS" finish="PolishedTeflon_LUT">
+  </surface>
+  
+   <surface model="DAVIS" name="PolishedESR_LUT" type="dielectric_LUTDAVIS" finish="PolishedESR_LUT">
+  </surface>
+  
+   <surface model="DAVIS" name="PolishedESRGrease_LUT" type="dielectric_LUTDAVIS" finish="PolishedESRGrease_LUT">
+  </surface>
+  
+   <surface model="DAVIS" name="Detector_LUT" type="dielectric_LUTDAVIS" finish="Detector_LUT">
+     <propertiestable>
+      <propertyvector name="EFFICIENCY" energyunit="eV">
+        <ve energy="1.84" value="1"/>
+        <ve energy="4.08" value="1"/>
+      </propertyvector>
+    </propertiestable>
+  </surface>
+
+</surfaces>
