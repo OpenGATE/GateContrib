@@ -4,7 +4,20 @@
 
 [Gate](https://github.com/OpenGATE/Gate), based on [Geant4](https://geant4.web.cern.ch) library, allows to perform various Monte-Carlo simulations in the field of **medical physics**. [Gate](https://github.com/OpenGATE/Gate) can be used in numerous ways and for a lot of different applications. This repository contains [Gate](https://github.com/OpenGATE/Gate) simulation examples, mostly provided by users, in order to help sharing knowledge.
 
-*Warning* - This repository contains data (binary files), stored with [git-lfs](https://git-lfs.github.com/) extension. EXPLAIN WHAT TO DO HERE
+*Warning* - This repository contains data (binary files), stored with [git-lfs](https://git-lfs.github.com/) extension. Find below a step-by-step tutorial to install git-lfs:
+
+1. Download the [Git LFS extension](https://github.com/git-lfs/git-lfs/releases/download/v2.0.1/git-lfs-linux-amd64-2.0.1.tar.gz)for versioning large files
+2. Untar, install and set up the Git command line extension<br>
+<code>tar -xzf git-lfs-linux-amd64-2.0.1.tar.gz</code><br>
+<code>cd git-lfs-2.0.1</code><br>
+<code>sudo ./install.sh</code><br>
+If your installation was succesful, your terminal should display the following message:<br>
+<code>Git LFS initialized</code><br>
+Note that you only have to set up Git LFS once. 
+3) Clone the Gate user-oriented repository as usual<br>
+<code>git clone https://github.com/OpenGATE/GateContrib.git</code><br>
+<code>git lfs https://github.com/OpenGATE/GateContrib.git</code><br>
+The <code>git lfs clone</code> command operates exactly like <code>git clone</code> and takes all the same arguments, but has one important difference: it's a lot faster! Depending on the number of files you have it can be more than 10x faster in fact.
 
 *Warning* - This is *user-oriented*, the provided examples are not tested and may not work. The [OpenGate collaboration](http://www.opengatecollaboration.org/) is not responsible of any contents.
 
