@@ -16,7 +16,7 @@ If your installation was succesful, your terminal should display the following m
 Note that you only have to set up Git LFS once. 
 3) Clone the Gate user-oriented repository as usual<br>
 <code>git clone https://github.com/OpenGATE/GateContrib.git</code><br>
-<code>git lfs https://github.com/OpenGATE/GateContrib.git</code><br>
+<code>git lfs clone https://github.com/OpenGATE/GateContrib.git</code><br>
 The <code>git lfs clone</code> command operates exactly like <code>git clone</code> and takes all the same arguments, but has one important difference: it's a lot faster! Depending on the number of files you have it can be more than 10x faster in fact.
 
 *Warning* - This is *user-oriented*, the provided examples are not tested and may not work. The [OpenGate collaboration](http://www.opengatecollaboration.org/) is not responsible of any contents.
