@@ -6,7 +6,7 @@
 
 *Warning* - This repository contains data (binary files), stored with [git-lfs](https://git-lfs.github.com/) extension. Find below a step-by-step tutorial to install git-lfs:
 
-1. Download the [Git LFS extension](https://github.com/git-lfs/git-lfs/releases/download/v2.0.1/git-lfs-linux-amd64-2.0.1.tar.gz)for versioning large files
+1. Download the [Git LFS extension](https://github.com/git-lfs/git-lfs/releases/download/v2.0.1/git-lfs-linux-amd64-2.0.1.tar.gz) for versioning large files
 2. Untar, install and set up the Git command line extension<br>
 <code>tar -xzf git-lfs-linux-amd64-2.0.1.tar.gz</code><br>
 <code>cd git-lfs-2.0.1</code><br>
@@ -16,9 +16,20 @@ If your installation was succesful, your terminal should display the following m
 Note that you only have to set up Git LFS once. 
 3) Clone the Gate user-oriented repository as usual<br>
 <code>git clone https://github.com/OpenGATE/GateContrib.git</code><br>
-<code>git lfs clone https://github.com/OpenGATE/GateContrib.git</code><br>
-The <code>git lfs clone</code> command operates exactly like <code>git clone</code> and takes all the same arguments, but has one important difference: it's a lot faster! Depending on the number of files you have it can be more than 10x faster in fact.
-
+Note that the <code>git lfs clone https://github.com/OpenGATE/GateContrib.git</code> command operates exactly like <code>git clone</code> and takes all the same arguments, but has one important difference: it's a lot faster! Depending on the number of files you have it can be more than 10x faster in fact.
+The output of the executing commande should be:
+ Cloning into 'GateContrib'...
+ remote: Counting objects: 21076, done.
+ remote: Compressing objects: 100% (61/61), done.
+ remote: Total 21076 (delta 36), reused 0 (delta 0), pack-reused 21012
+ Receiving objects: 100% (21076/21076), 13.96 MiB | 3.76 MiB/s, done.
+ Resolving deltas: 100% (14211/14211), done. 
+ Checking connectivity... done.
+ Downloading dosimetry/Radiotherapy/example10/data/phantom.raw (3.25 MB)
+ Downloading dosimetry/Radiotherapy/example2/data/patient-2mm.raw (3.36 MB)
+ ...
+ Checking out files: 100% (549/549), done.
+ 
 *Warning* - This is *user-oriented*, the provided examples are not tested and may not work. The [OpenGate collaboration](http://www.opengatecollaboration.org/) is not responsible of any contents.
 
 ----
