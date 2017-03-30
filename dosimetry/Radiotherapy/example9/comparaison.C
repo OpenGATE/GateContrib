@@ -4,10 +4,10 @@
   TFile * fileDoseInc = new TFile("output/Electron-20MeV-Dose-Uncertainty.root","OPEN");
 
   std::ifstream file("output/counterElectron-20MeV.txt");
-  if (file.fail()){//file
-    cout << "Probleme d'ouverture"<<endl;
-    continue;
-  }
+  //if (file.fail()){//file
+    //cout << "Probleme d'ouverture"<<endl;
+    //continue;
+  //}
   double n;
   TString texte;
   file>>texte;

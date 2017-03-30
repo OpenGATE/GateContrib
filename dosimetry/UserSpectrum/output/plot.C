@@ -19,10 +19,10 @@ c1 = new TCanvas ("c1","graph",66,52,1000,500);
 // open the output file 
 TFile* f =new TFile (" UserSpectrumExample.root"); 
 // and print the content
-f.ls();
+f->ls();
 
 // retrieve the energy spectrum histogram 
-TH1F * h1 = (TH1F*)f.Get("energySpectrum");
+TH1F * h1 = (TH1F*)f->Get("energySpectrum");
 h1->SetLineColor(kBlue);
 // set title and the axis legend
 h1->SetTitle("Different modes of User Spectrum source");

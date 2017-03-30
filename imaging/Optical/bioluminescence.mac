@@ -58,20 +58,6 @@
 /gate/Electronics/vis/setColor                  yellow 
 /gate/Electronics/vis/forceSolid 
 
-# S U R F A C E S: DETECTION AND BLACK
-/gate/crystal/surfaces/name                           Detection1 
-/gate/crystal/surfaces/insert                         Electronics  
-/gate/crystal/surfaces/Detection1/setSurface          perfect_apd   
-/gate/Electronics/surfaces/name                     Detection2 
-/gate/Electronics/surfaces/insert                   crystal 
-/gate/Electronics/surfaces/Detection2/setSurface    perfect_apd   
-/gate/objectif1/surfaces/name                         Black1 
-/gate/objectif1/surfaces/insert                       objectif2 
-/gate/objectif1/surfaces/Black1/setSurface            black   
-/gate/objectif2/surfaces/name                         Black2 
-/gate/objectif2/surfaces/insert                       objectif1 
-/gate/objectif2/surfaces/Black2/setSurface            black  
-
 # P H A N T O M 
 /gate/world/daughters/name                    waterMouse 
 /gate/world/daughters/insert                  box 
@@ -107,8 +93,23 @@
 /gate/actor/addActor      SimulationStatisticActor stat  
 /gate/actor/stat/save     ./BIOLUMINESCENCE-STAT.txt 
 
-# D I G I T I Z E R
 /gate/run/initialize 
+
+# S U R F A C E S: DETECTION AND BLACK
+/gate/crystal/surfaces/name                           Detection1 
+/gate/crystal/surfaces/insert                         Electronics  
+/gate/crystal/surfaces/Detection1/setSurface          perfect_apd   
+/gate/Electronics/surfaces/name                     Detection2 
+/gate/Electronics/surfaces/insert                   crystal 
+/gate/Electronics/surfaces/Detection2/setSurface    perfect_apd   
+/gate/objectif1/surfaces/name                         Black1 
+/gate/objectif1/surfaces/insert                       objectif2 
+/gate/objectif1/surfaces/Black1/setSurface            black   
+/gate/objectif2/surfaces/name                         Black2 
+/gate/objectif2/surfaces/insert                       objectif1 
+/gate/objectif2/surfaces/Black2/setSurface            black  
+
+# D I G I T I Z E R
 /gate/digitizer/Singles/insert opticaladder  
 /gate/digitizer/Singles/insert                        readout  
 /gate/digitizer/Singles/readout/setDepth              1 
@@ -132,7 +133,7 @@
 /gate/output/root/enable 
 /gate/output/root/setFileName      ./Bioluminescence_skin 
 /gate/output/root/setRootHitFlag          0 
-/gate/output/root/setRootSinglesFlag      0 
+/gate/output/root/setRootSinglesFlag      1 
 /gate/output/root/setRootOpticalFlag      1 
 /gate/output/analysis/disable 
 /gate/output/fastanalysis/enable 

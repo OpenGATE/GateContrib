@@ -4,10 +4,10 @@
   TFile * fileDoseInc = new TFile("output/Photon-18MeV-Dose-Uncertainty.root","OPEN");
 
   std::ifstream file("output/counterPhoton-18MeV.txt");
-  if (file.fail()){//file
-    cout << "Probleme d'ouverture"<<endl;
-    continue;
-  }
+  //if (file.fail()){//file
+    //cout << "Probleme d'ouverture"<<endl;
+    //continue;
+  //}
   double n;
   TString texte;
   file>>texte;
