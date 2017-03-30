@@ -14,35 +14,35 @@
 # MATERIAL DATABASE 
 #=====================================================
 
-/gate/geometry/setMaterialDatabase ../data/GateMaterials.db	
+/gate/geometry/setMaterialDatabase ./data/GateMaterials.db	
 
 
 #=====================================================
 # VERBOSE	
 #=====================================================
 
-/control/execute verbose.mac
+/control/execute ./mac/verbose.mac
 
 
 #=====================================================	
 # GEOMETRY	
 #=====================================================	
 
-/control/execute geometry.mac
+/control/execute ./mac/geometry.mac
 
 
 #=====================================================
 # PHYSICS
 #=====================================================
 
-/control/execute physics.mac
+/control/execute ./mac/physics.mac
 
 
 #=====================================================
 # OUTPUT
 #=====================================================
 
-/control/execute output.mac
+/control/execute ./mac/output.mac
 
 
 #=====================================================
@@ -56,7 +56,7 @@
 #  SOURCE
 #=====================================================
 
-/control/execute source.mac
+/control/execute ./mac/source.mac
 
 
 

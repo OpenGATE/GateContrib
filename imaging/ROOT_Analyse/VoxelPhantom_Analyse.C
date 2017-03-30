@@ -86,7 +86,7 @@ TH2F *Phantom = new TH2F("Phantom","",100,-100,100,100,-100,100);
    c1->SetFillColor(0);
    c1->SetBorderMode(0);   
        
-   Phantom.Draw("contZ");
+   Phantom->Draw("contZ");
    
    c1->Update(); 
 

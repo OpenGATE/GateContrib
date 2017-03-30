@@ -14,9 +14,9 @@ c1 = new TCanvas ("c1","graph",66,52,1000,500);
 
 
 TFile* f =new TFile ("Target1.root"); 
-f.ls();
+f->ls();
  
-TH1F * h1 = (TH1F*)f.Get("energySpectrum");
+TH1F * h1 = (TH1F*)f->Get("energySpectrum");
 h1->SetLineColor(kBlue);
 h1->SetTitle("Production of Secondary Particles");
 h1->GetXaxis()->SetTitle("Edep (MeV)");
@@ -26,12 +26,12 @@ h1->SetStats(0);
 h1->Draw("PE"); 
   
 TFile* f2 =new TFile ("Target2.root");
-TH1F * h2 = (TH1F*)f2.Get("energySpectrum");
+TH1F * h2 = (TH1F*)f2->Get("energySpectrum");
 h2->SetLineColor(kRed);
 h2->Draw("PESAME"); 
 
 TFile* f3 =new TFile ("Target3.root");
-TH1F * h3 = (TH1F*)f3.Get("energySpectrum");
+TH1F * h3 = (TH1F*)f3->Get("energySpectrum");
 h3->SetLineColor(kGreen);
 h3->Draw("PESAME"); 
 
