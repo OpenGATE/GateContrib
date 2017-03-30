@@ -9,7 +9,7 @@ Gate *MUST* be compiled with RTK option enabled (set GATE_USE_RTK to ON in cmake
 
 ## Usage:
 - `Gate mac/monteCarloSPECT.mac`
-- `Gate mac/angularResponseFunctionSPECT`
+- `Gate mac/angularResponseFunctionSPECT.mac`
 - `Gate mac/fixedForcedDetectionSPECT.mac`
 
 ## Description
@@ -22,6 +22,7 @@ monteCarloSPECT.mac gives the analog MC simulation.
 angularResponseFunctionSPECT gives the simulation with the SPECT head replaced with ARF tables. 
 mac/fixedForcedDetectionSPECT.mac gives the simulation with the FFD linked with ARF tables. 
 
+The scatter window (120 +/- 5% keV) can be activated by commenting the primary window and uncommenting the scatter window. 
 ## Visualisation
 
 To visualise:
