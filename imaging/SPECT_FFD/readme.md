@@ -9,12 +9,18 @@ Gate *MUST* be compiled with RTK option enabled (set GATE_USE_RTK to ON in cmake
 
 ## Usage:
 - `Gate mac/monteCarloSPECT.mac`
-- `Gate mac/angularResponseFunctionSPECT.mac`
+- `Gate mac/angularResponseFunctionSPECT`
 - `Gate mac/fixedForcedDetectionSPECT.mac`
 
 ## Description
 
-This example perform simulation of a planar SPECT image from a voxelized source ... TODO !
+This is an example simulation of a planar SPECT image from a source (10cm cube) inside a voxelised water phantom (20cm cube).
+The source emits 140.5 keV gammas (99mTC).
+The image is a 100 by 100 4x4mm pixel projection in an energy window of 140.5 +/- 10%.
+
+monteCarloSPECT.mac gives the analog MC simulation. 
+angularResponseFunctionSPECT gives the simulation with the SPECT head replaced with ARF tables. 
+mac/fixedForcedDetectionSPECT.mac gives the simulation with the FFD linked with ARF tables. 
 
 ## Visualisation
 
