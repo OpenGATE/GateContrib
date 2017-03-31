@@ -41,7 +41,6 @@
 /gate/actor/hfda/setSourceType                isotropic
 /gate/actor/hfda/setDetector                  crystalVolumeFFD
 /gate/actor/hfda/setDetectorResolution        100 100
-/gate/actor/hfda/responseDetectorFilename     data/responseDetector.txt
 /gate/actor/hfda/connectARF 	true
 
 # Initialize
