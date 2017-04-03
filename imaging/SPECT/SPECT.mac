@@ -22,7 +22,7 @@
 
 # M A N D A T O R Y
 #####
-/gate/geometry/setMaterialDatabase ../../GateMaterials.db
+/gate/geometry/setMaterialDatabase ../../misc/GateMaterials.db
 
 
 # G E O M E T R Y

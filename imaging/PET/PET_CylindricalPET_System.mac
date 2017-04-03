@@ -48,7 +48,7 @@
 #=====================================================
 
 
-/gate/geometry/setMaterialDatabase    ../../GateMaterials.db
+/gate/geometry/setMaterialDatabase    ../../misc/GateMaterials.db
 
 
 #
@@ -295,7 +295,7 @@
 /gate/source/posiC11/gps/energytype Mono
 /gate/source/posiC11/gps/monoenergy 0.511 MeV
 
-/gate/source/posiC11/setActivity                               100 becquerel
+/gate/source/posiC11/setActivity                               10000 becquerel
 
 /gate/source/posiC11/setForcedUnstableFlag                     true
 /gate/source/posiC11/setForcedHalfLife                         1223 s
@@ -333,7 +333,7 @@
 #=====================================================
 
 /gate/application/setTimeSlice   1 s
-/gate/application/setTimeStart   0   s
+/gate/application/setTimeStart   0 s
 /gate/application/setTimeStop    6 s
 
-#/gate/application/startDAQ
+/gate/application/startDAQ

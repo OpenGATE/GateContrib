@@ -32,23 +32,6 @@
 /gate/patient/geometry/setImage             data/PhantomSlice10px.mha
 
 #=====================================================
-# BEAM
-#=====================================================
-
-/gate/source/addSource xraygun       gps
-/gate/source/xraygun/gps/particle    gamma
-/gate/source/xraygun/gps/energytype  Mono
-/gate/source/xraygun/gps/ene/mono    60 keV
-/gate/source/xraygun/gps/centre      293.5 0. 0. mm
-/gate/source/xraygun/gps/direction   -1 0 0
-/gate/source/xraygun/gps/type        Plane
-/gate/source/xraygun/gps/shape       Rectangle
-/gate/source/xraygun/gps/halfx       24.2 mm
-/gate/source/xraygun/gps/halfy       293 mm
-/gate/source/xraygun/gps/pos/rot1    0 0 1
-/gate/source/xraygun/gps/pos/rot2    0 1 0
-
-#=====================================================
 # PHYSICS
 #=====================================================
 
@@ -77,6 +60,23 @@
 /gate/run/initialize
 /gate/random/setEngineName MersenneTwister
 /gate/random/setEngineSeed auto
+
+#=====================================================
+# BEAM
+#=====================================================
+
+/gate/source/addSource xraygun       gps
+/gate/source/xraygun/gps/particle    gamma
+/gate/source/xraygun/gps/energytype  Mono
+/gate/source/xraygun/gps/ene/mono    60 keV
+/gate/source/xraygun/gps/centre      293.5 0. 0. mm
+/gate/source/xraygun/gps/direction   -1 0 0
+/gate/source/xraygun/gps/type        Plane
+/gate/source/xraygun/gps/shape       Rectangle
+/gate/source/xraygun/gps/halfx       24.2 mm
+/gate/source/xraygun/gps/halfy       293 mm
+/gate/source/xraygun/gps/pos/rot1    0 0 1
+/gate/source/xraygun/gps/pos/rot2    0 1 0
 
 #=====================================================
 # START BEAM
