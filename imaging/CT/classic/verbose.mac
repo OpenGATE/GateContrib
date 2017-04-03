@@ -2,7 +2,7 @@
 /run/verbose 0
 /run/particle/verbose 0
 
-/run/particle/dumpCutValues
+#/run/particle/dumpCutValues
 /event/verbose 0
 /tracking/verbose 0
 /tracking/verbose 0

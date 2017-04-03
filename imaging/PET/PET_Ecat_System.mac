@@ -69,7 +69,7 @@
 #=====================================================
 
 
-/gate/geometry/setMaterialDatabase    ../../GateMaterials.db
+/gate/geometry/setMaterialDatabase    ../../misc/GateMaterials.db
 
 
 #

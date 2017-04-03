@@ -7,7 +7,7 @@
 #########################
 # SET MATERIAL DATABASE #
 #########################
-/gate/geometry/setMaterialDatabase ../../../GateMaterials.db
+/gate/geometry/setMaterialDatabase ../../../misc/GateMaterials.db
 
 #########
 # WORLD #
@@ -45,11 +45,6 @@
 #############
 /control/execute digitizer.mac
 
-##############
-# SOURCE GPS #
-##############
-/control/execute source.mac
-
 ##########
 # OUTPUT #
 ##########
@@ -64,6 +59,11 @@
 # INITIALIZATION #
 ##################
 /gate/run/initialize
+
+##############
+# SOURCE GPS #
+##############
+/control/execute source.mac
 
 ###############
 # ACQUISITION #

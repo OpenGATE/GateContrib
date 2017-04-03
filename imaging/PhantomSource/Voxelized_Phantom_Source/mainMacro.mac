@@ -34,7 +34,7 @@
 
 
 
-/gate/geometry/setMaterialDatabase    ../../../GateMaterials.db
+/gate/geometry/setMaterialDatabase    ../../../misc/GateMaterials.db
 
 #
 #     W O R L D
@@ -275,8 +275,8 @@
 #   MEASUREMENT SETTINGS   
 #=====================================================
 
-/gate/application/setTimeSlice   100 ms
-/gate/application/setTimeStart   0   ms
-/gate/application/setTimeStop    100 ms
+/gate/application/setTimeSlice   1 s
+/gate/application/setTimeStart   0 s
+/gate/application/setTimeStop    1 s
 
 /gate/application/startDAQ
