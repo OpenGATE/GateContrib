@@ -12,23 +12,6 @@
 # Physics list
 /gate/physics/addPhysicsList emlivermore
 
-# Beam
-/gate/source/addSource mybeam gps
-/gate/source/mybeam/gps/particle       gamma
-/gate/source/mybeam/gps/ene/type       User
-/gate/source/mybeam/gps/hist/type      energy
-/gate/source/mybeam/gps/pos/halfx      8 mm
-/gate/source/mybeam/gps/pos/halfy      8 mm
-/gate/source/mybeam/gps/pos/rot1       1 0 0
-/gate/source/mybeam/gps/pos/rot2       0 1 0
-/gate/source/mybeam/gps/pos/centre     0 0 1060 mm
-/gate/source/mybeam/gps/pos/type       Plane
-/gate/source/mybeam/gps/pos/shape      Rectangle
-/gate/source/mybeam/gps/ang/type       focused
-/gate/source/mybeam/gps/ang/focuspoint 0 0 1000 mm
-
-/control/execute mac/120keV.mac
-
 # Insert phantom
 /gate/world/daughters/name                              patient
 /gate/world/daughters/insert                            ImageNestedParametrisedVolume
@@ -72,6 +55,22 @@
 /gate/actor/stat/save output/stats.txt
 
 /gate/run/initialize
+
+# Beam
+/gate/source/addSource mybeam gps
+/gate/source/mybeam/gps/particle       gamma
+/gate/source/mybeam/gps/ene/type       User
+/gate/source/mybeam/gps/hist/type      energy
+/gate/source/mybeam/gps/pos/halfx      8 mm
+/gate/source/mybeam/gps/pos/halfy      8 mm
+/gate/source/mybeam/gps/pos/rot1       1 0 0
+/gate/source/mybeam/gps/pos/rot2       0 1 0
+/gate/source/mybeam/gps/pos/centre     0 0 1060 mm
+/gate/source/mybeam/gps/pos/type       Plane
+/gate/source/mybeam/gps/pos/shape      Rectangle
+/gate/source/mybeam/gps/ang/type       focused
+/gate/source/mybeam/gps/ang/focuspoint 0 0 1000 mm
+/control/execute mac/120keV.mac
 
 /gate/random/setEngineName MersenneTwister
 /gate/random/setEngineSeed 123456
