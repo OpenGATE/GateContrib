@@ -1,0 +1,191 @@
+#=====================================================
+# VERBOSE and VISUALISATION 
+#=====================================================
+
+/gate/verbose Physic    0
+/gate/verbose Cuts      0
+/gate/verbose SD        0
+/gate/verbose Actions   0
+/gate/verbose Actor     0
+/gate/verbose Step      0
+/gate/verbose Error     0
+/gate/verbose Warning   0
+/gate/verbose Output    0
+/gate/verbose Beam      0
+/gate/verbose Volume    0
+/gate/verbose Image     0
+/gate/verbose Geometry  0
+
+#/control/execute mac/visu.mac
+
+#=====================================================
+# GEOMETRY and ACTORS
+#=====================================================
+
+/gate/geometry/setMaterialDatabase data/myGateMaterials.db
+
+# -----------------------------------------------------
+# Water box
+
+/gate/world/setMaterial         Vacuum
+/gate/world/geometry/setXLength 2 m
+/gate/world/geometry/setYLength 2 m
+/gate/world/geometry/setZLength 2 m
+
+/gate/world/daughters/name     tank
+/gate/world/daughters/insert   box
+/gate/tank/setMaterial         Water
+/gate/tank/geometry/setXLength 300 mm
+/gate/tank/geometry/setYLength 300 mm
+/gate/tank/geometry/setZLength 300 mm
+/gate/tank/vis/setColor green
+/gate/tank/vis/forceWireframe
+
+# -----------------------------------------------------
+# TEPC geometry
+
+/gate/tank/daughters/name       TEPC
+/gate/tank/daughters/insert     sphere
+/gate/TEPC/geometry/setRmin     0.0 mm
+/gate/TEPC/geometry/setRmax     7.62 mm
+/gate/TEPC/setMaterial          TE_A_150
+/gate/TEPC/vis/setColor         white
+
+# measurement_position = - halfZ_tank(150.00mm) + radius_TEPCgas(6.35mm) + depth
+# ---- TEPC in the plateau region (depth=50mm)
+/gate/TEPC/placement/setTranslation  0.0 0.0 -93.65 mm
+# ---- TEPC in the peak region (depth=160mm)
+#/gate/TEPC/placement/setTranslation  0.0 0.0 16.35 mm
+
+/gate/TEPC/daughters/name       TEPCcut1
+/gate/TEPC/daughters/insert     sphere
+/gate/TEPCcut1/geometry/setRmin 6.361 mm
+/gate/TEPCcut1/geometry/setRmax 6.461 mm
+/gate/TEPCcut1/setMaterial      TE_A_150
+/gate/TEPCcut1/placement/setTranslation  0.0 0.0 0.0 mm
+/gate/TEPCcut1/vis/setColor     white
+
+/gate/TEPC/daughters/name       TEPCcut2
+/gate/TEPC/daughters/insert     sphere
+/gate/TEPCcut2/geometry/setRmin 6.351 mm
+/gate/TEPCcut2/geometry/setRmax 6.361 mm
+/gate/TEPCcut2/setMaterial      TE_A_150
+/gate/TEPCcut2/placement/setTranslation  0.0 0.0 0.0 mm
+/gate/TEPCcut2/vis/setColor     white
+
+/gate/TEPC/daughters/name       TEPCcut3
+/gate/TEPC/daughters/insert     sphere
+/gate/TEPCcut3/geometry/setRmin 6.350 mm
+/gate/TEPCcut3/geometry/setRmax 6.351 mm
+/gate/TEPCcut3/setMaterial      TE_A_150
+/gate/TEPCcut3/placement/setTranslation  0.0 0.0 0.0 mm
+/gate/TEPCcut3/vis/setColor     white
+
+/gate/TEPC/daughters/name       TEPCgas
+/gate/TEPC/daughters/insert     sphere
+/gate/TEPCgas/geometry/setRmin  0.0 mm
+/gate/TEPCgas/geometry/setRmax  6.35 mm
+/gate/TEPCgas/setMaterial       TE_gas
+/gate/TEPCgas/placement/setTranslation 0.0 0.0 0.0 mm
+/gate/TEPCgas/vis/setColor      blue
+/gate/TEPCgas/vis/forceSolid
+
+#=====================================================
+# ACTOR
+#=====================================================
+
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save              output/stat.txt
+/gate/actor/stat/saveEveryNSeconds 60
+
+/gate/actor/addActor     TEPCActor myTEPC
+/gate/actor/myTEPC/attachTo        TEPCgas
+/gate/actor/myTEPC/save            output/myLETspectrum.root
+/gate/actor/myTEPC/saveAsText      false
+/gate/actor/myTEPC/setPressure     0.044 bar
+/gate/actor/myTEPC/setLogscale     true
+/gate/actor/myTEPC/setNumberOfBins 150
+/gate/actor/myTEPC/setEmin         0.01 keV
+/gate/actor/myTEPC/setNOrders      6
+/gate/actor/myTEPC/setNormByEvent  true
+
+#=====================================================
+# PHYSIC
+#=====================================================
+
+/gate/physics/addPhysicsList QGSP_BIC_HP_PEN
+
+#=====================================================
+# CUTS
+#=====================================================
+
+/gate/physics/Gamma/SetCutInRegion      tank 1 mm
+/gate/physics/Electron/SetCutInRegion   tank 1 mm
+/gate/physics/Positron/SetCutInRegion   tank 1 mm
+/gate/physics/Proton/SetCutInRegion     tank 1 mm
+
+/gate/physics/Gamma/SetCutInRegion      TEPC 0.1 mm
+/gate/physics/Electron/SetCutInRegion   TEPC 0.1 mm
+/gate/physics/Positron/SetCutInRegion   TEPC 0.1 mm
+/gate/physics/Proton/SetCutInRegion     TEPC 0.1 mm
+
+/gate/physics/Gamma/SetCutInRegion      TEPCcut1 0.01 mm
+/gate/physics/Electron/SetCutInRegion   TEPCcut1 0.01 mm
+/gate/physics/Positron/SetCutInRegion   TEPCcut1 0.01 mm
+/gate/physics/Proton/SetCutInRegion     TEPCcut1 0.01 mm
+
+/gate/physics/Gamma/SetCutInRegion      TEPCcut2 0.001 mm
+/gate/physics/Electron/SetCutInRegion   TEPCcut2 0.001 mm
+/gate/physics/Positron/SetCutInRegion   TEPCcut2 0.001 mm
+/gate/physics/Proton/SetCutInRegion     TEPCcut2 0.001 mm
+
+/gate/physics/Gamma/SetCutInRegion      TEPCcut3 0.0001 mm
+/gate/physics/Electron/SetCutInRegion   TEPCcut3 0.0001 mm
+/gate/physics/Positron/SetCutInRegion   TEPCcut3 0.0001 mm
+/gate/physics/Proton/SetCutInRegion     TEPCcut3 0.0001 mm
+
+/gate/physics/Gamma/SetCutInRegion      TEPCgas 0.0001 mm
+/gate/physics/Electron/SetCutInRegion   TEPCgas 0.0001 mm
+/gate/physics/Positron/SetCutInRegion   TEPCgas 0.0001 mm
+/gate/physics/Proton/SetCutInRegion     TEPCgas 0.0001 mm
+
+#------------
+# stepLimiter
+#------------
+
+/gate/physics/SetMaxStepSizeInRegion    tank     1.0 mm
+/gate/physics/SetMaxStepSizeInRegion    TEPC     0.1 mm
+/gate/physics/SetMaxStepSizeInRegion    TEPCcut1 0.01 mm
+/gate/physics/SetMaxStepSizeInRegion    TEPCcut2 0.001 mm
+/gate/physics/SetMaxStepSizeInRegion    TEPCcut3 0.0001 mm
+/gate/physics/SetMaxStepSizeInRegion    TEPCgas  1.0 mm
+
+/gate/physics/ActivateStepLimiter proton
+
+/gate/physics/displayCuts
+
+#=====================================================
+# BEAM
+#=====================================================
+
+/gate/source/addSource              protongun   gps
+/gate/source/protongun/gps/particle   proton
+/gate/source/protongun/gps/monoenergy 155 MeV 
+/gate/source/protongun/gps/type       Plane
+/gate/source/protongun/gps/pos/shape  Circle
+/gate/source/protongun/gps/pos/radius 25.0 mm 
+/gate/source/protongun/gps/centre     0.0 0.0 -400.0 mm 
+/gate/source/protongun/gps/direction  0 0 1      
+
+#=====================================================
+# MAIN
+#=====================================================
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/run/enableGlobalOutput true
+/gate/run/initialize
+
+# PARTICLE
+/gate/application/setTotalNumberOfPrimaries 1000000
+/gate/application/start
