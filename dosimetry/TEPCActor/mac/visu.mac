@@ -1,0 +1,16 @@
+/vis/open OGLSX 1000
+/vis/drawVolume
+/vis/viewer/flush
+/tracking/storeTrajectory 1
+/vis/scene/add/trajectories
+#/vis/scene/endOfEventAction accumulate 1
+
+/vis/scene/add/axes            -150 300 100 100 mm
+#/vis/viewer/set/auxiliaryEdge true
+
+/vis/viewer/set/viewpointThetaPhi  60 40
+/vis/viewer/zoom 4
+
+
+
+
