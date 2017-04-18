@@ -1,0 +1,14 @@
+/gate/actor/addActor DoseActor                     doseMeasurement
+/gate/actor/doseMeasurement/attachTo               Suzanne
+/gate/actor/doseMeasurement/save                   output/Suzanne.mhd
+/gate/actor/doseMeasurement/stepHitType            random
+/gate/actor/doseMeasurement/setPosition            0 0 0 mm
+/gate/actor/doseMeasurement/setVoxelSize           0.5 0.5 0.5 mm
+/gate/actor/doseMeasurement/setSize                95.0 95.0 95.0 mm
+/gate/actor/doseMeasurement/enableEdep             true
+/gate/actor/doseMeasurement/enableUncertaintyEdep  true
+/gate/actor/doseMeasurement/enableSquaredEdep      true
+/gate/actor/doseMeasurement/enableDose             false
+/gate/actor/doseMeasurement/enableUncertaintyDose  false
+/gate/actor/doseMeasurement/enableSquaredDose      false
+/gate/actor/doseMeasurement/enableNumberOfHits     true
