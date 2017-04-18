@@ -1,0 +1,10 @@
+/gate/world/daughters/name Suzanne
+/gate/world/daughters/insert tessellated
+/gate/Suzanne/placement/setTranslation 0.0 0.0 0.0 mm
+/gate/Suzanne/placement/setRotationAxis 1 0 0
+/gate/Suzanne/placement/setRotationAngle -90 deg
+#/gate/Suzanne/geometry/setPathToSTLFile Suzanne_ascii.stl
+/gate/Suzanne/geometry/setPathToVerticesFile Suzanne.txt
+/gate/Suzanne/setMaterial Water
+/gate/Suzanne/vis/setColor cyan
+/gate/Suzanne/describe

@@ -1,0 +1,20 @@
+!INTERFILE :=
+!GENERAL DATA :=
+!data offset in bytes := 0
+!name of data file := phantom_test.i33
+;
+!GENERAL IMAGE DATA :=
+!total number of images := 9
+imagedata byte order := LITTLEENDIAN
+;
+!number of images/energy window := 25
+!matrix size [1] := 9
+!matrix size [2] := 9
+!number format := float
+!number of bytes per pixel := 4
+scaling factor (mm/pixel) [1] := +10.0e+00
+scaling factor (mm/pixel) [2] := +10.0e+00
+!number of slices := 9
+slice thickness (pixels) := +10.0e+00
+!END OF INTERFILE :=
+

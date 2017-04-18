@@ -1,0 +1,48 @@
+/gate/GlobalVol/daughters/name BoxAir
+/gate/GlobalVol/daughters/insert box
+/gate/BoxAir/geometry/setXLength 10.0 mm
+/gate/BoxAir/geometry/setYLength 10.0 mm
+/gate/BoxAir/geometry/setZLength 10.0 mm
+/gate/BoxAir/placement/setTranslation -30.0 0.0 0.0 mm
+/gate/BoxAir/placement/setRotationAxis 1 0 0
+/gate/BoxAir/placement/setRotationAngle 0 deg
+/gate/BoxAir/setMaterial Air
+/gate/BoxAir/vis/setColor cyan
+/gate/BoxAir/describe
+
+/gate/GlobalVol/daughters/name BoxLung
+/gate/GlobalVol/daughters/insert box
+/gate/BoxLung/geometry/setXLength 10.0 mm
+/gate/BoxLung/geometry/setYLength 10.0 mm
+/gate/BoxLung/geometry/setZLength 10.0 mm
+/gate/BoxLung/placement/setTranslation -10.0 0.0 0.0 mm
+/gate/BoxLung/placement/setRotationAxis 1 0 0
+/gate/BoxLung/placement/setRotationAngle 0 deg
+/gate/BoxLung/setMaterial Lung
+/gate/BoxLung/vis/setColor red
+/gate/BoxLung/describe
+
+/gate/GlobalVol/daughters/name BoxCartilage
+/gate/GlobalVol/daughters/insert box
+/gate/BoxCartilage/geometry/setXLength 10.0 mm
+/gate/BoxCartilage/geometry/setYLength 10.0 mm
+/gate/BoxCartilage/geometry/setZLength 10.0 mm
+/gate/BoxCartilage/placement/setTranslation 10.0 0.0 0.0 mm
+/gate/BoxCartilage/placement/setRotationAxis 1 0 0
+/gate/BoxCartilage/placement/setRotationAngle 0 deg
+/gate/BoxCartilage/setMaterial Cartilage
+/gate/BoxCartilage/vis/setColor white
+/gate/BoxCartilage/describe
+
+/gate/GlobalVol/daughters/name BoxSkull
+/gate/GlobalVol/daughters/insert box
+/gate/BoxSkull/geometry/setXLength 10.0 mm
+/gate/BoxSkull/geometry/setYLength 10.0 mm
+/gate/BoxSkull/geometry/setZLength 10.0 mm
+/gate/BoxSkull/placement/setTranslation 30.0 0.0 0.0 mm
+/gate/BoxSkull/placement/setRotationAxis 1 0 0
+/gate/BoxSkull/placement/setRotationAngle 0 deg
+/gate/BoxSkull/setMaterial Skull
+/gate/BoxSkull/vis/setColor magenta
+/gate/BoxSkull/describe
+

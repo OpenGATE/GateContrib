@@ -1,0 +1,10 @@
+/gate/GlobalVol/daughters/name                                 PhantomTest
+#/gate/GlobalVol/daughters/insert                               ImageNestedParametrisedVolume
+/gate/GlobalVol/daughters/insert                               ImageRegularParametrisedVolume
+/gate/PhantomTest/geometry/setImage                            phantom_test_without_box.h33
+/gate/PhantomTest/geometry/setRangeToMaterialFile              range.dat
+/gate/PhantomTest/placement/setTranslation                     0. 0. 0. mm
+/gate/PhantomTest/placement/setRotationAxis                    1 0 0
+/gate/PhantomTest/placement/setRotationAngle                   0 deg
+/gate/PhantomTest/setSkipEqualMaterials                        0
+/gate/PhantomTest/describe
