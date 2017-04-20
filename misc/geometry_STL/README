@@ -1,0 +1,16 @@
+* Author:
+  - Maxime CHAUVIN (maxime.chauvin@inserm.fr)
+
+* Informations:
+  GATE example to define a geometry from .stl CAD files.
+
+* Usage:
+  Gate mac/main.mac
+
+* Inputs:
+    - data/*.stl
+    - data/GateMaterials.db
+
+* Outputs:
+    - output-Edep.mhd
+    - output-Edep.raw
