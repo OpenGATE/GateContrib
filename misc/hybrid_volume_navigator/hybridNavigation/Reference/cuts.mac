@@ -1,7 +1,0 @@
-#/gate/physics/Gamma/SetCutInRegion        voxPhantom    1.0 mm
-#/gate/physics/Gamma/SetCutInRegion        Suzanne       1.0 mm
-
-#/gate/physics/Electron/SetCutInRegion     voxPhantom    1. mm
-#/gate/physics/Electron/SetCutInRegion     Suzanne       1. mm
-
-/gate/physics/displayCuts
