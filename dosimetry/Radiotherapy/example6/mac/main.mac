@@ -134,6 +134,13 @@
 /gate/actor/dose0/saveEveryNSeconds             120
 
 
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+
 #=====================================
 # SOURCE
 #=====================================
@@ -152,13 +159,6 @@
 /gate/source/PBS/setParticleType                proton
 #/gate/source/PBS/setRotationAxis               1 0 0
 #/gate/source/PBS/setRotationAngle              90 deg
-
-#=====================================================
-# INITIALISATION
-#=====================================================
-
-/gate/run/initialize
-
 
 #=====================================================
 # START BEAMS
