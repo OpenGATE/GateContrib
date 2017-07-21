@@ -1,0 +1,85 @@
+[Materials]
+AcceleratorCollimatorLeafMaterial: d=18 g/cm3; n=3
+	+el: name=Tungsten; f=0.95
+	+el: name=Nickel;   f=0.0375
+	+el: name=Iron;     f=0.0125
+
+AcceleratorTargetMaterial: d=19.4 g/cm3; n=2
+	+el: name=Tungsten; 	f=0.90
+	+el: name=Rhenium;	f=0.10
+
+AcceleratorPrimaryCollimatorMaterial: d=18 g/cm3; n=3
+	+el: name=Tungsten; f=0.95
+	+el: name=Nickel;   f=0.0375
+	+el: name=Iron;     f=0.0125
+
+AcceleratorFlatteningFilter: d=7.9 g/cm3; n=3
+	+el: name=Chromium;	f=0.17
+	+el: name=Iron;		f=0.75
+	+el: name=Nickel;	f=0.08
+
+Lexan: d=1.2 g/cm3; n=3
+	+el: name=Hydrogen;	f=0.0555
+	+el: name=Carbon;	f=0.7557
+	+el: name=Oxygen;	f=0.1888
+                                                                                                                                                             
+PMMA: d=1.19 g/cm3; n=3 ; state=solid
+	+el: name=Hydrogen ; n=8
+	+el: name=Carbon; n=5
+	+el: name=Oxygen; n=2
+
+Film: d=1.19 g/cm3; n=3 ; state=solid
+	+el: name=Hydrogen ; n=8
+	+el: name=Carbon; n=5
+	+el: name=Oxygen; n=2
+
+Titanium: d=4.5 g/cm3; n=1; state=solid
+	+el: name=auto; n=1
+
+Kapton: d=1.42 g/cm3; n=4
+	+el: name=Hydrogen;	f=0.026362
+	+el: name=Carbon;	f=0.691133
+	+el: name=Nitrogen;	f=0.073270
+	+el: name=Oxygen;	f=0.209235
+
+Aluminium: d=2.7 g/cm3;  n=1; state=solid
+	+el: name=auto; n=1
+
+Gold: d=1.93 g/cm3; n=1; state=solid
+	+el: name=auto; n=1
+
+Polyethylene: d=0.2 g/cm3; n=2; state=solid
+	+el: name=Hydrogen;	f=0.07692
+
+G4_WATER: d=1.00 g/cm3; n=2 ; state=liquid
+	+el: name=Hydrogen ; n=2
+	+el: name=Oxygen; n=1
+
+FilmGeneral:   d=1.295 g/cm3; n=3 ; state=Solid
+        +el: name=Hydrogen ; f=0.41
+        +el: name=Carbon ; f=0.42
+        +el: name=Oxygen; f=0.17
+
+FilmNabil: d=1.278 g/cm3; n=4 ; state=Solid
+        +el: name=Hydrogen ; f=0.068  
+        +el: name=Carbon ; f=0.584    
+        +el: name=Oxygen; f=0.3153    
+        +el: name=Nitrogen  ; f=0.0327
+
+FilmSensitiveNabil: d=1.08 g/cm3; n=4 ; state=Solid
+        +el: name=Hydrogen ; f=0.1
+        +el: name=Carbon ; f=0.59
+        +el: name=Oxygen; f=0.2
+        +el: name=Nitrogen  ; f=0.11
+
+FilmGeneralNabil:   d=1.295 g/cm3; n=4 ; state=Solid
+        +el: name=Hydrogen ; f=0.05
+        +el: name=Carbon ; f=0.6
+        +el: name=Oxygen; f=0.34
+        +el: name=Nitrogen  ; f=0.01
+
+VeroBlack:	d=1.174 g/cm3; n=4; state=solid
+	+el: name=Hydrogen ; f=0.07
+	+el: name=Carbon; f=0.59
+	+el: name=Oxygen; f=0.32
+	+el: name=Nitrogen; f=0.02

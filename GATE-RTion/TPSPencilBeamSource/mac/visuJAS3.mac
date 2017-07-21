@@ -1,0 +1,18 @@
+#=====================================================
+  # VISUALISATION 
+ 
+    ##=====================================================    
+    ##Visu jas3
+	/vis/open HepRepXML
+	/vis/scene/create output/MyJas3Visu
+	/vis/sceneHandler/attach output/MyJas3Visu
+	/vis/scene/add/volume
+	/vis/scene/add/axes 0 0 0 50 mm
+	/vis/viewer/flush
+	/vis/viewer/set/hiddenEdge 1
+ 	/vis/scene/add/trajectories
+ 	/vis/scene/add/hits
+ 	/tracking/storeTrajectory 1
+ 	/vis/scene/endOfEventAction accumulate
+ 	/vis/scene/notifyHandlers
+
