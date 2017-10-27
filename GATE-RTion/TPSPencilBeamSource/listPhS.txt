@@ -1,0 +1,12 @@
+output/IsocenterPhS_GTRY0.root
+output/IsocenterPhS_GTRY180.root
+output/IsocenterPhS_GTRY270.root
+output/IsocenterPhS_GTRY90.root
+output/PhS-X0Y100_GTRY0.root
+output/PhS-X0Y100_GTRY180.root
+output/PhS-X0Y100_GTRY270.root
+output/PhS-X0Y100_GTRY90.root
+output/PhS-X50Y0_GTRY0.root
+output/PhS-X50Y0_GTRY180.root
+output/PhS-X50Y0_GTRY270.root
+output/PhS-X50Y0_GTRY90.root

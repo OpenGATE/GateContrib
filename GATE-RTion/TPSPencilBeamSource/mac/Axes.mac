@@ -1,0 +1,33 @@
+# axes settings
+#/control/alias axesWidth 0.01
+#/control/alias axesLength 25
+
+# x-axis
+/gate/water_box/daughters/name xBox
+/gate/water_box/daughters/insert box
+#/gate/xBox/setMaterial G4_WATER
+#/gate/xBox/vis/forceWireframe
+/gate/xBox/vis/setColor red
+/gate/xBox/geometry/setXLength 25 cm
+/gate/xBox/geometry/setYLength 1 cm
+/gate/xBox/geometry/setZLength 1 cm
+
+
+  ## y-axis
+  #/gate/water_box/daughters/name yBox
+  #/gate/water_box/daughters/insert box
+  ##/gate/yBox/vis/forceWireframe
+  #/gate/yBox/vis/setColor green
+  #/gate/yBox/geometry/setXLength {axesWidth} cm
+  #/gate/yBox/geometry/setYLength {axesLength} cm
+  #/gate/yBox/geometry/setZLength {axesWidth} cm
+
+  ## z-axis
+  #/gate/water_box/daughters/name zBox
+  #/gate/water_box/daughters/insert box
+  ##/gate/zBox/vis/forceWireframe
+  #/gate/zBox/vis/setColor blue
+  #/gate/zBox/geometry/setXLength {axesWidth} cm
+  #/gate/zBox/geometry/setYLength {axesWidth} cm
+  #/gate/zBox/geometry/setZLength {axesLength} cm
+  

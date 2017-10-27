@@ -1,0 +1,33 @@
+#-----------------------------------------------------------------------------
+#	WATER BOX VOLUME
+  #Cut
+	/gate/physics/Gamma/SetCutInRegion      water_box {subprec} mm
+	/gate/physics/Electron/SetCutInRegion   water_box {subprec} mm
+	/gate/physics/Positron/SetCutInRegion   water_box {subprec} mm
+
+  #Tracking cut
+	/gate/physics/SetMinRemainingRangeInRegion water_box {subprec} mm
+	/gate/physics/ActivateSpecialCuts e-
+
+  #stepLimiter
+	/gate/physics/SetMaxStepSizeInRegion water_box {subprec} mm
+	/gate/physics/ActivateStepLimiter proton
+	/gate/physics/ActivateStepLimiter deuteron
+	/gate/physics/ActivateStepLimiter triton
+	/gate/physics/ActivateStepLimiter alpha
+	/gate/physics/ActivateStepLimiter GenericIon
+
+  #Ionization potential of water
+	/gate/geometry/setIonisationPotential Water {I} eV
+	/gate/geometry/setIonisationPotential G4_WATER {I} eV
+	
+#-----------------------------------------------------------------------------
+##	PASSIVE ELEMENTS
+
+  ##stepLimiter
+	#/gate/physics/SetMaxStepSizeInRegion RiFi_optimized 0.01 mm
+	#/gate/physics/ActivateStepLimiter proton
+	#/gate/physics/ActivateStepLimiter deuteron
+	#/gate/physics/ActivateStepLimiter triton
+	#/gate/physics/ActivateStepLimiter alpha
+	#/gate/physics/ActivateStepLimiter GenericIon

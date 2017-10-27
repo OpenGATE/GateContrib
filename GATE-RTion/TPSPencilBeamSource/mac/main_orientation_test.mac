@@ -1,0 +1,64 @@
+#=====================================================
+  # ALIAS
+#/control/execute mac/alias_XXX.mac
+/control/alias GTRY "0"
+#/control/alias GTRY "90"
+#/control/alias GTRY "180"
+#/control/alias GTRY "270"
+
+#=====================================================
+  # VERBOSE
+/control/execute mac/verbose.mac
+
+#=====================================================
+  # MATERIALS
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+#=====================================================
+  # GEOMETRY
+#/control/execute mac/geometryGTRY0.mac
+#/control/execute mac/geometryGTRY180.mac
+#/control/execute mac/geometryGTRY90.mac
+/control/execute mac/geometry.mac
+
+#=====================================================
+  # PHYSICS
+	/gate/physics/addPhysicsList emstandard_opt3
+	/gate/physics/addPhysicsList QGSP_BIC_HP
+
+#=====================================================
+  # PARAMETERS
+#/control/execute mac/MyParameters.mac
+
+#=====================================================
+  # OUTPUTS
+/control/execute mac/Actors.mac
+
+#=====================================================
+  # INITIALISATION
+/gate/run/initialize
+
+#=====================================================
+  # SOURCE
+/gate/source/addSource PBS TPSPencilBeam
+/gate/source/PBS/setTestFlag false
+/gate/source/PBS/setParticleType proton
+/gate/source/PBS/setPlan data/OrientationTest_PlanDescriptionFileGTRY{GTRY}.txt
+/gate/source/PBS/setFlatGenerationFlag false
+/gate/source/PBS/setSourceDescriptionFile data/OrientationTest_SourceDescriptionFile.txt
+
+#=====================================================
+  # VISUALISATION 
+/control/execute mac/visu.mac
+#/control/execute mac/visuJAS3.mac
+
+#=====================================================
+  # SEED
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
+#=====================================================
+  # START BEAMS
+/gate/application/setTotalNumberOfPrimaries 1000000
+/gate/application/start
+
