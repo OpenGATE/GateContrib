@@ -1,0 +1,63 @@
+#=====================================================
+# Statistics actor
+#=====================================================
+/gate/actor/addActor                    SimulationStatisticActor stat
+/gate/actor/stat/saveEveryNSeconds      30
+/gate/actor/stat/save                   output/Stat_GTRY{GTRY}.txt
+
+/gate/physics/print output/Physics_GTRY{GTRY}.txt
+
+/gate/actor/addActor PhaseSpaceActor IsocenterPhS
+/gate/actor/IsocenterPhS/save output/IsocenterPhS_GTRY{GTRY}.root
+/gate/actor/IsocenterPhS/attachTo PhS-Iso
+/gate/actor/IsocenterPhS/enableEkine 1
+/gate/actor/IsocenterPhS/enableXPosition 1
+/gate/actor/IsocenterPhS/enableXDirection 1
+/gate/actor/IsocenterPhS/enableYPosition 1
+/gate/actor/IsocenterPhS/enableYDirection 1
+/gate/actor/IsocenterPhS/enableZPosition 1
+/gate/actor/IsocenterPhS/enableZDirection 1
+/gate/actor/IsocenterPhS/enableProductionVolume 0
+/gate/actor/IsocenterPhS/enableProductionProcess 0
+/gate/actor/IsocenterPhS/enableParticleName 1
+/gate/actor/IsocenterPhS/enableWeight 1
+/gate/actor/IsocenterPhS/storeSecondaries 0
+/gate/actor/IsocenterPhS/useVolumeFrame 1
+/gate/actor/IsocenterPhS/setMaxFileSize 1 GB
+
+/gate/actor/addActor PhaseSpaceActor gPhS-X0Y100
+/gate/actor/gPhS-X0Y100/save output/PhS-X0Y100_GTRY{GTRY}.root
+/gate/actor/gPhS-X0Y100/attachTo PhS-X0Y100
+/gate/actor/gPhS-X0Y100/enableEkine 1
+/gate/actor/gPhS-X0Y100/enableXPosition 1
+/gate/actor/gPhS-X0Y100/enableXDirection 1
+/gate/actor/gPhS-X0Y100/enableYPosition 1
+/gate/actor/gPhS-X0Y100/enableYDirection 1
+/gate/actor/gPhS-X0Y100/enableZPosition 1
+/gate/actor/gPhS-X0Y100/enableZDirection 1
+/gate/actor/gPhS-X0Y100/enableProductionVolume 0
+/gate/actor/gPhS-X0Y100/enableProductionProcess 0
+/gate/actor/gPhS-X0Y100/enableParticleName 1
+/gate/actor/gPhS-X0Y100/enableWeight 1
+/gate/actor/gPhS-X0Y100/storeSecondaries 0
+/gate/actor/gPhS-X0Y100/useVolumeFrame 1
+/gate/actor/gPhS-X0Y100/setMaxFileSize 1 GB
+
+/gate/actor/addActor PhaseSpaceActor gPhS-X50Y0
+/gate/actor/gPhS-X50Y0/save output/PhS-X50Y0_GTRY{GTRY}.root
+/gate/actor/gPhS-X50Y0/attachTo PhS-X50Y0
+/gate/actor/gPhS-X50Y0/enableEkine 1
+/gate/actor/gPhS-X50Y0/enableXPosition 1
+/gate/actor/gPhS-X50Y0/enableXDirection 1
+/gate/actor/gPhS-X50Y0/enableYPosition 1
+/gate/actor/gPhS-X50Y0/enableYDirection 1
+/gate/actor/gPhS-X50Y0/enableZPosition 1
+/gate/actor/gPhS-X50Y0/enableZDirection 1
+/gate/actor/gPhS-X50Y0/enableProductionVolume 0
+/gate/actor/gPhS-X50Y0/enableProductionProcess 0
+/gate/actor/gPhS-X50Y0/enableParticleName 1
+/gate/actor/gPhS-X50Y0/enableWeight 1
+/gate/actor/gPhS-X50Y0/storeSecondaries 0
+/gate/actor/gPhS-X50Y0/useVolumeFrame 1
+/gate/actor/gPhS-X50Y0/setMaxFileSize 1 GB
+
