@@ -112,7 +112,7 @@
 /gate/actor/carbonMap/stepHitType                  random
 /gate/actor/carbonMap/setVoxelSize                 2 2 2 mm
 /gate/actor/carbonMap/addFilter                    particleFilter
-/gate/actor/carbonMap/particleFilter/addParticle   C11[0.0]
+/gate/actor/carbonMap/particleFilter/addParticle   C11
 /gate/actor/carbonMap/saveEveryNSeconds            20
 
 #=====================================================
