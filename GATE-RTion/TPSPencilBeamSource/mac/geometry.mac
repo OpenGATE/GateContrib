@@ -1,0 +1,68 @@
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+# WORLD
+/gate/world/setMaterial Vacuum
+/gate/world/geometry/setXLength 5.0 m
+/gate/world/geometry/setYLength 5.0 m
+/gate/world/geometry/setZLength 5.0 m
+#/gate/world/placement/setTranslation 0 0 1000 mm
+
+#PhS
+/gate/world/daughters/name PhSBox
+/gate/world/daughters/insert box
+/gate/PhSBox/setMaterial Vacuum
+/gate/PhSBox/geometry/setXLength 330 mm
+/gate/PhSBox/geometry/setYLength 330 mm
+/gate/PhSBox/geometry/setZLength 330 mm
+#/gate/PhSBox/placement/setTranslation 0.0 0.0 0.0 mm
+/gate/PhSBox/placement/setRotationAxis 1 0 0
+/gate/PhSBox/placement/setRotationAngle 90 deg
+/gate/PhSBox/vis/setColor red
+
+
+/gate/PhSBox/daughters/name PhS
+/gate/PhSBox/daughters/insert box
+/gate/PhS/setMaterial Vacuum
+/gate/PhS/geometry/setXLength 300 mm
+/gate/PhS/geometry/setYLength 300 mm
+/gate/PhS/geometry/setZLength 1 mm
+#/gate/PhS/placement/setTranslation 0.0 0.0 0.0 mm
+/gate/PhS/placement/setRotationAxis 0 1 0
+/gate/PhS/placement/setRotationAngle {GTRY} deg
+/gate/PhS/vis/setColor red
+
+/gate/PhS/daughters/name PhS-Iso
+/gate/PhS/daughters/insert box
+/gate/PhS-Iso/setMaterial Vacuum
+/gate/PhS-Iso/geometry/setXLength 50 mm
+/gate/PhS-Iso/geometry/setYLength 50 mm
+/gate/PhS-Iso/geometry/setZLength 1 mm
+/gate/PhS-Iso/placement/setTranslation 0.0 0.0 0.0 mm
+#/gate/PhS-Iso/placement/setRotationAxis 1 0 0
+#/gate/PhS-Iso/placement/setRotationAngle 90 deg
+/gate/PhS-Iso/vis/setColor blue
+
+/gate/PhS/daughters/name PhS-X50Y0
+/gate/PhS/daughters/insert box
+/gate/PhS-X50Y0/setMaterial Vacuum
+/gate/PhS-X50Y0/geometry/setXLength 50 mm
+/gate/PhS-X50Y0/geometry/setYLength 50 mm
+/gate/PhS-X50Y0/geometry/setZLength 1 mm
+/gate/PhS-X50Y0/placement/setTranslation 50 0.0 0.0 mm
+#/gate/PhS-X50Y0/placement/setRotationAxis 1 0 0
+#/gate/PhS-X50Y0/placement/setRotationAngle 90 deg
+/gate/PhS-X50Y0/vis/setColor green
+
+/gate/PhS/daughters/name PhS-X0Y100
+/gate/PhS/daughters/insert box
+/gate/PhS-X0Y100/setMaterial Vacuum
+/gate/PhS-X0Y100/geometry/setXLength 50 mm
+/gate/PhS-X0Y100/geometry/setYLength 50 mm
+/gate/PhS-X0Y100/geometry/setZLength 1 mm
+/gate/PhS-X0Y100/placement/setTranslation 0.0 100 0.0 mm
+#/gate/PhS-X0Y100/placement/setRotationAxis 1 0 0
+#/gate/PhS-X0Y100/placement/setRotationAngle 90 deg
+/gate/PhS-X0Y100/vis/setColor yellow
+
