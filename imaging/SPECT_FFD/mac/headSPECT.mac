@@ -1,6 +1,6 @@
 
 # Physics
-/gate/physics/addPhysicsList emstandard_opt3
+/gate/physics/addPhysicsList emstandard_opt1
 /gate/physics/Gamma/SetCutInRegion      SPECThead 1 mm
 /gate/physics/Electron/SetCutInRegion   SPECThead 1 mm
 /gate/physics/Positron/SetCutInRegion   SPECThead 1 mm
