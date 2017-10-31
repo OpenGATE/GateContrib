@@ -75,5 +75,5 @@
 /gate/output/projection/setFileName output/montecarlo_spect
 
 /gate/application/setTimeStart 0. s
-/gate/application/setTotalNumberOfPrimaries 1000
+/gate/application/setTotalNumberOfPrimaries 100000
 /gate/application/start
