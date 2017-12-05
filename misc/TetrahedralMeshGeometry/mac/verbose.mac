@@ -1,0 +1,18 @@
+/gate/verbose Physic    5
+/gate/verbose Cuts      5
+/gate/verbose SD        5
+/gate/verbose Actions   0
+/gate/verbose Actor     5
+/gate/verbose Step      5
+/gate/verbose Error     0
+/gate/verbose Warning   1
+/gate/verbose Output    0
+/gate/verbose Beam      0
+/gate/verbose Volume    0
+/gate/verbose Image     0
+/gate/verbose Geometry  5
+/gate/verbose Core      0
+
+/run/verbose 2
+/event/verbose 0
+/tracking/verbose 0

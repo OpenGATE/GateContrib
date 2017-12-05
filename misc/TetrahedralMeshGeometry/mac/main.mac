@@ -1,0 +1,108 @@
+/control/execute mac/verbose.mac
+
+#===============================================================================
+# GEOMETRY
+#===============================================================================
+/gate/geometry/setMaterialDatabase  data/GateMaterials.db
+
+# world
+/gate/world/geometry/setXLength 2250 mm 
+/gate/world/geometry/setYLength 2250 mm 
+/gate/world/geometry/setZLength 2100 mm
+/gate/world/vis/setVisible      False
+/gate/world/setMaterial         Air
+
+# source
+/gate/world/daughters/name                xRayTube
+/gate/world/daughters/insert              box
+/gate/xRayTube/geometry/setXLength        30 mm
+/gate/xRayTube/geometry/setYLength        30 mm
+/gate/xRayTube/geometry/setZLength        30 mm
+/gate/xRayTube/placement/setTranslation   -1060 0 0 mm
+/gate/xRayTube/setMaterial                Air
+/gate/xRayTube/vis/setColor               green
+
+# TetMeshBox interface
+/gate/world/daughters/name                    meshPhantom
+/gate/world/daughters/insert                  TetMeshBox
+/gate/meshPhantom/setPathToAttributeMap       data/RegionAttributeTable.dat
+/gate/meshPhantom/reader/setPathToELEFile     data/BodyHasHeart.ele
+/gate/meshPhantom/reader/setUnitOfLength      1.0 mm
+
+/gate/meshPhantom/placement/setRotationAxis   0 0 1
+/gate/meshPhantom/placement/setRotationAngle  180 deg
+
+# this will affect the bounding box, not the mesh
+/gate/meshPhantom/setMaterial     Air
+/gate/meshPhantom/vis/setVisible  False
+
+#===============================================================================
+# PHYSICS
+#===============================================================================
+/gate/physics/addPhysicsList            emlivermore
+
+/gate/physics/Gamma/SetCutInRegion      world 10 mm
+/gate/physics/Electron/SetCutInRegion   world 10 mm
+
+/gate/physics/Gamma/SetCutInRegion      meshPhantom 0.5 mm
+/gate/physics/Electron/SetCutInRegion   meshPhantom 0.5 mm
+
+#===============================================================================
+# DETECTORS & SENSORS
+#===============================================================================
+
+/gate/actor/addActor              TetMeshDoseActor doseSensor
+/gate/actor/doseSensor/attachTo   meshPhantom
+/gate/actor/doseSensor/save       output/phantom_dose.csv
+
+/gate/actor/addActor              SimulationStatisticActor stats
+/gate/actor/stats/save            output/simulation_stats.txt
+
+#===============================================================================
+# INITIALISATION
+#===============================================================================
+/gate/run/initialize
+
+/gate/random/setEngineName  MersenneTwister
+/gate/random/setEngineSeed  auto
+
+#===============================================================================
+# BEAM
+#===============================================================================
+
+# properties
+/gate/source/addSource                xRayTubeOutput gps
+/gate/source/xRayTubeOutput/attachTo  xRayTube
+
+/gate/source/xRayTubeOutput/gps/particle  gamma
+/gate/source/xRayTubeOutput/gps/centre    0 0 0 mm    # w.r.t. xRayTube
+
+# shape: quasi-point-source
+/gate/source/xRayTubeOutput/gps/type    Plane
+/gate/source/xRayTubeOutput/gps/shape   Rectangle
+/gate/source/xRayTubeOutput/gps/halfx   0.000 mm
+/gate/source/xRayTubeOutput/gps/halfy   0.025 mm
+/gate/source/xRayTubeOutput/gps/halfz   0.025 mm
+
+# angular distribution
+/gate/source/xRayTubeOutput/gps/angtype   iso
+/gate/source/xRayTubeOutput/gps/mintheta  82.688  deg
+/gate/source/xRayTubeOutput/gps/maxtheta  97.312  deg
+/gate/source/xRayTubeOutput/gps/minphi    172.688 deg
+/gate/source/xRayTubeOutput/gps/maxphi    187.312 deg
+
+# energy distribution
+/gate/source/xRayTubeOutput/gps/energytype  Mono
+/gate/source/xRayTubeOutput/gps/energy      140 keV
+
+/gate/source/list
+
+#===============================================================================
+# START BEAM
+#===============================================================================
+
+/vis/disable
+# /control/execute mac/visu.mac
+
+/gate/application/setTotalNumberOfPrimaries 100
+/gate/application/start
