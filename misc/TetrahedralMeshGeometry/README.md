@@ -9,7 +9,7 @@ $ Gate mac/main.mac
 
 ## Information
 
-GATE example which shows the construction of a tetrahedral-mesh geometry. The input file type (`.ele`) can be generated using the open-source tool [TetGen](www.tetgen.org). Furthermore, it shows the functionality of a dose actor interface specific to tetrahedral-mesh geometries.
+GATE example which shows the construction of a tetrahedral-mesh geometry. The input file type (`.ele`) can be generated using the open-source tool [TetGen](http://www.tetgen.org). Furthermore, it shows the functionality of a dose actor interface specific to tetrahedral-mesh geometries.
 
 
 ## Inputs
