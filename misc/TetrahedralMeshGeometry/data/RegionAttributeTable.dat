@@ -1,0 +1,4 @@
+# [first region,    last region]    material    visible   r       g       b      alpha
+# ------------------------------------------------------------------------------------
+1                   1               Heart       true      1.00    0.0     0.0    1.0
+2                   3               Adipose     true      1.00    0.89    0.77   1.0
