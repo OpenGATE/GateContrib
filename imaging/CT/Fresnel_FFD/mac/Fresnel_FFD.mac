@@ -1,0 +1,87 @@
+#=====================================================
+# VERBOSITY
+#=====================================================
+#/control/execute mac/verbose.mac
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+#/control/execute mac/visu.mac
+/vis/disable
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+# World
+/gate/world/geometry/setXLength 4 mm
+/gate/world/geometry/setYLength 4 mm
+/gate/world/geometry/setZLength 4 mm
+/gate/world/setMaterial Vacuum
+
+# Aluminium wire 
+/gate/world/daughters/name                           wire
+/gate/world/daughters/insert                         ImageNestedParametrisedVolume
+/gate/wire/geometry/setHUToMaterialFile              data/AlWire.txt
+/gate/wire/geometry/setImage                         data/AlWire.mha
+
+#=====================================================
+# PHYSICS
+#=====================================================
+/gate/physics/addPhysicsList                          emstandard_opt3
+/gate/physics/Gamma/SetCutInRegion                    world 10 mm
+/gate/physics/Gamma/SetCutInRegion                    wire 0.1 mm
+
+#=====================================================
+# DETECTORS
+#=====================================================
+# Detection plane
+/gate/world/daughters/name                   DetectorPlane
+/gate/world/daughters/insert                 box
+/gate/DetectorPlane/geometry/setXLength      50 um
+/gate/DetectorPlane/geometry/setYLength      4 mm
+/gate/DetectorPlane/geometry/setZLength      1 nm
+/gate/DetectorPlane/placement/setTranslation 0 0 -1 mm
+/gate/DetectorPlane/setMaterial              Vacuum
+
+# Fluence of gamma
+/gate/actor/addActor FixedForcedDetectionActor ffda
+/gate/actor/ffda/attachTo                     world
+/gate/actor/ffda/setDetector                  DetectorPlane
+/gate/actor/ffda/setDetectorResolution        50 1
+/gate/actor/ffda/binningFactor                1 1
+/gate/actor/ffda/primaryFilename              output/primary.mha
+/gate/actor/ffda/fresnelFilename              output/fresnel.mha
+/gate/actor/ffda/materialDeltaFilename        output/materialDelta.mha
+/gate/actor/ffda/energyResolvedBinSize        0 keV
+    
+#=====================================================
+# INITIALISATION
+#=====================================================
+/gate/run/initialize
+
+#=====================================================
+# BEAMS
+#=====================================================
+/gate/source/addSource mybeam          gps
+/gate/source/mybeam/gps/particle       gamma
+/gate/source/mybeam/gps/energy         19. keV
+/gate/source/mybeam/gps/polarization   1 0 0
+/gate/source/mybeam/gps/pos/type       Plane
+/gate/source/mybeam/gps/pos/shape      Rectangle
+/gate/source/mybeam/gps/pos/centre     0 0 1 mm
+/gate/source/mybeam/gps/pos/halfx      25 um
+/gate/source/mybeam/gps/pos/halfy      1 nm
+/gate/source/mybeam/gps/ang/type       focused
+/gate/source/mybeam/gps/ang/focuspoint 0 0 1 km
+
+#=====================================================
+# START BEAMS
+#=====================================================
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/application/noGlobalOutput
+/gate/application/setTotalNumberOfPrimaries 1
+/gate/application/start
