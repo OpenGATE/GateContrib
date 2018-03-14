@@ -1,0 +1,607 @@
+[Elements]
+
+Argon:      S= Ar ; Z= 18. ; A=  39.948 g/mole
+Hydrogen:   S= H  ; Z=  1. ; A=   1.01  g/mole
+Carbon:     S= C  ; Z=  6. ; A=  12.01  g/mole
+Nitrogen:   S= N  ; Z=  7. ; A=  14.01  g/mole
+Oxygen:     S= O  ; Z=  8. ; A=  16.00  g/mole
+Sodium:     S= Na ; Z= 11. ; A=  22.99  g/mole
+Magnesium:  S= Mg ; Z= 12. ; A=  24.305 g/mole
+Phosphor:   S= P  ; Z= 15. ; A=  30.97  g/mole
+Sulfur:     S= S  ; Z= 16. ; A=  32.066 g/mole
+Chlorine:   S= Cl ; Z= 17. ; A=  35.45  g/mole
+Potassium:  S= K  ; Z= 19. ; A=  39.098 g/mole
+Calcium:    S= Ca ; Z= 20. ; A=  40.08  g/mole
+Iron:       S= Fe ; Z= 26. ; A=  55.845 g/mole
+Iodine:     S= I  ; Z= 53. ; A= 126.90  g/mole
+
+[Materials]
+
+Vacuum: d=0.000001 mg/cm3 ; n=1 
++el: name=Hydrogen ; n=1
+
+Air_outside_body: d=0.00120479 g/cm3 ; n=4 ; state=gas
++el: name=Nitrogen ; f=0.755268
++el: name=Oxygen ; f=0.231781
++el: name=Argon ; f=0.012827
++el: name=Carbon ; f=0.000124
+
+Teeth: d=2.750000 g/cm3 ; n=7
++el: name=Hydrogen ; f=0.022000
++el: name=Carbon ; f=0.095000
++el: name=Nitrogen ; f=0.029000
++el: name=Oxygen ; f=0.421000
++el: name=Magnesium ; f=0.007000
++el: name=Phosphor ; f=0.137000
++el: name=Calcium ; f=0.289000
+
+Mineral_bone: d=1.920000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.036000
++el: name=Carbon ; f=0.159000
++el: name=Nitrogen ; f=0.042000
++el: name=Oxygen ; f=0.448000
++el: name=Sodium ; f=0.003000
++el: name=Magnesium ; f=0.002000
++el: name=Phosphor ; f=0.094000
++el: name=Sulfur ; f=0.003000
++el: name=Calcium ; f=0.213000
+
+Humeri+upper_half+spongiosa: d=1.185000 g/cm3 ; n=11
++el: name=Hydrogen ; f=0.087000
++el: name=Carbon ; f=0.366000
++el: name=Nitrogen ; f=0.025000
++el: name=Oxygen ; f=0.422000
++el: name=Sodium ; f=0.002000
++el: name=Magnesium ; f=0.001000
++el: name=Phosphor ; f=0.030000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.062000
+
+Humeri+lower_half+spongiosa: d=1.117000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.096000
++el: name=Carbon ; f=0.473000
++el: name=Nitrogen ; f=0.017000
++el: name=Oxygen ; f=0.341000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.022000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.001000
++el: name=Calcium ; f=0.046000
+
+Lower_arm_bones+spongiosa: d=1.117000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.096000
++el: name=Carbon ; f=0.473000
++el: name=Nitrogen ; f=0.017000
++el: name=Oxygen ; f=0.341000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.022000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.001000
++el: name=Calcium ; f=0.046000
+
+Hand_bones+spongiosa: d=1.117000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.096000
++el: name=Carbon ; f=0.473000
++el: name=Nitrogen ; f=0.017000
++el: name=Oxygen ; f=0.341000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.022000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.001000
++el: name=Calcium ; f=0.046000
+
+Clavicles+spongiosa: d=1.191000 g/cm3 ; n=11
++el: name=Hydrogen ; f=0.087000
++el: name=Carbon ; f=0.361000
++el: name=Nitrogen ; f=0.025000
++el: name=Oxygen ; f=0.424000
++el: name=Sodium ; f=0.002000
++el: name=Magnesium ; f=0.001000
++el: name=Phosphor ; f=0.031000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.064000
+
+Cranium+spongiosa: d=1.245000 g/cm3 ; n=11
++el: name=Hydrogen ; f=0.081000
++el: name=Carbon ; f=0.317000
++el: name=Nitrogen ; f=0.028000
++el: name=Oxygen ; f=0.451000
++el: name=Sodium ; f=0.002000
++el: name=Magnesium ; f=0.001000
++el: name=Phosphor ; f=0.037000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.078000
+
+Femora+upper_half+spongiosa: d=1.046000 g/cm3 ; n=10
++el: name=Hydrogen ; f=0.104000
++el: name=Carbon ; f=0.496000
++el: name=Nitrogen ; f=0.018000
++el: name=Oxygen ; f=0.349000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.009000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.019000
+
+Femora+lower_half+spongiosa: d=1.117000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.096000
++el: name=Carbon ; f=0.473000
++el: name=Nitrogen ; f=0.017000
++el: name=Oxygen ; f=0.341000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.022000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.001000
++el: name=Calcium ; f=0.046000
+
+Lower_leg_bones+spongiosa: d=1.117000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.096000
++el: name=Carbon ; f=0.473000
++el: name=Nitrogen ; f=0.017000
++el: name=Oxygen ; f=0.341000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.022000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.001000
++el: name=Calcium ; f=0.046000
+
+Foot_bones+spongiosa: d=1.117000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.096000
++el: name=Carbon ; f=0.473000
++el: name=Nitrogen ; f=0.017000
++el: name=Oxygen ; f=0.341000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.022000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.001000
++el: name=Calcium ; f=0.046000
+
+Mandible+spongiosa: d=1.189000 g/cm3 ; n=11
++el: name=Hydrogen ; f=0.087000
++el: name=Carbon ; f=0.357000
++el: name=Nitrogen ; f=0.026000
++el: name=Oxygen ; f=0.429000
++el: name=Sodium ; f=0.002000
++el: name=Magnesium ; f=0.001000
++el: name=Phosphor ; f=0.030000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.063000
+
+Pelvis+spongiosa: d=1.109000 g/cm3 ; n=10
++el: name=Hydrogen ; f=0.096000
++el: name=Carbon ; f=0.406000
++el: name=Nitrogen ; f=0.025000
++el: name=Oxygen ; f=0.412000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.018000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.038000
+
+Ribs+spongiosa: d=1.092000 g/cm3 ; n=11
++el: name=Hydrogen ; f=0.097000
++el: name=Carbon ; f=0.381000
++el: name=Nitrogen ; f=0.028000
++el: name=Oxygen ; f=0.445000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.014000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.028000
++el: name=Iron ; f=0.001000
+
+Scapulae+spongiosa: d=1.128000 g/cm3 ; n=10
++el: name=Hydrogen ; f=0.094000
++el: name=Carbon ; f=0.406000
++el: name=Nitrogen ; f=0.024000
++el: name=Oxygen ; f=0.404000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.022000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.045000
+
+Cervical_spine+spongiosa: d=1.135000 g/cm3 ; n=10
++el: name=Hydrogen ; f=0.092000
++el: name=Carbon ; f=0.351000
++el: name=Nitrogen ; f=0.029000
++el: name=Oxygen ; f=0.458000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.021000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.043000
+
+Thoracic_spine+spongiosa: d=1.084000 g/cm3 ; n=11
++el: name=Hydrogen ; f=0.098000
++el: name=Carbon ; f=0.386000
++el: name=Nitrogen ; f=0.028000
++el: name=Oxygen ; f=0.442000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.013000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.026000
++el: name=Iron ; f=0.001000
+
+Lumbar_spine+spongiosa: d=1.171000 g/cm3 ; n=11
++el: name=Hydrogen ; f=0.088000
++el: name=Carbon ; f=0.329000
++el: name=Nitrogen ; f=0.030000
++el: name=Oxygen ; f=0.466000
++el: name=Sodium ; f=0.001000
++el: name=Magnesium ; f=0.001000
++el: name=Phosphor ; f=0.026000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.054000
+
+Sacrum+spongiosa: d=1.052000 g/cm3 ; n=11
++el: name=Hydrogen ; f=0.102000
++el: name=Carbon ; f=0.410000
++el: name=Nitrogen ; f=0.027000
++el: name=Oxygen ; f=0.433000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.007000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.014000
++el: name=Iron ; f=0.001000
+
+Sternum+spongiosa: d=1.076000 g/cm3 ; n=11
++el: name=Hydrogen ; f=0.099000
++el: name=Carbon ; f=0.392000
++el: name=Nitrogen ; f=0.028000
++el: name=Oxygen ; f=0.439000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.012000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.001000
++el: name=Calcium ; f=0.023000
++el: name=Iron ; f=0.001000
+
+Humeri_and_femora+upper_halves+medullary_cavity: d=0.980000 g/cm3 ; n=7
++el: name=Hydrogen ; f=0.115000
++el: name=Carbon ; f=0.637000
++el: name=Nitrogen ; f=0.007000
++el: name=Oxygen ; f=0.238000
++el: name=Sodium ; f=0.001000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.001000
+
+Humeri_and_femora+lower_halves+medullary_cavity: d=0.980000 g/cm3 ; n=7
++el: name=Hydrogen ; f=0.115000
++el: name=Carbon ; f=0.637000
++el: name=Nitrogen ; f=0.007000
++el: name=Oxygen ; f=0.238000
++el: name=Sodium ; f=0.001000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.001000
+
+Lower_arm_bones+medullary_cavity: d=0.980000 g/cm3 ; n=7
++el: name=Hydrogen ; f=0.115000
++el: name=Carbon ; f=0.637000
++el: name=Nitrogen ; f=0.007000
++el: name=Oxygen ; f=0.238000
++el: name=Sodium ; f=0.001000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.001000
+
+Lower_leg_bones+medullary_cavity: d=0.980000 g/cm3 ; n=7
++el: name=Hydrogen ; f=0.115000
++el: name=Carbon ; f=0.637000
++el: name=Nitrogen ; f=0.007000
++el: name=Oxygen ; f=0.238000
++el: name=Sodium ; f=0.001000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.001000
+
+Cartilage: d=1.100000 g/cm3 ; n=8
++el: name=Hydrogen ; f=0.096000
++el: name=Carbon ; f=0.099000
++el: name=Nitrogen ; f=0.022000
++el: name=Oxygen ; f=0.744000
++el: name=Sodium ; f=0.005000
++el: name=Phosphor ; f=0.022000
++el: name=Sulfur ; f=0.009000
++el: name=Chlorine ; f=0.003000
+
+Skin: d=1.090000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.100000
++el: name=Carbon ; f=0.199000
++el: name=Nitrogen ; f=0.042000
++el: name=Oxygen ; f=0.650000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.001000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.003000
++el: name=Potassium ; f=0.001000
+
+Blood: d=1.060000 g/cm3 ; n=10
++el: name=Hydrogen ; f=0.102000
++el: name=Carbon ; f=0.110000
++el: name=Nitrogen ; f=0.033000
++el: name=Oxygen ; f=0.745000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.001000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.003000
++el: name=Potassium ; f=0.002000
++el: name=Iron ; f=0.001000
+
+Muscle_tissue: d=1.050000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.102000
++el: name=Carbon ; f=0.142000
++el: name=Nitrogen ; f=0.034000
++el: name=Oxygen ; f=0.711000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.004000
+
+Liver: d=1.050000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.102000
++el: name=Carbon ; f=0.131000
++el: name=Nitrogen ; f=0.031000
++el: name=Oxygen ; f=0.724000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.003000
+
+Pancreas: d=1.050000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.105000
++el: name=Carbon ; f=0.157000
++el: name=Nitrogen ; f=0.024000
++el: name=Oxygen ; f=0.705000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.002000
+
+Brain: d=1.050000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.107000
++el: name=Carbon ; f=0.144000
++el: name=Nitrogen ; f=0.022000
++el: name=Oxygen ; f=0.713000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.004000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.003000
++el: name=Potassium ; f=0.003000
+
+Heart: d=1.050000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.104000
++el: name=Carbon ; f=0.138000
++el: name=Nitrogen ; f=0.029000
++el: name=Oxygen ; f=0.719000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.003000
+
+Eyes: d=1.050000 g/cm3 ; n=8
++el: name=Hydrogen ; f=0.097000
++el: name=Carbon ; f=0.183000
++el: name=Nitrogen ; f=0.054000
++el: name=Oxygen ; f=0.660000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.001000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.001000
+
+Kidneys: d=1.050000 g/cm3 ; n=10
++el: name=Hydrogen ; f=0.103000
++el: name=Carbon ; f=0.125000
++el: name=Nitrogen ; f=0.031000
++el: name=Oxygen ; f=0.730000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.002000
++el: name=Calcium ; f=0.001000
+
+Stomach: d=1.040000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.105000
++el: name=Carbon ; f=0.114000
++el: name=Nitrogen ; f=0.025000
++el: name=Oxygen ; f=0.750000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.001000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.001000
+
+Small_intestine: d=1.040000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.105000
++el: name=Carbon ; f=0.114000
++el: name=Nitrogen ; f=0.025000
++el: name=Oxygen ; f=0.750000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.001000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.001000
+
+Large_intestine: d=1.040000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.105000
++el: name=Carbon ; f=0.114000
++el: name=Nitrogen ; f=0.025000
++el: name=Oxygen ; f=0.750000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.001000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.001000
+
+Spleen: d=1.040000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.103000
++el: name=Carbon ; f=0.112000
++el: name=Nitrogen ; f=0.032000
++el: name=Oxygen ; f=0.743000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.003000
+
+Thyroid: d=1.040000 g/cm3 ; n=10
++el: name=Hydrogen ; f=0.104000
++el: name=Carbon ; f=0.118000
++el: name=Nitrogen ; f=0.025000
++el: name=Oxygen ; f=0.745000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.001000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.001000
++el: name=Iodine ; f=0.001000
+
+Urinary_bladder: d=1.040000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.105000
++el: name=Carbon ; f=0.096000
++el: name=Nitrogen ; f=0.026000
++el: name=Oxygen ; f=0.761000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.003000
++el: name=Potassium ; f=0.003000
+
+Ovaries: d=1.040000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.105000
++el: name=Carbon ; f=0.094000
++el: name=Nitrogen ; f=0.025000
++el: name=Oxygen ; f=0.766000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.002000
+
+Adrenals: d=1.030000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.104000
++el: name=Carbon ; f=0.228000
++el: name=Nitrogen ; f=0.028000
++el: name=Oxygen ; f=0.630000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.002000
+
+Oesophagus: d=1.030000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.104000
++el: name=Carbon ; f=0.222000
++el: name=Nitrogen ; f=0.028000
++el: name=Oxygen ; f=0.636000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.002000
+
+Gallbladder+Pituitary_gland+Trachea+Thymus+Tonsils+Ureters+...: d=1.030000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.105000
++el: name=Carbon ; f=0.235000
++el: name=Nitrogen ; f=0.028000
++el: name=Oxygen ; f=0.622000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.002000
++el: name=Potassium ; f=0.002000
+
+Uterus: d=1.030000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.105000
++el: name=Carbon ; f=0.286000
++el: name=Nitrogen ; f=0.025000
++el: name=Oxygen ; f=0.576000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.002000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.002000
+
+Lymph: d=1.030000 g/cm3 ; n=7
++el: name=Hydrogen ; f=0.108000
++el: name=Carbon ; f=0.042000
++el: name=Nitrogen ; f=0.011000
++el: name=Oxygen ; f=0.831000
++el: name=Sodium ; f=0.003000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.004000
+
+Breast_(mammary_gland): d=1.020000 g/cm3 ; n=4
++el: name=Hydrogen ; f=0.114000
++el: name=Carbon ; f=0.461000
++el: name=Nitrogen ; f=0.005000
++el: name=Oxygen ; f=0.420000
+
+Adipose_tissue: d=0.950000 g/cm3 ; n=7
++el: name=Hydrogen ; f=0.114000
++el: name=Carbon ; f=0.589000
++el: name=Nitrogen ; f=0.007000
++el: name=Oxygen ; f=0.287000
++el: name=Sodium ; f=0.001000
++el: name=Sulfur ; f=0.001000
++el: name=Chlorine ; f=0.001000
+
+Lung_tissue_(compressed_lungs): d=0.385000 g/cm3 ; n=9
++el: name=Hydrogen ; f=0.103000
++el: name=Carbon ; f=0.107000
++el: name=Nitrogen ; f=0.032000
++el: name=Oxygen ; f=0.746000
++el: name=Sodium ; f=0.002000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.003000
++el: name=Potassium ; f=0.002000
+
+Gastro-intestinal_tract_-_contents: d=1.040000 g/cm3 ; n=10
++el: name=Hydrogen ; f=0.100000
++el: name=Carbon ; f=0.222000
++el: name=Nitrogen ; f=0.022000
++el: name=Oxygen ; f=0.644000
++el: name=Sodium ; f=0.001000
++el: name=Phosphor ; f=0.002000
++el: name=Sulfur ; f=0.003000
++el: name=Chlorine ; f=0.001000
++el: name=Potassium ; f=0.004000
++el: name=Calcium ; f=0.001000
+
+Urine: d=1.040000 g/cm3 ; n=7
++el: name=Hydrogen ; f=0.107000
++el: name=Carbon ; f=0.003000
++el: name=Nitrogen ; f=0.010000
++el: name=Oxygen ; f=0.873000
++el: name=Sodium ; f=0.004000
++el: name=Phosphor ; f=0.001000
++el: name=Potassium ; f=0.002000
+
+Air: d=0.001000 g/cm3 ; n=2
++el: name=Nitrogen ; f=0.800000
++el: name=Oxygen ; f=0.200000
+

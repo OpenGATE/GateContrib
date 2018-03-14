@@ -1,0 +1,98 @@
+#-----------------------------------------------------------------------#
+# GATE example macro to record dose in regions                          #
+# Author: Maxime Chauvin, maxime.chauvin@inserm.fr                      #
+# Last revision: 14-03-2018                                             #
+#                                                                       #
+# Usage example:                                                        #
+#   Gate mac/main.mac                                                   #
+#                                                                       #
+# Inputs:                                                               #
+#   - data/AF_UINT16_299_137_348.mhd                                    #
+#   - data/AF_UINT16_299_137_348.raw                                    #
+#   - data/AF_GateMaterials.db                                          #
+#   - data/AF_LabelsToMaterials.txt                                     #
+#                                                                       #
+# Outputs:                                                              #
+#   - output/output-Dose.mhd                                            #
+#   - output/output-Dose.raw                                            #
+#   - output/DoseByRegion.txt                                           #
+#                                                                       #
+#-----------------------------------------------------------------------#
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+/gate/geometry/setMaterialDatabase                                data/AF_GateMaterials.db
+
+# world
+/gate/world/setMaterial                                           Air_outside_body
+/gate/world/geometry/setXLength                                   1000 mm
+/gate/world/geometry/setYLength                                   1000 mm
+/gate/world/geometry/setZLength                                   2000 mm
+
+# Voxel phantom
+/gate/world/daughters/name                                        patient
+/gate/world/daughters/insert                                      ImageNestedParametrisedVolume
+/gate/patient/geometry/setHUToMaterialFile                        data/AF_LabelsToMaterials.txt
+/gate/patient/geometry/setImage                                   data/AF_UINT16_299_137_348.mhd
+
+#=====================================================
+# PHYSICS
+#=====================================================
+
+/gate/physics/addPhysicsList                                      emlivermore
+
+/gate/physics/Gamma/SetCutInRegion                                world 10.0 mm
+/gate/physics/Electron/SetCutInRegion                             world 10.0 mm
+/gate/physics/Positron/SetCutInRegion                             world 10.0 mm
+
+/gate/physics/Gamma/SetCutInRegion                                patient 0.1 mm
+/gate/physics/Electron/SetCutInRegion                             patient 0.1 mm
+/gate/physics/Positron/SetCutInRegion                             patient 0.1 mm
+
+#=====================================================
+# DETECTORS
+#=====================================================
+
+/gate/actor/addActor                                              DoseActor  dose3D
+/gate/actor/dose3D/attachTo                                       patient
+/gate/actor/dose3D/stepHitType                                    random
+/gate/actor/dose3D/setResolution                                  299 137 348
+/gate/actor/dose3D/enableDose                                     true
+/gate/actor/dose3D/save                                           output/output.mhd
+/gate/actor/dose3D/inputDoseByRegions                             data/AF_UINT16_299_137_348.mhd
+/gate/actor/dose3D/outputDoseByRegions                            output/DoseByRegions.txt
+/gate/actor/dose3D/addRegion                                      1000: 89, 90, 91
+/gate/actor/dose3D/addRegion                                      1001: 92, 93, 94 
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+/gate/random/setEngineSeed                                        1337
+
+#=====================================================
+# SOURCE
+#=====================================================
+
+# Source from ICRP voxel model
+/gate/source/addSource                                            ActivityImage voxel
+/gate/source/ActivityImage/reader/insert                          image
+/gate/source/ActivityImage/imageReader/translator/insert          range
+/gate/source/ActivityImage/imageReader/rangeTranslator/readTable  data/ActivityRange95.dat
+/gate/source/ActivityImage/imageReader/readFile                   data/AF_UINT16_299_137_348.mhd
+/gate/source/ActivityImage/setPosition                            -265.3625 -121.5875 -842.16 mm
+
+/gate/source/ActivityImage/gps/particle                           gamma
+/gate/source/ActivityImage/gps/energytype                         Mono
+/gate/source/ActivityImage/gps/monoenergy                         1 MeV
+/gate/source/ActivityImage/gps/angtype                            iso
+
+#=====================================================
+# APPLICATION
+#=====================================================
+
+/gate/application/setTotalNumberOfPrimaries                       1e3
+/gate/application/start

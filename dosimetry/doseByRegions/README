@@ -1,0 +1,36 @@
+* Version:
+  Example built and tested with GATE v8.0
+
+* Author:
+  - Maxime CHAUVIN (maxime.chauvin@inserm.fr)
+
+* Informations:
+  GATE example to record dose in regions defined from a .mhd image
+  + possibility to define additional regions from original ones
+
+* Usage:
+  Gate mac/main.mac
+
+  * within main.mac:
+    # to get the dose (+other info) per regions you need to input a .mhd image of the same size containing 
+    # integers like labels or HU values defining regions with the following command:
+    /gate/actor/dose3D/inputDoseByRegions                             data/AF_UINT16_299_137_348.mhd
+
+    # specify what should be the output file:
+    /gate/actor/dose3D/outputDoseByRegions                            output/DoseByRegions.txt
+
+    # define additionnal regions composed of original regions by specifying a new region label 
+    # followed by a semi-colomn and the list of original region labels (or HU):
+    /gate/actor/dose3D/addRegion                                      1000: 89, 90, 91
+    /gate/actor/dose3D/addRegion                                      1001: 92, 93, 94 
+
+* Inputs:
+    - data/AF_UINT16_299_137_348.mhd
+    - data/AF_UINT16_299_137_348.raw
+    - data/AF_GateMaterials.db
+    - data/AF_LabelsToMaterials.txt
+
+* Outputs:
+    - output/output-Dose.mhd
+    - output/output-Dose.raw
+    - output/DoseByRegion.txt
