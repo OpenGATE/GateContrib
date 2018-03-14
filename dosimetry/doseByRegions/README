@@ -20,7 +20,7 @@
     /gate/actor/dose3D/outputDoseByRegions                            output/DoseByRegions.txt
 
     # define additionnal regions composed of original regions by specifying a new region label 
-    # followed by a semi-colomn and the list of original region labels (or HU):
+    # followed by a colon and the list of original region labels (or HU):
     /gate/actor/dose3D/addRegion                                      1000: 89, 90, 91
     /gate/actor/dose3D/addRegion                                      1001: 92, 93, 94 
 
