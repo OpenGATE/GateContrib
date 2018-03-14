@@ -1,0 +1,7 @@
+ObjectType = Image
+NDims = 3
+DimSize = 299 137 348
+ElementType = MET_USHORT
+ElementSpacing = 1.775 1.775 4.84
+ElementByteOrderMSB = False
+ElementDataFile = AF_UINT16_299_137_348.raw
