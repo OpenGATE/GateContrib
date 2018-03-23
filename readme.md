@@ -4,7 +4,10 @@
 
 [Gate](https://github.com/OpenGATE/Gate), based on [Geant4](https://geant4.web.cern.ch) library, allows to perform various Monte-Carlo simulations in the field of **medical physics**. [Gate](https://github.com/OpenGATE/Gate) can be used in numerous ways and for a lot of different applications. This repository contains [Gate](https://github.com/OpenGATE/Gate) simulation examples, mostly provided by users, in order to help sharing knowledge.
 
-*Warning* - This repository contains data (binary files), stored with [git-lfs](https://git-lfs.github.com/) extension. Find below a step-by-step tutorial to install git-lfs:
+**PLEASE INSTALL GIT-LFS FIRST: this is required !**
+This repository contains data (binary files), stored with [git-lfs](https://git-lfs.github.com/) extension. 
+
+Find below a step-by-step tutorial to install git-lfs:
 
 1. Download the [Git LFS extension](https://github.com/git-lfs/git-lfs/releases/download/v2.0.1/git-lfs-linux-amd64-2.0.1.tar.gz) for versioning large files
 2. Untar, install and set up the Git command line extension<br>
