@@ -17,8 +17,8 @@ Find below a step-by-step tutorial to install git-lfs:
 If your installation was succesful, your terminal should display the following message:<br>
 <code>Git LFS initialized</code><br>
 Note that you only have to set up Git LFS once. 
-3) Clone the Gate user-oriented repository as usual<br>
-<code>git clone https://github.com/OpenGATE/GateContrib.git</code><br>
+3) Clone the Gate user-oriented repository, using LFS:<br>
+<code>git lfs clone https://github.com/OpenGATE/GateContrib.git</code><br>
 Note that the <code>git lfs clone https://github.com/OpenGATE/GateContrib.git</code> command operates exactly like <code>git clone</code> and takes all the same arguments, but manages binary files (not only text files).<br>
 The output of the executing commande should be:<br>
 <code>Cloning into 'GateContrib'...</code><br>
