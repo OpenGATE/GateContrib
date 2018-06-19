@@ -1,0 +1,150 @@
+#================================================================
+
+  # VISUALISATION 
+#/control/execute mac/visu.mac
+#/vis/disable
+
+#================================================================
+
+  # MATERIALS
+/gate/geometry/setMaterialDatabase 	    data/HFMaterials2014.db
+
+#================================================================
+
+ # GEOMETRY
+
+ # WORLD
+/gate/world/setMaterial                 Vacuum
+#/gate/world/setMaterial                 Air
+/gate/world/geometry/setXLength         5.1 m
+/gate/world/geometry/setYLength         5.1 m
+/gate/world/geometry/setZLength         5.1 m
+/gate/world/vis/setVisible              0
+
+/control/alias CubeSize "100"
+
+# TestBox
+/gate/world/daughters/name              TestBox
+/gate/world/daughters/insert            box
+/gate/TestBox/setMaterial               G4_WATER
+/gate/TestBox/geometry/setXLength       {CubeSize} cm
+/gate/TestBox/geometry/setYLength       {CubeSize} cm
+/gate/TestBox/geometry/setZLength       {CubeSize} cm
+/gate/TestBox/placement/setTranslation  0 51 0 cm
+/gate/TestBox/vis/setVisible            1
+/gate/TestBox/vis/setColor              blue
+
+#================================================================
+
+  # PHYSICS
+
+/gate/physics/addPhysicsList 		emstandard_opt4
+#/gate/physics/addPhysicsList 		QBBC_EMZ
+#/gate/physics/addPhysicsList 		QGSP_BIC_HP
+
+#================================================================
+
+  # PARAMETERS
+  
+/control/alias cut "0.1"
+/control/alias Ionization "78"
+  
+  #Cut
+	/gate/physics/Gamma/SetCutInRegion      TestBox {cut} mm
+	/gate/physics/Electron/SetCutInRegion   TestBox {cut} mm
+	/gate/physics/Positron/SetCutInRegion   TestBox {cut} mm
+	
+
+  #Tracking cut
+	/gate/physics/SetMinRemainingRangeInRegion TestBox {cut} mm
+	/gate/physics/ActivateSpecialCuts e-
+	/gate/physics/ActivateSpecialCuts proton
+
+  #stepLimiter
+	/gate/physics/SetMaxStepSizeInRegion world 100 mm
+	/gate/physics/SetMaxStepSizeInRegion TestBox {cut} mm
+	/gate/physics/ActivateStepLimiter proton
+	/gate/physics/ActivateStepLimiter deuteron
+	/gate/physics/ActivateStepLimiter triton
+	/gate/physics/ActivateStepLimiter alpha
+	/gate/physics/ActivateStepLimiter GenericIon
+
+  #Ionization potential of water
+	/gate/geometry/setIonisationPotential Water {Ionization} eV
+	/gate/geometry/setIonisationPotential G4_WATER {Ionization} eV
+
+#================================================================
+
+  # OUTPUTS
+  
+# TestBox
+
+/gate/actor/addActor                                DoseActor   doseTest
+/gate/actor/doseTest/attachTo                      TestBox
+/gate/actor/doseTest/stepHitType                   random
+/gate/actor/doseTest/setPosition                   0 0 0 cm
+#/gate/actor/doseTest/setResolution                 1 2 4
+#/gate/actor/doseTest/setResolution                 2 4 8
+/gate/actor/doseTest/setVoxelSize                  100 1 100 cm
+#/gate/actor/doseTest/setVoxelSize                  100 0.3 100 cm
+/gate/actor/doseTest/enableDose                    true
+/gate/actor/doseTest/enableSquaredDose             true
+/gate/actor/doseTest/save                          outputA2/doseTest.txt
+/gate/actor/doseTest/saveEveryNSeconds             10
+
+#DoseToMax
+/gate/actor/addActor                                  DoseActor   doseTestMax
+/gate/actor/doseTestMax/attachTo                      TestBox
+/gate/actor/doseTestMax/stepHitType                   random
+/gate/actor/doseTestMax/setPosition                   0 0 0 cm
+/gate/actor/doseTestMax/setVoxelSize                  100 1 100 cm
+/gate/actor/doseTestMax/enableDose                    true
+/gate/actor/doseTestMax/enableSquaredDose             true
+/gate/actor/doseTestMax/normaliseDoseToMax            true
+/gate/actor/doseTestMax/save                          outputA2/doseTestMax.txt
+/gate/actor/doseTestMax/saveEveryNSeconds             10
+
+#DoseToIntegral
+/gate/actor/addActor                                  DoseActor   doseTestInt
+/gate/actor/doseTestInt/attachTo                      TestBox
+/gate/actor/doseTestInt/stepHitType                   random
+/gate/actor/doseTestInt/setPosition                   0 0 0 cm
+/gate/actor/doseTestInt/setVoxelSize                  100 1 100 cm
+/gate/actor/doseTestInt/enableDose                    true
+/gate/actor/doseTestInt/enableSquaredDose             true
+/gate/actor/doseTestInt/normaliseDoseToIntegral       true
+/gate/actor/doseTestInt/save                          outputA2/doseTestInt.txt
+/gate/actor/doseTestInt/saveEveryNSeconds             10
+
+#================================================================
+
+  # INITIALISATION
+/gate/run/initialize
+
+#================================================================
+
+# TPSPencilBeam SOURCE
+
+/gate/source/addSource                          PBS     TPSPencilBeam
+/gate/source/PBS/setTestFlag                    false
+/gate/source/PBS/setFlatGenerationFlag          false
+/gate/source/PBS/setPlan                        data/PlanDescriptionFile.txt
+/gate/source/PBS/setParticleType                proton
+/gate/source/PBS/setSpotIntensityAsNbIons       true
+/gate/source/PBS/setSourceDescriptionFile       data/SourceDescriptionFile.txt
+/gate/source/PBS/setBeamConvergence             true
+
+#================================================================
+
+  # SEED
+/gate/random/setEngineSeed 1234567890
+#/gate/random/setEngineName MersenneTwister
+#/gate/random/setEngineSeed auto
+
+#================================================================
+
+  # START BEAMS
+/gate/application/setTotalNumberOfPrimaries 1000
+#/gate/application/setTotalNumberOfPrimaries 1
+/gate/application/start
+

@@ -1,0 +1,42 @@
+ # GEOMETRY
+
+# WORLD
+/gate/world/setMaterial                 Vacuum
+#/gate/world/setMaterial                 Air
+/gate/world/geometry/setXLength         2.1 m
+/gate/world/geometry/setYLength         2.1 m
+/gate/world/geometry/setZLength         2.1 m
+/gate/world/vis/setVisible            0
+
+# TestBox -> WATER
+/gate/world/daughters/name              TestBox
+/gate/world/daughters/insert            box
+/gate/TestBox/setMaterial               G4_WATER
+/gate/TestBox/geometry/setXLength       4 cm
+/gate/TestBox/geometry/setYLength       0.001 cm
+/gate/TestBox/geometry/setZLength       4 cm
+/gate/TestBox/placement/setTranslation  0 1 0 cm
+/gate/TestBox/vis/setVisible            0
+/gate/TestBox/vis/setColor              gray
+
+# Box1 -> LUNG
+/gate/TestBox/daughters/name              Box1
+/gate/TestBox/daughters/insert            box
+/gate/Box1/setMaterial               Lung
+/gate/Box1/geometry/setXLength       4 cm
+/gate/Box1/geometry/setYLength       0.001 cm
+/gate/Box1/geometry/setZLength       2 cm
+/gate/Box1/placement/setTranslation  0 0 -1 cm
+/gate/Box1/vis/setVisible            1
+/gate/Box1/vis/setColor              red
+
+# Box2 -> BONE
+/gate/TestBox/daughters/name            Box2
+/gate/TestBox/daughters/insert          box
+/gate/Box2/setMaterial               SpineBone
+/gate/Box2/geometry/setXLength       2 cm
+/gate/Box2/geometry/setYLength       0.001 cm
+/gate/Box2/geometry/setZLength       2 cm
+/gate/Box2/placement/setTranslation  1 0 1 cm
+/gate/Box2/vis/setVisible            1
+/gate/Box2/vis/setColor              magenta
