@@ -1,0 +1,180 @@
+#================================================================
+
+  # VISUALISATION 
+#/control/execute mac/visu.mac
+/vis/disable
+
+#================================================================
+
+  # MATERIALS
+/gate/geometry/setMaterialDatabase 	    data/HFMaterials2014.db
+
+#================================================================
+
+ # GEOMETRY
+
+/control/execute 			mac/geometryB.mac
+
+#================================================================
+
+  # PHYSICS
+
+#/gate/physics/addPhysicsList 		emstandard_opt4
+/gate/physics/addPhysicsList 		QBBC_EMZ
+#/gate/physics/addPhysicsList 		QGSP_BIC_HP
+
+#================================================================
+
+  # PARAMETERS
+
+/control/alias cut "0.1"
+/control/alias Ionization "78"
+  
+  #Cut
+	/gate/physics/Gamma/SetCutInRegion      TestBox {cut} mm
+	/gate/physics/Electron/SetCutInRegion   TestBox {cut} mm
+	/gate/physics/Positron/SetCutInRegion   TestBox {cut} mm
+	
+
+  #Tracking cut
+	/gate/physics/SetMinRemainingRangeInRegion TestBox {cut} mm
+	/gate/physics/ActivateSpecialCuts e-
+	/gate/physics/ActivateSpecialCuts proton
+
+  #stepLimiter
+	/gate/physics/SetMaxStepSizeInRegion world 100 mm
+	#/gate/physics/SetMaxStepSizeInRegion world {cut} mm
+	/gate/physics/SetMaxStepSizeInRegion TestBox {cut} mm
+	/gate/physics/ActivateStepLimiter proton
+	/gate/physics/ActivateStepLimiter deuteron
+	/gate/physics/ActivateStepLimiter triton
+	/gate/physics/ActivateStepLimiter alpha
+	/gate/physics/ActivateStepLimiter GenericIon
+
+  #Ionization potential of water
+	/gate/geometry/setIonisationPotential Water {Ionization} eV
+	/gate/geometry/setIonisationPotential G4_WATER {Ionization} eV
+
+#================================================================
+
+  # OUTPUTS
+
+# TestBox -> WATER
+
+# Using resolution 1
+
+/gate/actor/addActor                               DoseActor   doseTest
+/gate/actor/doseTest/attachTo                      TestBox
+/gate/actor/doseTest/stepHitType                   random
+/gate/actor/doseTest/setPosition                   0 0 0 cm
+/gate/actor/doseTest/setResolution                 1 1 1
+
+/gate/actor/doseTest/save                          outputB1/TestB1.txt
+/gate/actor/doseTest/saveEveryNSeconds             10
+#/gate/actor/doseTest/setDoseAlgorithm             MassWeighting
+#/gate/actor/doseTest/exportMassImage              outputB2/MassImageTest.txt
+#/gate/actor/doseTest/importMassImage              outputB2/MassImageTest.txt
+
+/gate/actor/doseTest/enableDose                     true
+/gate/actor/doseTest/enableUncertaintyDose          false
+/gate/actor/doseTest/enableSquaredDose              false
+
+/gate/actor/doseTest/enableEdep                    true
+/gate/actor/doseTest/enableSquaredEdep             false
+/gate/actor/doseTest/enableUncertaintyEdep         false
+
+# Using resolution 2x1x2
+
+/gate/actor/addActor                               DoseActor   doseTest0
+/gate/actor/doseTest0/attachTo                     TestBox
+/gate/actor/doseTest0/stepHitType                  random
+/gate/actor/doseTest0/setPosition                  0 0 0 cm
+/gate/actor/doseTest0/setResolution                2 1 2
+/gate/actor/doseTest0/save                         outputB1/TestB1-0.txt
+/gate/actor/doseTest0/saveEveryNSeconds            10
+#/gate/actor/doseTest0/setDoseAlgorithm             MassWeighting
+#/gate/actor/doseTest0/exportMassImage              outputB2/MassImageTest0.txt
+#/gate/actor/doseTest0/importMassImage              outputB2/MassImageTest0.txt
+
+/gate/actor/doseTest0/enableEdep                   true
+/gate/actor/doseTest0/enableSquaredEdep            false
+/gate/actor/doseTest0/enableUncertaintyEdep        false
+
+#================================================================
+
+# BOX1 -> LUNG
+
+/gate/actor/addActor                               DoseActor   doseBox1
+/gate/actor/doseBox1/attachTo                      Box1
+/gate/actor/doseBox1/stepHitType                   random
+/gate/actor/doseBox1/setPosition                   0 0 0 cm
+/gate/actor/doseBox1/setResolution                 1 1 1
+/gate/actor/doseBox1/save                          outputB1/TestB1-Lung.txt
+/gate/actor/doseBox1/saveEveryNSeconds             10
+#/gate/actor/doseBox1/setDoseAlgorithm             MassWeighting
+#/gate/actor/doseBox1/exportMassImage              outputB2/MassImageLung.txt
+#/gate/actor/doseBox1/importMassImage              outputB2/MassImageLung.txt
+
+/gate/actor/doseBox1/enableEdep                    true
+/gate/actor/doseBox1/enableSquaredEdep             false
+/gate/actor/doseBox1/enableUncertaintyEdep         false
+
+#================================================================
+
+# BOX2 -> BONE
+
+/gate/actor/addActor                               DoseActor   doseBox2
+/gate/actor/doseBox2/attachTo                      Box2
+/gate/actor/doseBox2/stepHitType                   random
+/gate/actor/doseBox2/setPosition                   0 0 0 cm
+/gate/actor/doseBox2/setResolution                 1 1 1
+/gate/actor/doseBox2/save                          outputB1/TestB1-Bone.txt
+/gate/actor/doseBox2/saveEveryNSeconds             10
+#/gate/actor/doseBox2/setDoseAlgorithm              MassWeighting
+#/gate/actor/doseBox2/exportMassImage               outputB2/MassImageBone.txt
+#/gate/actor/doseBox2/importMassImage 	            outputB2/MassImageBone.txt
+
+/gate/actor/doseBox2/enableEdep                    true
+/gate/actor/doseBox2/enableSquaredEdep             false
+/gate/actor/doseBox2/enableUncertaintyEdep         false
+
+#================================================================
+
+/gate/actor/addActor                               EmCalculatorActor    stopPow
+/gate/actor/stopPow/setParticleName                proton
+/gate/actor/stopPow/setEnergy                      250 MeV
+/gate/actor/stopPow/save                           outputB1/TestB1-stoppingPower.txt
+
+#================================================================
+
+  # INITIALISATION
+/gate/run/initialize
+
+#================================================================
+
+# TPSPencilBeam SOURCE
+
+/gate/source/addSource                          PBS     TPSPencilBeam
+/gate/source/PBS/setTestFlag                    false
+/gate/source/PBS/setFlatGenerationFlag          false
+/gate/source/PBS/setPlan                        data/PlanDescriptionFile.txt
+/gate/source/PBS/setParticleType                proton
+/gate/source/PBS/setSpotIntensityAsNbIons       true
+/gate/source/PBS/setSourceDescriptionFile       data/SourceDescriptionFile.txt
+/gate/source/PBS/setBeamConvergence             true
+
+
+#================================================================
+
+  # SEED
+/gate/random/setEngineSeed 1234567890
+#/gate/random/setEngineName MersenneTwister
+#/gate/random/setEngineSeed auto
+
+#================================================================
+
+  # START BEAMS
+/gate/application/setTotalNumberOfPrimaries 1000
+#/gate/application/setTotalNumberOfPrimaries 1
+/gate/application/start
+

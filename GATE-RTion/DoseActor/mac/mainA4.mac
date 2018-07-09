@@ -1,0 +1,152 @@
+#================================================================
+
+  # VISUALISATION 
+#/control/execute mac/visu.mac
+#/vis/disable
+
+#================================================================
+
+  # MATERIALS
+/gate/geometry/setMaterialDatabase 	    data/HFMaterials2014.db
+
+#================================================================
+
+ # GEOMETRY
+
+# WORLD
+/gate/world/setMaterial                 Vacuum
+#/gate/world/setMaterial                 Air
+/gate/world/geometry/setXLength         3.1 m
+/gate/world/geometry/setYLength         3.1 m
+/gate/world/geometry/setZLength         3.1 m
+
+/control/alias CubeSize "100"
+
+# TestBox
+/gate/world/daughters/name              TestBox
+/gate/world/daughters/insert            box
+/gate/TestBox/setMaterial               G4_WATER
+#/gate/TestBox/setMaterial               PMMA
+/gate/TestBox/geometry/setXLength       {CubeSize} cm
+/gate/TestBox/geometry/setYLength       0.001 cm
+/gate/TestBox/geometry/setZLength       {CubeSize} cm
+/gate/TestBox/placement/setTranslation  0 1 0 cm
+/gate/TestBox/vis/setVisible            1
+/gate/TestBox/vis/setColor             blue
+
+#BoxA5
+/gate/world/daughters/name                      BoxA5
+/gate/world/daughters/insert                    box
+/gate/BoxA5/setMaterial                         PMMA
+/gate/BoxA5/geometry/setXLength                 1 cm
+/gate/BoxA5/geometry/setYLength                 1 cm
+/gate/BoxA5/geometry/setZLength                 1 cm
+/gate/BoxA5/placement/setTranslation            -150 -150 -150 cm
+/gate/BoxA5/vis/setVisible                      1
+/gate/BoxA5/vis/setColor                        red
+
+#================================================================
+
+  # PHYSICS
+
+#/gate/physics/addPhysicsList 		emstandard_opt4
+/gate/physics/addPhysicsList 		QBBC_EMZ
+#/gate/physics/addPhysicsList 		QGSP_BIC_HP
+
+#================================================================
+
+  # PARAMETERS
+
+/control/alias cut "0.1"
+/control/alias Ionization "78"
+  
+  #Cut
+	/gate/physics/Gamma/SetCutInRegion      TestBox {cut} mm
+	/gate/physics/Electron/SetCutInRegion   TestBox {cut} mm
+	/gate/physics/Positron/SetCutInRegion   TestBox {cut} mm
+	
+
+  #Tracking cut
+	/gate/physics/SetMinRemainingRangeInRegion TestBox {cut} mm
+	/gate/physics/ActivateSpecialCuts e-
+	/gate/physics/ActivateSpecialCuts proton
+
+  #stepLimiter
+	#/gate/physics/SetMaxStepSizeInRegion world 100 mm
+	/gate/physics/SetMaxStepSizeInRegion world {cut} mm
+	/gate/physics/SetMaxStepSizeInRegion TestBox {cut} mm
+	/gate/physics/ActivateStepLimiter proton
+	/gate/physics/ActivateStepLimiter deuteron
+	/gate/physics/ActivateStepLimiter triton
+	/gate/physics/ActivateStepLimiter alpha
+	/gate/physics/ActivateStepLimiter GenericIon
+
+  #Ionization potential of water
+	/gate/geometry/setIonisationPotential Water {Ionization} eV
+	/gate/geometry/setIonisationPotential G4_WATER {Ionization} eV
+
+#================================================================
+
+  # OUTPUTS
+  
+# TestBox
+
+/gate/actor/addActor                                DoseActor   doseTestA
+/gate/actor/doseTestA/attachTo                      TestBox
+/gate/actor/doseTestA/stepHitType                   random
+/gate/actor/doseTestA/setPosition                   0 0 0 cm
+/gate/actor/doseTestA/setResolution                 1 1 1
+
+/gate/actor/doseTestA/enableDose                    true
+
+/gate/actor/doseTestA/enableDoseToWater              true
+/gate/actor/doseTestA/enableSquaredDoseToWater       false
+/gate/actor/doseTestA/enableUncertaintyDoseToWater   false
+
+/gate/actor/doseTestA/enableDoseToOtherMaterial      true
+/gate/actor/doseTestA/setOtherMaterial               PMMA
+/gate/actor/doseTestA/enableSquaredDoseToOtherMaterial           false
+/gate/actor/doseTestA/enableUncertaintyDoseToOtherMaterial       false
+
+/gate/actor/doseTestA/save                          outputA4/Test.txt
+/gate/actor/doseTestA/saveEveryNSeconds             10
+
+#================================================================
+
+/gate/actor/addActor                               EmCalculatorActor    stopPow
+/gate/actor/stopPow/setParticleName                proton
+/gate/actor/stopPow/setEnergy                      250 MeV
+/gate/actor/stopPow/save                           outputA4/stoppingPower.txt
+
+#================================================================
+
+  # INITIALISATION
+/gate/run/initialize
+
+#================================================================
+
+# TPSPencilBeam SOURCE
+
+/gate/source/addSource                          PBS     TPSPencilBeam
+/gate/source/PBS/setTestFlag                    false
+/gate/source/PBS/setFlatGenerationFlag          false
+/gate/source/PBS/setPlan                        data/PlanDescriptionFile.txt
+/gate/source/PBS/setParticleType                proton
+/gate/source/PBS/setSpotIntensityAsNbIons       true
+/gate/source/PBS/setSourceDescriptionFile       data/SourceDescriptionFile.txt
+/gate/source/PBS/setBeamConvergence             true
+
+#================================================================
+
+  # SEED
+/gate/random/setEngineSeed 1234567890
+#/gate/random/setEngineName MersenneTwister
+#/gate/random/setEngineSeed auto
+
+#================================================================
+
+  # START BEAMS
+#/gate/application/setTotalNumberOfPrimaries 1000
+/gate/application/setTotalNumberOfPrimaries 1
+/gate/application/start
+
