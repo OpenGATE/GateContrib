@@ -1,0 +1,174 @@
+#================================================================
+
+  # VISUALISATION 
+#/control/execute mac/visu.mac
+#/vis/disable
+
+#================================================================
+
+  # MATERIALS
+/gate/geometry/setMaterialDatabase 	    data/HFMaterials2014.db
+
+#================================================================
+
+ # GEOMETRY
+
+# WORLD
+/gate/world/setMaterial                 Vacuum
+#/gate/world/setMaterial                 Air
+/gate/world/geometry/setXLength         2.1 m
+/gate/world/geometry/setYLength         2.1 m
+/gate/world/geometry/setZLength         2.1 m
+
+/control/alias CubeSize "100"
+
+# TestBox
+/gate/world/daughters/name              TestBox
+/gate/world/daughters/insert            box
+/gate/TestBox/setMaterial               G4_WATER
+/gate/TestBox/geometry/setXLength       {CubeSize} cm
+/gate/TestBox/geometry/setYLength       {CubeSize} cm
+/gate/TestBox/geometry/setZLength       {CubeSize} cm
+/gate/TestBox/placement/setTranslation  0 51 0 cm
+/gate/TestBox/vis/setVisible            1
+/gate/TestBox/vis/setColor             blue
+
+# BoxA3
+/gate/TestBox/daughters/name            BoxA3
+/gate/TestBox/daughters/insert          box
+#/gate/BoxA3/setMaterial               SpineBone
+/gate/BoxA3/setMaterial               G4_WATER
+/gate/BoxA3/geometry/setXLength       {CubeSize} cm
+/gate/BoxA3/geometry/setYLength       20 cm
+/gate/BoxA3/geometry/setZLength       {CubeSize} cm
+/gate/BoxA3/placement/setTranslation  0 -40 0 cm
+/gate/BoxA3/vis/setVisible            1
+/gate/BoxA3/vis/setColor              yellow
+
+
+
+#================================================================
+
+  # PHYSICS
+
+#/gate/physics/addPhysicsList 		emstandard_opt4
+/gate/physics/addPhysicsList 		QBBC_EMZ
+#/gate/physics/addPhysicsList 		QGSP_BIC_HP
+
+#================================================================
+
+  # PARAMETERS
+
+/control/alias cut "0.1"
+/control/alias Ionization "78"
+  
+  #Cut
+	/gate/physics/Gamma/SetCutInRegion      TestBox 2000 mm
+	/gate/physics/Electron/SetCutInRegion   TestBox 2000 mm
+	/gate/physics/Positron/SetCutInRegion   TestBox 2000 mm
+	
+  #Tracking cut
+	/gate/physics/SetMinRemainingRangeInRegion TestBox {cut} mm
+	/gate/physics/ActivateSpecialCuts e-
+	/gate/physics/ActivateSpecialCuts proton
+
+  #stepLimiter
+	/gate/physics/SetMaxStepSizeInRegion world 100 mm
+	/gate/physics/SetMaxStepSizeInRegion TestBox {cut} mm
+	/gate/physics/SetMaxStepSizeInRegion BoxA3 {cut} mm
+	/gate/physics/ActivateStepLimiter proton
+	/gate/physics/ActivateStepLimiter deuteron
+	/gate/physics/ActivateStepLimiter triton
+	/gate/physics/ActivateStepLimiter alpha
+	/gate/physics/ActivateStepLimiter GenericIon
+
+  #Ionization potential of water
+	/gate/geometry/setIonisationPotential Water {Ionization} eV
+	/gate/geometry/setIonisationPotential G4_WATER {Ionization} eV
+
+#================================================================
+
+/gate/actor/addActor   SimulationStatisticActor   stat
+/gate/actor/stat/saveEveryNSeconds       120
+/gate/actor/stat/save outputC/statActor.txt
+
+  # OUTPUTS
+  
+# TestBox
+
+/gate/actor/addActor                                    DoseActor   doseTestArandom
+/gate/actor/doseTestArandom/attachTo                    TestBox
+/gate/actor/doseTestArandom/stepHitType                 random
+/gate/actor/doseTestArandom/setSize                     100 40 100 cm
+/gate/actor/doseTestArandom/setPosition                 0 -30 0 cm
+/gate/actor/doseTestArandom/setVoxelSize                100 0.1 100 cm
+/gate/actor/doseTestArandom/enableEdep                  true
+/gate/actor/doseTestArandom/save                        outputC/Testrandom.txt
+/gate/actor/doseTestArandom/saveEveryNSeconds           10
+
+/gate/actor/addActor                                	DoseActor   doseTestpre
+/gate/actor/doseTestpre/attachTo                      	TestBox
+/gate/actor/doseTestpre/stepHitType                   	pre
+/gate/actor/doseTestpre/setSize                       	100 40 100 cm
+/gate/actor/doseTestpre/setPosition                   	0 -30 0 cm
+/gate/actor/doseTestpre/setVoxelSize                 	100 0.1 100 cm
+/gate/actor/doseTestpre/enableEdep                    	true
+/gate/actor/doseTestpre/save                          	outputC/Testpre.txt
+/gate/actor/doseTestpre/saveEveryNSeconds             	10
+
+/gate/actor/addActor                                	DoseActor   doseTestmiddle
+/gate/actor/doseTestmiddle/attachTo                     TestBox
+/gate/actor/doseTestmiddle/stepHitType                  middle
+/gate/actor/doseTestmiddle/setSize                      100 40 100 cm
+/gate/actor/doseTestmiddle/setPosition                  0 -30 0 cm
+/gate/actor/doseTestmiddle/setVoxelSize                 100 0.1 100 cm
+/gate/actor/doseTestmiddle/enableEdep                   true
+/gate/actor/doseTestmiddle/save                         outputC/Testmiddle.txt
+/gate/actor/doseTestmiddle/saveEveryNSeconds            10
+
+/gate/actor/addActor                                    DoseActor   doseTestpost
+/gate/actor/doseTestpost/attachTo                      	TestBox
+/gate/actor/doseTestpost/stepHitType                   	post
+/gate/actor/doseTestpost/setSize                       	100 40 100 cm
+/gate/actor/doseTestpost/setPosition                   	0 -30 0 cm
+/gate/actor/doseTestpost/setVoxelSize                  	100 0.1 100 cm
+/gate/actor/doseTestpost/enableEdep                    	true
+/gate/actor/doseTestpost/save                          	outputC/Testpost.txt
+/gate/actor/doseTestpost/saveEveryNSeconds             	10
+
+#================================================================
+
+  # INITIALISATION
+/gate/run/initialize
+
+#================================================================
+
+# TPSPencilBeam SOURCE
+
+/gate/source/addSource                          PBS     TPSPencilBeam
+/gate/source/PBS/setTestFlag                    false
+/gate/source/PBS/setParticleType                proton
+
+/gate/source/PBS/setPlan                        data/PlanDescriptionFile.txt
+
+/gate/source/PBS/setSpotIntensityAsNbIons       true
+/gate/source/PBS/setSigmaEnergyInMeVFlag        false
+/gate/source/PBS/setSortedSpotGenerationFlag    false
+/gate/source/PBS/setFlatGenerationFlag          false
+/gate/source/PBS/setBeamConvergence             true
+
+/gate/source/PBS/setSourceDescriptionFile       data/SourceDescriptionFile.txt
+
+#================================================================
+
+  # SEED
+/gate/random/setEngineSeed 1234567890
+#/gate/random/setEngineName MersenneTwister
+#/gate/random/setEngineSeed auto
+
+#================================================================
+
+  # START BEAMS
+/gate/application/setTotalNumberOfPrimaries 500000
+/gate/application/start
+
