@@ -1,0 +1,52 @@
+
+## ---------------------------
+## This is the source of gamma
+## ---------------------------
+
+## Shape and position
+## small square (will be changed)
+## just above the detector plane which is at RADIUS position (Y axis)
+## but shifted by a small distance (around 0.8 mm) to be outside the spect head
+## and the detector plane.
+
+## This distance is because the RADIUS refer to physical distance between
+## isocenter and collimator, while the spect head box is a bit larger
+
+## The direction is bounded thanks to mintheta 
+
+/control/add SOURCE_POSITION {RADIUS} -0.8
+
+/gate/source/addSource source
+
+/gate/source/source/gps/centre 0 -{SOURCE_POSITION} 0 cm
+
+/gate/source/source/gps/type Plane
+/gate/source/source/gps/shape Circle
+/gate/source/source/gps/particle gamma
+
+/gate/source/source/gps/ene/type Range
+/gate/source/source/gps/ene/min {SOURCE_MIN_ENERGY_MEV} MeV
+/gate/source/source/gps/ene/max {SOURCE_MAX_ENERGY_MEV} MeV
+
+/control/alias HEAD_X 57.6
+/control/alias HEAD_Y 44.6
+/control/alias HEAD_Z 18
+
+/control/divide HEAD_X {HEAD_X} {NB_BIN}
+/control/divide HEAD_Y {HEAD_Y} {NB_BIN}
+/control/divide HEAD_X {HEAD_X} 2.0
+/control/divide HEAD_Y {HEAD_Y} 2.0
+/control/listAlias
+
+# /gate/source/source/gps/halfx {HEAD_X} cm
+# /gate/source/source/gps/halfy {HEAD_Y} cm
+/gate/source/source/gps/radius {HEAD_X} cm
+
+/gate/source/source/gps/posrot1  1 0 0
+/gate/source/source/gps/posrot2  0 0 1
+
+/gate/source/source/gps/particle gamma
+
+## Particle direction 
+/gate/source/source/gps/angtype iso
+/gate/source/source/gps/mintheta {SOURCE_MIN_THETA} deg

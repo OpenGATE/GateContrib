@@ -1,0 +1,46 @@
+
+/control/execute mac/verbose.mac
+/control/execute mac/world.mac
+
+/control/alias RADIUS 16
+
+/control/execute mac/spect_head_hegp.mac
+/control/execute mac/spect_collimator_hegp.mac
+/control/execute mac/spect_digitizer_I131.mac
+/control/execute mac/spect_translation.mac
+
+/control/alias CT data/ct.mhd
+/control/alias CT_ISOCENTER_X 2
+/control/alias CT_ISOCENTER_Y 38
+/control/alias CT_ISOCENTER_Z -19
+/control/alias START_ANGLE 0
+
+/control/execute mac/phantom_nested.mac
+
+/control/execute mac/physics_list_em1.mac
+/control/execute mac/physics_cuts_head.mac
+
+/control/execute mac/output_stat.mac
+/control/execute mac/output_projections_I131.mac
+
+/gate/run/initialize
+
+/control/alias SOURCE data/source_tyroid.mhd
+/control/alias SOURCE_ISOCENTER_X 2
+/control/alias SOURCE_ISOCENTER_Y 38
+/control/alias SOURCE_ISOCENTER_Z -19
+
+# 1/804 because 804 is the number of source pixels 
+/control/alias ACTIVITY_SCALE 0.00124378109	
+
+/control/execute mac/source_tyroid_I131.mac
+
+#/tracking/verbose 2
+/control/verbose 0
+/control/alias TIME_START 0
+/control/alias TIME_SLICE {N}
+/control/alias TIME_STOP {N}
+/control/execute mac/start_time.mac
+
+
+

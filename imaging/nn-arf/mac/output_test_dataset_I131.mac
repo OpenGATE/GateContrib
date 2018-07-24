@@ -1,0 +1,6 @@
+
+/gate/actor/addActor                   NN_ARF_Actor arf
+/gate/actor/arf/attachTo               detPlane
+/gate/actor/arf/save                   output/test.dat
+/gate/actor/arf/setMode                test
+/gate/actor/arf/setEnergyWindowNames   scatter1 peak364 scatter2 scatter3 scatter4 peak637 peak722 

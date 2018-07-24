@@ -1,0 +1,28 @@
+
+# G4 verbose
+/control/verbose 0
+/run/verbose 0
+/event/verbose 0
+/tracking/verbose 0
+
+# gate verbose
+
+/gate/application/verbose 0
+/gate/generator/verbose   0
+/gate/source/verbose      0
+/gate/random/verbose      0
+/gate/output/verbose      0
+/gate/verbose Physic      0
+/gate/verbose Cuts        1
+/gate/verbose SD          0
+/gate/verbose Actions     0
+/gate/verbose Actor       0
+/gate/verbose Step        0
+/gate/verbose Error       0
+/gate/verbose Warning     0
+/gate/verbose Output      0
+/gate/verbose Beam        0
+/gate/verbose Volume      1
+/gate/verbose Image       0
+/gate/verbose Geometry    1
+/gate/verbose Core        1
