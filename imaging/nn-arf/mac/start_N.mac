@@ -1,0 +1,10 @@
+
+# ---------------------------------------------
+# Random
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
+# Go
+/gate/application/setTotalNumberOfPrimaries {N}
+/gate/application/start
+
