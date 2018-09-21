@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<materials>
+  <material name="Air">  
+    <propertiestable>
+<!--       <property name="PERFUSIONRATE" value="50.0e-6" /> -->
+      <property name="HEATCAPACITY" value="3600" />
+      <property name="DIFFUSIVITY" value="0.134" />
+      <propertyvector name="ABSLENGTH" unit="m" energyunit="eV">
+	<ve energy="1.84" value="50"/>
+	<ve energy="4.08" value="50"/>
+      </propertyvector>
+      <propertyvector name="RINDEX" energyunit="eV">
+	<ve energy="1.84" value="1.000277"/>
+	<ve energy="4.08" value="1.000277"/>
+      </propertyvector>
+    </propertiestable>
+  </material>
+
+  <material name="CSF">
+    <propertiestable>
+<!--       <property name="PERFUSIONRATE" value="50.0e-6" /> -->
+      <property name="HEATCAPACITY" value="4095.5" />
+      <property name="DIFFUSIVITY" value="0.139" />
+     <propertyvector name="RINDEX" energyunit="eV">
+    <ve energy="1.0" value="1.33"/>
+    <ve energy="5.0" value="1.33"/>
+    <ve energy="6.0" value="1.33"/>
+    <ve energy="7.0" value="1.33"/>
+      </propertyvector>
+     <propertyvector name="ABSLENGTH" unit="mm" energyunit="eV">
+    <ve energy="1.0" value="250.0"/>
+    <ve energy="5.0" value="250.0"/>
+    <ve energy="6.0" value="250.0"/>
+    <ve energy="7.0" value="250.0"/>
+      </propertyvector>
+  <property name="MIEHG_FORWARD" value="0.9" />
+      <property name="MIEHG_BACKWARD" value="0.9" />
+      <property name="MIEHG_FORWARD_RATIO" value="1.0" />
+      <propertyvector name="MIEHG" unit="mm" energyunit="eV">
+	<ve energy="1.0" value="0.166"/>
+	<ve energy="5.0" value="0.166"/>
+	<ve energy="6.0" value="0.166"/>
+	<ve energy="7.0" value="0.166"/>
+      </propertyvector>
+    </propertiestable>
+  </material>
+
+  <material name="WhiteMatter">
+    <propertiestable>
+<!--       <property name="PERFUSIONRATE" value="50.0e-6" /> -->
+      <property name="HEATCAPACITY" value="3582.8" />
+      <property name="DIFFUSIVITY" value="0.129" />
+      <propertyvector name="RINDEX" energyunit="eV">
+      <ve energy="1.000" value="1.4"/>
+      <ve energy="1.165" value="1.4"/>
+      <ve energy="1.459" value="1.4"/>
+      <ve energy="1.851" value="1.4"/>
+      <ve energy="1.837" value="1.4"/>
+      <ve energy="1.968" value="1.4"/>
+      <ve energy="2.000" value="1.4"/>
+      </propertyvector>
+      <propertyvector name="ABSLENGTH" unit="mm" energyunit="eV">
+      <ve energy="1.000" value="60.6"/>
+      <ve energy="1.165" value="60.6"/>
+      <ve energy="1.459" value="60.6"/>
+      <ve energy="1.851" value="60.6"/>
+      <ve energy="1.837" value="60.6"/>
+      <ve energy="1.968" value="60.6"/>
+      </propertyvector>
+      <property name="MIEHG_FORWARD" value="0.85" />
+      <property name="MIEHG_BACKWARD" value="0.85" />
+      <property name="MIEHG_FORWARD_RATIO" value="1.0" />
+      <propertyvector name="MIEHG" unit="mm" energyunit="eV">
+      <ve energy="1.000" value="0.111"/>
+      <ve energy="1.165" value="0.111"/>
+      <ve energy="1.459" value="0.111"/>
+      <ve energy="1.851" value="0.111"/>
+      <ve energy="1.837" value="0.111"/>
+      <ve energy="1.968" value="0.111"/>
+      <ve energy="2.000" value="0.111"/>
+      </propertyvector>   
+    </propertiestable>
+  </material>
+
+  <material name="GreyMatter">
+    <propertiestable>
+<!--       <property name="PERFUSIONRATE" value="50.0e-6" /> -->
+      <property name="HEATCAPACITY" value="3695.8" />
+      <property name="DIFFUSIVITY" value="0.142" />
+      <propertyvector name="RINDEX" energyunit="eV">
+      <ve energy="1.000" value="1.4"/>
+      <ve energy="1.165" value="1.4"/>
+      <ve energy="1.459" value="1.4"/>
+      <ve energy="1.851" value="1.4"/>
+      <ve energy="1.837" value="1.4"/>
+      <ve energy="1.968" value="1.4"/>
+      <ve energy="2.000" value="1.4"/>
+      </propertyvector>
+      <propertyvector name="ABSLENGTH" unit="mm" energyunit="eV">
+      <ve energy="1.000" value="12.5"/>
+      <ve energy="1.165" value="12.5"/>
+      <ve energy="1.459" value="12.5"/>
+      <ve energy="1.851" value="12.5"/>
+      <ve energy="1.837" value="12.5"/>
+      <ve energy="1.968" value="12.5"/>
+      <ve energy="2.000" value="12.5"/>
+      </propertyvector>
+      <property name="MIEHG_FORWARD" value="0.9" />
+      <property name="MIEHG_BACKWARD" value="0.9" />
+      <property name="MIEHG_FORWARD_RATIO" value="1.0" />
+      <propertyvector name="MIEHG" unit="mm" energyunit="eV">
+      <ve energy="1.000" value="0.106"/>
+      <ve energy="1.165" value="0.106"/>
+      <ve energy="1.837" value="0.106"/>
+      <ve energy="1.968" value="0.106"/>
+      <ve energy="2.000" value="0.106"/>
+      </propertyvector>   
+    </propertiestable>
+  </material>
+
+  <material name="Cortex_Frontal">
+    <propertiestable>
+     <property name="DIFFUSIVITY" value="0.134" />
+     <propertyvector name="RINDEX" energyunit="eV">
+    <ve energy="1.2969" value="1.4"/>
+    <ve energy="1.4604" value="1.4"/>
+    <ve energy="1.8395" value="1.4"/>
+      </propertyvector>
+     <propertyvector name="ABSLENGTH" unit="mm" energyunit="eV">
+    <ve energy="1.2969" value="48.5437"/>
+    <ve energy="1.4604" value="54.0541"/>
+    <ve energy="1.8395" value="57.8035"/>
+      </propertyvector>
+  <property name="MIEHG_FORWARD" value="0.91" />
+      <property name="MIEHG_BACKWARD" value="0.91" />
+      <property name="MIEHG_FORWARD_RATIO" value="1.0" />
+      <propertyvector name="MIEHG" unit="mm" energyunit="eV">
+	<ve energy="1.2969" value="1.250"/>
+	<ve energy="1.4604" value="0.1216"/>
+        <ve energy="1.8395" value="0.0804"/>
+      </propertyvector>       
+   </propertiestable>
+  </material>
+</materials>
+
