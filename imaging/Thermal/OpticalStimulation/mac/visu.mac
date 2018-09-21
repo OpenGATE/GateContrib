@@ -1,0 +1,26 @@
+#  *********************************************************************
+#  * DISCLAIMER                                                        *
+#  *                                                                   *
+#  * Neither the authors of this software system, nor their employing  *
+#  * institutes, nor the agencies providing financial support for this *
+#  * work make any representation or warranty, express or implied,     *
+#  * regarding this software system or assume any liability for its    *
+#  * use.                                                              *
+#  *                                                                   *
+#  * This code implementation is the intellectual property of the      *
+#  * OpenGATE collaboration.                                           *
+#  * By copying, distributing or modifying the Program (or any work    *
+#  * based on the Program) you indicate your acceptance of this        *
+#  * statement, and all its terms.                                     *
+#  *********************************************************************
+
+/vis/open OGLI
+/vis/drawVolume
+/vis/scene/add/trajectories
+/vis/viewer/zoom 20
+/vis/scene/add/axes 0 0 0 5 cm
+/vis/viewer/set/hiddenMarker 1
+/vis/scene/endOfEventAction accumulate
+/vis/viewer/set/viewpointThetaPhi    90 0
+
+/vis/scene/add/hits

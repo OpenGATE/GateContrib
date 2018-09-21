@@ -1,0 +1,67 @@
+/gate/source/addSource                          Mysource1 gps
+/gate/source/Mysource1/attachTo                  sourceBox
+/gate/source/Mysource1/gps/particle              opticalphoton
+/gate/source/Mysource1/gps/energytype           Mono
+/gate/source/Mysource1/setActivity               {partN} becquerel 
+/gate/source/Mysource1/gps/polarization          1 0 0
+/gate/source/Mysource1/gps/monoenergy            1.8395 eV
+/gate/source/Mysource1/gps/type                 Plane
+/gate/source/Mysource1/gps/pos/shape             Circle 
+/gate/source/Mysource1/gps/pos/radius             0.5 mm 
+/gate/source/Mysource1/gps/angtype              iso 
+/gate/source/Mysource1/gps/mintheta              144.5495 deg
+/gate/source/Mysource1/gps/maxtheta              180. deg
+/gate/source/Mysource1/gps/minphi                0. deg 
+/gate/source/Mysource1/gps/maxphi                360. deg 
+/gate/source/Mysource1/gps/centre               2. 2. 0. mm
+
+/gate/source/addSource                          Mysource2 gps
+/gate/source/Mysource2/attachTo                  sourceBox
+/gate/source/Mysource2/gps/particle              opticalphoton
+/gate/source/Mysource2/gps/energytype           Mono
+/gate/source/Mysource2/setActivity               {partN} becquerel 
+/gate/source/Mysource2/gps/polarization          1 0 0
+/gate/source/Mysource2/gps/monoenergy            1.8395 eV
+/gate/source/Mysource2/gps/type                 Plane
+/gate/source/Mysource2/gps/pos/shape             Circle 
+/gate/source/Mysource2/gps/pos/radius             0.5 mm 
+/gate/source/Mysource2/gps/angtype              iso 
+/gate/source/Mysource2/gps/mintheta              144.5495 deg
+/gate/source/Mysource2/gps/maxtheta              180. deg
+/gate/source/Mysource2/gps/minphi                0. deg 
+/gate/source/Mysource2/gps/maxphi                360. deg 
+/gate/source/Mysource2/gps/centre               2. -2. 0. mm  
+
+/gate/source/addSource                          Mysource3 gps
+/gate/source/Mysource3/attachTo                  sourceBox
+/gate/source/Mysource3/gps/particle              opticalphoton
+/gate/source/Mysource3/gps/energytype           Mono
+/gate/source/Mysource3/setActivity               {partN} becquerel 
+/gate/source/Mysource3/gps/polarization          1 0 0
+/gate/source/Mysource3/gps/monoenergy            1.8395 eV
+/gate/source/Mysource3/gps/type                 Plane
+/gate/source/Mysource3/gps/pos/shape             Circle 
+/gate/source/Mysource3/gps/pos/radius             0.5 mm 
+/gate/source/Mysource3/gps/angtype              iso 
+/gate/source/Mysource3/gps/mintheta              144.5495 deg
+/gate/source/Mysource3/gps/maxtheta              180. deg
+/gate/source/Mysource3/gps/minphi                0. deg 
+/gate/source/Mysource3/gps/maxphi                360. deg
+/gate/source/Mysource3/gps/centre               -2. 2. 0. mm  
+
+/gate/source/addSource                          Mysource4 gps
+/gate/source/Mysource4/attachTo                  sourceBox
+/gate/source/Mysource4/gps/particle              opticalphoton
+/gate/source/Mysource4/gps/energytype           Mono
+/gate/source/Mysource4/setActivity               {partN} becquerel 
+/gate/source/Mysource4/gps/polarization          1 0 0
+/gate/source/Mysource4/gps/monoenergy            1.8395 eV
+/gate/source/Mysource4/gps/type                 Plane
+/gate/source/Mysource4/gps/pos/shape             Circle 
+/gate/source/Mysource4/gps/pos/radius             0.5 mm 
+/gate/source/Mysource4/gps/angtype              iso 
+/gate/source/Mysource4/gps/mintheta              144.5495 deg
+/gate/source/Mysource4/gps/maxtheta              180. deg
+/gate/source/Mysource4/gps/minphi                0. deg 
+/gate/source/Mysource4/gps/maxphi                360. deg
+/gate/source/Mysource4/gps/centre               -2. -2. 0. mm
