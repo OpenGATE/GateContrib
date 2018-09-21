@@ -2,7 +2,7 @@
 /gate/source/Mysource1/attachTo                  sourceBox
 /gate/source/Mysource1/gps/particle              opticalphoton
 /gate/source/Mysource1/gps/energytype           Mono
-/gate/source/Mysource1/setActivity               {partN} becquerel 
+/gate/source/Mysource1/setActivity               1e4 becquerel 
 /gate/source/Mysource1/gps/polarization          1 0 0
 /gate/source/Mysource1/gps/monoenergy            1.8395 eV
 /gate/source/Mysource1/gps/type                 Plane
@@ -19,7 +19,7 @@
 /gate/source/Mysource2/attachTo                  sourceBox
 /gate/source/Mysource2/gps/particle              opticalphoton
 /gate/source/Mysource2/gps/energytype           Mono
-/gate/source/Mysource2/setActivity               {partN} becquerel 
+/gate/source/Mysource2/setActivity               1e4 becquerel 
 /gate/source/Mysource2/gps/polarization          1 0 0
 /gate/source/Mysource2/gps/monoenergy            1.8395 eV
 /gate/source/Mysource2/gps/type                 Plane
@@ -36,7 +36,7 @@
 /gate/source/Mysource3/attachTo                  sourceBox
 /gate/source/Mysource3/gps/particle              opticalphoton
 /gate/source/Mysource3/gps/energytype           Mono
-/gate/source/Mysource3/setActivity               {partN} becquerel 
+/gate/source/Mysource3/setActivity               1e4 becquerel 
 /gate/source/Mysource3/gps/polarization          1 0 0
 /gate/source/Mysource3/gps/monoenergy            1.8395 eV
 /gate/source/Mysource3/gps/type                 Plane
@@ -53,7 +53,7 @@
 /gate/source/Mysource4/attachTo                  sourceBox
 /gate/source/Mysource4/gps/particle              opticalphoton
 /gate/source/Mysource4/gps/energytype           Mono
-/gate/source/Mysource4/setActivity               {partN} becquerel 
+/gate/source/Mysource4/setActivity               1e4 becquerel 
 /gate/source/Mysource4/gps/polarization          1 0 0
 /gate/source/Mysource4/gps/monoenergy            1.8395 eV
 /gate/source/Mysource4/gps/type                 Plane
