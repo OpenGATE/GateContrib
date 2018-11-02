@@ -9,6 +9,7 @@ This repository contains data (binary files), stored with [git-lfs](https://git-
 
 Find below a step-by-step tutorial to install git-lfs:
 
+0. If your operating system package manager provides "git-lfs", then follow the usual procedures to install it. For instance, on recent Ubuntu releases you can install it with `sudo apt install git-lfs`. If this installation is successful, then go to step (3). Else proceed to (1).
 1. Download the [Git LFS extension](https://github.com/git-lfs/git-lfs/releases/download/v2.0.1/git-lfs-linux-amd64-2.0.1.tar.gz) for versioning large files
 2. Untar, install and set up the Git command line extension<br>
 <code>tar -xzf git-lfs-linux-amd64-2.0.1.tar.gz</code><br>
