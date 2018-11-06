@@ -30,7 +30,6 @@
 
 /control/alias HEAD_X 57.6
 /control/alias HEAD_Y 44.6
-/control/alias HEAD_Z 18
 
 /control/divide HEAD_X {HEAD_X} {NB_BIN}
 /control/divide HEAD_Y {HEAD_Y} {NB_BIN}
@@ -38,8 +37,6 @@
 /control/divide HEAD_Y {HEAD_Y} 2.0
 /control/listAlias
 
-# /gate/source/source/gps/halfx {HEAD_X} cm
-# /gate/source/source/gps/halfy {HEAD_Y} cm
 /gate/source/source/gps/radius {HEAD_X} cm
 
 /gate/source/source/gps/posrot1  1 0 0
@@ -49,4 +46,4 @@
 
 ## Particle direction 
 /gate/source/source/gps/angtype iso
-/gate/source/source/gps/mintheta {SOURCE_MIN_THETA} deg
+/gate/source/source/gps/mintheta 90.1 deg

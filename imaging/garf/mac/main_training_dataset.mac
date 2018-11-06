@@ -1,6 +1,7 @@
 
 /control/execute mac/verbose.mac
 /control/execute mac/world.mac
+#/control/execute mac/visu.mac
 
 /control/alias RADIUS 20
 
@@ -21,11 +22,10 @@
 
 /control/alias SOURCE_MIN_ENERGY_MEV 0.200
 /control/alias SOURCE_MAX_ENERGY_MEV 0.780
-/control/alias SOURCE_MIN_THETA 90.1
 /control/alias NB_BIN 2
 /control/execute mac/source_plane.mac
 
 #/tracking/verbose 2
 /control/verbose 0
-/control/alias N 100000
+/control/alias N 1e8
 /control/execute mac/start_N.mac

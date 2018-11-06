@@ -1,6 +1,10 @@
 
+
 /gate/actor/addActor                   NN_ARF_Actor arf
 /gate/actor/arf/attachTo               detPlane
-/gate/actor/arf/save                   output/test.dat
-/gate/actor/arf/setMode                test
+/gate/actor/arf/save                   output/train.root
+/gate/actor/arf/setMode                train
 /gate/actor/arf/setEnergyWindowNames   scatter1 peak364 scatter2 scatter3 scatter4 peak637 peak722 
+/gate/actor/arf/setRussianRoulette     40
+
+
