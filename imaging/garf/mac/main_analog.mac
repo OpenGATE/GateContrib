@@ -1,6 +1,7 @@
 
 /control/execute mac/verbose.mac
 /control/execute mac/world.mac
+#/control/execute mac/visu.mac
 
 /control/alias RADIUS 16
 
@@ -38,8 +39,8 @@
 #/tracking/verbose 2
 /control/verbose 0
 /control/alias TIME_START 0
-/control/alias TIME_SLICE {N}
-/control/alias TIME_STOP {N}
+/control/alias TIME_SLICE 1e8
+/control/alias TIME_STOP 1e8
 /control/execute mac/start_time.mac
 
 
