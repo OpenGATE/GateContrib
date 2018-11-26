@@ -1,0 +1,88 @@
+# World
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+/gate/world/setMaterial            Vacuum
+/gate/world/geometry/setXLength    3 m
+/gate/world/geometry/setYLength    3 m
+/gate/world/geometry/setZLength    3 m
+
+# Record proton nuclear interactions
+/gate/actor/addActor ProtonNuclearInformationActor myNuclearInfoActor
+/gate/actor/myNuclearInfoActor/attachTo            world
+
+# Imaged object 
+/gate/world/daughters/name             patient
+/gate/world/daughters/insert           box
+/gate/patient/setMaterial              Water
+/gate/patient/placement/setTranslation 0 0 0 mm
+/gate/patient/geometry/setXLength      200 mm
+/gate/patient/geometry/setYLength      200 mm
+/gate/patient/geometry/setZLength      200 mm
+
+# Detection plane and associated phase space for list mode proton radiography
+/gate/world/daughters/name                           PlanePhaseSpaceOut
+/gate/world/daughters/insert                         box
+/gate/PlanePhaseSpaceOut/geometry/setXLength         1000 mm
+/gate/PlanePhaseSpaceOut/geometry/setYLength         1000 mm
+/gate/PlanePhaseSpaceOut/geometry/setZLength         1 nm
+/gate/PlanePhaseSpaceOut/setMaterial                 Vacuum
+/gate/PlanePhaseSpaceOut/vis/setVisible              1
+/gate/PlanePhaseSpaceOut/vis/setColor                yellow
+/gate/PlanePhaseSpaceOut/placement/setTranslation    0 0 -400 mm
+
+/gate/actor/addActor PhaseSpaceActor                 PhaseSpaceOut
+/gate/actor/PhaseSpaceOut/save                       output/PhaseSpaceOut.root
+/gate/actor/PhaseSpaceOut/attachTo                   PlanePhaseSpaceOut
+/gate/actor/PhaseSpaceOut/enableEkine                true
+/gate/actor/PhaseSpaceOut/enableXPosition            true
+/gate/actor/PhaseSpaceOut/enableYPosition            true
+/gate/actor/PhaseSpaceOut/enableZPosition            false
+/gate/actor/PhaseSpaceOut/enableXDirection           true
+/gate/actor/PhaseSpaceOut/enableYDirection           true
+/gate/actor/PhaseSpaceOut/enableZDirection           true
+/gate/actor/PhaseSpaceOut/enableProductionVolume     false 
+/gate/actor/PhaseSpaceOut/enableProductionProcess    false
+/gate/actor/PhaseSpaceOut/enableParticleName         false
+/gate/actor/PhaseSpaceOut/enableWeight               false
+/gate/actor/PhaseSpaceOut/enableTime                 true
+/gate/actor/PhaseSpaceOut/storeSecondaries           true
+/gate/actor/PhaseSpaceOut/useVolumeFrame             false
+/gate/actor/PhaseSpaceOut/storeOutgoingParticles     false
+/gate/actor/PhaseSpaceOut/addFilter                  particleFilter
+/gate/actor/PhaseSpaceOut/particleFilter/addParticle proton
+/gate/actor/PhaseSpaceOut/enableNuclearFlag          true
+# Physics
+/gate/physics/addPhysicsList         QGSP_BIC
+/gate/physics/SetMaxStepSizeInRegion patient 1 mm
+/gate/physics/ActivateStepLimiter    proton
+
+# Verbose and visualisation
+/control/execute mac/verbose.mac
+/vis/disable
+#/control/execute mac/visu.mac
+
+/gate/run/initialize
+
+# Beam (10x10 cm2 square at detector, focus point at 1 m from center of box)
+/gate/source/addSource mybeam gps
+/gate/source/mybeam/gps/particle       proton
+/gate/source/mybeam/gps/ene/mono       300 MeV
+/gate/source/mybeam/gps/ene/type       Mono
+/control/divide mag 6. 140.
+/control/multiply halfx {mag} 100.
+/control/multiply halfy {mag} 100.
+/gate/source/mybeam/gps/pos/halfx      {halfx} mm
+/gate/source/mybeam/gps/pos/halfy      {halfy} mm
+/gate/source/mybeam/gps/pos/centre     0 0 1060 mm
+/gate/source/mybeam/gps/pos/type       Plane
+/gate/source/mybeam/gps/pos/shape      Rectangle
+/gate/source/mybeam/gps/ang/type       focused
+/gate/source/mybeam/gps/ang/focuspoint 0 0 1000 mm
+
+/gate/application/noGlobalOutput
+/gate/run/enableGlobalOutput false
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/application/setTotalNumberOfPrimaries 10000
+/gate/application/start
+
