@@ -56,7 +56,7 @@ An example of already computed dataset is in ```output_arf_dataset``` (about 5e8
 Create the final image using the ARF-NN with: 
 ```garf_build_arf_image_with_nn -b 1e5 output_arf_dataset/test.root 47342387 arf.pth output/projection_arf.mhd```
 
-The option -b should be adapted according to you gpu car memory (more is faster but may be too large).
+The option -b should be adapted according to your gpu card memory (large value is faster but may lead to 'out of memory').
 
 Output image is ```output/projection_arf```. 
 
