@@ -39,7 +39,7 @@ IMPT
 187
 ####NbOfScannedSpots
 11
-####X Y Weight (spot position at isocenter in mm, with weight in MU (default) or number of protons "setSpotIntensityAsNbProtons true")
+####X Y Weight (spot position at isocenter in mm, with weight in MU (default) or number of ions "setSpotIntensityAsNbIons true")
 -80 20 100
 -100 20 100
 -120 20 100
