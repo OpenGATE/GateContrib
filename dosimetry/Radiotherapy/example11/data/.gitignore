@@ -1,7 +1,0 @@
-# Ignore everything in this directory
-*
-# Except this file
-!.gitignore
-!1000p.IAEAheader
-!1000p.IAEAphsp
-!TBMaterials.db
