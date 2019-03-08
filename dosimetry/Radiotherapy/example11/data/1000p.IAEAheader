@@ -1,0 +1,141 @@
+$IAEA_INDEX:
+1000p
+
+$TITLE:
+Varian TrueBeam 6FFF beam; version 2 (Feb. 27, 2013)
+
+$FILE_TYPE:
+0
+
+$CHECKSUM:
+21000
+
+$RECORD_CONTENTS:
+    1     // X is stored ?
+    1     // Y is stored ?
+    0     // Z is stored ?
+    1     // U is stored ?
+    1     // V is stored ?
+    1     // W is stored ?  //W is not stored; set to 1 to enable BEAMnrc import
+    0     // Weight is stored ?
+    0     // Extra floats stored ?
+    0     // Extra longs stored ?
+
+$RECORD_CONSTANT:
+     26.7       // Constant Z
+     1.0000     // Constant Weight
+
+$RECORD_LENGTH:
+21
+
+$BYTE_ORDER:
+1234
+
+$ORIG_HISTORIES:
+650000000
+
+$PARTICLES:
+1000
+
+$PHOTONS:
+997
+
+$ELECTRONS:
+3
+
+$POSITRONS:
+0
+
+$PROTONS:
+0
+
+$NEUTRONS:
+0
+
+$TRANSPORT_PARAMETERS:
+Physics list: G4EmStandard_opt3 with Rayleigh scattering added
+Range cut 10 um
+
+$MACHINE_TYPE:
+x86_64
+
+$MONTE_CARLO_CODE_VERSION:
+geant4-09-04-patch-02
+
+$GLOBAL_PHOTON_ENERGY_CUTOFF:
+  0.00000 
+
+$GLOBAL_PARTICLE_ENERGY_CUTOFF:
+  0.00000 
+
+$COORDINATE_SYSTEM_DESCRIPTION:
+X and Y given by IEC spec: X is crossplane, Y inplane.
+Y increases towards gantry. X increases to right, when viewing gantry
+from negative Y
+
+$MD5SUM:
+b30a423547221df32be72bfa200e0206
+
+$BEAM_NAME:
+TrueBeam 6FFF photon beam tuned to match gold beam data
+
+$FIELD_SIZE:
+Field-independent--phase space stored above the movable upper jaws
+
+$NOMINAL_SSD:
+100 cm 
+
+$MC_INPUT_FILENAME:
+None
+
+$VARIANCE_REDUCTION_TECHNIQUES:
+None 
+
+$INITIAL_SOURCE_DESCRIPTION:
+Electron beam with energy spectrum given by Gaussian with mean energy of 
+5.90 MeV and sigma 0.051 MeV; spot taken to be Gaussian with sigma in X 
+of 0.6645 mm and sigma in Y of 0.7274 mm; beam divergence given by Gaussian 
+with sigma of 1 mrad, mean 0.
+
+$PUBLISHED_REFERENCE:
+www.myvarian.com/montecarlo
+(Previous simulations published in
+Constantin et al., Med. Phys. 38, 4018 (2011); doi:10.1118/1.3598439)
+
+$AUTHORS:
+M. Constantin, D. Sawkey, M. Svatos
+
+$INSTITUTION:
+Varian Medical Systems, Inc., 3100 Hansen Way, Palo Alto, CA 94304 USA
+
+$LINK_VALIDATION:
+http://myvarian.com/montecarlo
+
+$ADDITIONAL_NOTES:
+This is IAEA header as defined in the technical 
+report IAEA(NDS)-0484, Vienna, 2006
+Format of the phase space file:
+Type (1 byte); Energy (4 bytes); X position (4); Y position (4); Component of
+momentum direction in X (4); Component of momentum direction vector in Y (4)
+
+$STATISTICAL_INFORMATION_PARTICLES:
+//     Weight      Wmin      Wmax        <E>          Emin          Emax   Particle
+          997   1.00000   1.00000   1.055360      0.043676      5.621016   PHOTONS        
+            3   1.00000   1.00000   0.940191      0.280388      2.249288   ELECTRONS      
+            0   0.00000   0.00000   0.000000      0.000000      0.000000   POSITRONS      
+            0   0.00000   0.00000   0.000000      0.000000      0.000000   PROTONS        
+            0   0.00000   0.00000   0.000000      0.000000      0.000000   NEUTRONS       
+
+$STATISTICAL_INFORMATION_GEOMETRY:
+direction  min       max
+x      -6.3337   5.7965
+y      -5.4976   5.6269
+
+
+$MD5SUM
+d9b2b0fa10c7990160430fe308eb125e
+
+$CONTACT:
+uspa-montecarlo@varian.com
+
+
