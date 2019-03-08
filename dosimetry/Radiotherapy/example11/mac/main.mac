@@ -1,0 +1,161 @@
+# ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° 
+# Example with a different number of primaries per run 
+# This example use a RT arc beam with different dose rate at each angle
+# Number of particles is in data/primary.dat 
+# each line of the files is the number of primaries of the corresponding time 
+# slice (described in .timeslices file)
+# ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° 
+
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# 					INTRODUCTION
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+/control/execute mac/verbose.mac
+/control/execute mac/visu.mac
+/gate/geometry/setMaterialDatabase data/Materials.db
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# 					GEOMETRY
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+/gate/world/setMaterial Air
+/gate/world/geometry/setXLength 5.0 m
+/gate/world/geometry/setYLength 5.0 m
+/gate/world/geometry/setZLength 5.0 m
+/gate/world/vis/setVisible 0
+
+
+/gate/world/daughters/name patient
+/gate/world/daughters/insert cylinder
+/gate/patient/geometry/setRmax 150 mm
+/gate/patient/geometry/setHeight 400 mm
+/gate/patient/setMaterial Water
+/gate/patient/daughters/name lung
+/gate/patient/daughters/insert cylinder
+/gate/lung/geometry/setRmax 130 mm
+/gate/lung/geometry/setHeight 400 mm
+/gate/lung/setMaterial DIBHLung
+/gate/lung/daughters/name ptv
+/gate/lung/daughters/insert sphere
+/gate/ptv/geometry/setRmax 15 mm
+/gate/ptv/setMaterial Water
+/gate/patient/vis/setColor blue
+/gate/patient/vis/forceSolid
+/gate/patient/vis/setVisible 1
+/gate/lung/vis/setColor red
+/gate/lung/vis/forceSolid
+/gate/lung/vis/setVisible 1
+/gate/ptv/vis/setColor green
+/gate/ptv/vis/forceSolid
+/gate/ptv/vis/setVisible 1
+
+
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# 				 SOURCE
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+
+/gate/world/daughters/name mylinac
+/gate/world/daughters/insert box
+/gate/mylinac/setMaterial Air
+/gate/mylinac/geometry/setXLength 2.2 m  
+/gate/mylinac/geometry/setYLength 1.25 m
+/gate/mylinac/geometry/setZLength 2.2 m
+/gate/mylinac/placement/setRotationAxis 0 0 1 
+/gate/mylinac/vis/setColor red
+/gate/mylinac/vis/setVisible 0
+/gate/mylinac/moves/insert genericMove
+/gate/mylinac/genericMove/setPlacementsFilename data/gantryMovement.placements
+/gate/mylinac/daughters/name myLinacHead
+/gate/mylinac/daughters/insert box
+/gate/myLinacHead/setMaterial Air
+/gate/myLinacHead/geometry/setXLength 1.5 m  
+/gate/myLinacHead/geometry/setYLength 1.2 m
+/gate/myLinacHead/geometry/setZLength 1.5 m
+/gate/myLinacHead/placement/setRotationAxis 0 1 0 
+/gate/myLinacHead/placement/setRotationAngle 180.000 deg
+/gate/myLinacHead/vis/setColor green
+/gate/myLinacHead/vis/setVisible 0
+
+
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# 				PLANES FOR INPUT PHASE SPACE FILES
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+#
+
+/gate/myLinacHead/daughters/name inPhSpVarian
+/gate/myLinacHead/daughters/insert box
+/gate/inPhSpVarian/setMaterial Air
+/gate/inPhSpVarian/geometry/setXLength 0.15 m  
+/gate/inPhSpVarian/geometry/setYLength 0.15 m
+/gate/inPhSpVarian/geometry/setZLength 0.001 m
+/gate/inPhSpVarian/placement/setRotationAxis 1 0 0
+/gate/inPhSpVarian/placement/setRotationAngle 90.0 deg
+/gate/inPhSpVarian/placement/setTranslation 0.0 0.0 0.0 mm
+/gate/inPhSpVarian/vis/setVisible 0
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# 				OUTPUT
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+#
+
+
+/gate/actor/addActor SimulationStatisticActor myCounter 
+/gate/actor/myCounter/save output/counter.txt
+/gate/actor/myCounter/saveEveryNSeconds     2
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# 				PHYSICS
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+#
+
+
+/gate/physics/addPhysicsList emlivermore
+/gate/physics/Gamma/SetCutInRegion      world 1 mm
+/gate/physics/Electron/SetCutInRegion   world 1 mm
+/gate/physics/Positron/SetCutInRegion   world 1 mm
+
+
+
+
+
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+
+/gate/run/initialize
+
+
+#=====================================================
+# INPUT BEAM
+#=====================================================
+/gate/source/addSource MyBeam phaseSpace
+/gate/source/MyBeam/addPhaseSpaceFile data/1000p.IAEAphsp
+/gate/source/MyBeam/attachTo inPhSpVarian
+
+
+
+#=====================================================
+# START BEAMS
+#=====================================================
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/control/execute mac/timeslices.mac
+
+/gate/application/readNumberOfPrimariesInAFile data/primary.dat
+/gate/application/start
+/gate/application/describe
+
+
+
+
