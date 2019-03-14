@@ -1,0 +1,24 @@
+# ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° 
+#
+#            Implemented at CRCT - INSERM (UMR1037) Team 15 
+#            Toulouse - France - 2016
+#            luc.simon@inserm.fr & sara.beilla@inserm.fr
+#
+#  
+# ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° ° 
+
+
+
+#=====================================================
+# VISUALISATION 
+
+# modif LS
+#/vis/open                             OGLSX
+/vis/open                             OGLSQt
+/vis/drawVolume
+/vis/viewer/flush
+/vis/viewer/zoom 0.3
+/tracking/storeTrajectory             1
+/vis/scene/add/trajectories 
+/vis/scene/endOfEventAction           accumulate
+

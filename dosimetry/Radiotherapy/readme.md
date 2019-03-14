@@ -25,3 +25,8 @@
 ## Radiography
 
    **Example 10** : Radiography of a thorax phantom. Outputs are 3D dose distribution maps computed with the classical method and the accelerated (TLE) method.
+
+## Chaning dose rate
+
+   **Example 11** : To change the number of primaries at each run
+
