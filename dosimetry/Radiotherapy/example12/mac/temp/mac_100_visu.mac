@@ -1,0 +1,3 @@
+/control/execute mac/visu.mac 
+/control/alias N 100
+/control/execute mac/main.mac
