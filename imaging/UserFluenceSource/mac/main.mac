@@ -62,6 +62,8 @@
 /gate/actor/detectorSensor/setResolution        200 200 1
 /gate/actor/detectorSensor/save                 output/sourceProjection.mhd
 
+/gate/run/initialize
+
 #=====================================================
 # BEAM
 #=====================================================
@@ -95,14 +97,12 @@
 # MAIN
 #=====================================================
 
-/gate/run/initialize
-
 /gate/random/setEngineName MersenneTwister
 /gate/random/setEngineSeed 10
 
 /gate/run/enableGlobalOutput true
 
 # PARTICLE
-/gate/application/setTotalNumberOfPrimaries 1000000
+/gate/application/setTotalNumberOfPrimaries 1000
 /gate/application/start
 
