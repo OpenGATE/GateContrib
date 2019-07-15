@@ -7,9 +7,9 @@
 # Holes diam       : 4    mm
 # Septal thickness : 1.8  mm
 
-# The PSD_position is determined as the lowest coordinate of the PSD volume in
+# The SPECT_PSD_POSITION is determined as the lowest coordinate of the PSD volume in
 # the head box. It is used latter to compute the head position
-/control/alias PSD_position 9.21
+/control/alias SPECT_PSD_POSITION 9.21
 
 # -------------------
 
@@ -65,7 +65,7 @@
 /gate/collimator_air_gap/geometry/setZLength 0.38 cm
 /gate/collimator_air_gap/placement/setTranslation 0. 0. 3.2 cm    ### 
 /gate/collimator_air_gap/setMaterial Air
-/gate/collimator_air_gap/vis/setColor magenta
+/gate/collimator_air_gap/vis/setColor blue
 #/gate/collimator_air_gap/vis/forceWireframe
 
 
@@ -77,7 +77,7 @@
 /gate/collimator_core/geometry/setZLength 6.6 cm                  ###
 /gate/collimator_core/placement/setTranslation 0. 0. -0.29 cm
 /gate/collimator_core/setMaterial Lead
-/gate/collimator_core/vis/setColor yellow
+/gate/collimator_core/vis/setColor blue
 #/gate/collimator_core/vis/forceWireframe
 
 
@@ -109,6 +109,6 @@
 /gate/collimator_aluminium_cover2/geometry/setZLength 0.05 cm
 /gate/collimator_aluminium_cover2/placement/setTranslation 0. 0. -3.615 cm    ###
 /gate/collimator_aluminium_cover2/setMaterial Aluminium
-/gate/collimator_aluminium_cover2/vis/setColor grey
+/gate/collimator_aluminium_cover2/vis/setColor blue
 /gate/collimator_aluminium_cover2/vis/forceWireframe
 

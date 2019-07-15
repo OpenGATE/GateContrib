@@ -7,7 +7,7 @@
 /gate/detPlane/geometry/setZLength 1 nm
 /gate/detPlane/setMaterial Vacuum
 
-/gate/detPlane/vis/setColor blue
+/gate/detPlane/vis/setColor yellow
 /gate/detPlane/vis/forceWireframe
 
 ## move the plane before the head (9.5 cm is the front of the box)

@@ -1,7 +1,7 @@
 # Translation is according to collimator type and radius
 # The following lines compute the correct position of the head volume for this
 # collimator. 
-/control/add TRANSLATION {RADIUS} {PSD_position}
+/control/add TRANSLATION {SPECT_RADIUS} {SPECT_PSD_POSITION}
 /control/multiply TRANSLATION {TRANSLATION} -1
 /control/listAlias
 

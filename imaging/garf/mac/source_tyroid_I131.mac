@@ -22,4 +22,4 @@
 /gate/source/RadionuclideSource/gps/energytype UserSpectrum
 /gate/source/RadionuclideSource/gps/setSpectrumFile data/energy_spectrum_I131.txt
 
-/gate/source/RadionuclideSource/setForcedHalfLife 693000 s
+/gate/source/RadionuclideSource/setForcedHalfLife 693211 s

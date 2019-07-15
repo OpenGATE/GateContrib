@@ -14,7 +14,7 @@
 
 ## The direction is bounded thanks to mintheta 
 
-/control/add SOURCE_POSITION {RADIUS} -0.8
+/control/add SOURCE_POSITION {SPECT_RADIUS} -0.8
 
 /gate/source/addSource source
 
