@@ -26,7 +26,10 @@
 
    **Example 10** : Radiography of a thorax phantom. Outputs are 3D dose distribution maps computed with the classical method and the accelerated (TLE) method.
 
-## Chaning dose rate
+## Changing dose rate
 
    **Example 11** : To change the number of primaries at each run
+
+## Test npy /root output with phase space
+   **Example 12**: linac phase space with npy input/output
 
