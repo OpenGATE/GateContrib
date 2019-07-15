@@ -1,7 +1,6 @@
 
 
-This example  illustrates the simulation of a linac head. We first
-show a full simulation, then split it into two parts. The first part
+This example  illustrates the simulation of a linac head. The first part
 aims at obtaining a phase-space (PhS) from electron source to a plane
 just before the MLC. The second part makes use of this PhS as a
 source.
