@@ -1,40 +1,12 @@
 **GateContrib**
 
-*(Warning: this is yet a tentative & experimental Gate sub-project. Contributions and suggestions welcome)*
+**Warning** - This is a *user-oriented*, collaborative repository of Gate examples. The [OpenGate collaboration](http://www.opengatecollaboration.org/) is not responsible of any contents.
+
+**PLEASE INSTALL GIT-LFS FIRST: this is required !**
+This repository contains data (binary files), stored with [git-lfs](https://git-lfs.github.com/) extension. Download and install git-lfs package, then set up Git LFS by running: ```git lfs install``` in your clone of the GateContrib repository. 
 
 [Gate](https://github.com/OpenGATE/Gate), based on [Geant4](https://geant4.web.cern.ch) library, allows to perform various Monte-Carlo simulations in the field of **medical physics**. [Gate](https://github.com/OpenGATE/Gate) can be used in numerous ways and for a lot of different applications. This repository contains [Gate](https://github.com/OpenGATE/Gate) simulation examples, mostly provided by users, in order to help sharing knowledge.
 
-**PLEASE INSTALL GIT-LFS FIRST: this is required !**
-This repository contains data (binary files), stored with [git-lfs](https://git-lfs.github.com/) extension. 
-
-Find below a step-by-step tutorial to install git-lfs:
-
-0. If your operating system package manager provides "git-lfs", then follow the usual procedures to install it. For instance, on recent Ubuntu releases you can install it with `sudo apt install git-lfs`. If this installation is successful, then go to step (3). Else proceed to (1).
-1. Download the [Git LFS extension](https://github.com/git-lfs/git-lfs/releases/download/v2.0.1/git-lfs-linux-amd64-2.0.1.tar.gz) for versioning large files
-2. Untar, install and set up the Git command line extension<br>
-<code>tar -xzf git-lfs-linux-amd64-2.0.1.tar.gz</code><br>
-<code>cd git-lfs-2.0.1</code><br>
-<code>sudo ./install.sh</code><br>
-If your installation was succesful, your terminal should display the following message:<br>
-<code>Git LFS initialized</code><br>
-Note that you only have to set up Git LFS once. 
-3) Clone the Gate user-oriented repository, using LFS:<br>
-<code>git lfs clone https://github.com/OpenGATE/GateContrib.git</code><br>
-Note that the <code>git lfs clone https://github.com/OpenGATE/GateContrib.git</code> command operates exactly like <code>git clone</code> and takes all the same arguments, but manages binary files (not only text files).<br>
-The output of the executing commande should be:<br>
-<code>Cloning into 'GateContrib'...</code><br>
-<code>remote: Counting objects: 21076, done.</code><br>
-<code>remote: Compressing objects: 100% (61/61), done.</code><br>
-<code>remote: Total 21076 (delta 36), reused 0 (delta 0), pack-reused 21012</code><br>
-<code>Receiving objects: 100% (21076/21076), 13.96 MiB | 3.76 MiB/s, done.</code><br>
-<code>Resolving deltas: 100% (14211/14211), done.</code><br> 
-<code>Checking connectivity... done.</code><br>
-<code>Downloading dosimetry/Radiotherapy/example10/data/phantom.raw (3.25 MB)</code><br>
-<code>Downloading dosimetry/Radiotherapy/example2/data/patient-2mm.raw (3.36 MB)</code><br>
-<code>...</code><br>
-<code>Checking out files: 100% (549/549), done.</code><br>
- 
-*Warning* - This is *user-oriented*, the provided examples are not tested and may not work. The [OpenGate collaboration](http://www.opengatecollaboration.org/) is not responsible of any contents.
 
 ----
 **How to contribute ?**
