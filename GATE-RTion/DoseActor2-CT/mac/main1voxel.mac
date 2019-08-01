@@ -1,0 +1,116 @@
+#================================================================
+
+#1/ Voxelized geometry
+
+/control/alias type "voxelized"
+
+## DENSITY TOLERANCE
+/control/alias dt "0.1"
+#/control/alias dt "0.01"
+
+## IMAGE: 1 VOXEL WATER / 1 VOXEL BONE
+
+/control/alias tag "1-voxels"
+#/control/alias tag "1-voxel-bone"
+
+#2/ Simple geometry
+
+#/control/alias type "simple"
+
+#================================================================
+
+  # VISUALISATION 
+#/control/execute mac/visu.mac
+/vis/disable
+
+#================================================================
+
+  # MATERIALS
+/gate/geometry/setMaterialDatabase 	    data/HFMaterials2014_test.db
+
+#================================================================
+
+ # GEOMETRY
+
+# WORLD
+/gate/world/setMaterial                 Air
+/gate/world/geometry/setXLength         3 m
+/gate/world/geometry/setYLength         3 m
+/gate/world/geometry/setZLength         3 m
+/gate/world/vis/setVisible              0
+
+/control/execute 			data/{type}_phantom.mac
+
+#================================================================
+
+  # PHYSICS
+
+/gate/physics/addPhysicsList 		QBBC_EMZ
+
+#================================================================
+
+  # PARAMETERS
+/control/alias cut "0.01"
+/control/alias step "0.1"
+  
+  #Cut
+	/gate/physics/Gamma/SetCutInRegion      patient {cut} mm
+	/gate/physics/Electron/SetCutInRegion   patient {cut} mm
+	/gate/physics/Positron/SetCutInRegion   patient {cut} mm
+	
+
+  #Tracking cut
+	/gate/physics/SetMinRemainingRangeInRegion patient {cut} mm
+	/gate/physics/ActivateSpecialCuts e-
+	/gate/physics/ActivateSpecialCuts proton
+
+  #stepLimiter
+	/gate/physics/SetMaxStepSizeInRegion world 100 mm
+	/gate/physics/SetMaxStepSizeInRegion patient {step} mm
+	/gate/physics/ActivateStepLimiter proton
+	/gate/physics/ActivateStepLimiter deuteron
+	/gate/physics/ActivateStepLimiter triton
+	/gate/physics/ActivateStepLimiter alpha
+	/gate/physics/ActivateStepLimiter GenericIon
+
+#================================================================
+
+  # OUTPUTS
+
+/control/execute 			data/actor-1voxel.mac
+
+#================================================================
+
+  # INITIALISATION
+
+/gate/run/initialize
+
+#================================================================
+
+  # SOURCE
+
+# TPSPencilBeam SOURCE
+
+/gate/source/addSource                          TPS     TPSPencilBeam
+/gate/source/TPS/setTestFlag                    false
+/gate/source/TPS/setFlatGenerationFlag          false
+/gate/source/TPS/setPlan                        data/PlanDescriptionFile_singlespot.txt
+/gate/source/TPS/setParticleType                proton
+/gate/source/TPS/setSpotIntensityAsNbIons       true
+/gate/source/TPS/setSourceDescriptionFile       data/SourceDescriptionFile.txt
+/gate/source/TPS/setBeamConvergence             true
+
+#================================================================
+
+  # SEED
+/gate/random/setEngineSeed 1234567890
+#/gate/random/setEngineName MersenneTwister
+#/gate/random/setEngineSeed auto
+
+#================================================================
+
+  # START BEAMS
+/gate/application/setTotalNumberOfPrimaries 1
+/gate/application/start
+#/geometry/test/run
+
