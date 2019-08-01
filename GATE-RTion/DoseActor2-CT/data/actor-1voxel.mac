@@ -1,0 +1,15 @@
+/gate/actor/addActor                                         DoseActor   {type}_{tag}_Total
+/gate/actor/{type}_{tag}_Total/attachTo                      patient
+/gate/actor/{type}_{tag}_Total/stepHitType                   random
+/gate/actor/{type}_{tag}_Total/enableDose                    true
+/gate/actor/{type}_{tag}_Total/enableEdep                    true
+/gate/actor/{type}_{tag}_Total/save                     output/{type}_{tag}_Total.txt
+/gate/actor/{type}_{tag}_Total/saveEveryNSeconds             10
+
+/gate/actor/addActor SimulationStatisticActor stat
+/gate/actor/stat/saveEveryNSeconds       120
+/gate/actor/stat/save output/{type}__{tag}_statActor.txt
+
+/gate/actor/addActor EmCalculatorActor EmActor
+/gate/actor/EmActor/save output/{type}__{tag}_emActor.txt
+

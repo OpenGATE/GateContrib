@@ -1,0 +1,43 @@
+
+  #= PLAN VERIFICATION INPUT
+
+## IMAGE: 1 VOXEL WATER / 1 VOXEL BONE
+
+#HU conversion & Schneider tables
+
+#/gate/HounsfieldMaterialGenerator/SetMaterialTable	data/Schneider2000MaterialsTable.txt
+#/gate/HounsfieldMaterialGenerator/SetDensityTable	data/Schneider2000DensitiesTable.txt
+#/gate/HounsfieldMaterialGenerator/SetDensityTolerance	{dt} g/cm3
+#/gate/HounsfieldMaterialGenerator/SetOutputMaterialDatabaseFilename	data/HUmaterials-{dt}.db
+#/gate/HounsfieldMaterialGenerator/SetOutputHUMaterialFilename		data/HU2mat-{dt}.txt
+#/gate/HounsfieldMaterialGenerator/Generate
+
+#patient virtual container
+/gate/world/daughters/name			patient_box
+/gate/world/daughters/insert 			box
+/gate/patient_box/setMaterial G4_AIR
+/gate/patient_box/geometry/setXLength 50 cm
+/gate/patient_box/geometry/setYLength 50 cm
+/gate/patient_box/geometry/setZLength 50 cm
+
+
+/gate/patient_box/vis/setColor        yellow
+
+# Patient geometry description
+/gate/patient_box/daughters/name			patient
+/gate/patient_box/daughters/insert			ImageNestedParametrisedVolume
+
+/gate/patient/geometry/TranslateTheImageAtThisIsoCenter 0.0 0.0 0.0 mm
+
+/control/alias dg "0"
+
+/gate/patient/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/patient_box/placement/setRotationAxis           0 1 0
+/gate/patient_box/placement/setRotationAngle          {dg} deg
+
+/gate/geometry/setMaterialDatabase                  data/HUmaterials-{dt}.db
+/gate/patient/geometry/setHUToMaterialFile          data/HU2mat-{dt}.txt
+/gate/patient/geometry/setImage                     data/phantom.mhd
+/gate/patient/vis/setColor        		    red
+
+
