@@ -2,3 +2,9 @@ run.*
 *~
 results.*
 runs
+output/*raw
+output/*mhd
+output/*root
+output/*sin
+output/*hdr
+output/*txt
