@@ -33,10 +33,10 @@
 /control/execute mac/output_stat.mac
 /gate/verbose Actor      2
 
-/control/strdoif {RADIONUCLIDE} == {TECHNETIUM} /control/alias PT_FILE data/arf_xRiI_v4
-/control/strdoif {RADIONUCLIDE} == {INDIUM} /control/alias     PT_FILE data/arf_6QFA_v4
-/control/strdoif {RADIONUCLIDE} == {LUTETIUM} /control/alias   PT_FILE data/arf_CEFg_v4
-/control/strdoif {RADIONUCLIDE} == {IODINE} /control/alias     PT_FILE data/arf_bo6Z_v4
+/control/strdoif {RADIONUCLIDE} == {TECHNETIUM} /control/alias PT_FILE data/pth/arf_xRiI_v4
+/control/strdoif {RADIONUCLIDE} == {INDIUM} /control/alias     PT_FILE data/pth/arf_6QFA_v4
+/control/strdoif {RADIONUCLIDE} == {LUTETIUM} /control/alias   PT_FILE data/pth/arf_CEFg_v4
+/control/strdoif {RADIONUCLIDE} == {IODINE} /control/alias     PT_FILE data/pth/arf_bo6Z_v4
 
 /control/listAlias
 
