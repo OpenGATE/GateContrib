@@ -1,0 +1,39 @@
+
+
+# --------------------------------------------
+# CT Image 
+# --------------------------------------------
+
+/control/alias CT data/ct_bg_4mm.mhd
+/control/alias CT_ISOCENTER_X 0
+/control/alias CT_ISOCENTER_Y 26 
+/control/alias CT_ISOCENTER_Z 180
+
+# Generate materials from Hounsfield units
+/gate/HounsfieldMaterialGenerator/SetMaterialTable data/Schneider2000MaterialsTable.txt
+/gate/HounsfieldMaterialGenerator/SetDensityTable  data/Schneider2000DensitiesTable.txt
+/gate/HounsfieldMaterialGenerator/SetDensityTolerance               1 g/cm3
+/gate/HounsfieldMaterialGenerator/SetOutputMaterialDatabaseFilename data/phantom_HUmaterials.db
+/gate/HounsfieldMaterialGenerator/SetOutputHUMaterialFilename       data/phantom_HU2mat.txt
+/gate/HounsfieldMaterialGenerator/Generate
+
+# Insert CT image 
+/gate/world/daughters/name                  phantom
+/gate/world/daughters/insert                ImageNestedParametrisedVolume
+/gate/geometry/setMaterialDatabase              data/phantom_HUmaterials.db
+/gate/phantom/geometry/setHUToMaterialFile      data/phantom_HU2mat.txt
+/gate/phantom/geometry/setImage                 {CT}
+/gate/phantom/geometry/buildAndDumpLabeledImage output/labels.mhd
+
+# Position the image  
+/gate/phantom/geometry/TranslateTheImageAtThisIsoCenter {CT_ISOCENTER_X} {CT_ISOCENTER_Y} {CT_ISOCENTER_Z} mm
+/gate/phantom/geometry/setRotationAroundPixelIsoCenter true
+
+# Gantry rotation -> rotate the phantom instead
+# The speed is 30 sec per angle, for 360/60 = 6 deg. 
+# /gate/phantom/placement/setRotationAxis  0 0 1
+# /gate/phantom/placement/setRotationAngle {START_ANGLE} deg
+# /gate/phantom/moves/insert         rotation 
+# /gate/phantom/rotation/setSpeed    {SPEED} deg/s 
+# /gate/phantom/rotation/setAxis     0 0 1 
+

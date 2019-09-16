@@ -1,0 +1,49 @@
+
+/control/alias TECHNETIUM Tc99m
+/control/alias INDIUM In111
+/control/alias LUTETIUM Lu177
+/control/alias IODINE I131
+
+/control/strdoif {RADIONUCLIDE} == {TECHNETIUM} /control/alias GAMMA_FACTOR 0.885
+/control/strdoif {RADIONUCLIDE} == {INDIUM} /control/alias GAMMA_FACTOR 1.847315
+/control/strdoif {RADIONUCLIDE} == {LUTETIUM} /control/alias GAMMA_FACTOR 0.172168
+/control/strdoif {RADIONUCLIDE} == {IODINE} /control/alias GAMMA_FACTOR 1.00246
+
+/control/strdoif {RADIONUCLIDE} == {TECHNETIUM} /control/alias COLLIMATOR lehr
+/control/strdoif {RADIONUCLIDE} == {INDIUM} /control/alias COLLIMATOR megp
+/control/strdoif {RADIONUCLIDE} == {LUTETIUM} /control/alias COLLIMATOR megp
+/control/strdoif {RADIONUCLIDE} == {IODINE} /control/alias COLLIMATOR hegp
+
+/control/strdoif {COLLIMATOR} == hegp /control/alias SPECT_LENGTH_CM 19
+/control/strdoif {COLLIMATOR} == megp /control/alias SPECT_LENGTH_CM 18
+/control/strdoif {COLLIMATOR} == lehr /control/alias SPECT_LENGTH_CM 16
+
+/control/strdoif {COLLIMATOR} == hegp /control/alias SPECT_PSD_POSITION 9.21
+/control/strdoif {COLLIMATOR} == megp /control/alias SPECT_PSD_POSITION 8.41
+/control/strdoif {COLLIMATOR} == lehr /control/alias SPECT_PSD_POSITION 6.11
+
+/control/strdoif {RADIONUCLIDE} == {TECHNETIUM} /control/alias WINDOWS "scatter peak140"
+/control/strdoif {RADIONUCLIDE} == {INDIUM} /control/alias WINDOWS "scatter1 peak171 scatter2 scatter3 peak245"
+/control/strdoif {RADIONUCLIDE} == {LUTETIUM} /control/alias WINDOWS "scatter1 peak113 scatter2 scatter3 peak208 scatter4"
+/control/strdoif {RADIONUCLIDE} == {IODINE} /control/alias WINDOWS "scatter1 peak364 scatter2 scatter3 scatter4 peak637 peak722"
+
+/control/multiply ACTIVITY {N} {GAMMA_FACTOR}
+
+/control/strdoif {RADIONUCLIDE} == {TECHNETIUM} /control/alias SOURCE_MIN_ENERGY_MEV 0.010
+/control/strdoif {RADIONUCLIDE} == {TECHNETIUM} /control/alias SOURCE_MAX_ENERGY_MEV 0.160
+/control/strdoif {RADIONUCLIDE} == {INDIUM} /control/alias SOURCE_MIN_ENERGY_MEV 0.010
+/control/strdoif {RADIONUCLIDE} == {INDIUM} /control/alias SOURCE_MAX_ENERGY_MEV 0.280
+/control/strdoif {RADIONUCLIDE} == {LUTETIUM} /control/alias SOURCE_MIN_ENERGY_MEV 0.010
+/control/strdoif {RADIONUCLIDE} == {LUTETIUM} /control/alias SOURCE_MAX_ENERGY_MEV 0.250
+/control/strdoif {RADIONUCLIDE} == {IODINE} /control/alias SOURCE_MIN_ENERGY_MEV 0.010
+/control/strdoif {RADIONUCLIDE} == {IODINE} /control/alias SOURCE_MAX_ENERGY_MEV 0.770
+
+
+# -----------------------------------------------------------------------------
+# Gantry rotation -> rotate the phantom
+# The speed is 30 sec per angle, for 360/60 = 6 deg. 
+
+/control/alias START_ANGLE 0
+/control/alias SPEED 6
+
+/control/listAlias
