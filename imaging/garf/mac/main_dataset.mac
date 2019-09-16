@@ -1,0 +1,63 @@
+
+# -----------------------------------------------------------------------------
+# Alias
+
+# Need alias RADIONUCLIDE  => In111 or Tc99m or Lu177 or I131
+# Need alias N             => Number of gamma
+
+/control/alias SPECT_RADIUS 20
+/control/alias HEAD_NB 1
+/control/execute mac/alias.mac
+
+# -----------------------------------------------------------------------------
+# Geometry definition
+
+#/control/execute mac/visu.mac
+/control/execute mac/verbose.mac
+/control/execute mac/world.mac
+/control/execute mac/phantom_fake.mac
+/control/execute mac/spect.mac
+/control/execute mac/spect_detector_input_plane_{COLLIMATOR}.mac
+
+# -----------------------------------------------------------------------------
+# Physics
+
+/control/execute mac/physics_list.mac
+/control/execute mac/physics_cuts_world.mac
+/control/execute mac/physics_cuts_spect.mac
+
+# -----------------------------------------------------------------------------
+# OUTPUT
+
+/control/execute mac/output_stat.mac
+
+/gate/actor/addActor                   NN_ARF_Actor arf
+/gate/actor/arf/attachTo               detPlane
+/gate/actor/arf/save                   output/train.root
+/gate/actor/arf/setMode                train
+/gate/actor/arf/setEnergyWindowNames   {WINDOWS}
+/gate/actor/arf/setRussianRoulette     100
+
+
+# -----------------------------------------------------------------------------
+# INITIALISATION
+
+/gate/run/initialize
+
+# -----------------------------------------------------------------------------
+# SOURCE
+
+/control/alias NB_BIN 2
+/control/execute mac/source_plane.mac
+
+
+# -----------------------------------------------------------------------------
+# START
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
+/gate/application/setTotalNumberOfPrimaries {N}
+/gate/application/start
+
+

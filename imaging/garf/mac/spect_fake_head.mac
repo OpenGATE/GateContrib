@@ -1,0 +1,12 @@
+
+# SPECT Head: main volume, everything is included in SPECThead
+# the name MUST be SPECThead
+/gate/world/daughters/name SPECThead
+/gate/world/daughters/insert box
+/gate/SPECThead/geometry/setXLength 57.6 cm
+/gate/SPECThead/geometry/setYLength 44.6 cm
+/gate/SPECThead/geometry/setZLength {SPECT_LENGTH_CM} cm
+/gate/SPECThead/vis/setColor white
+/gate/SPECThead/setMaterial Air
+/gate/SPECThead/vis/forceWireframe
+

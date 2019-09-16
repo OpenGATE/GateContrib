@@ -1,0 +1,59 @@
+
+# -----------------------------------------------------------------------------
+# Alias
+
+# Need alias RADIONUCLIDE  => In111 or Tc99m or Lu177 or I131
+# Need alias N             => ion activity in Bq 
+# Need alias SPECT_RADIUS  => in cm (25 for example)
+
+/control/alias HEAD_NB 1
+/control/execute mac/alias.mac
+
+# -----------------------------------------------------------------------------
+# Geometry definition
+
+#/control/execute mac/visu.mac
+/control/execute mac/verbose.mac
+/control/execute mac/world.mac
+/control/execute mac/phantom_ct.mac
+/control/execute mac/spect_fake_head.mac
+/control/execute mac/nm670/spect_translation.mac
+/control/execute mac/spect_detector_input_plane_{COLLIMATOR}.mac
+
+# -----------------------------------------------------------------------------
+# Physics
+
+/control/execute mac/physics_list.mac
+/control/execute mac/physics_cuts_world.mac
+/control/execute mac/physics_cuts_phantom.mac
+
+# -----------------------------------------------------------------------------
+# OUTPUT
+
+/control/execute mac/output_stat.mac
+
+/gate/actor/addActor                   NN_ARF_Actor arf
+/gate/actor/arf/attachTo               detPlane
+/gate/actor/arf/save                   output/arf.root
+/gate/actor/arf/setMode                test
+/gate/actor/arf/setEnergyWindowNames   {WINDOWS}
+
+
+# -----------------------------------------------------------------------------
+# INITIALISATION
+
+/gate/run/initialize
+
+# -----------------------------------------------------------------------------
+# SOURCE
+
+/control/execute mac/source_vox.mac
+
+
+# -----------------------------------------------------------------------------
+# START
+
+/control/execute mac/start_time.mac
+
+
+
