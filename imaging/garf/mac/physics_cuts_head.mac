@@ -1,7 +1,0 @@
-
-# Low cut in head
-/gate/physics/Gamma/SetCutInRegion      SPECThead 1 mm
-/gate/physics/Electron/SetCutInRegion   SPECThead 1 mm
-/gate/physics/Positron/SetCutInRegion   SPECThead 1 mm
-
-

@@ -22,7 +22,7 @@
 /gate/verbose Warning     0
 /gate/verbose Output      0
 /gate/verbose Beam        0
-/gate/verbose Volume      1
+/gate/verbose Volume      2
 /gate/verbose Image       0
 /gate/verbose Geometry    1
 /gate/verbose Core        1

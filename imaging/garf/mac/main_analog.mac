@@ -1,46 +1,52 @@
 
+# -----------------------------------------------------------------------------
+# Alias
+
+# Need alias RADIONUCLIDE  => In111 or Tc99m or Lu177 or I131
+# Need alias N             => ion activity in Bq 
+# Need alias SPECT_RADIUS  => in cm (25 for example)
+
+/control/alias HEAD_NB 1
+/control/execute mac/alias.mac
+
+# -----------------------------------------------------------------------------
+# Geometry definition
+
+#/control/execute mac/visu.mac
 /control/execute mac/verbose.mac
 /control/execute mac/world.mac
-#/control/execute mac/visu.mac
+/control/execute mac/phantom_ct.mac
+/control/execute mac/spect.mac
 
-/control/alias RADIUS 16
+# -----------------------------------------------------------------------------
+# Physics
 
-/control/execute mac/spect_head_hegp.mac
-/control/execute mac/spect_collimator_hegp.mac
-/control/execute mac/spect_digitizer_I131.mac
-/control/execute mac/spect_translation.mac
+/control/execute mac/physics_list.mac
+/control/execute mac/physics_cuts_world.mac
+/control/execute mac/physics_cuts_phantom.mac
+/control/execute mac/physics_cuts_spect.mac
 
-/control/alias CT data/ct.mhd
-/control/alias CT_ISOCENTER_X 2
-/control/alias CT_ISOCENTER_Y 38
-/control/alias CT_ISOCENTER_Z -19
-/control/alias START_ANGLE 0
-
-/control/execute mac/phantom_nested.mac
-
-/control/execute mac/physics_list_em1.mac
-/control/execute mac/physics_cuts_head.mac
+# -----------------------------------------------------------------------------
+# OUTPUT
 
 /control/execute mac/output_stat.mac
-/control/execute mac/output_projections_I131.mac
+/control/execute mac/nm670/output_projections_{RADIONUCLIDE}.mac
+#/control/execute mac/output_listmode.mac
+
+# -----------------------------------------------------------------------------
+# INITIALISATION
 
 /gate/run/initialize
 
-/control/alias SOURCE data/source_tyroid.mhd
-/control/alias SOURCE_ISOCENTER_X 2
-/control/alias SOURCE_ISOCENTER_Y 38
-/control/alias SOURCE_ISOCENTER_Z -19
+# -----------------------------------------------------------------------------
+# SOURCE
 
-# 1/804 because 804 is the number of source pixels 
-/control/alias ACTIVITY_SCALE 0.00124378109	
+/control/execute mac/source_vox.mac
 
-/control/execute mac/source_tyroid_I131.mac
 
-#/tracking/verbose 2
-/control/verbose 0
-/control/alias TIME_START 0
-/control/alias TIME_SLICE 1e8
-/control/alias TIME_STOP 1e8
+# -----------------------------------------------------------------------------
+# START
+
 /control/execute mac/start_time.mac
 
 
