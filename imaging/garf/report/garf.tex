@@ -1,0 +1,155 @@
+% ================================================================
+\documentclass[11pt,final,a4paper]{article}
+\input{config.tex}
+
+% ================================================================
+\begin{document}
+\thispagestyle{fancy}
+
+\title{GARF: Gate Angular Response Function}
+\author{David Sarrut}
+\date{\today}
+
+\maketitle
+% ================================================================
+
+\section{Learning ARF neural network}
+
+Four datasets have been simulated for the four radionuclides. Each
+simulation tracked $\num{e10}$ primary photons, sampled from the
+energy distribution of the radionuclide. The simulation use one single
+SPECT head and record photon incoming at the collimator entrance. It
+lead to a dataset of about 2.3 GB of data. Russian Roulette factor is
+set to 100. It tooks around 6 days of computation (on a single core).
+
+% mac/main_dataset.mac
+
+Neural networks for all four radionuclides were trained on those
+dataset with ``config-nn-rr100-v4.json'' parameter file: 3 layers, 400
+neurons by layer, 500 epoch max, 5000 batch size, 200 batch by
+epoch. It tooks about 2 hours.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[htbp]{lclc}
+    Rad & Collimator & E win & gam/decay \\\hline
+    Tc99m & lehr & 2 (sc, 140) & 0.88 \\
+    In111 & megp & 5 (sc 171 sc sc 245) &  1.8 \\
+    Lu177 & megp & 6 (sc 113 sc sc 208 sc) & 0.17 \\
+    I131 & hegp & 7 (sc 364 sc sc sc 637 722) & 1.002 \\
+  \end{tabular}
+  \caption{SPECT config}
+  \label{tab:spect}  
+\end{table}
+
+\section{Evaluation with an example}
+
+The reference simulation was as follows. CT thorax image resampled to
+$4 \times 4 \times 4$ mm$^3$, with patient background removed (set to
+Air). The density tolerance for Gate was set to $1 g/cm^3$ (very few
+material). Physics list was \verb+emstandard_opt1+, cut was set to high
+values in order to not track electron, except in the SPECT
+crystal. The source was a voxelized source composed of 3 spheres of
+about 78, 24, 20 mm diameters, with activity of 1, 1.5, 3
+(normalized). About $\num{e10}$ decays was simulated for all
+radionuclides (and $\num{e11}$ for Lu177), see table. 
+
+%Table simulation reference primary events + computation time
+
+% https://www.tablesgenerator.com/ ?
+% g spreadsheet with =importData("https://www.dropbox.com/s/5x5eagi2nkik77l/test.csv")
+% plotly ?
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[htbp]{lrc}
+    Rad & Nb events & Time (days) \\\hline
+    Tc99m & 8,584,543,002 & 35.8  \\
+    In111 & 17,918,903,766 & 68.5  \\
+    Lu177 & 16,872,685,913 & 64.7  \\
+    I131 & 9,623,522,427 & 35.7  \\    
+  \end{tabular}
+  \caption{Reference simulation}
+  \label{tab:ref_simu}  
+\end{table}
+
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[htbp]{lrc}
+    Rad & Nb events & Time (d) \\\hline
+    Tc99m & 8,584,543,002 & 35.8  \\
+    In111 & 17,918,903,766 & 68.5  \\
+    Lu177 & 16,872,685,913 & 64.7  \\
+    I131 & 9,623,522,427 & 35.7  \\    
+  \end{tabular}
+  \caption{Time for ARF simulation (see efficiency speedup in nex tables).}
+  \label{tab:ref_simu}  
+\end{table}
+
+
+\section{Results}
+
+
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=0.9\linewidth]{Tc99m.pdf}
+    \includegraphics[width=0.9\linewidth]{In111.pdf}
+    \includegraphics[width=0.9\linewidth]{Lu177.pdf}
+    \includegraphics[width=0.9\linewidth]{I131.pdf}
+    \caption{Profiles comparison, for all windows.}
+    \label{fig:profil}
+  \end{center}
+\end{figure}
+
+Speed up have been computed as a mean on each slice, for all voxels
+with more than 10\% max counts. Computation time is extracted from the
+stats.txt file and uncertainties were computed by voxel.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[htbp]{lrc}
+    Tc99m & eff  & \%\\\hline
+    sc 1 & 8.0 & \\
+    p140 2 & 5.9  & 88.5\%\\\hline
+    In111  & eff  & \%\\\hline
+    sc 1 &  18.0 \\
+    p171 2 & 8.7 & 90\%\\
+    sc 3 & 22.5 \\
+    sc 4 & 31.6 \\
+    p245 5 & 10.7 & 94\% 
+  \end{tabular}
+  \begin{tabular}[htbp]{lrc}
+    Lu177     &  eff  & \%\\\hline
+    sc 1 & 10.3 \\
+    p113 2 & 8.2 & 6\%\\
+    sc 3 & 12.7 \\
+    sc 4 & 13.4 \\
+    p208 5 & 9.4 & 10\%\\
+    sc 6 & 30.4
+  \end{tabular}
+  \begin{tabular}[htbp]{lrc}  
+    I131      &  eff  \\\hline
+    sc 1 & 38.9 \\
+    p364 2 & 18.6 & 81\%\\
+    sc 3 & 70.5 \\
+    sc 4 & 66.2 \\
+    sc 5 & 143.6 \\
+    p637 6 & 85.4 & 7\%\\
+    p722 7 & 87.5 & 1.7\%    
+  \end{tabular}
+  \caption{Efficiency speedup ratio per channel. For ex, Lu177 in channel 3 (scatter 3) is 12.7 times faster with garf. Third column recall the \% of gamma per decay for the photo-peaks.}
+  \label{tab:eff}  
+\end{table}
+
+\section{Conclusion}
+
+For high activity energy windows (primary peaks), speed up is between
+6 to 20, and can reach up around 80 for low activity peaks. Speed up
+is better for low activity energy windows (scatter).
+
+% ================================================================
+\bibliography{all}
+\bibliographystyle{unsrtnat}
+
+\end{document}
