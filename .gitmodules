@@ -4,3 +4,6 @@
 [submodule "imaging/garf/nm670"]
 	path = imaging/garf/nm670
 	url = git@gitlab.in2p3.fr:davidsarrut/gate_mac_nm670.git
+[submodule "imaging/garf/--name"]
+	path = imaging/garf/--name
+	url = git@gitlab.in2p3.fr:davidsarrut/gate_mac_nm670.git
