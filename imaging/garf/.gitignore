@@ -8,3 +8,6 @@ output/*root
 output/*sin
 output/*hdr
 output/*txt
+*.log
+*.out
+*.aux

@@ -52,7 +52,15 @@ values in order to not track electron, except in the SPECT
 crystal. The source was a voxelized source composed of 3 spheres of
 about 78, 24, 20 mm diameters, with activity of 1, 1.5, 3
 (normalized). About $\num{e10}$ decays was simulated for all
-radionuclides (and $\num{e11}$ for Lu177), see table. 
+radionuclides (and $\num{e11}$ for Lu177), see table.
+
+Reference analog simulation is very long, more than 10 days for about
+$\num{e10}$ decays. Because ARF simulation is a Variance Reduction
+Technique, less primary particles is needed to reach similar
+uncertainty. However, there is no simple rule to set this number. A
+rule of thumb is 10 times less (see efficiency in the next
+section). To compare to the analog reference simulation, image from
+ARF simulation must be scaled to the targeted number of primary.
 
 %Table simulation reference primary events + computation time
 
@@ -78,12 +86,12 @@ radionuclides (and $\num{e11}$ for Lu177), see table.
   \centering
   \begin{tabular}[htbp]{lrc}
     Rad & Nb events & Time (d) \\\hline
-    Tc99m & 8,584,543,002 & 35.8  \\
-    In111 & 17,918,903,766 & 68.5  \\
-    Lu177 & 16,872,685,913 & 64.7  \\
-    I131 & 9,623,522,427 & 35.7  \\    
+    Tc99m & 884,971,913 &  4.05 days\\
+    In111 & 1,847,285,705 & 8.41 days \\
+    Lu177 & 1,721,704,624 & 7.6 days \\
+    I131 & 1,002,419,017 & 4.3 days
   \end{tabular}
-  \caption{Time for ARF simulation (see efficiency speedup in nex tables).}
+  \caption{Time for ARF simulation (see efficiency speedup in next tables).}
   \label{tab:ref_simu}  
 \end{table}
 
