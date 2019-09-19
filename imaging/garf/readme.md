@@ -14,7 +14,6 @@ The pypi project page is:  https://pypi.org/project/garf/
 
 
 # Create the ARF model
-
 ## Generate the training dataset
 
 First, run the simulation to generate the training dataset
@@ -46,7 +45,7 @@ The output image is ```output/projection.mhd```.
 
 ## Corresponding ARF simulation
 
-(1) First you need to compile GATE with 'Torch_DIR'. See instruction here. 
+(1) First you need to compile GATE with 'Torch_DIR'. See instruction here (FIXME). 
 
 (2) Then convert the pth in a file format that can be read by Gate:
 
@@ -59,7 +58,7 @@ This command will create ```pth/arf_xRiI_v4.pt``` and ```pth/arf_xRiI_v4.json```
 (3) Run the simulation:
 ```Gate mac/main_arf_v2.mac -a '[RADIONUCLIDE,Lu177] [N,1e5] [SPECT_RADIUS,25]'```
 
-The output projection will be ```output/projection.mhd```. Image values are expressed in counts per events. You may want to scale the image according to the targeted number of events. 
+The output projection will be ```output/projection.mhd```. Image values are expressed in counts per events. You may want to scale the image according to the targeted number of events. **WARNING** if you merge results from several jobs, you need to take the mean not the sum of the counts (or divide by the number of jobs). 
 
 ```garf_scale_and_Poisson_noise output/projection_arf.mhd 8584543002 output/projection_arf_final.mhd```
 

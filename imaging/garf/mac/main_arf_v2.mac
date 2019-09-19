@@ -33,10 +33,10 @@
 /control/execute mac/output_stat.mac
 /gate/verbose Actor      2
 
-/control/strdoif {RADIONUCLIDE} == {TECHNETIUM} /control/alias PT_FILE data/pth/arf_xRiI_v4
-/control/strdoif {RADIONUCLIDE} == {INDIUM} /control/alias     PT_FILE data/pth/arf_6QFA_v4
-/control/strdoif {RADIONUCLIDE} == {LUTETIUM} /control/alias   PT_FILE data/pth/arf_CEFg_v4
-/control/strdoif {RADIONUCLIDE} == {IODINE} /control/alias     PT_FILE data/pth/arf_bo6Z_v4
+/control/strdoif {RADIONUCLIDE} == {TECHNETIUM} /control/alias PT_FILE data/pth/arf_Tc99m
+/control/strdoif {RADIONUCLIDE} == {INDIUM} /control/alias     PT_FILE data/pth/arf_In111
+/control/strdoif {RADIONUCLIDE} == {LUTETIUM} /control/alias   PT_FILE data/pth/arf_Lu177
+/control/strdoif {RADIONUCLIDE} == {IODINE} /control/alias     PT_FILE data/pth/arf_I131
 
 /control/listAlias
 
@@ -52,7 +52,7 @@
 /gate/actor/arf/setSizeX               128
 /gate/actor/arf/setSizeY               128
 /gate/actor/arf/setCollimatorLength    99                   # FIXME explicit mm (unit)
-/gate/actor/arf/setBatchSize           1e6
+/gate/actor/arf/setBatchSize           1e5
 /gate/actor/arf/setEnergyWindowNames   {WINDOWS}
 
 
