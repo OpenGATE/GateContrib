@@ -77,16 +77,9 @@ Compute associated uncertainty on the ARF generated image:
 
 ARF image is computed in counts/events, so you wan to scale this image according to a given number of events. This is done here with the option ```-n```. You don't need this option if image was scale previously.
 
+Some pre-trained ARF neural networks are available in the ```data/pth``` folder.
 
-# Some pre trained ARF neural networks
+# Reference data
 
-
-
-# external data
-
-The folders: 
-```output_training_dataset```
-```output_reference_dataset```
-```output_arf_dataset```
-are available here: http://www.creatis.insa-lyon.fr/~dsarrut/garf
+The datasets that was used are available here: http://www.creatis.insa-lyon.fr/~dsarrut/garf
 
