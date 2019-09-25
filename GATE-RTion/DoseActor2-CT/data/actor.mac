@@ -9,7 +9,7 @@
 
 /control/alias res "200" 
 
-/gate/actor/addActor                               	        DoseActor  {type}_Profile_justWater
+/gate/actor/addActor                                  		DoseActor  {type}_Profile_justWater
 /gate/actor/{type}_Profile_justWater/attachTo                   patient
 /gate/actor/{type}_Profile_justWater/stepHitType                random
 /gate/actor/{type}_Profile_justWater/setSize                    20 200 20 mm

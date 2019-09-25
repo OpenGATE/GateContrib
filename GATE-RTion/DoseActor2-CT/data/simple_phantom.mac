@@ -5,8 +5,8 @@
 
 ## BOX MATERIAL OF SIMPLE GEOMETRY
 
-#/control/alias tag "AT_AG_SI4_98"
-/control/alias tag "Marrow_Bone09_162"
+/control/alias tag "AT_AG_SI4_98"
+#/control/alias tag "Marrow_Bone09_162"
 
 ## WARNING!! This Materials were created with a density tolerance of 0.01 g/cm3
 ##If the density tolerance is changed or a different Density/Material Table

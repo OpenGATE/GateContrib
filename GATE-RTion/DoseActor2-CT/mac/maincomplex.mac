@@ -83,8 +83,8 @@
 /gate/source/addSource                          TPS     TPSPencilBeam
 /gate/source/TPS/setTestFlag                    false
 /gate/source/TPS/setFlatGenerationFlag          false
-#/gate/source/TPS/setPlan                        data/PlanDescriptionFile_1spot_offcenter.txt
-/gate/source/TPS/setPlan                       data/PlanDescriptionFile_4spots.txt
+/gate/source/TPS/setPlan                        data/PlanDescriptionFile_1spot_offcenter.txt
+#/gate/source/TPS/setPlan                       data/PlanDescriptionFile_4spots.txt
 /gate/source/TPS/setParticleType                proton
 /gate/source/TPS/setSpotIntensityAsNbIons       true
 /gate/source/TPS/setSourceDescriptionFile       data/SourceDescriptionFile.txt
@@ -100,7 +100,7 @@
 #================================================================
 
   # START BEAMS
-/gate/application/setTotalNumberOfPrimaries 1000
+/gate/application/setTotalNumberOfPrimaries 10000
 /gate/application/start
 #/geometry/test/run
 

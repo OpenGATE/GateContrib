@@ -110,7 +110,7 @@
 #================================================================
 
   # START BEAMS
-/gate/application/setTotalNumberOfPrimaries 1
+/gate/application/setTotalNumberOfPrimaries 10000
 /gate/application/start
 #/geometry/test/run
 
