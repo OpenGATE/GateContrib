@@ -1,0 +1,41 @@
+/gate/actor/addActor                                     DoseActor   {type}_Image3D
+/gate/actor/{type}_Image3D/attachTo                      patient
+/gate/actor/{type}_Image3D/stepHitType                   random
+/gate/actor/{type}_Image3D/setVoxelSize                  1 1 1 mm
+/gate/actor/{type}_Image3D/enableDose                    true
+/gate/actor/{type}_Image3D/enableEdep          		 true
+/gate/actor/{type}_Image3D/save                          output/{type}_{dg}_Image3D.mhd
+/gate/actor/{type}_Image3D/saveEveryNSeconds             10
+
+/control/alias res "200" 
+
+/gate/actor/addActor                                  		DoseActor  {type}_Profile_justWater
+/gate/actor/{type}_Profile_justWater/attachTo                   patient
+/gate/actor/{type}_Profile_justWater/stepHitType                random
+/gate/actor/{type}_Profile_justWater/setSize                    20 200 20 mm
+/gate/actor/{type}_Profile_justWater/setPosition                -50 0 -50 mm
+/gate/actor/{type}_Profile_justWater/setResolution              1 {res} 1  
+/gate/actor/{type}_Profile_justWater/enableDose                 true
+/gate/actor/{type}_Profile_justWater/enableEdep                 true
+/gate/actor/{type}_Profile_justWater/save                       output/{type}_{dg}_Profile_justWater.txt
+/gate/actor/{type}_Profile_justWater/saveEveryNSeconds          10
+
+/gate/actor/addActor                               	        DoseActor  {type}_Profile_WaterBone
+/gate/actor/{type}_Profile_WaterBone/attachTo                   patient
+/gate/actor/{type}_Profile_WaterBone/stepHitType                random
+/gate/actor/{type}_Profile_WaterBone/setSize                    20 200 20 mm
+/gate/actor/{type}_Profile_WaterBone/setPosition                -50 0 50 mm
+/gate/actor/{type}_Profile_WaterBone/setResolution              1 {res} 1  
+/gate/actor/{type}_Profile_WaterBone/enableDose                 true
+/gate/actor/{type}_Profile_WaterBone/enableEdep                 true
+/gate/actor/{type}_Profile_WaterBone/save                       output/{type}_{dg}_Profile_WaterBone.txt
+/gate/actor/{type}_Profile_WaterBone/saveEveryNSeconds          10
+
+
+/gate/actor/addActor SimulationStatisticActor stat
+/gate/actor/stat/saveEveryNSeconds       120
+/gate/actor/stat/save output/{type}_statActor.txt
+
+/gate/actor/addActor EmCalculatorActor EmActor
+/gate/actor/EmActor/save output/{type}_emActor.txt
+
