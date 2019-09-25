@@ -8,7 +8,7 @@
 /gate/HounsfieldMaterialGenerator/SetDensityTolerance	{dt} g/cm3
 /gate/HounsfieldMaterialGenerator/SetOutputMaterialDatabaseFilename	data/HUmaterials-{dt}.db
 /gate/HounsfieldMaterialGenerator/SetOutputHUMaterialFilename		data/HU2mat-{dt}.txt
-/gate/HounsfieldMaterialGenerator/Generate
+#/gate/HounsfieldMaterialGenerator/Generate
 
 #patient virtual container
 /gate/world/daughters/name			patient_box
