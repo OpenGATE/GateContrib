@@ -42,7 +42,7 @@ epoch. It tooks about 2 hours.
   \label{tab:spect}  
 \end{table}
 
-\section{Evaluation with an example}
+\section{Evaluation with one example}
 
 The reference simulation was as follows. CT thorax image resampled to
 $4 \times 4 \times 4$ mm$^3$, with patient background removed (set to
@@ -54,7 +54,7 @@ about 78, 24, 20 mm diameters, with activity of 1, 1.5, 3
 (normalized). About $\num{e10}$ decays was simulated for all
 radionuclides (and $\num{e11}$ for Lu177), see table.
 
-Reference analog simulation is very long, more than 10 days for about
+Reference analog simulation is long, more than 10 days for about
 $\num{e10}$ decays. Because ARF simulation is a Variance Reduction
 Technique, less primary particles is needed to reach similar
 uncertainty. However, there is no simple rule to set this number. A
@@ -116,44 +116,50 @@ stats.txt file and uncertainties were computed by voxel.
 
 \begin{table}[htbp]
   \centering
-  \begin{tabular}[htbp]{lrc}
-    Tc99m & eff  & \%\\\hline
-    sc 1 & 8.0 & \\
-    p140 2 & 5.9  & 88.5\%\\\hline
-    In111  & eff  & \%\\\hline
-    sc 1 &  18.0 \\
-    p171 2 & 8.7 & 90\%\\
-    sc 3 & 22.5 \\
-    sc 4 & 31.6 \\
-    p245 5 & 10.7 & 94\% 
-  \end{tabular}
-  \begin{tabular}[htbp]{lrc}
-    Lu177     &  eff  & \%\\\hline
-    sc 1 & 10.3 \\
-    p113 2 & 8.2 & 6\%\\
-    sc 3 & 12.7 \\
-    sc 4 & 13.4 \\
-    p208 5 & 9.4 & 10\%\\
-    sc 6 & 30.4
-  \end{tabular}
-  \begin{tabular}[htbp]{lrc}  
-    I131      &  eff  \\\hline
-    sc 1 & 38.9 \\
-    p364 2 & 18.6 & 81\%\\
-    sc 3 & 70.5 \\
-    sc 4 & 66.2 \\
-    sc 5 & 143.6 \\
-    p637 6 & 85.4 & 7\%\\
-    p722 7 & 87.5 & 1.7\%    
-  \end{tabular}
-  \caption{Efficiency speedup ratio per channel. For ex, Lu177 in channel 3 (scatter 3) is 12.7 times faster with garf. Third column recall the \% of gamma per decay for the photo-peaks.}
+
+\begin{verbatim}
+| Tc99m             |  eff | Analog % | ARF % |
+|-------------------+------+----------+-------|
+| channel 1 scatter | 21.9 | 21.9 %   | 8.6 % |
+| channel 2 140 keV | 16.6 | 5.0 %    | 2.6 % |
+
+| In111             |  eff | Analog % | ARF % |
+|-------------------+------+----------+-------|
+| channel 1 scatter | 39.1 | 24.7 %   | 5.0 % |
+| channel 2 174 keV | 21.6 | 05.4 %   | 2.0 % |
+| channel 3 scatter | 47.3 | 34.6 %   | 5.8 % |
+| channel 4 scatter | 56.8 | 37.2 %   | 5.2 % |
+| channel 5 245 keV | 26.5 | 06.3 %   | 1.9 % |
+
+| Lu177             |  eff | Analog % | ARF % |
+|-------------------+------+----------+-------|
+| channel 1 scatter | 29.9 | 19.5 %   | 5.8 % |
+| channel 2 113 keV | 24.7 | 06.3 %   | 2.3 % |
+| channel 3 scatter | 34.1 | 22.49%   | 5.9 % |
+| channel 4 scatter | 36.3 | 22.0 %   | 5.4 % |
+| channel 5 208 keV | 27.8 | 05.8 %   | 1.8 % |
+| channel 6 scatter | 87.6 | 27.4 %   | 2.8 % |
+
+| I131              |   eff | Analog % | ARF % |
+|-------------------+-------+----------+-------|
+| channel 1 scatter |  90.5 | 24.1 %   | 2.2 % |
+| channel 2 364 keV |  51.5 | 09.6 %   | 1.5 % |
+| channel 3 scatter | 172.9 | 28.8 %   | 1.4 % |
+| channel 4 scatter | 167.3 | 30.9 %   | 1.5 % |
+| channel 5 scatter | 313.8 | 57.6 %   | 1.5 % |
+| channel 6 637 keV | 206.7 | 38.4 %   | 1.5 % |
+| channel 7 722 keV | 184.5 | 47.3 %   | 2.1 % |
+
+\end{verbatim}
+  
+  \caption{Efficiency speedup ratio per channel. For ex, Lu177 in channel 3 (scatter 3) is 34 times faster with garf.}
   \label{tab:eff}  
 \end{table}
 
 \section{Conclusion}
 
 For high activity energy windows (primary peaks), speed up is between
-6 to 20, and can reach up around 80 for low activity peaks. Speed up
+16 to 50, and can reach up around 200 for low activity peaks. Speed up
 is better for low activity energy windows (scatter).
 
 % ================================================================
