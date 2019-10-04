@@ -60,10 +60,12 @@ This command will create ```pth/arf_xRiI_v4.pt``` and ```pth/arf_xRiI_v4.json```
 
 The output projection will be ```output/projection.mhd```. Image values are expressed in counts per events. You may want to scale the image according to the targeted number of events. **WARNING** if you merge results from several jobs, you need to take the mean not the sum of the counts (or divide by the number of jobs). 
 
-```garf_scale_and_Poisson_noise output/projection_arf.mhd 8584543002 output/projection_arf_final.mhd```
+The following tool read stat info from the reference simulation to get the targeted number of events. The -j option divide resulta by j, considering the results has been obtained with j jobs. The --noise flag add Poisson noise. 
+
+```garf_scale output/projection.mhd --ref ref/stat.txt --noise -j 50```
 
 It can be compared to the reference image with:
-```garf_compare_image_profile output_reference_dataset/projection.mhd output/projection_arf_final.mhd -w 10```
+```garf_compare_image_profile output_reference_dataset/projection.mhd output/projection-s.mhd -w 10```
 
 Compute associated uncertainty on the reference image:
 
@@ -73,9 +75,9 @@ In this command, the option ```-c```indicates that voxel's values are counts (in
 
 Compute associated uncertainty on the ARF generated image:
 
-```gate_image_uncertainty output/projection.mhd -o uncert_arf.mhd -s -t 0.1 -n 8584543002 -e output/stats.txt```
+```gate_image_uncertainty output/projection.mhd -o uncert_arf.mhd -s -t 0.1 -e output/stats.txt```
 
-ARF image is computed in counts/events, so you wan to scale this image according to a given number of events. This is done here with the option ```-n```. You don't need this option if image was scale previously.
+ARF image is computed in counts/events, so you wan to scale this image according to a given number of events. This is done here with the option ```-n``` or with the valu read in the stat file. You don't need this option if image was scale previously.
 
 Some pre-trained ARF neural networks are available in the ```data/pth``` folder.
 
