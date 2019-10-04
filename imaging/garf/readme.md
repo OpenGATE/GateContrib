@@ -1,8 +1,12 @@
 
 Example associated with:
-Phys Med Biol. 2018 Oct 17;63(20):205013. doi: 10.1088/1361-6560/aae331. Learning SPECT detector angular response function with neural network for accelerating Monte-Carlo simulations. Sarrut D, Krah N, Badel JN, Létang JM. https://www.ncbi.nlm.nih.gov/pubmed/30238925
+Phys Med Biol. 2018 Oct 17;63(20):205013. doi: 10.1088/1361-6560/aae331. Learning SPECT detector angular response function with neural network for accelerating Monte-Carlo simulations. 
+
+Sarrut D, Krah N, Badel JN, Létang JM. https://www.ncbi.nlm.nih.gov/pubmed/30238925
 
 A method to speed up Monte-Carlo simulations of single photon emission computed tomography (SPECT) imaging is proposed. It uses an artificial neural network (ANN) to learn the angular response function (ARF) of a collimator-detector system. The ANN is trained once from a complete simulation including the complete detector head with collimator, crystal, and digitization process. In the simulation, particle tracking inside the SPECT head is replaced by a plane. Photons are stopped at the plane and the energy and direction are used as input to the ANN, which provides detection probabilities in each energy window. Compared to histogram-based ARF, the proposed method is less dependent on the statistics of the training data, provides similar simulation efficiency, and requires less training data. The implementation is available within the GATE platform.
+
+A short **report** for this example is available [here](report/garf.pdf)
 
 # Installation
 
@@ -13,7 +17,7 @@ The source code is https://github.com/dsarrut/garf
 The pypi project page is:  https://pypi.org/project/garf/
 
 
-# Create the ARF model
+# 1. Create the ARF model
 ## Generate the training dataset
 
 First, run the simulation to generate the training dataset
@@ -35,7 +39,8 @@ Some information may be printed with:
 
 An example of already computed neural network is the file ```arf.pth```.
 
-# Use ARF-NN to perfom SPECT simulation
+# 2. Use ARF-NN to perfom SPECT simulation
+
 ## Reference 'analog' simulation
 
 An example of a reference image created from the conventional analog Monte-Carlo simulation:
@@ -45,7 +50,7 @@ The output image is ```output/projection.mhd```.
 
 ## Corresponding ARF simulation
 
-(1) First you need to compile GATE with 'Torch_DIR'. See instruction here (FIXME). 
+(1) First you need to compile GATE with 'Torch_DIR'. See instruction **FIXME**. 
 
 (2) Then convert the pth in a file format that can be read by Gate:
 
@@ -63,6 +68,8 @@ The output projection will be ```output/projection.mhd```. Image values are expr
 The following tool read stat info from the reference simulation to get the targeted number of events. The -j option divide resulta by j, considering the results has been obtained with j jobs. The --noise flag add Poisson noise. 
 
 ```garf_scale output/projection.mhd --ref ref/stat.txt --noise -j 50```
+
+## Analyse
 
 It can be compared to the reference image with:
 ```garf_compare_image_profile output_reference_dataset/projection.mhd output/projection-s.mhd -w 10```
@@ -82,7 +89,7 @@ ARF image is computed in counts/events, so you wan to scale this image according
 Some pre-trained ARF neural networks are available in the [data/pth](data/pth) folder.
 
 
-# Reference data
+# 3. Reference data
 
 The datasets that was used are available here: http://www.creatis.insa-lyon.fr/~dsarrut/garf
 
