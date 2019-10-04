@@ -16,6 +16,8 @@ The source code is https://github.com/dsarrut/garf
 
 The pypi project page is:  https://pypi.org/project/garf/
 
+**WARNING** GATE version with libtorch enabled is required. I will be officially release end 2019. In the meantime, use the branch named 'torch'. 
+
 
 # 1. Create the ARF model
 ## Generate the training dataset
