@@ -1,0 +1,16 @@
+
+
+/gate/SPECThead/daughters/name detPlane
+/gate/SPECThead/daughters/insert box
+/gate/detPlane/geometry/setXLength 57.6 cm
+/gate/detPlane/geometry/setYLength 44.6 cm
+/gate/detPlane/geometry/setZLength 1 nm
+/gate/detPlane/setMaterial Vacuum
+
+/gate/detPlane/vis/setColor yellow
+/gate/detPlane/vis/forceWireframe
+
+## move the plane before the head (9.5 cm is the front of the box)
+## because the total head box is 18 cm
+/gate/detPlane/placement/setTranslation 0. 0. 8.49 cm
+

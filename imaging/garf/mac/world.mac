@@ -9,10 +9,10 @@
 
 # ---------------------------------------------
 # World
-/gate/world/geometry/setXLength 3 m
-/gate/world/geometry/setYLength 3 m
-/gate/world/geometry/setZLength 3 m
+/gate/world/geometry/setXLength 2 m
+/gate/world/geometry/setYLength 2 m
+/gate/world/geometry/setZLength 2 m
 /gate/world/vis/setColor white
 /gate/world/vis/forceWireframe
-/gate/world/setMaterial Vacuum
+/gate/world/setMaterial Air
 

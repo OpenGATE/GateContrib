@@ -1,0 +1,169 @@
+% ================================================================
+\documentclass[11pt,final,a4paper]{article}
+\input{config.tex}
+
+% ================================================================
+\begin{document}
+\thispagestyle{fancy}
+
+\title{GARF: Gate Angular Response Function}
+\author{David Sarrut}
+\date{\today}
+
+\maketitle
+% ================================================================
+
+\section{Learning ARF neural network}
+
+Four datasets have been simulated for the four radionuclides. Each
+simulation tracked $\num{e10}$ primary photons, sampled from the
+energy distribution of the radionuclide. The simulation use one single
+SPECT head and record photon incoming at the collimator entrance. It
+lead to a dataset of about 2.3 GB of data. Russian Roulette factor is
+set to 100. It tooks around 6 days of computation (on a single core).
+
+% mac/main_dataset.mac
+
+Neural networks for all four radionuclides were trained on those
+dataset with ``config-nn-rr100-v4.json'' parameter file: 3 layers, 400
+neurons by layer, 500 epoch max, 5000 batch size, 200 batch by
+epoch. It tooks about 2 hours.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[htbp]{lclc}
+    Rad & Collimator & E win & gam/decay \\\hline
+    Tc99m & lehr & 2 (sc, 140) & 0.88 \\
+    In111 & megp & 5 (sc 171 sc sc 245) &  1.8 \\
+    Lu177 & megp & 6 (sc 113 sc sc 208 sc) & 0.17 \\
+    I131 & hegp & 7 (sc 364 sc sc sc 637 722) & 1.002 \\
+  \end{tabular}
+  \caption{SPECT config}
+  \label{tab:spect}  
+\end{table}
+
+\section{Evaluation with one example}
+
+The reference simulation was as follows. CT thorax image resampled to
+$4 \times 4 \times 4$ mm$^3$, with patient background removed (set to
+Air). The density tolerance for Gate was set to $1 g/cm^3$ (very few
+material). Physics list was \verb+emstandard_opt1+, cut was set to high
+values in order to not track electron, except in the SPECT
+crystal. The source was a voxelized source composed of 3 spheres of
+about 78, 24, 20 mm diameters, with activity of 1, 1.5, 3
+(normalized). About $\num{e10}$ decays was simulated for all
+radionuclides (and $\num{e11}$ for Lu177), see table.
+
+Reference analog simulation is long, more than 10 days for about
+$\num{e10}$ decays. Because ARF simulation is a Variance Reduction
+Technique, less primary particles is needed to reach similar
+uncertainty. However, there is no simple rule to set this number. A
+rule of thumb is 10 times less (see efficiency in the next
+section). To compare to the analog reference simulation, image from
+ARF simulation must be scaled to the targeted number of primary.
+
+%Table simulation reference primary events + computation time
+
+% https://www.tablesgenerator.com/ ?
+% g spreadsheet with =importData("https://www.dropbox.com/s/5x5eagi2nkik77l/test.csv")
+% plotly ?
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[htbp]{lrc}
+    Rad & Nb events & Time (days) \\\hline
+    Tc99m & 8,584,543,002 & 35.8  \\
+    In111 & 17,918,903,766 & 68.5  \\
+    Lu177 & 16,872,685,913 & 64.7  \\
+    I131 & 9,623,522,427 & 35.7  \\    
+  \end{tabular}
+  \caption{Reference simulation}
+  \label{tab:ref_simu}  
+\end{table}
+
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[htbp]{lrc}
+    Rad & Nb events & Time (d) \\\hline
+    Tc99m & 884,971,913 &  4.05 days\\
+    In111 & 1,847,285,705 & 8.41 days \\
+    Lu177 & 1,721,704,624 & 7.6 days \\
+    I131 & 1,002,419,017 & 4.3 days
+  \end{tabular}
+  \caption{Time for ARF simulation (see efficiency speedup in next tables).}
+  \label{tab:ref_simu}  
+\end{table}
+
+
+\section{Results}
+
+
+\begin{figure}[htbp]
+  \begin{center}
+    \includegraphics[width=0.9\linewidth]{Tc99m.pdf}
+    \includegraphics[width=0.9\linewidth]{In111.pdf}
+    \includegraphics[width=0.9\linewidth]{Lu177.pdf}
+    \includegraphics[width=0.9\linewidth]{I131.pdf}
+    \caption{Profiles comparison, for all windows.}
+    \label{fig:profil}
+  \end{center}
+\end{figure}
+
+Speed up have been computed as a mean on each slice, for all voxels
+with more than 10\% max counts. Computation time is extracted from the
+stats.txt file and uncertainties were computed by voxel.
+
+\begin{table}[htbp]
+  \centering
+
+\begin{verbatim}
+| Tc99m             |  eff | Analog % | ARF % |
+|-------------------+------+----------+-------|
+| channel 1 scatter | 21.9 | 21.9 %   | 8.6 % |
+| channel 2 140 keV | 16.6 | 5.0 %    | 2.6 % |
+
+| In111             |  eff | Analog % | ARF % |
+|-------------------+------+----------+-------|
+| channel 1 scatter | 39.1 | 24.7 %   | 5.0 % |
+| channel 2 174 keV | 21.6 | 05.4 %   | 2.0 % |
+| channel 3 scatter | 47.3 | 34.6 %   | 5.8 % |
+| channel 4 scatter | 56.8 | 37.2 %   | 5.2 % |
+| channel 5 245 keV | 26.5 | 06.3 %   | 1.9 % |
+
+| Lu177             |  eff | Analog % | ARF % |
+|-------------------+------+----------+-------|
+| channel 1 scatter | 29.9 | 19.5 %   | 5.8 % |
+| channel 2 113 keV | 24.7 | 06.3 %   | 2.3 % |
+| channel 3 scatter | 34.1 | 22.49%   | 5.9 % |
+| channel 4 scatter | 36.3 | 22.0 %   | 5.4 % |
+| channel 5 208 keV | 27.8 | 05.8 %   | 1.8 % |
+| channel 6 scatter | 87.6 | 27.4 %   | 2.8 % |
+
+| I131              |   eff | Analog % | ARF % |
+|-------------------+-------+----------+-------|
+| channel 1 scatter |  90.5 | 24.1 %   | 2.2 % |
+| channel 2 364 keV |  51.5 | 09.6 %   | 1.5 % |
+| channel 3 scatter | 172.9 | 28.8 %   | 1.4 % |
+| channel 4 scatter | 167.3 | 30.9 %   | 1.5 % |
+| channel 5 scatter | 313.8 | 57.6 %   | 1.5 % |
+| channel 6 637 keV | 206.7 | 38.4 %   | 1.5 % |
+| channel 7 722 keV | 184.5 | 47.3 %   | 2.1 % |
+
+\end{verbatim}
+  
+  \caption{Efficiency speedup ratio per channel. For ex, Lu177 in channel 3 (scatter 3) is 34 times faster with garf.}
+  \label{tab:eff}  
+\end{table}
+
+\section{Conclusion}
+
+For high activity energy windows (primary peaks), speed up is between
+16 to 50, and can reach up around 200 for low activity peaks. Speed up
+is better for low activity energy windows (scatter).
+
+% ================================================================
+\bibliography{all}
+\bibliographystyle{unsrtnat}
+
+\end{document}

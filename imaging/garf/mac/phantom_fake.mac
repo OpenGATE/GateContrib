@@ -1,0 +1,11 @@
+
+# Fake phantom 
+
+/gate/world/daughters/name              phantom
+/gate/world/daughters/insert            box
+/gate/phantom/geometry/setXLength       1 nm
+/gate/phantom/geometry/setYLength       1 nm
+/gate/phantom/geometry/setZLength       1 nm
+/gate/phantom/setMaterial Air
+/gate/phantom/vis/setVisible 1
+/gate/phantom/vis/setColor blue
