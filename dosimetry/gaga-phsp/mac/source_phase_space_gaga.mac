@@ -1,0 +1,12 @@
+
+
+/gate/source/addSource                          phsp_source phaseSpace
+/gate/source/phsp_source/addPhaseSpaceFile      {SOURCE_PHSP_PT}
+/gate/source/phsp_source/setParticleType        gamma
+/gate/source/phsp_source/setPytorchParams       {SOURCE_PHSP_JSON}
+/gate/source/phsp_source/setPytorchBatchSize    1000000
+/gate/source/phsp_source/attachTo               phsp_vol
+/gate/source/phsp_source/useRandomSymmetry      false
+/gate/source/phsp_source/ignoreWeight           true
+
+

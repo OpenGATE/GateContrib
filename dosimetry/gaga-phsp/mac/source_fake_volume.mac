@@ -1,0 +1,15 @@
+
+
+# The sphere volume for the phase space
+# It is not used, only for visualisation purpose
+
+/gate/world/daughters/name phsp_vol
+/gate/world/daughters/insert box
+/gate/phsp_vol/geometry/setXLength 3 cm
+/gate/phsp_vol/geometry/setYLength 4 cm
+/gate/phsp_vol/geometry/setZLength 5 cm
+
+/gate/phsp_vol/setMaterial Air
+/gate/phsp_vol/vis/setColor red
+/gate/phsp_vol/describe
+

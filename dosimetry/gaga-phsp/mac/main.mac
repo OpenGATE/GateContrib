@@ -1,0 +1,50 @@
+
+# -----------------------------------------------------------------------------
+# Alias
+# Need alias N             => number of particle
+# Need alias JOB_ID        => number of job
+# Need alias TYPE          => 'analog' or 'gaga'
+
+# -----------------------------------------------------------------------------
+# Geometry definition
+
+#/control/execute mac/visu.mac
+/control/execute mac/verbose.mac
+/control/execute mac/world.mac
+/control/execute mac/waterbox.mac
+/control/execute mac/source_fake_volume.mac
+
+# -----------------------------------------------------------------------------
+# Physics
+
+/control/execute mac/physics_list.mac
+/control/execute mac/physics_cuts_world.mac
+/control/execute mac/physics_cuts_phantom.mac
+
+
+# -----------------------------------------------------------------------------
+# OUTPUT
+
+/control/execute mac/output_stat.mac
+/control/execute mac/output_dose.mac
+
+# -----------------------------------------------------------------------------
+# INITIALISATION
+
+/gate/run/initialize
+
+# -----------------------------------------------------------------------------
+# SOURCE
+
+/control/alias SOURCE_PHSP data/ELEKTA_PRECISE_6mv_part1.root
+
+/control/alias SOURCE_PHSP_PT   data/pth/001.pt
+/control/alias SOURCE_PHSP_JSON data/pth/001.json
+
+/control/alias ANALOG analog
+/control/alias GAGA gaga
+
+/control/strdoif {TYPE} == {ANALOG} /control/execute mac/source_phase_space.mac
+/control/strdoif {TYPE} == {GAGA} /control/execute mac/source_phase_space_gaga.mac
+
+/control/execute mac/start_N.mac

@@ -1,0 +1,13 @@
+
+
+/gate/source/addSource                         phsp_source phaseSpace
+/gate/source/phsp_source/addPhaseSpaceFile      {SOURCE_PHSP}
+/gate/source/phsp_source/setParticleType        gamma
+/gate/source/phsp_source/attachTo               phsp_vol
+/gate/source/phsp_source/useRandomSymmetry      false
+/gate/source/phsp_source/ignoreWeight           true
+
+/control/multiply N_START {JOB_ID} {N}
+/gate/source/phsp_source/setStartingParticleId  {N_START}
+
+

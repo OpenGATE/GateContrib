@@ -1,0 +1,14 @@
+
+
+/gate/actor/addActor                      DoseActor  dose_3d
+/gate/actor/dose_3d/save                  output/dose.mhd
+/gate/actor/dose_3d/attachTo    	        phantom
+/gate/actor/dose_3d/stepHitType           random
+/gate/actor/dose_3d/setPosition           0 0 0 mm
+/gate/actor/dose_3d/setVoxelSize          4 4 4 mm
+/gate/actor/dose_3d/enableEdep            true
+/gate/actor/dose_3d/enableUncertaintyEdep true
+/gate/actor/dose_3d/enableDose            false
+/gate/actor/dose_3d/enableSquaredDose     false
+/gate/actor/dose_3d/enableUncertaintyDose false
+/gate/actor/dose_3d/enableNumberOfHits    false
