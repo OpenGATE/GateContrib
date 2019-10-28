@@ -1,0 +1,42 @@
+
+# ============================
+# == actor              ==
+# ============================
+
+/gate/actor/addActor  ComptonCameraActor                CC_digi_BB
+/gate/actor/CC_digi_BB/attachTo                         BB
+/gate/actor/CC_digi_BB/save                               output/CC_idealprocessing.root
+
+/gate/actor/CC_digi_BB/saveHitsRootTree                           0
+/gate/actor/CC_digi_BB/saveSinglesRootTree                        0
+/gate/actor/CC_digi_BB/saveCoincidencesRootTree                   1
+/gate/actor/CC_digi_BB/saveCoincidenceChainsRootTree              1
+
+/gate/actor/CC_digi_BB/saveHitsText                               0
+/gate/actor/CC_digi_BB/saveSinglesText                            0
+/gate/actor/CC_digi_BB/saveCoincidencesText                       0
+/gate/actor/CC_digi_BB/saveCoincidenceChainsText                  0
+
+
+/gate/actor/CC_digi_BB/absorberSDVolume                      absorber
+/gate/actor/CC_digi_BB/scattererSDVolume                    scatterer
+/gate/actor/CC_digi_BB/numberOfTotScatterers                    2
+
+
+
+/gate/digitizer/layers/insert adderComptPhotIdeal
+/gate/digitizer/layers/adderComptPhotIdeal/rejectEvtOtherProcesses 1
+
+
+/gate/digitizer/Coincidences/setWindow 3. ns 
+/gate/digitizer/Coincidences/setPresortBufferSize 32
+
+/gate/digitizer/name sequenceCoincidence  
+/gate/digitizer/insert coincidenceChain 
+/gate/digitizer/sequenceCoincidence/addInputName Coincidences
+
+/gate/digitizer/sequenceCoincidence/insert sequenceRecon  
+/gate/digitizer/sequenceCoincidence/sequenceRecon/setSequencePolicy singlesTime
+
+
+
