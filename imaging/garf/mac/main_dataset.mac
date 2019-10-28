@@ -3,9 +3,9 @@
 # Alias
 
 # Need alias RADIONUCLIDE  => In111 or Tc99m or Lu177 or I131
-# Need alias N             => ion activity in Bq 
-# Need alias SPECT_RADIUS  => in cm (25 for example)
+# Need alias N             => Number of gamma
 
+/control/alias SPECT_RADIUS 20
 /control/alias HEAD_NB 1
 /control/execute mac/alias.mac
 
@@ -15,23 +15,29 @@
 #/control/execute mac/visu.mac
 /control/execute mac/verbose.mac
 /control/execute mac/world.mac
-/control/execute mac/phantom_ct.mac
+/control/execute mac/phantom_fake.mac
 /control/execute mac/spect.mac
+/control/execute mac/spect_detector_input_plane_{COLLIMATOR}.mac
 
 # -----------------------------------------------------------------------------
 # Physics
 
 /control/execute mac/physics_list.mac
 /control/execute mac/physics_cuts_world.mac
-/control/execute mac/physics_cuts_phantom.mac
 /control/execute mac/physics_cuts_spect.mac
 
 # -----------------------------------------------------------------------------
 # OUTPUT
 
 /control/execute mac/output_stat.mac
-/control/execute mac/nm670/output_projections_{RADIONUCLIDE}.mac
-#/control/execute mac/output_listmode.mac
+
+/gate/actor/addActor                   NN_ARF_Actor arf
+/gate/actor/arf/attachTo               detPlane
+/gate/actor/arf/save                   output/train.root
+/gate/actor/arf/setMode                train
+/gate/actor/arf/setEnergyWindowNames   {WINDOWS}
+/gate/actor/arf/setRussianRoulette     100
+
 
 # -----------------------------------------------------------------------------
 # INITIALISATION
@@ -41,13 +47,17 @@
 # -----------------------------------------------------------------------------
 # SOURCE
 
-/control/execute mac/source_vox.mac
+/control/alias NB_BIN 2
+/control/execute mac/source_plane.mac
 
 
 # -----------------------------------------------------------------------------
 # START
 
-/control/execute mac/start_time.mac
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
 
+/gate/application/setTotalNumberOfPrimaries {N}
+/gate/application/start
 
 

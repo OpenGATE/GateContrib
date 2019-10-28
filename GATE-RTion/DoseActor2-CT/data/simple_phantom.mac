@@ -1,0 +1,37 @@
+
+# MATERIALS
+/gate/geometry/setMaterialDatabase 	    data/HFMaterials2014_test.db
+/gate/geometry/setMaterialDatabase 	    data/HUmaterials-{dt}.db
+
+## BOX MATERIAL OF SIMPLE GEOMETRY
+
+/control/alias tag "AT_AG_SI4_98"
+#/control/alias tag "Marrow_Bone09_162"
+
+## WARNING!! This Materials were created with a density tolerance of 0.01 g/cm3
+##If the density tolerance is changed or a different Density/Material Table
+##is used, the materials must be reviewed to match with the HU of the voxelized geometry.
+
+# GEOMETRY
+
+# WORLD
+
+# TestBox -> WATER
+/gate/world/daughters/name              	patient
+/gate/world/daughters/insert            	box
+/gate/patient/setMaterial               	{tag}
+/gate/patient/geometry/setXLength       	1000 cm
+/gate/patient/geometry/setYLength       	1000 cm
+/gate/patient/geometry/setZLength       	1000 cm
+/gate/patient/placement/setTranslation  	0 0 0 cm
+/gate/patient/vis/setVisible            	1
+/gate/patient/vis/setColor              	blue
+
+#Ionization potential
+#	/gate/geometry/setIonisationPotential AT_AG_SI4_98 66.2236 eV
+#	/gate/geometry/setIonisationPotential Air_0   85.6835 eV
+#	/gate/geometry/setIonisationPotential Marrow_Bone09_162  91.2528 eV
+
+
+
+

@@ -1,0 +1,22 @@
+
+# -----------------------------------------------------------------------------
+# Gantry rotation -> rotate the phantom
+# The speed is 30 sec per angle, for 360/60 = 6 deg. 
+
+/control/alias START_ANGLE 0
+/control/alias SPEED 6
+
+/gate/phantom/placement/setRotationAxis  0 0 1
+/gate/phantom/placement/setRotationAngle {START_ANGLE} deg
+/gate/phantom/moves/insert         rotation 
+/gate/phantom/rotation/setSpeed    {SPEED} deg/s 
+/gate/phantom/rotation/setAxis     0 0 1
+
+# -----------------------------------------------------------------------------
+# SPECT
+
+# Need at least 28 Radius to avoid collision at 90 degrees
+
+# /control/alias SPECT_RADIUS 25.475
+# /control/alias COLLIMATOR megp
+# /control/alias SPECT_LENGTH_CM 18

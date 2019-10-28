@@ -1,0 +1,34 @@
+
+  #= PLAN VERIFICATION INPUT
+
+#HU conversion & Schneider tables
+
+/gate/HounsfieldMaterialGenerator/SetMaterialTable	data/Schneider2000MaterialsTable.txt
+/gate/HounsfieldMaterialGenerator/SetDensityTable	data/Schneider2000DensitiesTable.txt
+/gate/HounsfieldMaterialGenerator/SetDensityTolerance	{dt} g/cm3
+/gate/HounsfieldMaterialGenerator/SetOutputMaterialDatabaseFilename	data/HUmaterials-{dt}.db
+/gate/HounsfieldMaterialGenerator/SetOutputHUMaterialFilename		data/HU2mat-{dt}.txt
+#/gate/HounsfieldMaterialGenerator/Generate
+
+#patient virtual container
+/gate/world/daughters/name			patient_box
+/gate/world/daughters/insert 			box
+/gate/patient_box/setMaterial G4_AIR
+/gate/patient_box/geometry/setXLength 1000 cm
+/gate/patient_box/geometry/setYLength 1000 cm
+/gate/patient_box/geometry/setZLength 1000 cm
+/gate/patient_box/placement/setTranslation 0.0 0.0 0.0 cm
+/gate/patient_box/vis/setColor        yellow
+
+# Patient geometry description
+/gate/patient_box/daughters/name			patient
+/gate/patient_box/daughters/insert			ImageNestedParametrisedVolume
+
+/gate/patient/geometry/TranslateTheImageAtThisIsoCenter 0.0 0.0 0.0 mm
+
+/gate/geometry/setMaterialDatabase                  data/HUmaterials-{dt}.db
+/gate/patient/geometry/setHUToMaterialFile          data/HU2mat-{dt}.txt
+/gate/patient/geometry/setImage                     data/{tag}.mhd
+/gate/patient/vis/setColor        		    red
+
+

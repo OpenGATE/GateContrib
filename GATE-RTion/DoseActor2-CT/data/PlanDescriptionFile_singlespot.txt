@@ -1,0 +1,43 @@
+#TREATMENT-PLAN-DESCRIPTION
+#PlanName
+Toto
+#NumberOfFractions
+1
+##FractionID
+1
+##NumberOfFields
+1
+###FieldsID
+1
+#TotalMetersetWeightOfAllFields
+100000
+
+#FIELD-DESCRIPTION
+###FieldID
+1
+###FinalCumulativeMeterSetWeight
+100000
+###GantryAngle
+0
+###PatientSupportAngle
+0
+###IsocenterPosition
+0 0 0
+###NumberOfControlPoints
+1
+
+#SPOTS-DESCRIPTION
+####ControlPointIndex
+0
+####SpotTunnedID
+4
+####CumulativeMetersetWeight
+0
+####Energy (MeV)
+150
+####NbOfScannedSpots
+1
+####X Y Weight
+0 0 1
+
+

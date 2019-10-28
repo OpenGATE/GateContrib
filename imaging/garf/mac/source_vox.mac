@@ -1,0 +1,27 @@
+
+
+/control/alias SOURCE_GAMMA_SPECTRUM_FILE data/nm670/energy_spectrum_{RADIONUCLIDE}.txt
+/control/alias SOURCE_IMAGE data/source_3_spheres_norm.mhd
+/control/alias SOURCE_ISOCENTER_X 0
+/control/alias SOURCE_ISOCENTER_Y 0
+/control/alias SOURCE_ISOCENTER_Z 0
+
+/gate/source/addSource RadionuclideSource voxel
+/gate/source/RadionuclideSource/attachTo phantom
+/gate/source/RadionuclideSource/reader/insert image
+/gate/source/RadionuclideSource/imageReader/translator/insert linear
+/gate/source/RadionuclideSource/imageReader/linearTranslator/setScale {ACTIVITY} Bq
+/gate/source/RadionuclideSource/imageReader/readFile {SOURCE_IMAGE} 
+/gate/source/RadionuclideSource/TranslateTheSourceAtThisIsoCenter {SOURCE_ISOCENTER_X} {SOURCE_ISOCENTER_Y} {SOURCE_ISOCENTER_Z} mm
+
+/gate/source/RadionuclideSource/gps/angtype iso
+/gate/source/RadionuclideSource/gps/particle gamma
+/gate/source/RadionuclideSource/gps/angtype iso
+/gate/source/RadionuclideSource/gps/energytype UserSpectrum
+/gate/source/RadionuclideSource/gps/setSpectrumFile {SOURCE_GAMMA_SPECTRUM_FILE}
+/gate/source/RadionuclideSource/setForcedHalfLife 242343 s
+
+
+# because rotation is controled by attachTo --> DO NOT USE THIS COMMAND
+#/gate/source/RadionuclideSource/setRotationAroundPixelIsoCenter 
+
