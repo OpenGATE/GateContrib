@@ -1,0 +1,7 @@
+
+
+# JamesRandom Ranlux64 MersenneTwister
+#for gate singlecore
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
