@@ -1,0 +1,7 @@
+
+# ============================
+# == actor              ==
+# ============================
+/gate/actor/addActor     SimulationStatisticActor stat 
+/gate/actor/stat/save              output/stats_adder.txt 
+/gate/actor/stat/saveEveryNSeconds 100 
