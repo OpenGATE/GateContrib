@@ -1,0 +1,12 @@
+# ============================
+# == VERBOSITY              ==
+# ============================
+/control/verbose          0
+/run/verbose              1
+/event/verbose            0
+/tracking/verbose         0
+/gate/application/verbose 0
+/gate/generator/verbose   0
+/gate/random/verbose 0
+
+
