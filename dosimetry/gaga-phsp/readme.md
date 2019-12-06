@@ -14,7 +14,7 @@ A method is proposed and evaluated to model large and inconvenient phase space f
 GAGA stands for GAN for GATE.
 
 ```
-pip install gaga
+pip install gaga-phsp
 ```
 
 The source code is https://github.com/dsarrut/gaga
