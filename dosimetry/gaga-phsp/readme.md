@@ -28,15 +28,15 @@ Note: you may also be interested in the GATE phsp tools that are included in the
 
 # Learn a GAN phase-space
 
-Consider an input a phase space in root file format. Training a GAN that will be able to reproduce the phase space is done with the ```gate_train``` tool: 
+Consider an input a phase space in root file format. Training a GAN that will be able to reproduce the phase space is performed with ```gaga_train``` : 
 
 ```
 gaga_train data/ELEKTA_PRECISE_6mv_part1.root pth/config_001.json pth/001.pth
 ```
 
-A NVIDIA GPU card is required. It tooks about 1h20 of computation time on a NVIDIA Titan Xp (GP102-450-A1) with 12 GB memory. The json file contains the values of all hyperparameters. Some options are available, you can display them with ```gate_train -h```. 
+A NVIDIA GPU card is required. It tooks about 1h20 of computation time on a NVIDIA Titan Xp (GP102-450-A1) with 12 GB memory. The json file contains the values of all hyperparameters. Some options are available, you can display them with ```gaga_train -h```. 
 
-The output GAN information may be displayed with: ```gate_info pth/001.pth```.
+The output GAN information may be displayed with: ```gaga__info pth/001.pth```.
 
 To be able to use the GAN from GATE, you need to convert into .pt/.json format with the following command:
 
@@ -49,8 +49,8 @@ In GATE, the gpu is not (yet) supported, but the computation time is low here (a
 You can have information about a PHSP file with the gatetools (GateTools)[https://github.com/OpenGATE/GateTools/] package:
 
 ```
-phsp_info data/ELEKTA_PRECISE_6mv_part1.root
-phsp_plot data/ELEKTA_PRECISE_6mv_part1.root
+gt_phsp_info data/ELEKTA_PRECISE_6mv_part1.root
+gt_phsp_plot data/ELEKTA_PRECISE_6mv_part1.root
 ```
 
 
