@@ -35,3 +35,10 @@ imaging/SPECT_FFD/output/*.sin
 /imaging/nn-arf/output/test.dat.root
 /imaging/nn-arf/output/train.dat
 /imaging/nn-arf/output/train.dat.root
+
+*~
+gmon.out
+/imaging/fastY90/output/*txt
+/imaging/fastY90/output/*root
+
+
