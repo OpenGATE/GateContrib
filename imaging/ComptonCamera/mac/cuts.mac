@@ -1,0 +1,18 @@
+
+
+
+/gate/physics/Gamma/SetCutInRegion      world 1 mm
+/gate/physics/Electron/SetCutInRegion   world 1 mm
+/gate/physics/Positron/SetCutInRegion   world 1 mm
+
+
+/gate/physics/Gamma/SetCutInRegion      scatterer 0.01 cm
+/gate/physics/Electron/SetCutInRegion   scatterer 0.01 cm
+/gate/physics/Positron/SetCutInRegion   scatterer 0.01 cm
+
+/gate/physics/Gamma/SetCutInRegion      absorber 0.01 cm
+/gate/physics/Electron/SetCutInRegion   absorber 0.01 cm
+/gate/physics/Positron/SetCutInRegion   absorber 0.01 cm
+
+
+/gate/physics/displayCuts

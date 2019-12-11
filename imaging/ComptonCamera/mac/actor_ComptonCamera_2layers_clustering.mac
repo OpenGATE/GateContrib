@@ -1,0 +1,76 @@
+
+# ============================
+# == actor              ==
+# ============================
+
+/gate/actor/addActor  ComptonCameraActor                CC_digi_BB
+/gate/actor/CC_digi_BB/attachTo                         BB
+
+
+/gate/actor/CC_digi_BB/save                               output/CC_clustering.root
+
+
+
+/gate/actor/CC_digi_BB/saveHitsRootTree                           0
+/gate/actor/CC_digi_BB/saveSinglesRootTree                        1
+/gate/actor/CC_digi_BB/saveCoincidencesRootTree                   0
+/gate/actor/CC_digi_BB/saveCoincidenceChainsRootTree              1
+
+/gate/actor/CC_digi_BB/saveHitsText                               0
+/gate/actor/CC_digi_BB/saveSinglesText                            0
+/gate/actor/CC_digi_BB/saveCoincidencesText                       0
+/gate/actor/CC_digi_BB/saveCoincidenceChainsText                  0
+
+
+/gate/actor/CC_digi_BB/absorberSDVolume                      absorber
+/gate/actor/CC_digi_BB/scattererSDVolume                    scatterer
+/gate/actor/CC_digi_BB/numberOfTotScatterers                    1
+
+/gate/actor/CC_digi_BB/specifysourceParentID 0
+
+
+
+/gate/digitizer/layers/insert clustering
+/gate/digitizer/layers/clustering/setAcceptedDistance 6 mm
+/gate/digitizer/layers/clustering/setRejectionMultipleClusters 0
+
+
+
+
+/gate/digitizer/layers/insert localBlurring  
+/gate/digitizer/layers/localBlurring/chooseNewVolume scatterer
+/gate/digitizer/layers/localBlurring/scatterer/setResolution 0.12
+/gate/digitizer/layers/localBlurring/scatterer/setEnergyOfReference 511 keV 
+
+/gate/digitizer/layers/localBlurring/chooseNewVolume absorber
+/gate/digitizer/layers/localBlurring/absorber/setResolution 0.14
+/gate/digitizer/layers/localBlurring/absorber/setEnergyOfReference 511 keV
+
+
+
+/gate/digitizer/layers/insert sp3Dlocalblurring
+/gate/digitizer/layers/sp3Dlocalblurring/chooseNewVolume scatterer
+/gate/digitizer/layers/sp3Dlocalblurring/scatterer/setSigma 1.5 1.5 0.0 mm
+/gate/digitizer/layers/sp3Dlocalblurring/chooseNewVolume absorber
+/gate/digitizer/layers/sp3Dlocalblurring/absorber/setSigma 2.0 2.0 0.0 mm
+
+
+/gate/digitizer/layers/insert DoImodel
+/gate/digitizer/layers/DoImodel/setAxis 0 0 1
+/gate/digitizer/layers/DoImodel/setDoIModel DoIBlurrNegExp
+/gate/digitizer/layers/DoImodel/DoIBlurrNegExp/setExpInvDecayConst -2.85144 mm
+/gate/digitizer/layers/DoImodel/DoIBlurrNegExp/setCrysEntranceFWHM 8 mm
+
+
+/gate/digitizer/Coincidences/setWindow 50. ns 
+
+/gate/digitizer/name sequenceCoincidence  
+/gate/digitizer/insert coincidenceChain 
+/gate/digitizer/sequenceCoincidence/addInputName Coincidences
+/gate/digitizer/sequenceCoincidence/insert sequenceRecon  
+/gate/digitizer/sequenceCoincidence/sequenceRecon/setSequencePolicy axialDist2Source
+
+
+/gate/digitizer/sequenceCoincidence/insert multiplesKiller
+
+

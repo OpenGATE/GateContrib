@@ -1,0 +1,80 @@
+/control/alias time 100.0
+/control/execute                   mac/verbosity.mac
+# ============================
+# ==  VISUALIZATION            ==
+# ===========================
+/vis/disable
+
+# ============================
+# == LOAD DATABASE           ==
+# ===========================
+/gate/geometry/setMaterialDatabase    data/GateMaterials.db
+
+
+
+# ============================ 
+# ==   GEOMETRY             ==
+# ===========================
+/control/execute                     mac/CC_2planes.mac
+
+
+# ============================
+# ==   PHANTOM            ==
+# ===========================
+/control/execute                    mac/phantom.mac
+
+# ============================
+# ==  PHYSICS             ==
+# ===========================
+
+/gate/physics/addPhysicsList emlivermore
+
+/control/execute                  mac/cuts.mac
+
+#=============================
+#== ACTOR
+#==========================================
+
+
+/control/execute mac/actor_ComptonCamera_2layers_idealProcessing.mac
+
+# ============================
+# == INITIALIZE             ==
+# ===========================
+
+/gate/run/initialize
+
+# ============================
+# == SOURCE                 ==
+# ============================
+
+/control/execute                     mac/pointlikesource_centered.mac
+
+
+# ============================
+# == OUTPUT                ==
+# ============================
+/gate/application/noGlobalOutput
+#====================================================
+#  R A N D O M   E N G I N E  A N D  S E E D
+#====================================================
+#/control/execute                   mac/SetSeed_MersenneTwister.mac
+/control/execute                   mac/SetSeed_MersenneTwister_fixed.mac
+
+
+#=====================================================
+#   M E A S U R E M E N T   S E T T I N G S   
+#=====================================================
+
+/gate/application/setTimeSlice  {time} s
+/gate/application/setTimeStart   0.00   s
+/gate/application/setTimeStop   {time} s
+
+##/gate/application/setTotalNumberOfPrimaries 500
+/gate/application/startDAQ
+
+exit
+
+
+
+
