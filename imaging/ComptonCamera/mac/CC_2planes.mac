@@ -1,0 +1,55 @@
+
+
+#======== World=================
+/gate/world/geometry/setXLength 10.0 cm 
+/gate/world/geometry/setYLength 10.0 cm 
+/gate/world/geometry/setZLength 40.0 cm 
+/gate/world/setMaterial Air
+
+
+
+#======Boundary Box =====================
+/gate/world/daughters/name                    BB
+/gate/world/daughters/insert                  box
+/gate/BB/placement/setTranslation         0.0 0.0 8.3 cm
+/gate/BB/geometry/setXLength                4.0 cm
+/gate/BB/geometry/setYLength                4.0 cm
+/gate/BB/geometry/setZLength                7.6 cm
+/gate/BB/setMaterial             Air
+
+#/gate/BB/vis/setVisible 1
+#/gate/BB/vis/setColor             white
+
+
+#===================PLANE1 (centre at  5.55 cm global system)=======================
+
+/gate/BB/daughters/name                    scatterer
+/gate/BB/daughters/insert           box
+/gate/scatterer/placement/setTranslation 0.0 0.0 -2.75 cm
+
+/gate/scatterer/geometry/setXLength                2.72 cm
+/gate/scatterer/geometry/setYLength                2.68 cm
+/gate/scatterer/geometry/setZLength                0.5 cm
+/gate/scatterer/setMaterial             LYSO-Ce-Hilger
+
+
+#/gate/scatterer/vis/setVisible 1
+#/gate/scatterer/vis/setColor             green
+
+
+
+#=========================PLANE2 (centre at  10.8 cm global system)=============================================================================
+/gate/BB/daughters/name                    absorber
+/gate/BB/daughters/insert           box
+/gate/absorber/placement/setTranslation 0.0 0.0 2.5 cm
+/gate/absorber/geometry/setXLength                3.24 cm
+/gate/absorber/geometry/setYLength                3.6 cm
+/gate/absorber/geometry/setZLength                1.00 cm
+/gate/absorber/setMaterial             LYSO-Ce-Hilger
+
+
+
+
+
+
+
