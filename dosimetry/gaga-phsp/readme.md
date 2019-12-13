@@ -25,6 +25,13 @@ Note: you may also be interested in the GATE phsp tools that are included in the
 
 **WARNING** GATE version with libtorch enabled is required. I will be officially release end 2019. In the meantime, use the branch named 'torch'. 
 
+If you use [conda](https://docs.conda.io/en/latest/) or miniconda, here is the short set of commands to start an new environment:
+```
+conda create --name test_gaga
+conda activate test_gaga
+conda install pip
+pip install gaga-phsp
+```
 
 # Learn a GAN phase-space
 
