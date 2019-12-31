@@ -1,0 +1,14 @@
+/vis/disable
+/gate/geometry/setMaterialDatabase ../CommonMacros/GateMaterials.db
+/control/execute ../CommonMacros/Geometry.mac
+/control/execute ../CommonMacros/PhysicsEMLivermorePolar.mac
+/gate/run/initialize 
+/control/execute Source.mac
+
+/gate/physics/displayCuts
+/gate/output/root/enable
+/gate/output/root/setFileName output/example2_oPs_with_prompt_10M
+
+/control/execute ../CommonMacros/RandomGenerator.mac
+/control/execute App.mac
+exit

@@ -1,0 +1,17 @@
+#=====================================================
+# point source
+#=====================================================
+#/gate/source/verbose 5
+
+/gate/source/addSource sourceA Extended
+/gate/source/sourceA/gps/type Point
+/gate/source/sourceA/gps/pos/centre 0 0 0 cm
+/gate/source/sourceA/setActivity 1000 Bq
+# Definie which positronium decay use in the simulation
+/gate/source/sourceA/setType Ps
+# Set enable emission of deexcitation gamma ( prompt gamma ) and its energy
+/gate/source/sourceA/setEnableDeexcitation true
+/gate/source/sourceA/setPromptGammaEnergy 2000 keV
+/gate/source/sourceA/setPositroniumFraction pPs 0.6
+
+/gate/source/list
