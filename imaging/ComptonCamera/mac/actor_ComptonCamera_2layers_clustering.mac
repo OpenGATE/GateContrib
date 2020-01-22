@@ -11,15 +11,11 @@
 
 
 
-/gate/actor/CC_digi_BB/saveHitsRootTree                           0
-/gate/actor/CC_digi_BB/saveSinglesRootTree                        1
-/gate/actor/CC_digi_BB/saveCoincidencesRootTree                   0
-/gate/actor/CC_digi_BB/saveCoincidenceChainsRootTree              1
+/gate/actor/CC_digi_BB/saveHitsTree                           1
+/gate/actor/CC_digi_BB/saveSinglesTree                        1
+/gate/actor/CC_digi_BB/saveCoincidencesTree                   1
+/gate/actor/CC_digi_BB/saveCoincidenceChainsTree              1
 
-/gate/actor/CC_digi_BB/saveHitsText                               0
-/gate/actor/CC_digi_BB/saveSinglesText                            0
-/gate/actor/CC_digi_BB/saveCoincidencesText                       0
-/gate/actor/CC_digi_BB/saveCoincidenceChainsText                  0
 
 
 /gate/actor/CC_digi_BB/absorberSDVolume                      absorber

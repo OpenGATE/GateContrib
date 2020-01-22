@@ -7,15 +7,11 @@
 /gate/actor/CC_digi_BB/attachTo                         BB
 /gate/actor/CC_digi_BB/save                               output/CC_idealprocessing.root
 
-/gate/actor/CC_digi_BB/saveHitsRootTree                           0
-/gate/actor/CC_digi_BB/saveSinglesRootTree                        0
-/gate/actor/CC_digi_BB/saveCoincidencesRootTree                   1
-/gate/actor/CC_digi_BB/saveCoincidenceChainsRootTree              1
 
-/gate/actor/CC_digi_BB/saveHitsText                               0
-/gate/actor/CC_digi_BB/saveSinglesText                            0
-/gate/actor/CC_digi_BB/saveCoincidencesText                       0
-/gate/actor/CC_digi_BB/saveCoincidenceChainsText                  0
+/gate/actor/CC_digi_BB/saveHitsTree                           0
+/gate/actor/CC_digi_BB/saveSinglesTree                        1
+/gate/actor/CC_digi_BB/saveCoincidencesTree                   0
+/gate/actor/CC_digi_BB/saveCoincidenceChainsTree              1
 
 
 /gate/actor/CC_digi_BB/absorberSDVolume                      absorber
