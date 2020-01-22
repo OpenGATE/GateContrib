@@ -78,13 +78,13 @@ It can be compared to the reference image with:
 
 Compute associated uncertainty on the reference image:
 
-```gate_image_uncertainty output_reference_dataset/projection.mhd -c -o uncert_ref.mhd -s -t 0.1 -e output_reference_dataset/projection/stats.txt```
+```gt_image_uncertainty output_reference_dataset/projection.mhd -c -o uncert_ref.mhd -s -t 0.1 -e output_reference_dataset/projection/stats.txt```
 
 In this command, the option ```-c```indicates that voxel's values are counts (integer). The uncertainty is the equal to the value (variance is equal to the mean). The option ```-t``` consider a 10% max threshold. Option ```-s``` compute results slice by slice. 
 
 Compute associated uncertainty on the ARF generated image:
 
-```gate_image_uncertainty output/projection.mhd -o uncert_arf.mhd -s -t 0.1 -e output/stats.txt```
+```gt_image_uncertainty output/projection.mhd -o uncert_arf.mhd -s -t 0.1 -e output/stats.txt```
 
 ARF image is computed in counts/events, so you wan to scale this image according to a given number of events. This is done here with the option ```-n``` or with the valu read in the stat file. You don't need this option if image was scale previously.
 

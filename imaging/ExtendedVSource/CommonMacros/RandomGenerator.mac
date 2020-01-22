@@ -1,0 +1,2 @@
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto

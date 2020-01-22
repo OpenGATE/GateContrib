@@ -1,0 +1,32 @@
+# W O R L D 
+
+/gate/world/geometry/setXLength 5. cm 
+/gate/world/geometry/setYLength 5. cm 
+/gate/world/geometry/setZLength 5. cm 
+
+# S Y S T E M
+
+/gate/world/daughters/name detector1
+/gate/world/daughters/systemType scanner
+/gate/world/daughters/insert sphere
+/gate/detector1/setMaterial Air
+/gate/detector1/geometry/setRmin 1 cm
+/gate/detector1/geometry/setRmax 1.5 cm
+/gate/detector1/placement/setTranslation  0 0 0 cm
+/gate/detector1/vis/forceWireframe
+/gate/detector1/vis/setVisible 0
+
+# C R Y S T A L
+
+/gate/detector1/daughters/name crystal1
+/gate/detector1/daughters/insert sphere
+/gate/crystal1/placement/setTranslation 0 0 0 cm
+/gate/crystal1/geometry/setRmin 1 cm
+/gate/crystal1/geometry/setRmax 1.5 cm
+/gate/crystal1/setMaterial EJ230
+/gate/crystal1/vis/forceSolid
+/gate/crystal1/vis/setColor white
+/gate/crystal1/vis/setVisible 1
+
+/gate/systems/detector1/level1/attach crystal1  
+/gate/crystal1/attachCrystalSD 

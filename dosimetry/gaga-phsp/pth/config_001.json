@@ -1,0 +1,91 @@
+{
+
+    "#": "---------------------------------------------------------------------",
+    "#": " ARCHITECTURE ",
+    "#": "---------------------------------------------------------------------",
+        
+    "#": "type: non-saturating (default), wasserstein",
+    "#type": "non-saturating",
+    "type": "wasserstein",
+    "#type": "gradient_penalty",
+    "gp_weight": 0.1,
+    "layer_norm": false,
+
+    "#": "Number of layers for D and G",
+    "d_layers": 3,
+    "g_layers": 3,
+    
+    "#": "Number of neurons by layer for D and G",
+    "d_dim": 400,
+    "g_dim": 400,
+
+    "#": "Number of dimension of the latent variable",
+    "z_dim": 6,
+
+    "#": "Clamp (only used in wasserstein mode)",
+    "clamp_lower": -0.01,
+    "clamp_upper": 0.01,
+
+    
+    "#": "---------------------------------------------------------------------",
+    "#": " OPTIMISER ",
+    "#": "---------------------------------------------------------------------",
+        
+    "#": "optimiser: adam RMSprop",
+    "optimiser": "RMSprop",
+    "#optimiser": "adam",
+
+    "#": "optimiser: shuffle all batch ?",
+    "shuffle": false,
+
+    "#": "adam optimiser: regularisation L2 (for adam only) ; zero if no regul",
+    "d_weight_decay": 0,
+    "g_weight_decay": 0,
+
+    "#": "adam optimiser: beta",
+    "beta_1": "0.9",
+    "beta_2": "0.99",
+
+    "#": "optimiser: learning rate",
+    "d_learning_rate": 1e-5,
+    "g_learning_rate": 1e-5,
+
+    "#": "optimiser: number of D and G update by epoch",
+    "d_nb_update": 2,
+    "g_nb_update": 1,
+
+    "#": "optimiser: max nb of epoch (iteration)",
+    "epoch": 100000,
+
+    "#": "optimiser: nb of samples by batch",
+    "batch_size": 10000,
+
+    "#": "Smooth fake/real labels instead of zero/one",
+    "#label_smoothing": 0.2,
+
+    "#": "---------------------------------------------------------------------",
+    "#": " DATA ",
+    "#": "---------------------------------------------------------------------",
+    "constraints": {
+        "Ekine": [0,6],
+        "X": [-200,200],
+        "Y": [-200,200],
+        "dX": [-1,1],
+        "dY": [-1,1],
+        "dZ": [0,1]
+    },
+    "keys": "Ekine X Y dX dY dZ",
+        
+    "#": "---------------------------------------------------------------------",
+    "#": " GENERAL ",
+    "#": "---------------------------------------------------------------------",
+        
+    "#": "gpu_mode: true false auto",
+    "gpu_mode": "auto",
+
+    "#": "save Generator and info every epoch",
+    "dump_epoch_start": 0,
+    "dump_epoch_every": 5000,
+    "dump_last_n_epoch": 0
+
+}

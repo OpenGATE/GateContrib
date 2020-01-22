@@ -1,0 +1,11 @@
+
+diff*mhd
+diff*raw
+mask*mhd
+mask*raw
+*~
+output/dose-*.*
+output/stats.txt
+results.*
+run.*
+pth.sav*
