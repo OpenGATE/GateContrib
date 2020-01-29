@@ -1,5 +1,5 @@
 #/control/execute mac/visu.mac
-/vis/disable
+#/vis/disable
 /control/execute mac/verbose.mac
 /gate/geometry/setMaterialDatabase data/ICRP_HUmaterials.db
 

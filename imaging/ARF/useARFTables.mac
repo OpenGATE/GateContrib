@@ -5,7 +5,7 @@
 # 3rd stage : using ARF tables for projection 
 
 # VISUALISATION
-/vis/disable
+#/vis/disable
 #/control/execute visu.mac
 
 /gate/geometry/setMaterialDatabase ../../GateMaterials.db

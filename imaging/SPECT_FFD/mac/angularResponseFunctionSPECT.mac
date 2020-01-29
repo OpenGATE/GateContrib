@@ -1,4 +1,4 @@
-/vis/disable
+#/vis/disable
 #/control/execute mac/visualisation.mac
 /control/execute mac/headSPECT.mac
 
