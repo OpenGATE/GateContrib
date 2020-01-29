@@ -15,7 +15,7 @@
 # VISUALISATION
 #=====================================================
 
-#/vis/disable
+##/vis/disable
 
 /vis/open                           OGLSX
 /vis/viewer/set/viewpointThetaPhi   60 60

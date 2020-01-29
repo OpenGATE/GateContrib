@@ -1,4 +1,4 @@
-/vis/disable
+#/vis/disable
 
 #INITIALIZE MATERIALS
 /gate/geometry/setMaterialDatabase GateMaterials.db

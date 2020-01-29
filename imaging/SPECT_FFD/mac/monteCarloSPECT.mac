@@ -1,6 +1,6 @@
 
 # Visualisation
-/vis/disable
+#/vis/disable
 #/control/execute mac/visualisation.mac
 
 # SPECT
