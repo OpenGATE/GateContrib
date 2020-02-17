@@ -11,4 +11,4 @@
 *.gnumeric filter=lfs diff=lfs merge=lfs -text
 *.npy filter=lfs diff=lfs merge=lfs -text
 *.gif filter=lfs diff=lfs merge=lfs -text
-*.DATA filter=lfs diff=lfs merge=lfs -text
+*.TABLE filter=lfs diff=lfs merge=lfs -text
