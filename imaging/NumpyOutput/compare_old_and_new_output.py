@@ -36,12 +36,12 @@ def compare_two_array(a, b):
         if a[key].dtype == np.float64 or a[key].dtype == np.float32:
             bb = b[key].astype(np.float32)
             if not np.allclose(a[key], bb, atol=1e-8):
-                raise ValueError("\t\t!!!!! are different", end="")
+                raise ValueError(f"\n{key} are different")
             else:
                 print("are identical", end="")
         else:
             if not np.all(np.equal(a[key], b[key])):
-                raise ValueError("\t\t!!!!! are different", end="")
+                raise ValueError(f"\n{key} are different")
             else:
                 print("are identical", end="")
 
