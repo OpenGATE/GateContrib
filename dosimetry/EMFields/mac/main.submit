@@ -1,0 +1,384 @@
+##############################################################
+#
+#  Custom MUW script for Condor in ClusterGATE 
+#  Supply this script to the job splitter command line.
+#  following keywords 
+#   GC_EXEC
+#   GC_MACRO
+#  will be replaced by actual values.
+#  Do not remove any of them! 
+#
+#  The user can edit anything before the "#GJS PART"  
+#  except the line with $GC_EXEC
+#
+#  create submit file:
+#  gjs -numberofsplits 16 -clusterplatform condor -condorscript condorMUWshort.script <macfile>.mac
+#
+#  submit to queue:
+#  condor_submit <yourmacfile>.submit
+#
+#	View history:
+#	condor_history
+#	
+#	View queue:
+#	condor_q
+#
+#  by Hermann Fuchs
+#  05.08.2011
+#    
+##############################################################
+
+Executable = advGateScript_v8.sh
+Universe = vanilla
+
+should_transfer_files = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files = /opt/condor_scripts/getSimulationBinary.sh, mac, data, .Gate
+transfer_output_files = ./output
+#only run on machines with memory >= 512 mb AND where Gate is installed
+##Requirements   = HAS_GATE_7_G4_10 =?= True
+#Requirements = Machine =!= "kahless" && Machine =!= "kahless.nukmed.meduniwien.ac.at" 
+##&& HAS_LONG_JOB_SUPPORT =?= True 
+#make sure job is not matched twice to the same machine
+match_list_length = 9
+Rank = TARGET.Name != LastMatchName0 && \
+TARGET.Name != LastMatchName1 && \
+TARGET.Name != LastMatchName2 && \
+TARGET.Name != LastMatchName3 && \
+TARGET.Name != LastMatchName4 && \
+TARGET.Name != LastMatchName5 && \
+TARGET.Name != LastMatchName6 && \
+TARGET.Name != LastMatchName7 && \
+TARGET.Name != LastMatchName8
+
+#if there are more machines to choose from, prefer these with a higher rank
+#Rank	       = Memory >= 512
+#size of the program in memory during execution, is determined automatically
+#Image_Size     = 28 Meg     
+
+#Make the job lowest priority
+#Will only be started if nothing else is in the queue
+nice_user =  False
+
+#Job priority from -20 to 20, 0 is default, 20 is best
+priority =  0
+
+#copy currently set environment variables
+#getenv = True
+
+#wait given number of seconds before starting next job
+#usually a good idea to prevent all jobs accessing the disc at once
+next_job_start_delay = 5
+
+#causes job to be run as user nobody not as submitting user
+#necessery if using mulitple machines
+RunAsOwner=false
+#email to account is only sent on errorc
+notification = error
+
+##Used for dynamic provisionning
+request_cpus = 1
+request_memory = 950
+request_disk = 2000000
+  
+
+Arguments      = ./.Gate//main//main1.mac
+Output         = ./.Gate//main//main1.out
+Error          = ./.Gate//main//main1.err
+Log            = ./.Gate//main//main1.log
+Queue
+
+Arguments      = ./.Gate//main//main2.mac
+Output         = ./.Gate//main//main2.out
+Error          = ./.Gate//main//main2.err
+Log            = ./.Gate//main//main2.log
+Queue
+
+Arguments      = ./.Gate//main//main3.mac
+Output         = ./.Gate//main//main3.out
+Error          = ./.Gate//main//main3.err
+Log            = ./.Gate//main//main3.log
+Queue
+
+Arguments      = ./.Gate//main//main4.mac
+Output         = ./.Gate//main//main4.out
+Error          = ./.Gate//main//main4.err
+Log            = ./.Gate//main//main4.log
+Queue
+
+Arguments      = ./.Gate//main//main5.mac
+Output         = ./.Gate//main//main5.out
+Error          = ./.Gate//main//main5.err
+Log            = ./.Gate//main//main5.log
+Queue
+
+Arguments      = ./.Gate//main//main6.mac
+Output         = ./.Gate//main//main6.out
+Error          = ./.Gate//main//main6.err
+Log            = ./.Gate//main//main6.log
+Queue
+
+Arguments      = ./.Gate//main//main7.mac
+Output         = ./.Gate//main//main7.out
+Error          = ./.Gate//main//main7.err
+Log            = ./.Gate//main//main7.log
+Queue
+
+Arguments      = ./.Gate//main//main8.mac
+Output         = ./.Gate//main//main8.out
+Error          = ./.Gate//main//main8.err
+Log            = ./.Gate//main//main8.log
+Queue
+
+Arguments      = ./.Gate//main//main9.mac
+Output         = ./.Gate//main//main9.out
+Error          = ./.Gate//main//main9.err
+Log            = ./.Gate//main//main9.log
+Queue
+
+Arguments      = ./.Gate//main//main10.mac
+Output         = ./.Gate//main//main10.out
+Error          = ./.Gate//main//main10.err
+Log            = ./.Gate//main//main10.log
+Queue
+
+Arguments      = ./.Gate//main//main11.mac
+Output         = ./.Gate//main//main11.out
+Error          = ./.Gate//main//main11.err
+Log            = ./.Gate//main//main11.log
+Queue
+
+Arguments      = ./.Gate//main//main12.mac
+Output         = ./.Gate//main//main12.out
+Error          = ./.Gate//main//main12.err
+Log            = ./.Gate//main//main12.log
+Queue
+
+Arguments      = ./.Gate//main//main13.mac
+Output         = ./.Gate//main//main13.out
+Error          = ./.Gate//main//main13.err
+Log            = ./.Gate//main//main13.log
+Queue
+
+Arguments      = ./.Gate//main//main14.mac
+Output         = ./.Gate//main//main14.out
+Error          = ./.Gate//main//main14.err
+Log            = ./.Gate//main//main14.log
+Queue
+
+Arguments      = ./.Gate//main//main15.mac
+Output         = ./.Gate//main//main15.out
+Error          = ./.Gate//main//main15.err
+Log            = ./.Gate//main//main15.log
+Queue
+
+Arguments      = ./.Gate//main//main16.mac
+Output         = ./.Gate//main//main16.out
+Error          = ./.Gate//main//main16.err
+Log            = ./.Gate//main//main16.log
+Queue
+
+Arguments      = ./.Gate//main//main17.mac
+Output         = ./.Gate//main//main17.out
+Error          = ./.Gate//main//main17.err
+Log            = ./.Gate//main//main17.log
+Queue
+
+Arguments      = ./.Gate//main//main18.mac
+Output         = ./.Gate//main//main18.out
+Error          = ./.Gate//main//main18.err
+Log            = ./.Gate//main//main18.log
+Queue
+
+Arguments      = ./.Gate//main//main19.mac
+Output         = ./.Gate//main//main19.out
+Error          = ./.Gate//main//main19.err
+Log            = ./.Gate//main//main19.log
+Queue
+
+Arguments      = ./.Gate//main//main20.mac
+Output         = ./.Gate//main//main20.out
+Error          = ./.Gate//main//main20.err
+Log            = ./.Gate//main//main20.log
+Queue
+
+Arguments      = ./.Gate//main//main21.mac
+Output         = ./.Gate//main//main21.out
+Error          = ./.Gate//main//main21.err
+Log            = ./.Gate//main//main21.log
+Queue
+
+Arguments      = ./.Gate//main//main22.mac
+Output         = ./.Gate//main//main22.out
+Error          = ./.Gate//main//main22.err
+Log            = ./.Gate//main//main22.log
+Queue
+
+Arguments      = ./.Gate//main//main23.mac
+Output         = ./.Gate//main//main23.out
+Error          = ./.Gate//main//main23.err
+Log            = ./.Gate//main//main23.log
+Queue
+
+Arguments      = ./.Gate//main//main24.mac
+Output         = ./.Gate//main//main24.out
+Error          = ./.Gate//main//main24.err
+Log            = ./.Gate//main//main24.log
+Queue
+
+Arguments      = ./.Gate//main//main25.mac
+Output         = ./.Gate//main//main25.out
+Error          = ./.Gate//main//main25.err
+Log            = ./.Gate//main//main25.log
+Queue
+
+Arguments      = ./.Gate//main//main26.mac
+Output         = ./.Gate//main//main26.out
+Error          = ./.Gate//main//main26.err
+Log            = ./.Gate//main//main26.log
+Queue
+
+Arguments      = ./.Gate//main//main27.mac
+Output         = ./.Gate//main//main27.out
+Error          = ./.Gate//main//main27.err
+Log            = ./.Gate//main//main27.log
+Queue
+
+Arguments      = ./.Gate//main//main28.mac
+Output         = ./.Gate//main//main28.out
+Error          = ./.Gate//main//main28.err
+Log            = ./.Gate//main//main28.log
+Queue
+
+Arguments      = ./.Gate//main//main29.mac
+Output         = ./.Gate//main//main29.out
+Error          = ./.Gate//main//main29.err
+Log            = ./.Gate//main//main29.log
+Queue
+
+Arguments      = ./.Gate//main//main30.mac
+Output         = ./.Gate//main//main30.out
+Error          = ./.Gate//main//main30.err
+Log            = ./.Gate//main//main30.log
+Queue
+
+Arguments      = ./.Gate//main//main31.mac
+Output         = ./.Gate//main//main31.out
+Error          = ./.Gate//main//main31.err
+Log            = ./.Gate//main//main31.log
+Queue
+
+Arguments      = ./.Gate//main//main32.mac
+Output         = ./.Gate//main//main32.out
+Error          = ./.Gate//main//main32.err
+Log            = ./.Gate//main//main32.log
+Queue
+
+Arguments      = ./.Gate//main//main33.mac
+Output         = ./.Gate//main//main33.out
+Error          = ./.Gate//main//main33.err
+Log            = ./.Gate//main//main33.log
+Queue
+
+Arguments      = ./.Gate//main//main34.mac
+Output         = ./.Gate//main//main34.out
+Error          = ./.Gate//main//main34.err
+Log            = ./.Gate//main//main34.log
+Queue
+
+Arguments      = ./.Gate//main//main35.mac
+Output         = ./.Gate//main//main35.out
+Error          = ./.Gate//main//main35.err
+Log            = ./.Gate//main//main35.log
+Queue
+
+Arguments      = ./.Gate//main//main36.mac
+Output         = ./.Gate//main//main36.out
+Error          = ./.Gate//main//main36.err
+Log            = ./.Gate//main//main36.log
+Queue
+
+Arguments      = ./.Gate//main//main37.mac
+Output         = ./.Gate//main//main37.out
+Error          = ./.Gate//main//main37.err
+Log            = ./.Gate//main//main37.log
+Queue
+
+Arguments      = ./.Gate//main//main38.mac
+Output         = ./.Gate//main//main38.out
+Error          = ./.Gate//main//main38.err
+Log            = ./.Gate//main//main38.log
+Queue
+
+Arguments      = ./.Gate//main//main39.mac
+Output         = ./.Gate//main//main39.out
+Error          = ./.Gate//main//main39.err
+Log            = ./.Gate//main//main39.log
+Queue
+
+Arguments      = ./.Gate//main//main40.mac
+Output         = ./.Gate//main//main40.out
+Error          = ./.Gate//main//main40.err
+Log            = ./.Gate//main//main40.log
+Queue
+
+Arguments      = ./.Gate//main//main41.mac
+Output         = ./.Gate//main//main41.out
+Error          = ./.Gate//main//main41.err
+Log            = ./.Gate//main//main41.log
+Queue
+
+Arguments      = ./.Gate//main//main42.mac
+Output         = ./.Gate//main//main42.out
+Error          = ./.Gate//main//main42.err
+Log            = ./.Gate//main//main42.log
+Queue
+
+Arguments      = ./.Gate//main//main43.mac
+Output         = ./.Gate//main//main43.out
+Error          = ./.Gate//main//main43.err
+Log            = ./.Gate//main//main43.log
+Queue
+
+Arguments      = ./.Gate//main//main44.mac
+Output         = ./.Gate//main//main44.out
+Error          = ./.Gate//main//main44.err
+Log            = ./.Gate//main//main44.log
+Queue
+
+Arguments      = ./.Gate//main//main45.mac
+Output         = ./.Gate//main//main45.out
+Error          = ./.Gate//main//main45.err
+Log            = ./.Gate//main//main45.log
+Queue
+
+Arguments      = ./.Gate//main//main46.mac
+Output         = ./.Gate//main//main46.out
+Error          = ./.Gate//main//main46.err
+Log            = ./.Gate//main//main46.log
+Queue
+
+Arguments      = ./.Gate//main//main47.mac
+Output         = ./.Gate//main//main47.out
+Error          = ./.Gate//main//main47.err
+Log            = ./.Gate//main//main47.log
+Queue
+
+Arguments      = ./.Gate//main//main48.mac
+Output         = ./.Gate//main//main48.out
+Error          = ./.Gate//main//main48.err
+Log            = ./.Gate//main//main48.log
+Queue
+
+Arguments      = ./.Gate//main//main49.mac
+Output         = ./.Gate//main//main49.out
+Error          = ./.Gate//main//main49.err
+Log            = ./.Gate//main//main49.log
+Queue
+
+Arguments      = ./.Gate//main//main50.mac
+Output         = ./.Gate//main//main50.out
+Error          = ./.Gate//main//main50.err
+Log            = ./.Gate//main//main50.log
+Queue
+
