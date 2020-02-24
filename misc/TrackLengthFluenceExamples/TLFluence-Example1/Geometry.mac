@@ -1,0 +1,51 @@
+#--------------------------------------------------------------------------	#
+#                       Define the geometry of the experiment			#
+#--------------------------------------------------------------------------	#
+
+
+
+# Box indicating the position of the source (just vacuum)
+/gate/world/daughters/name                   		sourcePlace	
+/gate/world/daughters/insert                 		box
+/gate/sourcePlace/setMaterial                      	Vacuum
+/gate/sourcePlace/geometry/setXLength             	1.0 cm
+/gate/sourcePlace/geometry/setYLength             	{BeamWidthInCM} cm
+/gate/sourcePlace/geometry/setZLength             	{BeamWidthInCM} cm
+/gate/sourcePlace/placement/setTranslation            	-0.10 0.0 0.0  m
+/gate/sourcePlace/vis/forceWireframe
+/gate/sourcePlace/vis/setColor red
+/gate/sourcePlace/vis/setLineWidth 3
+
+
+/control/multiply 			_DetectorHalfSize {DetectorSizeInCM} 0.5
+/control/add 			    _tmp 0 {DistanceToDetectorInCM}
+/control/add			    _detectorPosition {_tmp} {_DetectorHalfSize}
+
+
+# Box indicating the position of the detector (just vacuum)
+/gate/world/daughters/name                   		detectorPlace	
+/gate/world/daughters/insert                 		box
+/gate/detectorPlace/setMaterial                      	Vacuum
+/gate/detectorPlace/geometry/setXLength             	{DetectorSizeInCM} cm
+/gate/detectorPlace/geometry/setYLength             	{DetectorSizeInCM} cm
+/gate/detectorPlace/geometry/setZLength             	{DetectorSizeInCM} cm
+/gate/detectorPlace/placement/setTranslation         {_detectorPosition} 0.0 0.0  cm
+/gate/detectorPlace/placement/setRotationAxis 		1 1 1
+/gate/detectorPlace/placement/setRotationAngle 		45 deg 
+
+/gate/detectorPlace/vis/forceWireframe
+/gate/detectorPlace/vis/setColor blue
+/gate/detectorPlace/vis/setLineWidth 3
+
+
+/control/unalias _attenuatorHalfThickness
+/control/unalias _DetectorHalfSize
+/control/unalias _tmp
+/control/unalias _detectorPosition
+
+
+
+
+
+
+

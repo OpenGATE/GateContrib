@@ -1,0 +1,9 @@
+#--------------------------------------------------------------------------	#
+#                                       R A N D O M				#
+#--------------------------------------------------------------------------	#
+
+# Can be: JamesRandom Ranlux64 MersenneTwister
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto # Or any set value
+#/gate/random/verbose 0
+
