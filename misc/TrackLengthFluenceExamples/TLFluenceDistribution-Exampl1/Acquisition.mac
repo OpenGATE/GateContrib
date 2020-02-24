@@ -1,0 +1,31 @@
+#--------------------------------------------------------------------------	#
+#                       Define Actors 						#
+#--------------------------------------------------------------------------	#
+
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save              output/stat.txt
+/gate/actor/stat/saveEveryNSeconds 60
+
+# Create the fluence distribution detector
+/gate/actor/addActor TLFluenceDistributionActor Detector
+/gate/actor/Detector/save output/dector_data.root
+/gate/actor/Detector/attachTo ball_detector 
+/gate/actor/Detector/enableThetaHistogram true 
+/gate/actor/Detector/setThetaMin 0 deg 
+/gate/actor/Detector/setThetaMax 180 deg
+/gate/actor/Detector/setNThetaBins 100
+/gate/actor/Detector/enablePhiHistogram true 
+/gate/actor/Detector/setPhiMin -180 deg 
+/gate/actor/Detector/setPhiMax 180 deg
+/gate/actor/Detector/setNPhiBins 100
+/gate/actor/Detector/enableEnergyHistogram true 
+/gate/actor/Detector/setEnergyMin 0 MeV 
+/gate/actor/Detector/setEnergyMax 1.3 MeV
+/gate/actor/Detector/setNEnergyBins 100
+/gate/actor/Detector/setAsciiFile output/detector_data.dat
+
+
+
+
+
+
