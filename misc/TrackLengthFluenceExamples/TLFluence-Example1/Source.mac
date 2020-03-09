@@ -1,0 +1,35 @@
+#--------------------------------------------------------------------------	#
+#                                Define primary events				#
+#--------------------------------------------------------------------------	#
+
+# Create the beam
+/gate/source/addSource mybeam gps
+/gate/source/mybeam/gps/particle gamma			# Photon
+
+# Monoenergetic source
+/gate/source/mybeam/gps/ene/type        Mono		# Monoenergetic
+/gate/source/mybeam/gps/ene/mono        {BeamEnergyInMeV} MeV	
+
+
+/control/multiply 			_halfBeamWidth {BeamWidthInCM} 0.5
+
+# Define the geometry of the source
+/gate/source/mybeam/gps/pos/type Plane		
+/gate/source/mybeam/gps/pos/shape Rectangle				
+/gate/source/mybeam/gps/pos/rot1 0 0 1		# Defines the orientation of the source 
+/gate/source/mybeam/gps/pos/rot2 0 1 0		# Defines the orientation of the source.
+/gate/source/mybeam/gps/pos/halfx {_halfBeamWidth} cm	# Half the x size of the rectangle
+/gate/source/mybeam/gps/pos/halfy {_halfBeamWidth} cm	# Half the y size of the rectangle
+
+# Place the source.
+/gate/source/mybeam/gps/pos/centre -0.10 0. 0. m
+
+
+# The angular distribution of the source
+/gate/source/mybeam/gps/direction 1 0 0		
+
+# Visualize placement of source
+/gate/source/mybeam/visualize 100 red 2
+
+/control/unalias _halfBeamWidth
+

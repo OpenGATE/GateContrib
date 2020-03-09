@@ -1,0 +1,108 @@
+# --------------------oooooOOOOO00000OOOOOooooo---------------- #
+#                                                               #
+# D E F I N E   Y O U R   C O M P L E T E   S I M U L A T I O N #
+#                                                               #
+# --------------------oooooOOOOO00000OOOOOooooo---------------- #
+
+
+### Simple script to test the fluence actor ###
+# Use a parallel beam to N photons hitting a detecor with 1 x 10 x 10 pixels.
+# The fluence at the detector should be: N/4² cm⁻² and the uncertainty should 
+# be sqrt((N/(4/2)²)/10²)/0.2².  
+# Requires python to be installed for the analysis of the results. The following
+# python are needed: SimpleITK, numpy, matplotlib, getopt
+
+# 1/  SETTINGS ALIASES ##########################################
+#	
+/control/alias AttenuatorMaterial Vacuum
+/control/alias AttenuatorThicknessInCM 10
+/control/alias BeamWidthInCM 4.0
+/control/alias BeamEnergyInMeV 0.5
+/control/alias DistanceToDetectorInCM 10.0
+/control/alias NoOfPhotons 1000
+/control/alias DetectorSizeInCM 2.0
+
+
+
+# 1/  V E R B O S I T Y   L E V E L #############################
+#	
+/control/execute Verbose.mac
+
+
+# 2/  V I S U A L I S A T I O N #################################
+#
+/control/execute Visu.mac
+#/vis/disable
+
+# 3/  MATERIALS #################################################
+#
+/gate/geometry/setMaterialDatabase ./Data/GateMaterials.db
+
+
+# 4/  W O R L D #################################################
+#
+/gate/world/geometry/setXLength 30. cm
+/gate/world/geometry/setYLength 30. cm
+/gate/world/geometry/setZLength 30. cm
+/gate/world/setMaterial Vacuum
+
+# 5/  EXPERIMENT G E O M E T R Y ################################ 
+#   
+/control/execute Geometry.mac
+
+
+# 6/  P H Y S I C S   D E S C R I P T I O N #####################
+#	
+/control/execute Physics.mac
+
+
+# 7/  DATA A C Q U I S I T I O N   ##############################
+#
+/control/execute Acquisition.mac
+
+
+# 8/  I N I T I A L I Z E #######################################
+#
+/gate/run/initialize
+/geometry/test/run
+
+
+# 9/  R A N D O M   G E N E R A T O R ###########################
+#
+/control/execute Random.mac
+
+
+# 10/  S O U R C E   D E F I N I T I O N ########################
+#	
+/control/execute Source.mac
+
+
+# 11/  S T A R T   SIMULATION ###################################
+#
+/gate/application/setTotalNumberOfPrimaries {NoOfPhotons}
+/gate/application/start
+
+# Add some axis to force update of volume
+#/vis/scene/add/axes
+
+
+# 11/  POST PROCESSING  #########################################
+#
+# Call Python to process the data
+# 11/  S T A R T   SIMULATION ###################################
+# 100 pixels
+/control/shell python analyse.py {BeamWidthInCM} {NoOfPhotons}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
