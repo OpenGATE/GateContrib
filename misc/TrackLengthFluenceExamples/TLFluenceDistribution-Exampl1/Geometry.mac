@@ -1,0 +1,49 @@
+#--------------------------------------------------------------------------	#
+#                       Define the geometry of the experiment			#
+#--------------------------------------------------------------------------	#
+
+
+# Ball that is the position of the detector
+/gate/world/daughters/name                   	ball_detector	
+/gate/world/daughters/insert                 	sphere
+/gate/ball_detector/setMaterial                      	Air
+/gate/ball_detector/geometry/setRmax		     	{DetectorRadiusInCM} cm
+/gate/ball_detector/geometry/setRmin		     	0 cm
+/gate/ball_detector/geometry/setPhiStart	     	0 deg
+/gate/ball_detector/geometry/setDeltaPhi	     	360 deg
+/gate/ball_detector/geometry/setThetaStart	     	0 deg
+/gate/ball_detector/geometry/setDeltaTheta	     	180 deg
+/gate/ball_detector/placement/setTranslation    	0 0 0 cm
+
+
+
+# Boxes indicating the position of the sources (just vacuum)
+/gate/world/daughters/name                   		source_box1	
+/gate/world/daughters/insert                 		box
+/gate/source_box1/setMaterial                      	Vacuum
+/gate/source_box1/geometry/setXLength             	1.0 cm
+/gate/source_box1/geometry/setYLength             	{BeamWidthInCM} cm
+/gate/source_box1/geometry/setZLength             	{BeamWidthInCM} cm
+/gate/source_box1/placement/setTranslation            	-10 0.0 0.0  cm
+/gate/source_box1/vis/forceWireframe
+/gate/source_box1/vis/setColor red
+/gate/source_box1/vis/setLineWidth 3
+
+
+/gate/world/daughters/name                   		source_box2	
+/gate/world/daughters/insert                 		box
+/gate/source_box2/setMaterial                      	Vacuum
+/gate/source_box2/geometry/setXLength             	{BeamWidthInCM} cm
+/gate/source_box2/geometry/setYLength             	1.0 cm
+/gate/source_box2/geometry/setZLength             	{BeamWidthInCM} cm
+/gate/source_box2/placement/setTranslation            	0.0 -10.0 0.0  cm
+/gate/source_box2/vis/forceWireframe
+/gate/source_box2/vis/setColor red
+/gate/source_box2/vis/setLineWidth 3
+
+
+
+
+
+
+
