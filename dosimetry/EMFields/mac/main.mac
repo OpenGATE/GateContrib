@@ -1,0 +1,163 @@
+#=====================================================
+# GEOMETRY
+#=====================================================
+#define materials
+/gate/geometry/setMaterialDatabase    data/HFMaterials2014.db
+
+# World
+/gate/world/geometry/setXLength 5 m
+/gate/world/geometry/setYLength 5 m
+/gate/world/geometry/setZLength 5 m
+/gate/world/setMaterial Vacuum
+/gate/world/vis/setVisible 0
+
+# waterphantom
+/gate/world/daughters/name              waterphantom
+/gate/world/daughters/insert            box
+/gate/waterphantom/geometry/setXLength      40 cm
+/gate/waterphantom/geometry/setYLength      40 cm
+/gate/waterphantom/geometry/setZLength      40 cm
+/gate/waterphantom/placement/setTranslation 0.0 0.0 20 cm
+/gate/waterphantom/setMaterial Vacuum
+/gate/waterphantom/vis/setVisible 1
+/gate/waterphantom/vis/setColor blue
+
+/gate/geometry/setIonisationPotential Water 75 eV
+/gate/geometry/setIonisationPotential Air 85.7 eV
+
+/gate/geometry/setMagTabulateField3D    data/GateMag3Dcm.TABLE
+# /gate/geometry/setElectTabulateField3D    data/ElectricFieldFC-600V.TABLE
+# /gate/geometry/setMagField  1.5  0  0  T
+# /gate/geometry/setElectField  100000. 0. 0. keV  
+
+#=====================================================
+# PHYSICS
+#=====================================================
+
+/gate/physics/addPhysicsList QGSP_BERT_EMV
+
+# world
+/gate/physics/Gamma/SetCutInRegion      world 1 mm
+/gate/physics/Electron/SetCutInRegion   world 1 mm
+/gate/physics/Positron/SetCutInRegion   world 1 mm
+#Tracking cut
+/gate/physics/SetMinRemainingRangeInRegion world 1 mm
+/gate/physics/ActivateSpecialCuts e-
+#stepLimiter
+/gate/physics/SetMaxStepSizeInRegion world 1 mm
+/gate/physics/ActivateStepLimiter proton
+/gate/physics/ActivateStepLimiter deuteron
+/gate/physics/ActivateStepLimiter triton
+/gate/physics/ActivateStepLimiter alpha
+/gate/physics/ActivateStepLimiter GenericIon
+
+# water
+/gate/physics/Gamma/SetCutInRegion      waterphantom 0.1 mm
+/gate/physics/Electron/SetCutInRegion   waterphantom 0.1 mm
+/gate/physics/Positron/SetCutInRegion   waterphantom 0.1 mm
+/gate/physics/displayCuts
+#Tracking cut
+/gate/physics/SetMinRemainingRangeInRegion waterphantom 0.1 mm
+/gate/physics/ActivateSpecialCuts e-
+#stepLimiter
+/gate/physics/SetMaxStepSizeInRegion waterphantom 0.1 mm
+/gate/physics/ActivateStepLimiter proton
+/gate/physics/ActivateStepLimiter deuteron
+/gate/physics/ActivateStepLimiter triton
+/gate/physics/ActivateStepLimiter alpha
+/gate/physics/ActivateStepLimiter GenericIon
+
+
+#=====================================================
+# MATRIX FOR DOSE MAP OUTPUT
+#=====================================================
+
+# =====PDD ========
+/gate/actor/addActor                         DoseActor   dose-PDD
+/gate/actor/dose-PDD/attachTo                waterphantom
+/gate/actor/dose-PDD/stepHitType             random
+/gate/actor/dose-PDD/setPosition             0 0 0 cm
+/gate/actor/dose-PDD/setVoxelSize  	     400 400 0.1 mm
+/gate/actor/dose-PDD/enableEdep              true
+/gate/actor/dose-PDD/enableUncertaintyEdep   true
+/gate/actor/dose-PDD/enableDose              true
+/gate/actor/dose-PDD/enableUncertaintyDose   true
+/gate/actor/dose-PDD/save                    output/dose-PDD.root
+/gate/actor/dose-PDD/saveEveryNSeconds       60
+
+# ======DOSE MAP BEAM =========
+/gate/actor/addActor                         DoseActor   dose-mapX
+/gate/actor/dose-mapX/attachTo                waterphantom
+/gate/actor/dose-mapX/stepHitType             random
+/gate/actor/dose-mapX/setPosition             0 0 0 cm
+/gate/actor/dose-mapX/setVoxelSize            1 400 1 mm
+/gate/actor/dose-mapX/enableEdep              true
+/gate/actor/dose-mapX/enableUncertaintyEdep   true
+/gate/actor/dose-mapX/enableDose              true
+/gate/actor/dose-mapX/enableUncertaintyDose   true
+/gate/actor/dose-mapX/save                    output/dose-mapX.root
+/gate/actor/dose-mapX/saveEveryNSeconds       60
+
+# ======DOSE MAP BEAM =========
+/gate/actor/addActor                         DoseActor   dose-mapY
+/gate/actor/dose-mapY/attachTo                waterphantom
+/gate/actor/dose-mapY/stepHitType             random
+/gate/actor/dose-mapY/setPosition             0 0 0 cm
+/gate/actor/dose-mapY/setVoxelSize            400 1 1 mm
+/gate/actor/dose-mapY/enableEdep              true
+/gate/actor/dose-mapY/enableUncertaintyEdep   true
+/gate/actor/dose-mapY/enableDose              true
+/gate/actor/dose-mapY/enableUncertaintyDose   true
+/gate/actor/dose-mapY/save                    output/dose-mapY.root
+/gate/actor/dose-mapY/saveEveryNSeconds       60
+
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save              output/statistics.txt
+/gate/actor/stat/saveEveryNSeconds 60
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+#=====================================================
+# BEAM
+#=====================================================
+
+/gate/source/addSource mybeam gps
+
+/gate/source/mybeam/gps/particle proton
+/gate/source/mybeam/gps/pos/type Beam
+/gate/source/mybeam/gps/pos/rot1 0 1 0
+/gate/source/mybeam/gps/pos/rot2 1 0 0
+/gate/source/mybeam/gps/pos/shape Circle
+/gate/source/mybeam/gps/pos/centre 0 0 0 mm
+/gate/source/mybeam/gps/pos/sigma_x 3 mm
+/gate/source/mybeam/gps/pos/sigma_y 3 mm
+/gate/source/mybeam/gps/ene/mono 200 MeV
+/gate/source/mybeam/gps/ene/type Gauss
+/gate/source/mybeam/gps/ene/sigma 0.0 MeV
+/gate/source/mybeam/gps/direction 0 0 1
+
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+
+/control/execute mac/visu.mac
+
+#=====================================================
+# START SIMULATION
+#=====================================================
+
+#random generator
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+
+#disable global GATE output
+/gate/application/noGlobalOutput
+/gate/application/setTotalNumberOfPrimaries 1000
+/gate/application/start
+
+exit

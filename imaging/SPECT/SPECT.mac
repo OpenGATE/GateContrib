@@ -17,7 +17,7 @@
 
 # V I S U A L I S A T I O N
 #####
-#/vis/disable
+##/vis/disable
 /control/execute vis.mac
 
 # M A N D A T O R Y

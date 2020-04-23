@@ -2,7 +2,7 @@
 # Set the geometry in auto-update mode, so that we see the geometry being build
 #/control/execute visu.mac
 
-/vis/disable
+#/vis/disable
 
 
 /gate/geometry/setMaterialDatabase ../../GateMaterials.db

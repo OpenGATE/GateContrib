@@ -28,7 +28,7 @@ The scatter window (120 +/- 5% keV) can be activated by commenting the primary w
 
 To visualise:
 
-1. Comment `/vis/disable` (add # at the beginning of the line)
+1. Comment `#/vis/disable` (add # at the beginning of the line)
 2. Uncomment `/control/execute mac/visualisation.mac` (remove the # at the beginning of the line)
 3. Consider a very low number of particle (10-50 max)
 4. Optional: the collimator make the visualisation very slow. You may disabled it by commenting the line `/control/execute mac/collimatorSPECT.mac`

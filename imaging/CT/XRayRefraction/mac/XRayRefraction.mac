@@ -9,7 +9,7 @@
 # VISUALISATION
 #=====================================================
 #/control/execute mac/visu.mac
-/vis/disable
+#/vis/disable
 
 #=====================================================
 # GEOMETRY

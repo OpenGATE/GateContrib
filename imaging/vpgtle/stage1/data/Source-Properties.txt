@@ -57,3 +57,18 @@
 0
 # polynomial parameters
 0.005
+#
+# Monitor unit calibration 
+# fits the old hardcoded "GateSourceTPSPencilBeam::ConvertMuToProtons" function (as in Gate release 7.2)
+# to 0.2% in the range of 40-300 MeV.
+9
+-5.984490922947305e-13
+1.0784400314569827e-09
+-7.598937570035222e-07
+0.00027937202589281356
+-0.059977540330568506
+7.991201233899195
+-692.4982726864837
+39470.879309031465
+-757267.7950206206
+38305849.80777806

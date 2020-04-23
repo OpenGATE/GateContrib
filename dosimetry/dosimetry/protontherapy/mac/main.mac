@@ -118,7 +118,7 @@
 /gate/application/noGlobalOutput
 /gate/run/enableGlobalOutput false
 
-/vis/disable
+#/vis/disable
 
 /gate/random/setEngineName MersenneTwister
 /gate/random/setEngineSeed auto

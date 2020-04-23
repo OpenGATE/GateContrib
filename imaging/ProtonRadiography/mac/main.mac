@@ -57,7 +57,7 @@
 
 # Verbose and visualisation
 /control/execute mac/verbose.mac
-/vis/disable
+#/vis/disable
 #/control/execute mac/visu.mac
 
 /gate/run/initialize

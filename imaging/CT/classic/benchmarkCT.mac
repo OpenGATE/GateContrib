@@ -2,7 +2,7 @@
 # VISUALIZATION PARAMETERS #
 ############################
 #/control/execute visu.mac
-/vis/disable
+#/vis/disable
 
 #########################
 # SET MATERIAL DATABASE #

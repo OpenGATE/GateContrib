@@ -1,0 +1,33 @@
+#--------------------------------------------------------------------------	#
+#                       Define Actors that tap in and read off info		#
+#--------------------------------------------------------------------------	#
+
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save              output/stat.txt
+/gate/actor/stat/saveEveryNSeconds 60
+
+
+# A fluence actor
+/gate/actor/addActor TLFluenceActor Detector
+/gate/actor/Detector/save output/detector.mhd
+/gate/actor/Detector/attachTo detectorPlace 
+/gate/actor/Detector/setResolution 1 10 10
+
+# Enable properties - Fluence
+/gate/actor/Detector/enableFluence true
+/gate/actor/Detector/enableFluenceUncertainty true
+/gate/actor/Detector/enableSquaredFluence true
+
+# Enable properties - EnergyFluence (Not used in this example)
+#/gate/actor/Detector/enableEnergyFluence true
+#/gate/actor/Detector/enableEnergyFluenceUncertainty 
+#/gate/actor/Detector/enableSquaredEnergyFluence true
+
+
+# Add photon filter - As with all actors. Filters can be used. (No effect on the result in this example.)
+/gate/actor/Detector/addFilter particleFilter
+/gate/actor/Detector/particleFilter/addParticle gamma
+
+
+
+

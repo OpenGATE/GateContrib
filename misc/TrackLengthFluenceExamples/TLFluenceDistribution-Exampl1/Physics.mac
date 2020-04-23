@@ -1,0 +1,27 @@
+#--------------------------------------------------------------------------	#
+#                       Define the Physics of the experiment			#
+#--------------------------------------------------------------------------	#
+
+/gate/physics/addPhysicsList emstandard_opt3
+
+
+
+#=========
+# Options
+#=========
+
+/gate/physics/setEMin 0.1 keV
+/gate/physics/setEMax 10 GeV
+/gate/physics/setDEDXBinning 350
+/gate/physics/setLambdaBinning 350
+
+
+#=====================================
+#    Set cuts on per volume bases
+#=====================================
+
+/gate/physics/Gamma/SetCutInRegion      world 1 mm
+/gate/physics/Electron/SetCutInRegion   world 1 mm
+/gate/physics/Positron/SetCutInRegion   world 1 mm
+
+/gate/physics/displayCuts

@@ -83,7 +83,7 @@
 # VISUALISATION
 #=====================================================
 
-#/vis/disable
+##/vis/disable
 #/control/execute  visu.mac
 
 #=====================================================
@@ -97,6 +97,6 @@
 #=====================================================
 
 /gate/application/noGlobalOutput
-/vis/disable
+#/vis/disable
 /gate/application/setTotalNumberOfPrimaries 40000000
 /gate/application/start
