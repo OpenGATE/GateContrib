@@ -9,7 +9,7 @@
 # VISUALISATION
 #=================================================================
 
-/vis/disable
+#/vis/disable
 /vis/open VRML2FILE
 /vis/viewer/reset
 /vis/drawVolume

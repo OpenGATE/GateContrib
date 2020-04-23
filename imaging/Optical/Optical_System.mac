@@ -29,7 +29,7 @@
 # VISUALISATION and VERBOSE
 #=====================================================
 
-/vis/disable
+#/vis/disable
 #/control/execute                    ./macro/Visualisation.mac
 /control/execute                    ./macro/Verbose.mac
 

@@ -101,7 +101,7 @@
 # START BEAM
 #===============================================================================
 
-/vis/disable
+##/vis/disable
 # /control/execute mac/visu.mac
 
 /gate/application/setTotalNumberOfPrimaries 100

@@ -1,4 +1,4 @@
-/vis/disable
+#/vis/disable
 #/control/execute visu.mac
 
 /gate/geometry/setMaterialDatabase ../../GateMaterials.db

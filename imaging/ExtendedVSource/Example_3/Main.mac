@@ -1,4 +1,4 @@
-/vis/disable
+#/vis/disable
 /gate/geometry/setMaterialDatabase ../CommonMacros/GateMaterials.db
 /control/execute ../CommonMacros/Geometry.mac
 /control/execute ../CommonMacros/PhysicsEMLivermorePolar.mac

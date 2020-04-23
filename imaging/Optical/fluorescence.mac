@@ -2,7 +2,7 @@
 #####            F L U O R E S C E N C E  -  S K I N              #####
 #######################################################################
 
-/vis/disable 
+#/vis/disable 
 /gate/geometry/setMaterialDatabase    ./GateMaterials.db 
 /gate/world/geometry/setXLength       200. cm 
 /gate/world/geometry/setYLength       200. cm 
