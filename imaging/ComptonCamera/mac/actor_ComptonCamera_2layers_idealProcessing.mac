@@ -18,7 +18,8 @@
 /gate/actor/CC_digi_BB/scattererSDVolume                    scatterer
 /gate/actor/CC_digi_BB/numberOfTotScatterers                    2
 
-
+/gate/actor/CC_digi_BB/enableEnergyFin 1
+/gate/actor/CC_digi_BB/enableEnergyIni 1
 
 /gate/digitizer/layers/insert adderComptPhotIdeal
 /gate/digitizer/layers/adderComptPhotIdeal/rejectEvtOtherProcesses 1
