@@ -1,4 +1,4 @@
-/control/alias time 1
+/control/alias time 100
 
 /control/execute                   mac/verbosity.mac
 # ============================
