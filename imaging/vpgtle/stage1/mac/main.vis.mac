@@ -2,7 +2,8 @@
 #Gate --qt
 #==> in the GUI /control/execute main.mac
 
-/vis/open                             OGLSQt
+/vis/open                              OGLIQt
+#/vis/open                             OGLSQt
 #/vis/open                             OGLSX
 /vis/drawVolume
 /vis/viewer/flush
