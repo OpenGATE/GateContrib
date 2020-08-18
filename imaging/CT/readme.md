@@ -13,7 +13,7 @@ There are 2 runs. Each run performs during 90 seconds. The phantom turns around 
 
 Compile the C++ file (in the classic directory) with the following command:
 
-`g++ -O3 `root-config -cflags -glibs` AnalyzeCT.cpp -o AnalyzeCT`
+```g++ -O3 `root-config --cflags` AnalyzeCT.cpp `root-config --glibs` -o AnalyzeCT```
 
 **Results**
 
