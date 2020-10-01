@@ -1,5 +1,6 @@
 **GateContrib**
 
+improve the docs
 **Warning** - This is a *user-oriented*, collaborative repository of Gate examples. The [OpenGate collaboration](http://www.opengatecollaboration.org/) is not responsible of any contents.
 
 **PLEASE INSTALL GIT-LFS FIRST: this is required !**
