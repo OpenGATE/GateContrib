@@ -68,6 +68,7 @@
 
 /gate/physics/displayCuts
 
+/gate/run/initialize
 #=====================================================
 # BEAM
 #=====================================================
@@ -86,7 +87,6 @@
 /gate/random/setEngineName MersenneTwister
 /gate/random/setEngineSeed 10
 /gate/run/enableGlobalOutput true
-/gate/run/initialize
 
 # PARTICLE
 /gate/application/setTotalNumberOfPrimaries 100000
