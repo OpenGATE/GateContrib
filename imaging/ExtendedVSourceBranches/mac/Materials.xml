@@ -1,0 +1,509 @@
+<?xml version="1.0"?>
+<materials>
+  <material name="LSO">
+    <propertiestable>
+      <property name="SCINTILLATIONYIELD" value="26000" unit="1/MeV"/>
+      <property name="RESOLUTIONSCALE" value="4.41"/>
+      <property name="FASTTIMECONSTANT" value="40" unit="ns"/>
+      <property name="YIELDRATIO" value="1"/>
+      <propertyvector name="FASTCOMPONENT" energyunit="eV">
+	<ve energy="2.95167" value="1"/>
+      </propertyvector>
+      <propertyvector name="ABSLENGTH" unit="m" energyunit="eV">
+	<ve energy="1.84" value="50"/>
+	<ve energy="4.08" value="50"/>
+      </propertyvector>
+      <propertyvector name="RINDEX" energyunit="eV">
+	<ve energy="1.84" value="1.82"/>
+	<ve energy="4.08" value="1.82"/>
+      </propertyvector>
+    </propertiestable>
+  </material>
+
+  <material name="Air">  
+    <propertiestable>
+      <propertyvector name="ABSLENGTH" unit="m" energyunit="eV">
+	<ve energy="1.84" value="50"/>
+	<ve energy="4.08" value="50"/>
+      </propertyvector>
+      <propertyvector name="RINDEX" energyunit="eV">
+	<ve energy="1.84" value="1.000277"/>
+	<ve energy="4.08" value="1.000277"/>
+      </propertyvector>
+    </propertiestable>
+  </material>
+
+  <material name="Glass">
+    <propertiestable>
+      <propertyvector name="RINDEX" energyunit="eV">
+        <ve energy="1.84" value="1.4"/>
+        <ve energy="4.08" value="1.4"/>
+      </propertyvector>
+    </propertiestable>
+  </material>
+
+
+  <material name="Epoxy">
+    <propertiestable>
+      <propertyvector name="ABSLENGTH" unit="m" energyunit="eV">
+	<ve energy="1.84" value="50"/>
+	<ve energy="4.08" value="50"/>
+      </propertyvector>
+      <propertyvector name="RINDEX" energyunit="eV">
+	<ve energy="1.84" value="1.5"/>
+	<ve energy="4.08" value="1.5"/>
+      </propertyvector>
+    </propertiestable>
+  </material>
+
+  <material name="Biomimic">
+    <propertiestable>
+     <propertyvector name="ABSLENGTH" unit="cm" energyunit="eV">
+	<ve energy="1.97" value="0.926"/>
+	<ve energy="2.34" value="0.847"/>
+      </propertyvector>
+      <propertyvector name="RINDEX" energyunit="eV">
+	<ve energy="1.97" value="1.521"/>
+	<ve energy="2.34" value="1.521"/>
+      </propertyvector>
+   <property name="MIEHG_FORWARD" value="0.62" />
+      <property name="MIEHG_BACKWARD" value="0.62" />
+      <property name="MIEHG_FORWARD_RATIO" value="1.0" />
+      <propertyvector name="MIEHG" unit="cm" energyunit="eV">
+	<ve energy="1.97" value="0.04"/>
+	<ve energy="2.34" value="0.043"/>
+      </propertyvector>
+    </propertiestable>
+  </material>
+
+  <material name="EJ230">
+   <propertiestable>
+     <property name="SCINTILLATIONYIELD" value="9700" unit="1/MeV"/>
+      <propertyvector name="RINDEX" energyunit="eV">
+	<ve energy="2.47968374" value="1.58"/>
+	<ve energy="3.54240534286" value="1.58"/>
+      </propertyvector>
+      <propertyvector name="ABSLENGTH" unit="cm" energyunit="eV">
+	<ve energy="2.431063" value="231.940768"/>
+	<ve energy="2.435839" value="230.899625"/>
+	<ve energy="2.440634" value="230.875789"/>
+	<ve energy="2.445448" value="230.875789"/>
+	<ve energy="2.450280" value="230.790790"/>
+	<ve energy="2.455133" value="229.746557"/>
+	<ve energy="2.460004" value="228.711730"/>
+	<ve energy="2.464894" value="227.683578"/>
+	<ve energy="2.469805" value="226.653256"/>
+	<ve energy="2.474734" value="225.632217"/>
+	<ve energy="2.479684" value="224.912846"/>
+	<ve energy="2.484653" value="224.912846"/>
+	<ve energy="2.489642" value="224.912846"/>
+	<ve energy="2.494652" value="224.014995"/>
+	<ve energy="2.499681" value="221.768049"/>
+	<ve energy="2.504731" value="219.565731"/>
+	<ve energy="2.509801" value="219.104447"/>
+	<ve energy="2.514892" value="219.104447"/>
+	<ve energy="2.520004" value="219.104447"/>
+	<ve energy="2.525136" value="218.219362"/>
+	<ve energy="2.530290" value="217.235577"/>
+	<ve energy="2.535464" value="216.260622"/>
+	<ve energy="2.540660" value="216.256740"/>
+	<ve energy="2.545877" value="216.256740"/>
+	<ve energy="2.551115" value="216.036947"/>
+	<ve energy="2.556375" value="213.863343"/>
+	<ve energy="2.561657" value="211.733042"/>
+	<ve energy="2.566961" value="210.199087"/>
+	<ve energy="2.572286" value="209.249844"/>
+	<ve energy="2.577634" value="208.309136"/>
+	<ve energy="2.583004" value="207.369254"/>
+	<ve energy="2.588397" value="206.432756"/>
+	<ve energy="2.593812" value="205.504679"/>
+	<ve energy="2.599249" value="204.504147"/>
+	<ve energy="2.604710" value="203.479538"/>
+	<ve energy="2.610194" value="202.473783"/>
+	<ve energy="2.615700" value="201.557575"/>
+	<ve energy="2.621230" value="200.649621"/>
+	<ve energy="2.626784" value="199.747457"/>
+	<ve energy="2.632361" value="198.844097"/>
+	<ve energy="2.637962" value="197.948871"/>
+	<ve energy="2.643586" value="197.058125"/>
+	<ve energy="2.649235" value="196.167355"/>
+	<ve energy="2.654908" value="195.284602"/>
+	<ve energy="2.660605" value="193.959598"/>
+	<ve energy="2.666327" value="192.014319"/>
+	<ve energy="2.672073" value="190.107673"/>
+	<ve energy="2.677844" value="189.046287"/>
+	<ve energy="2.683641" value="188.193708"/>
+	<ve energy="2.689462" value="187.348786"/>
+	<ve energy="2.695309" value="186.501165"/>
+	<ve energy="2.701181" value="185.660138"/>
+	<ve energy="2.707078" value="184.826534"/>
+	<ve energy="2.713002" value="183.989882"/>
+	<ve energy="2.718952" value="183.160771"/>
+	<ve energy="2.724927" value="182.219005"/>
+	<ve energy="2.730929" value="180.386109"/>
+	<ve energy="2.736958" value="178.589720"/>
+	<ve energy="2.743013" value="177.311272"/>
+	<ve energy="2.749095" value="176.510467"/>
+	<ve energy="2.755204" value="175.716864"/>
+	<ve energy="2.761341" value="174.924093"/>
+	<ve energy="2.767504" value="174.134537"/>
+	<ve energy="2.773696" value="173.352076"/>
+	<ve energy="2.779915" value="172.002093"/>
+	<ve energy="2.786162" value="170.451826"/>
+	<ve energy="2.792437" value="168.929254"/>
+	<ve energy="2.798740" value="167.963358"/>
+	<ve energy="2.805072" value="167.122286"/>
+	<ve energy="2.811433" value="166.140249"/>
+	<ve energy="2.817823" value="164.636134"/>
+	<ve energy="2.824241" value="163.159010"/>
+	<ve energy="2.830689" value="161.643382"/>
+	<ve energy="2.837167" value="160.020701"/>
+	<ve energy="2.843674" value="158.430275"/>
+	<ve energy="2.850211" value="157.469814"/>
+	<ve energy="2.856779" value="156.759113"/>
+	<ve energy="2.863376" value="156.054798"/>
+	<ve energy="2.870004" value="154.767663"/>
+	<ve energy="2.876663" value="153.374105"/>
+	<ve energy="2.883353" value="152.005418"/>
+	<ve energy="2.890074" value="150.487957"/>
+	<ve energy="2.896827" value="148.986364"/>
+	<ve energy="2.903611" value="147.549716"/>
+	<ve energy="2.910427" value="146.215122"/>
+	<ve energy="2.917275" value="144.904456"/>
+	<ve energy="2.924155" value="143.541457"/>
+	<ve energy="2.931068" value="142.101916"/>
+	<ve energy="2.938014" value="140.690963"/>
+	<ve energy="2.944993" value="139.393003"/>
+	<ve energy="2.952005" value="138.137787"/>
+	<ve energy="2.959050" value="136.904975"/>
+	<ve energy="2.966129" value="135.664764"/>
+	<ve energy="2.973242" value="134.444293"/>
+	<ve energy="2.980389" value="133.225850"/>
+	<ve energy="2.987571" value="131.211140"/>
+	<ve energy="2.994787" value="129.256458"/>
+	<ve energy="3.002039" value="127.602216"/>
+	<ve energy="3.009325" value="126.322569"/>
+	<ve energy="3.016647" value="125.068332"/>
+	<ve energy="3.024005" value="123.450186"/>
+	<ve energy="3.031398" value="121.785462"/>
+	<ve energy="3.038828" value="120.165037"/>
+	<ve energy="3.046295" value="117.807107"/>
+	<ve energy="3.053798" value="115.470730"/>
+	<ve energy="3.061338" value="113.099353"/>
+	<ve energy="3.068916" value="110.554112"/>
+	<ve energy="3.076531" value="108.120909"/>
+	<ve energy="3.084184" value="103.255580"/>
+	<ve energy="3.091875" value="98.790982"/>
+	<ve energy="3.099605" value="92.944353"/>
+	<ve energy="3.107373" value="87.571852"/>
+	<ve energy="3.115181" value="82.414482"/>
+	<ve energy="3.123028" value="77.131394"/>
+	<ve energy="3.130914" value="71.868649"/>
+	<ve energy="3.138840" value="67.586868"/>
+	<ve energy="3.146807" value="63.235198"/>
+	<ve energy="3.154814" value="58.330516"/>
+	<ve energy="3.162862" value="55.084296"/>
+	<ve energy="3.170951" value="52.300567"/>
+	<ve energy="3.179082" value="49.617223"/>
+	<ve energy="3.187254" value="47.234004"/>
+	<ve energy="3.195469" value="45.411437"/>
+	<ve energy="3.203726" value="43.648881"/>
+	<ve energy="3.212026" value="41.053426"/>
+	<ve energy="3.220369" value="38.670333"/>
+	<ve energy="3.228755" value="36.405055"/>
+	<ve energy="3.237185" value="34.021099"/>
+	<ve energy="3.245659" value="31.732078"/>
+	<ve energy="3.254178" value="29.853871"/>
+	<ve energy="3.262742" value="27.863747"/>
+	<ve energy="3.271351" value="25.717916"/>
+	<ve energy="3.280005" value="23.235116"/>
+	<ve energy="3.288705" value="21.686832"/>
+	<ve energy="3.297452" value="20.442602"/>
+	<ve energy="3.306245" value="19.226791"/>
+	<ve energy="3.315085" value="18.110917"/>
+	<ve energy="3.323973" value="17.049721"/>
+	<ve energy="3.332908" value="16.124590"/>
+	<ve energy="3.341892" value="15.306480"/>
+	<ve energy="3.350924" value="14.603489"/>
+	<ve energy="3.360005" value="13.968125"/>
+	<ve energy="3.369136" value="13.470367"/>
+	<ve energy="3.378316" value="13.024081"/>
+	<ve energy="3.387546" value="12.648329"/>
+	<ve energy="3.396827" value="12.332555"/>
+	<ve energy="3.406159" value="12.032165"/>
+	<ve energy="3.415542" value="11.695817"/>
+	<ve energy="3.424978" value="11.372504"/>
+	<ve energy="3.434465" value="11.016542"/>
+	<ve energy="3.444005" value="10.648789"/>
+	<ve energy="3.453599" value="10.283907"/>
+	<ve energy="3.463246" value="9.889715"/>
+	<ve energy="3.472947" value="9.515238"/>
+	<ve energy="3.482702" value="9.140443"/>
+	<ve energy="3.492512" value="8.794055"/>
+	<ve energy="3.502378" value="8.538532"/>
+	<ve energy="3.512300" value="8.302647"/>
+	<ve energy="3.522278" value="7.984322"/>
+	<ve energy="3.532313" value="7.633232"/>
+	<ve energy="3.542406" value="7.403808"/>
+      </propertyvector>
+      <property name="YIELDRATIO" value="1.0"/>
+      <property name="FASTTIMECONSTANT" value="1.5" unit="ns"/>
+      <propertyvector name="FASTCOMPONENT" energyunit="eV">
+	<ve energy="2.25425804599" value="0.0"/>
+	<ve energy="2.25836416265" value="0.0"/>
+	<ve energy="2.26248526514" value="0.0"/>
+	<ve energy="2.26662143564" value="0.0"/>
+	<ve energy="2.27077275695" value="0.0"/>
+	<ve energy="2.27493931247" value="0.0"/>
+	<ve energy="2.27912118621" value="0.0"/>
+	<ve energy="2.28331846279" value="0.0"/>
+	<ve energy="2.28753122748" value="0.0"/>
+	<ve energy="2.29175956617" value="0.0"/>
+	<ve energy="2.29600356536" value="0.0"/>
+	<ve energy="2.30026331224" value="0.0"/>
+	<ve energy="2.3045388946" value="0.0"/>
+	<ve energy="2.30883040092" value="0.0"/>
+	<ve energy="2.31313792033" value="0.0"/>
+	<ve energy="2.31746154261" value="0.0"/>
+	<ve energy="2.32180135823" value="0.0"/>
+	<ve energy="2.32615745834" value="0.0"/>
+	<ve energy="2.33052993477" value="0.0"/>
+	<ve energy="2.33491888003" value="0.0"/>
+	<ve energy="2.33932438735" value="0.0"/>
+	<ve energy="2.34374655065" value="0.0"/>
+	<ve energy="2.34818546458" value="0.0"/>
+	<ve energy="2.35264122447" value="0.0"/>
+	<ve energy="2.35711392642" value="0.0"/>
+	<ve energy="2.36160366723" value="0.0"/>
+	<ve energy="2.36611054446" value="0.0"/>
+	<ve energy="2.3706346564" value="0.0"/>
+	<ve energy="2.3751761021" value="0.0"/>
+	<ve energy="2.37973498137" value="0.0"/>
+	<ve energy="2.3843113948" value="0.0"/>
+	<ve energy="2.38890544373" value="0.0"/>
+	<ve energy="2.3935172303" value="0.0"/>
+	<ve energy="2.39814685744" value="0.0"/>
+	<ve energy="2.40279442887" value="0.0"/>
+	<ve energy="2.40746004912" value="0.0"/>
+	<ve energy="2.41214382353" value="0.0"/>
+	<ve energy="2.41684585828" value="0.0"/>
+	<ve energy="2.42156626034" value="0.0"/>
+	<ve energy="2.42630513756" value="0.0"/>
+	<ve energy="2.43106259862" value="0.0"/>
+	<ve energy="2.43583875304" value="0.0"/>
+	<ve energy="2.44063371121" value="0.0"/>
+	<ve energy="2.44544758441" value="2.08816896387e-05"/>
+	<ve energy="2.45028048477" value="4.42727896936e-05"/>
+	<ve energy="2.45513252534" value="6.76638897486e-05"/>
+	<ve energy="2.46000382003" value="9.10549898035e-05"/>
+	<ve energy="2.46489448369" value="0.000114446089858"/>
+	<ve energy="2.46980463206" value="0.000137837189913"/>
+	<ve energy="2.47473438183" value="0.000161228289968"/>
+	<ve energy="2.47968385059" value="0.000184619390023"/>
+	<ve energy="2.48465315691" value="0.000208010490078"/>
+	<ve energy="2.48964242027" value="0.000231401590133"/>
+	<ve energy="2.49465176116" value="0.000254792690188"/>
+	<ve energy="2.499681301" value="0.000278183790243"/>
+	<ve energy="2.50473116221" value="0.000301574890298"/>
+	<ve energy="2.50980146821" value="0.000324965990353"/>
+	<ve energy="2.5148923434" value="0.000348357090408"/>
+	<ve energy="2.5200039132" value="0.000371748190463"/>
+	<ve energy="2.52513630406" value="0.000395139290518"/>
+	<ve energy="2.53028964346" value="0.000418530390573"/>
+	<ve energy="2.53546405991" value="0.000441921490628"/>
+	<ve energy="2.54065968298" value="0.000465312590683"/>
+	<ve energy="2.54587664332" value="0.000488703690738"/>
+	<ve energy="2.55111507262" value="0.000512094761639"/>
+	<ve energy="2.5563751037" value="0.000535485226883"/>
+	<ve energy="2.56165687045" value="0.00055887555757"/>
+	<ve energy="2.56696050786" value="0.000582264752404"/>
+	<ve energy="2.57228615207" value="0.000605647249627"/>
+	<ve energy="2.57763394032" value="0.00062902974685"/>
+	<ve energy="2.58300401103" value="0.000653565147216"/>
+	<ve energy="2.58839650375" value="0.000679653989844"/>
+	<ve energy="2.5938115592" value="0.000705837452328"/>
+	<ve energy="2.59924931928" value="0.00075295503327"/>
+	<ve energy="2.60470992709" value="0.00080059832301"/>
+	<ve energy="2.61019352694" value="0.000835203399734"/>
+	<ve energy="2.61570026434" value="0.000834697618737"/>
+	<ve energy="2.62123028604" value="0.000864387462808"/>
+	<ve energy="2.62678374003" value="0.000912030752548"/>
+	<ve energy="2.63236077557" value="0.000959674042288"/>
+	<ve energy="2.63796154318" value="0.000985223587225"/>
+	<ve energy="2.64358619466" value="0.00100861468728"/>
+	<ve energy="2.64923488311" value="0.00103869991456"/>
+	<ve energy="2.65490776295" value="0.00109076393707"/>
+	<ve energy="2.6606049899" value="0.00114380051045"/>
+	<ve energy="2.66632672107" value="0.00119281369424"/>
+	<ve energy="2.67207311486" value="0.00124045698398"/>
+	<ve energy="2.67784433109" value="0.00128810019356"/>
+	<ve energy="2.68364053094" value="0.00133574277361"/>
+	<ve energy="2.689461877" value="0.00138338529426"/>
+	<ve energy="2.69530853325" value="0.00144153355073"/>
+	<ve energy="2.70118066513" value="0.00152090188378"/>
+	<ve energy="2.70707843951" value="0.0016008315208"/>
+	<ve energy="2.71300202472" value="0.00170389877173"/>
+	<ve energy="2.71895159056" value="0.00181076393136"/>
+	<ve energy="2.72492730834" value="0.00190329504926"/>
+	<ve energy="2.73092935087" value="0.00197519913152"/>
+	<ve energy="2.73695789249" value="0.00204710321377"/>
+	<ve energy="2.74301310906" value="0.00214313643973"/>
+	<ve energy="2.74909517804" value="0.00224995968797"/>
+	<ve energy="2.75520427843" value="0.00236037153487"/>
+	<ve energy="2.76134059086" value="0.00248034067616"/>
+	<ve energy="2.76750429754" value="0.00260885323835"/>
+	<ve energy="2.77369558232" value="0.00274265562833"/>
+	<ve energy="2.77991463071" value="0.00287999129899"/>
+	<ve energy="2.78616162988" value="0.00302959835306"/>
+	<ve energy="2.79243676868" value="0.00318357935567"/>
+	<ve energy="2.79874023769" value="0.00336024552931"/>
+	<ve energy="2.80507222918" value="0.00354101057438"/>
+	<ve energy="2.81143293718" value="0.00372176847955"/>
+	<ve energy="2.81782255749" value="0.00390252420139"/>
+	<ve energy="2.82424128769" value="0.00408746369863"/>
+	<ve energy="2.83068932716" value="0.00427494574749"/>
+	<ve energy="2.83716687711" value="0.00446242779634"/>
+	<ve energy="2.84367414059" value="0.00464990984519"/>
+	<ve energy="2.85021132252" value="0.00483763954336"/>
+	<ve energy="2.85677862971" value="0.00504174482057"/>
+	<ve energy="2.86337627089" value="0.00525269123336"/>
+	<ve energy="2.8700044567" value="0.00547990554147"/>
+	<ve energy="2.87666339976" value="0.00572103357824"/>
+	<ve energy="2.88335331464" value="0.00596216853068"/>
+	<ve energy="2.89007441794" value="0.00620512034592"/>
+	<ve energy="2.89682692826" value="0.00650254897884"/>
+	<ve energy="2.90361106627" value="0.00681412839482"/>
+	<ve energy="2.91042705468" value="0.00705814158138"/>
+	<ve energy="2.91727511834" value="0.00731343113032"/>
+	<ve energy="2.92415548419" value="0.00763504271599"/>
+	<ve energy="2.93106838131" value="0.00795638567566"/>
+	<ve energy="2.93801404099" value="0.00827349516759"/>
+	<ve energy="2.94499269666" value="0.00858869307545"/>
+	<ve energy="2.95200458404" value="0.00890389098332"/>
+	<ve energy="2.95904994104" value="0.00923971452822"/>
+	<ve energy="2.96612900788" value="0.00967345110322"/>
+	<ve energy="2.97324202709" value="0.010107199001"/>
+	<ve energy="2.9803892435" value="0.0105196024891"/>
+	<ve energy="2.98757090433" value="0.0109169006229"/>
+	<ve energy="2.99478725917" value="0.0114541829934"/>
+	<ve energy="3.00203856004" value="0.0118942855113"/>
+	<ve energy="3.0093250614" value="0.0123571890927"/>
+	<ve energy="3.01664702018" value="0.0128387976835"/>
+	<ve energy="3.02400469584" value="0.0133296002819"/>
+	<ve energy="3.03139835036" value="0.0138709394146"/>
+	<ve energy="3.03882824827" value="0.014412744153"/>
+	<ve energy="3.04629465675" value="0.0150116845877"/>
+	<ve energy="3.05379784556" value="0.0155608155906"/>
+	<ve energy="3.06133808715" value="0.0161025085044"/>
+	<ve energy="3.06891565667" value="0.0166395380197"/>
+	<ve energy="3.076530832" value="0.0171743203711"/>
+	<ve energy="3.08418389377" value="0.0177106591877"/>
+	<ve energy="3.09187512543" value="0.0182519063275"/>
+	<ve energy="3.09960481324" value="0.0187828903404"/>
+	<ve energy="3.10737324636" value="0.0191721028341"/>
+	<ve energy="3.11518071682" value="0.0194960076519"/>
+	<ve energy="3.12302751964" value="0.0197945967674"/>
+	<ve energy="3.13091395277" value="0.0200746284666"/>
+	<ve energy="3.1388403172" value="0.0202914966015"/>
+	<ve energy="3.14680691699" value="0.0205024334219"/>
+	<ve energy="3.15481405928" value="0.0206997184225"/>
+	<ve energy="3.16286205433" value="0.0208376155585"/>
+	<ve energy="3.17095121559" value="0.0208906287582"/>
+	<ve energy="3.17908185973" value="0.0209364439083"/>
+	<ve energy="3.18725430667" value="0.0208768436092"/>
+	<ve energy="3.19546887963" value="0.0208030721017"/>
+	<ve energy="3.20372590516" value="0.0206707453641"/>
+	<ve energy="3.2120257132" value="0.0203845360021"/>
+	<ve energy="3.22036863713" value="0.0200635241174"/>
+	<ve energy="3.22875501379" value="0.0196747933291"/>
+	<ve energy="3.23718518354" value="0.0191547500983"/>
+	<ve energy="3.2456594903" value="0.0187030566327"/>
+	<ve energy="3.25417828162" value="0.017803451072"/>
+	<ve energy="3.26274190867" value="0.0168227555302"/>
+	<ve energy="3.27135072637" value="0.0156744600251"/>
+	<ve energy="3.28000509337" value="0.0145150914214"/>
+	<ve energy="3.28870537214" value="0.0132468744842"/>
+	<ve energy="3.29745192898" value="0.011950840251"/>
+	<ve energy="3.30624513412" value="0.0105951827466"/>
+	<ve energy="3.31508536175" value="0.00927089888087"/>
+	<ve energy="3.32397299007" value="0.00791138295812"/>
+	<ve energy="3.33290840133" value="0.00660447455736"/>
+	<ve energy="3.34189198193" value="0.0056735174011"/>
+	<ve energy="3.35092412242" value="0.00482992871545"/>
+	<ve energy="3.3600052176" value="0.00422475524183"/>
+	<ve energy="3.36913566656" value="0.00365376398475"/>
+	<ve energy="3.37831587274" value="0.00318690952287"/>
+	<ve energy="3.38754624398" value="0.00268709498902"/>
+	<ve energy="3.39682719259" value="0.00223907205102"/>
+	<ve energy="3.40615913543" value="0.00191304303394"/>
+	<ve energy="3.41554249393" value="0.0015871598678"/>
+	<ve energy="3.42497769419" value="0.0012784991357"/>
+	<ve energy="3.43446516702" value="0.00103407147139"/>
+	<ve energy="3.44400534804" value="0.000823815632059"/>
+	<ve energy="3.4535986777" value="0.000687869951797"/>
+	<ve energy="3.46324560138" value="0.000553695467029"/>
+	<ve energy="3.47294656946" value="0.000439559959922"/>
+	<ve energy="3.48270203735" value="0.000330626156692"/>
+	<ve energy="3.49251246562" value="0.000198364465293"/>
+	<ve energy="3.50237832004" value="4.16096052401e-05"/>
+	<ve energy="3.51230007166" value="0.0"/>
+	<ve energy="3.52227819686" value="0.0"/>
+	<ve energy="3.53231317748" value="0.0"/>
+	<ve energy="3.54240550084" value="0.0"/>
+	<ve energy="3.55255565987" value="0.0"/>
+	<ve energy="3.56276415315" value="0.0"/>
+	<ve energy="3.573031485" value="0.0"/>
+	<ve energy="3.58335816559" value="0.0"/>
+	<ve energy="3.593744711" value="0.0"/>
+	<ve energy="3.6041916433" value="0.0"/>
+	<ve energy="3.61469949066" value="0.0"/>
+	<ve energy="3.62526878741" value="0.0"/>
+	<ve energy="3.63590007418" value="0.0"/>
+	<ve energy="3.64659389793" value="0.0"/>
+	<ve energy="3.65735081208" value="0.0"/>
+	<ve energy="3.66817137661" value="0.0"/>
+	<ve energy="3.67905615815" value="0.0"/>
+	<ve energy="3.69000573005" value="0.0"/>
+	<ve energy="3.70102067252" value="0.0"/>
+	<ve energy="3.71210157274" value="0.0"/>
+	<ve energy="3.72324902491" value="0.0"/>
+	<ve energy="3.73446363041" value="0.0"/>
+	<ve energy="3.74574599787" value="0.0"/>
+	<ve energy="3.75709674332" value="0.0"/>
+	<ve energy="3.76851649026" value="0.0"/>
+	<ve energy="3.7800058698" value="0.0"/>
+	<ve energy="3.79156552078" value="0.0"/>
+	<ve energy="3.80319608986" value="0.0"/>
+	<ve energy="3.81489823168" value="0.0"/>
+	<ve energy="3.82667260894" value="0.0"/>
+	<ve energy="3.83851989256" value="0.0"/>
+	<ve energy="3.85044076179" value="0.0"/>
+	<ve energy="3.86243590435" value="0.0"/>
+	<ve energy="3.87450601655" value="0.0"/>
+	<ve energy="3.88665180343" value="0.0"/>
+	<ve energy="3.89887397892" value="0.0"/>
+	<ve energy="3.91117326592" value="0.0"/>
+	<ve energy="3.92355039651" value="0.0"/>
+	<ve energy="3.93600611205" value="0.0"/>
+	<ve energy="3.94854116336" value="0.0"/>
+	<ve energy="3.96115631085" value="0.0"/>
+	<ve energy="3.97385232467" value="0.0"/>
+	<ve energy="3.98662998487" value="0.0"/>
+	<ve energy="3.9994900816" value="0.0"/>
+	<ve energy="4.0124334152" value="0.0"/>
+	<ve energy="4.02546079641" value="0.0"/>
+	<ve energy="4.03857304657" value="0.0"/>
+	<ve energy="4.0517709977" value="0.0"/>
+	<ve energy="4.06505549277" value="0.0"/>
+	<ve energy="4.07842738584" value="0.0"/>
+	<ve energy="4.09188754223" value="0.0"/>
+	<ve energy="4.10543683873" value="0.0"/>
+	<ve energy="4.11907616377" value="0.0"/>
+	<ve energy="4.13280641765" value="0.0"/>
+     </propertyvector>
+     <property name="RESOLUTIONSCALE" value="1.0"/>
+   </propertiestable>
+  </material>
+
+</materials>
+
