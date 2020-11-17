@@ -1,0 +1,10 @@
+/gate/output/root/enable
+/gate/output/root/setFileName             output/output
+/gate/output/root/setRootHitFlag          1
+/gate/output/root/setRootSinglesFlag      0
+/gate/output/root/setRootOpticalFlag      0
+/gate/output/root/setRootNtupleFlag       0
+
+/gate/output/tree/enable
+/gate/output/tree/addFileName output/output.root
+/gate/output/tree/hits/enable

@@ -1,0 +1,28 @@
+#=====================================================
+# point source
+#=====================================================
+/gate/source/addSource sourceA Extended
+/gate/source/sourceA/gps/type Point
+/gate/source/sourceA/gps/pos/centre 0 0 0 cm
+/gate/source/sourceA/setActivity 1 MBq
+/gate/source/sourceA/setType pPs
+/gate/source/sourceA/setEnableDeexcitation true
+/gate/source/sourceA/setPromptGammaEnergy 1157 keV
+
+/gate/source/addSource sourceB Extended
+/gate/source/sourceB/gps/type Point
+/gate/source/sourceB/gps/pos/centre 2 0 0 cm
+/gate/source/sourceB/setActivity 1 MBq
+/gate/source/sourceB/setType oPs
+/gate/source/sourceB/setEnableDeexcitation false
+
+/gate/source/addSource sourceC Extended
+/gate/source/sourceC/gps/type Point
+/gate/source/sourceC/gps/pos/centre -2 0 0 cm
+/gate/source/sourceC/setActivity 1 MBq
+/gate/source/sourceC/setType sg
+/gate/source/sourceC/setEnableDeexcitation false
+/gate/source/sourceC/setEmissionEnergy 900 keV
+
+
+/gate/source/list

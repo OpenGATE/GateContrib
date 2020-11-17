@@ -1,0 +1,9 @@
+/gate/geometry/setMaterialDatabase mac/GateMaterials.db
+/control/execute mac/Geometry.mac
+/control/execute mac/PhysicsEMLivermorePolar.mac
+/gate/run/initialize 
+/control/execute mac/Source.mac
+/control/execute mac/Output.mac
+/control/execute mac/RandomGenerator.mac
+/control/execute mac/App.mac
+exit
