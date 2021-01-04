@@ -4,6 +4,10 @@
 /control/alias LUTETIUM Lu177
 /control/alias IODINE I131
 
+# default value
+/control/alias COLLIMATOR megp
+/control/alias GAMMA_FACTOR 1.0
+
 /control/strdoif {RADIONUCLIDE} == {TECHNETIUM} /control/alias GAMMA_FACTOR 0.885
 /control/strdoif {RADIONUCLIDE} == {INDIUM} /control/alias GAMMA_FACTOR 1.847315
 /control/strdoif {RADIONUCLIDE} == {LUTETIUM} /control/alias GAMMA_FACTOR 0.172168

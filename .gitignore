@@ -42,3 +42,18 @@ gmon.out
 /imaging/fastY90/output/*root
 
 
+*.DS_Store
+
+/imaging/garf/g
+/imaging/garf/pth_v1
+/imaging/garf/pth/*pth
+/imaging/garf/pth/*pt
+/imaging/garf/pth/*json
+/imaging/garf/to_trash
+/imaging/garf/output/data
+/imaging/garf/output/mac
+/imaging/garf/output/output*
+/imaging/garf/mac/save
+/imaging/garf/mac_old
+/imaging/garf/garf_plot_training_dataset_goomba
+

@@ -28,12 +28,6 @@
 # Position the image  
 /gate/phantom/geometry/TranslateTheImageAtThisIsoCenter {CT_ISOCENTER_X} {CT_ISOCENTER_Y} {CT_ISOCENTER_Z} mm
 /gate/phantom/geometry/setRotationAroundPixelIsoCenter true
-
-# Gantry rotation -> rotate the phantom instead
-# The speed is 30 sec per angle, for 360/60 = 6 deg. 
-# /gate/phantom/placement/setRotationAxis  0 0 1
-# /gate/phantom/placement/setRotationAngle {START_ANGLE} deg
-# /gate/phantom/moves/insert         rotation 
-# /gate/phantom/rotation/setSpeed    {SPEED} deg/s 
-# /gate/phantom/rotation/setAxis     0 0 1 
+/gate/phantom/placement/setRotationAxis 1 0 0
+/gate/phantom/placement/setRotationAngle 90 deg
 

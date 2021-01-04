@@ -8,6 +8,16 @@ A method to speed up Monte-Carlo simulations of single photon emission computed 
 
 A short **report** for this example is available [here](report/garf.pdf)
 
+
+# WARNING
+
+This example use a submodule repository, in the mac/nm670 folder. You need to to the following command for the first time: 
+
+```git submodule update --init --recursive``` 
+
+Then, to update, ```git submodule update --recursive --remote```
+
+
 # Installation
 
 ```pip install garf```
@@ -28,6 +38,8 @@ The output file is ```output/train.root```.
 
 Training dataset information may be displayed with (you must indicate the value for the Russian Roulette): 
 ```garf_plot_training_dataset output/train.root --rr 100```
+
+In our tests, we used 1e10 primary particles. 
 
 ## Train the neural network
 

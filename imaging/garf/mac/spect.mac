@@ -2,21 +2,13 @@
 # -----------------------------------------------------------------------------
 # SPECT
 
-/gate/phantom/placement/setRotationAxis  0 0 1
-/gate/phantom/placement/setRotationAngle {START_ANGLE} deg
-/gate/phantom/moves/insert         rotation 
-/gate/phantom/rotation/setSpeed    {SPEED} deg/s 
-/gate/phantom/rotation/setAxis     0 0 1
-
-# -----------------------------------------------------------------------------
-# SPECT
-
 # Need at least 28 Radius to avoid collision at 90 degrees
 
 /control/execute mac/nm670/spect_head.mac
 /control/execute mac/nm670/spect_collimator_{COLLIMATOR}.mac
 /control/execute mac/nm670/spect_digitizer_{RADIONUCLIDE}.mac
 /control/execute mac/nm670/spect_translation.mac
+/control/execute mac/nm670/spect_rotation.mac
 
 # Repeat : two heads
 /gate/SPECThead/repeaters/insert ring
