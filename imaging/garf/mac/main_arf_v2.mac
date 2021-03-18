@@ -12,7 +12,7 @@
 # -----------------------------------------------------------------------------
 # Geometry definition
 
-#/control/execute mac/visu.mac
+/control/execute mac/visu.mac
 /control/execute mac/verbose.mac
 /control/execute mac/world.mac
 /control/execute mac/phantom_ct.mac
@@ -46,6 +46,7 @@
 /gate/actor/arf/setNNModel             {PT_FILE}.pt
 /gate/actor/arf/setNNDict              {PT_FILE}.json
 /gate/actor/arf/save                   output/projection.mhd
+/gate/actor/arf/enableSaveSquared      1
 /gate/actor/arf/setSpacingX            4.41806
 /gate/actor/arf/setSpacingY            4.41806
 /gate/actor/arf/setSizeX               128
