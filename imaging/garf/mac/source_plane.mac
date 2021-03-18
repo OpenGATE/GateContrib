@@ -14,11 +14,11 @@
 
 ## The direction is bounded thanks to mintheta 
 
-/control/add SOURCE_POSITION {SPECT_RADIUS} -4
+/control/add SOURCE_POSITION {SPECT_RADIUS} -0.8
 
 /gate/source/addSource source
 
-/gate/source/source/gps/centre 0 0 -{SOURCE_POSITION} cm
+/gate/source/source/gps/centre 0 -{SOURCE_POSITION} 0 cm
 
 /gate/source/source/gps/type Plane
 /gate/source/source/gps/shape Circle
@@ -40,7 +40,7 @@
 /gate/source/source/gps/radius {HEAD_X} cm
 
 /gate/source/source/gps/posrot1  1 0 0
-/gate/source/source/gps/posrot2  0 1 0
+/gate/source/source/gps/posrot2  0 0 1
 
 /gate/source/source/gps/particle gamma
 
