@@ -75,7 +75,7 @@ We advocate to not use the gpu first (computation time is not much improved).
 This command will create ```pth/arf_xRiI_v4.pt``` and ```pth/arf_xRiI_v4.json```, both files will be read by GATE. 
 
 (3) Run the simulation:
-```Gate mac/main_arf_v2.mac -a '[RADIONUCLIDE,Lu177] [N,1e5] [SPECT_RADIUS,25]'```
+```Gate mac/main_arf.mac -a '[RADIONUCLIDE,Lu177] [N,1e5] [SPECT_RADIUS,25]'```
 
 The output projection will be ```output/projection.mhd```. Image values are expressed in counts per events. You may want to scale the image according to the targeted number of events. **WARNING** if you merge results from several jobs, you need to take the mean not the sum of the counts (or divide by the number of jobs). 
 
