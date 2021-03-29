@@ -1,0 +1,15 @@
+#=====================================================
+# Visualization 
+#=====================================================
+
+/vis/open                             OGLSQt
+/vis/viewer/set/viewpointVector 1 1 0
+/vis/viewer/set/style surface
+/vis/drawVolume
+/vis/viewer/flush
+/tracking/storeTrajectory             1
+/vis/scene/add/trajectories
+/vis/scene/add/axes
+/vis/scene/endOfEventAction           accumulate
+/vis/viewer/set/auxiliaryEdge true
+

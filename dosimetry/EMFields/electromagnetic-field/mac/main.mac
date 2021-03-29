@@ -1,0 +1,156 @@
+#=====================================================
+# Visualization
+#=====================================================
+
+#/control/execute mac/visu.mac
+
+#=====================================================
+# Material
+#=====================================================
+
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+#=====================================================
+# Geometry
+#=====================================================
+
+# World
+/gate/world/geometry/setXLength 5 m
+/gate/world/geometry/setYLength 5 m
+/gate/world/geometry/setZLength 5 m
+/gate/world/setMaterial Vacuum
+/gate/world/vis/setVisible 0
+
+# Phantom
+/gate/world/daughters/name phantom
+/gate/world/daughters/insert box
+/gate/phantom/geometry/setXLength 40 cm
+/gate/phantom/geometry/setYLength 40 cm
+/gate/phantom/geometry/setZLength 40 cm
+/gate/phantom/placement/setTranslation 0.0 0.0 20 cm
+/gate/phantom/setMaterial Vacuum
+/gate/phantom/vis/setVisible 1
+/gate/phantom/vis/setColor white
+/gate/phantom/vis/forceWireframe
+
+# Electromagnetic Field
+/gate/geometry/setElectMagTabulateField3D data/emfield.txt
+
+#=====================================================
+# Physics
+#=====================================================
+
+/gate/physics/addPhysicsList QGSP_BERT_EMZ
+
+# World
+/gate/physics/Gamma/SetCutInRegion      world 1 mm
+/gate/physics/Electron/SetCutInRegion   world 1 mm
+/gate/physics/Positron/SetCutInRegion   world 1 mm
+
+# Tracking cut
+/gate/physics/SetMinRemainingRangeInRegion world 1 mm
+/gate/physics/ActivateSpecialCuts e-
+
+# Step limiter
+/gate/physics/SetMaxStepSizeInRegion world 1 mm
+/gate/physics/ActivateStepLimiter proton
+/gate/physics/ActivateStepLimiter deuteron
+/gate/physics/ActivateStepLimiter triton
+/gate/physics/ActivateStepLimiter alpha
+/gate/physics/ActivateStepLimiter GenericIon
+
+# Phantom
+/gate/physics/Gamma/SetCutInRegion      phantom 0.1 mm
+/gate/physics/Electron/SetCutInRegion   phantom 0.1 mm
+/gate/physics/Positron/SetCutInRegion   phantom 0.1 mm
+/gate/physics/displayCuts
+
+# Tracking cut
+/gate/physics/SetMinRemainingRangeInRegion phantom 0.1 mm
+/gate/physics/ActivateSpecialCuts e-
+
+# Step limiter
+/gate/physics/SetMaxStepSizeInRegion phantom 0.1 mm
+/gate/physics/ActivateStepLimiter proton
+/gate/physics/ActivateStepLimiter deuteron
+/gate/physics/ActivateStepLimiter triton
+/gate/physics/ActivateStepLimiter alpha
+/gate/physics/ActivateStepLimiter GenericIon
+
+#=====================================================
+# Actors
+#=====================================================
+
+# Simulation statistics
+/gate/actor/addActor SimulationStatisticActor stat
+/gate/actor/stat/save output/statistics.txt
+/gate/actor/stat/saveEveryNSeconds 60
+
+# Dose map in xz
+/gate/actor/addActor DoseActor doseInXZ
+/gate/actor/doseInXZ/attachTo phantom
+/gate/actor/doseInXZ/stepHitType random
+/gate/actor/doseInXZ/setPosition 0 0 0 cm
+/gate/actor/doseInXZ/setVoxelSize 0.1 400 0.1 mm
+/gate/actor/doseInXZ/enableEdep false
+/gate/actor/doseInXZ/enableUncertaintyEdep false
+/gate/actor/doseInXZ/enableDose true
+/gate/actor/doseInXZ/enableUncertaintyDose false
+/gate/actor/doseInXZ/addFilter particleFilter
+/gate/actor/doseInXZ/particleFilter/addParticleZ 1
+/gate/actor/doseInXZ/particleFilter/addParticleA 1 
+/gate/actor/doseInXZ/save output/doseInXZ.txt
+/gate/actor/doseInXZ/saveEveryNSeconds 60
+
+# Dose map in yz
+/gate/actor/addActor DoseActor doseInYZ
+/gate/actor/doseInYZ/attachTo phantom
+/gate/actor/doseInYZ/stepHitType random
+/gate/actor/doseInYZ/setPosition 0 0 0 cm
+/gate/actor/doseInYZ/setVoxelSize 400 0.1 0.1 mm
+/gate/actor/doseInYZ/enableEdep false
+/gate/actor/doseInYZ/enableUncertaintyEdep false
+/gate/actor/doseInYZ/enableDose true
+/gate/actor/doseInYZ/enableUncertaintyDose false
+/gate/actor/doseInYZ/addFilter particleFilter
+/gate/actor/doseInYZ/particleFilter/addParticleZ 1
+/gate/actor/doseInYZ/particleFilter/addParticleA 1 
+/gate/actor/doseInYZ/save output/doseInYZ.txt
+/gate/actor/doseInYZ/saveEveryNSeconds 60
+
+#=====================================================
+# Initialization
+#=====================================================
+
+/gate/run/initialize
+
+#=====================================================
+# Source
+#=====================================================
+
+/gate/source/addSource mybeam gps
+/gate/source/mybeam/gps/particle proton
+/gate/source/mybeam/gps/pos/type Beam
+/gate/source/mybeam/gps/pos/rot1 0 1 0
+/gate/source/mybeam/gps/pos/rot2 1 0 0
+/gate/source/mybeam/gps/pos/shape Circle
+/gate/source/mybeam/gps/pos/centre 0 0 0 mm
+/gate/source/mybeam/gps/pos/sigma_x 3 mm
+/gate/source/mybeam/gps/pos/sigma_y 3 mm
+/gate/source/mybeam/gps/ene/mono 1 MeV
+/gate/source/mybeam/gps/ene/type Gauss
+/gate/source/mybeam/gps/ene/sigma 0.0 MeV
+/gate/source/mybeam/gps/direction 0 1 0
+
+#=====================================================
+# Start
+#=====================================================
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/application/setTotalNumberOfPrimaries 100
+/gate/application/noGlobalOutput
+/gate/application/start
+
+
+exit
