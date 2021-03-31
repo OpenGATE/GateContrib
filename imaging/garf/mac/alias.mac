@@ -47,7 +47,6 @@
 # Gantry rotation -> rotate the phantom
 # The speed is 30 sec per angle, for 360/60 = 6 deg. 
 
-/control/alias START_ANGLE 0
 /control/alias SPEED 6
 
 /control/listAlias

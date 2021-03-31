@@ -30,4 +30,3 @@
 /gate/phantom/geometry/setRotationAroundPixelIsoCenter true
 /gate/phantom/placement/setRotationAxis 1 0 0
 /gate/phantom/placement/setRotationAngle 90 deg
-
