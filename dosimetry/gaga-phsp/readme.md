@@ -21,6 +21,8 @@ The source code is https://github.com/dsarrut/gaga
 
 The pypi project page is:  https://pypi.org/project/gaga
 
+Some reference data : https://www.creatis.insa-lyon.fr/~dsarrut/gaga
+
 Note: you may also be interested in the GATE phsp tools that are included in the [GateTools](https://github.com/OpenGATE/GateTools/) package. 
 
 **WARNING** GATE version with libtorch enabled is required. I will be officially release end 2019. In the meantime, use the branch named 'torch'. 
