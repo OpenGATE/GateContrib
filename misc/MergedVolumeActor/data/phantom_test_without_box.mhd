@@ -1,0 +1,13 @@
+ObjectType = Image
+NDims = 3
+BinaryData = True
+BinaryDataByteOrderMSB = False
+CompressedData = False
+TransformMatrix = 1 0 0 0 1 0 0 0 1
+Offset = 0 0 0
+CenterOfRotation = 0 0 0
+ElementSpacing = 10 10 10
+DimSize = 9 9 9
+AnatomicalOrientation = ???
+ElementType = MET_UCHAR
+ElementDataFile = phantom_test_without_box.raw

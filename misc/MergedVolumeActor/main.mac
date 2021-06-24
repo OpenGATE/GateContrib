@@ -1,0 +1,166 @@
+#VISUALIZATION
+##/vis/disable
+
+#INITIALIZE MATERIALS
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+#WORLD
+/gate/world/geometry/setXLength 200.0 mm
+/gate/world/geometry/setYLength 200.0 mm
+/gate/world/geometry/setZLength 200.0 mm
+/gate/world/setMaterial Air
+/gate/world/vis/setVisible 1
+
+#PHANTOM
+
+#GLOBAL VOLUME
+/gate/world/daughters/name                      GlobalVol
+/gate/world/daughters/insert                    box
+/gate/GlobalVol/geometry/setXLength             90. mm
+/gate/GlobalVol/geometry/setYLength             90. mm
+/gate/GlobalVol/geometry/setZLength             90. mm
+/gate/GlobalVol/placement/setTranslation        0.0 0.0 0.0 mm
+/gate/GlobalVol/placement/setRotationAxis       1 0 0
+/gate/GlobalVol/placement/setRotationAngle      0 deg
+/gate/GlobalVol/setMaterial                     Air
+/gate/GlobalVol/vis/setColor                    cyan
+/gate/GlobalVol/describe
+
+#VOXELIZED PHANTOM
+/gate/GlobalVol/daughters/name                                 PhantomTest
+/gate/GlobalVol/daughters/insert                               ImageRegularParametrisedVolume
+/gate/PhantomTest/geometry/setImage                            data/phantom_test_without_box.mhd
+/gate/PhantomTest/geometry/setRangeToMaterialFile              data/range.dat
+/gate/PhantomTest/placement/setTranslation                     0. 0. 0. mm
+/gate/PhantomTest/placement/setRotationAxis                    1 0 0
+/gate/PhantomTest/placement/setRotationAngle                   0 deg
+/gate/PhantomTest/setSkipEqualMaterials                        0
+/gate/PhantomTest/describe
+
+#ANALYTICAL PHANTOM
+/gate/GlobalVol/daughters/name                          BoxAir
+/gate/GlobalVol/daughters/insert                        box
+/gate/BoxAir/geometry/setXLength                        10.0 mm
+/gate/BoxAir/geometry/setYLength                        10.0 mm
+/gate/BoxAir/geometry/setZLength                        10.0 mm
+/gate/BoxAir/placement/setTranslation                   -30.0 0.0 0.0 mm
+/gate/BoxAir/placement/setRotationAxis                  1 0 0
+/gate/BoxAir/placement/setRotationAngle                 0 deg
+/gate/BoxAir/setMaterial                                Air
+/gate/BoxAir/vis/setColor                               cyan
+/gate/BoxAir/describe
+
+/gate/GlobalVol/daughters/name                          BoxLung
+/gate/GlobalVol/daughters/insert                        box
+/gate/BoxLung/geometry/setXLength                       10.0 mm
+/gate/BoxLung/geometry/setYLength                       10.0 mm
+/gate/BoxLung/geometry/setZLength                       10.0 mm
+/gate/BoxLung/placement/setTranslation                  -10.0 0.0 0.0 mm
+/gate/BoxLung/placement/setRotationAxis                 1 0 0
+/gate/BoxLung/placement/setRotationAngle                0 deg
+/gate/BoxLung/setMaterial                               Lung
+/gate/BoxLung/vis/setColor                              red
+/gate/BoxLung/describe
+
+/gate/GlobalVol/daughters/name                          BoxCartilage
+/gate/GlobalVol/daughters/insert                        box
+/gate/BoxCartilage/geometry/setXLength                  10.0 mm
+/gate/BoxCartilage/geometry/setYLength                  10.0 mm
+/gate/BoxCartilage/geometry/setZLength                  10.0 mm
+/gate/BoxCartilage/placement/setTranslation             10.0 0.0 0.0 mm
+/gate/BoxCartilage/placement/setRotationAxis            1 0 0
+/gate/BoxCartilage/placement/setRotationAngle           0 deg
+/gate/BoxCartilage/setMaterial                          Cartilage
+/gate/BoxCartilage/vis/setColor                         white
+/gate/BoxCartilage/describe
+
+/gate/GlobalVol/daughters/name                          BoxSkull
+/gate/GlobalVol/daughters/insert                        box
+/gate/BoxSkull/geometry/setXLength                      10.0 mm
+/gate/BoxSkull/geometry/setYLength                      10.0 mm
+/gate/BoxSkull/geometry/setZLength                      10.0 mm
+/gate/BoxSkull/placement/setTranslation                 30.0 0.0 0.0 mm
+/gate/BoxSkull/placement/setRotationAxis                1 0 0
+/gate/BoxSkull/placement/setRotationAngle               0 deg
+/gate/BoxSkull/setMaterial                              Skull
+/gate/BoxSkull/vis/setColor                             magenta
+/gate/BoxSkull/describe
+
+#PHYSICS
+/gate/physics/addPhysicsList emstandard_opt3
+
+/gate/physics/setEMin 990 eV
+/gate/physics/setEMax 250 MeV
+
+/gate/physics/setDEDXBinning 300
+/gate/physics/setLambdaBinning 300
+
+/gate/physics/Electron/SetCutInRegion  world 10 m
+/gate/physics/Gamma/SetCutInRegion     world 10 m
+
+#ACTOR(S)
+/gate/actor/addActor                               MergedVolumeActor mergedVol
+/gate/actor/mergedVol/attachTo                     GlobalVol
+/gate/actor/mergedVol/volumeToMerge                BoxAir,BoxLung,BoxCartilage,BoxSkull
+
+/gate/actor/addActor DoseActor                     doseMeasurement
+/gate/actor/doseMeasurement/attachTo               GlobalVol
+/gate/actor/doseMeasurement/save                   output/merged_volume.mhd
+/gate/actor/doseMeasurement/stepHitType            random
+/gate/actor/doseMeasurement/setPosition            0 0 0 mm
+/gate/actor/doseMeasurement/setVoxelSize           0.5 0.5 0.5 mm
+/gate/actor/doseMeasurement/setSize                90.5 90.5 90.5 mm
+/gate/actor/doseMeasurement/enableEdep             true
+/gate/actor/doseMeasurement/enableUncertaintyEdep  true
+/gate/actor/doseMeasurement/enableSquaredEdep      true
+/gate/actor/doseMeasurement/enableDose             false
+/gate/actor/doseMeasurement/enableUncertaintyDose  false
+/gate/actor/doseMeasurement/enableSquaredDose      false
+/gate/actor/doseMeasurement/enableNumberOfHits     true
+
+#INITIALIZATION
+/gate/run/initialize
+
+#SOURCE
+/gate/source/addSource                          PointSrc gps
+/gate/source/PointSrc/gps/particle              gamma
+/gate/source/PointSrc/setForcedUnstableFlag     false
+/gate/source/PointSrc/gps/ene/type              Mono
+/gate/source/PointSrc/gps/ene/mono              100 keV
+/gate/source/PointSrc/gps/type                  Point
+/gate/source/PointSrc/gps/pos/centre            -55. 0. 0. mm
+/gate/source/PointSrc/gps/pos/rot1              0 0 1
+/gate/source/PointSrc/gps/pos/rot2              0 1 0
+/gate/source/PointSrc/gps/ang/rot1              0 0 1
+/gate/source/PointSrc/gps/ang/rot2              0 1 0
+/gate/source/PointSrc/gps/ang/mintheta          0.0 deg
+/gate/source/PointSrc/gps/ang/maxtheta          0.0 deg
+/gate/source/PointSrc/gps/ang/minphi            0.0 deg
+/gate/source/PointSrc/gps/ang/maxphi            360.0 deg
+/gate/source/PointSrc/gps/ang/type              iso
+/gate/source/PointSrc/dump                      1
+
+#VERBOSE
+/gate/verbose Physic    0
+/gate/verbose Cuts      0
+/gate/verbose Actor     0
+/gate/verbose SD        0
+/gate/verbose Actions   0
+/gate/verbose Step      0
+/gate/verbose Error     0
+/gate/verbose Warning   0
+/gate/verbose Output    0
+/gate/verbose Core      0
+/gate/verbose Volume    0
+
+/run/verbose 1
+/event/verbose 0
+/tracking/verbose 0
+
+#RANDOM
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed 123456789
+
+#START
+/gate/application/setTotalNumberOfPrimaries 2000000
+/gate/application/start

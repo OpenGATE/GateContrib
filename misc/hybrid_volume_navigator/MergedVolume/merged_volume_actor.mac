@@ -1,3 +1,0 @@
-/gate/actor/addActor                               MergedVolumeActor mergedVol
-/gate/actor/mergedVol/attachTo                     GlobalVol
-/gate/actor/mergedVol/volumeToMerge                BoxAir,BoxLung,BoxCartilage,BoxSkull
