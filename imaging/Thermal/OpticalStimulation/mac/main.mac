@@ -1,0 +1,113 @@
+#=====================================================
+# VISUALISATION and VERBOSE
+#=====================================================
+
+#/control/execute                    mac/visu.mac
+/control/execute                     mac/verbose.mac
+
+#=====================================================
+# GEOMETRY
+#=====================================================
+
+/gate/geometry/setMaterialDatabase   data/GateMaterials.db
+
+#=====================================================
+#     W O R L D
+#=====================================================
+
+/gate/world/geometry/setXLength       200. cm
+/gate/world/geometry/setYLength       200. cm
+/gate/world/geometry/setZLength       200. cm
+/gate/world/setMaterial               Air
+
+#=======================================================
+#                   G E O M E T R Y
+#=======================================================
+
+/gate/world/daughters/name                   monkey
+/gate/world/daughters/insert                 ImageNestedParametrisedVolume
+/gate/monkey/geometry/setHUToMaterialFile    data/HU2Mat.txt
+/gate/monkey/geometry/setImage               data/MonkeyMR_71_88_57.mhd
+/gate/monkey/placement/setTranslation        0. 0. 0. mm
+
+/gate/world/daughters/name                   sourceBox
+/gate/world/daughters/insert                 box
+/gate/sourceBox/geometry/setXLength          5.0 mm 
+/gate/sourceBox/geometry/setYLength          5.0 mm 
+/gate/sourceBox/geometry/setZLength          1.0 nm
+/gate/sourceBox/setMaterial                  Air
+/gate/sourceBox/placement/setTranslation     2.625 0. -21.4 mm
+
+#=====================================================
+#                  P H Y S I C S
+#=====================================================
+
+/gate/physics/addProcess OpticalAbsorption
+/gate/physics/addProcess OpticalRayleigh
+/gate/physics/addProcess OpticalBoundary
+/gate/physics/addProcess OpticalMie
+/gate/physics/addProcess OpticalWLS
+
+/gate/physics/processList Enabled
+/gate/physics/processList Initialized
+
+#=====================================================
+#                    A C T O R
+#=====================================================
+
+/gate/actor/addActor MultiMaterialThermalActor        heat
+/gate/actor/heat/attachTo                monkey
+/gate/actor/heat/stepHitType             random
+/gate/actor/heat/setPosition             0. 0. 0. cm
+/gate/actor/heat/setVoxelSize            0.75 0.75 0.75 mm
+/gate/actor/heat/setRelaxationTime       10 s
+/gate/actor/heat/enableStepDiffusion     true
+# heat capacity in [J.kg-1.K-1] and perfusionRate in [s-1]
+/gate/actor/heat/setBloodPerfusionRateByConstant 50.0e-6
+#/gate/actor/heat/setBloodPerfusionRateByMaterial true
+#/gate/actor/heat/setBloodPerfusionRateByImage data/perfusionRateMap.mhd
+/gate/actor/heat/setBloodDensity         1.06 g/cm3
+/gate/actor/heat/setBloodHeatCapacity    3600.0
+#/gate/actor/heat/setTissueHeatCapacity   3650.0
+/gate/actor/heat/setMeasurementFilename  data/measurementFile.txt
+/gate/actor/heat/save                    output/heat.mhd
+
+# This actor will record information on your simulation:
+/gate/actor/addActor               SimulationStatisticActor stat
+/gate/actor/stat/save              output/stat.txt
+/gate/actor/stat/saveEveryNSeconds 60
+
+
+#=====================================================
+# INITIALISATION
+#=====================================================
+
+/gate/run/initialize
+
+#=====================================================
+#  S O U R C E
+#=====================================================
+
+/control/execute mac/source.mac
+
+#=====================================================
+#   R A N D O M
+#=====================================================
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+#/gate/random/verbose 1
+
+#=====================================================
+#   START   
+#=====================================================
+
+# A C Q U I S I T I O N
+# If using DAQ: setActivity is needed in the source
+/gate/application/setTimeSlice   10 s
+/gate/application/setTimeStart   0 s
+/gate/application/setTimeStop    10 s
+/gate/application/startDAQ
+
+
+

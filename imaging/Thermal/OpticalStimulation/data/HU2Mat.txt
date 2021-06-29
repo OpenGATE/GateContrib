@@ -1,0 +1,4 @@
+0 0 Air
+1 1 CSF
+2 2 WhiteMatter
+3 3 GreyMatter
