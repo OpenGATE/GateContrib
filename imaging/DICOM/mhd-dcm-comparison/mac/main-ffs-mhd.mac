@@ -4,8 +4,6 @@
 
 /control/execute mac/actors.mac
 
-#/control/execute mac/visu.mac
-
 /gate/Volume/geometry/setImage                 data/mhd/ffs.mhd
 /gate/Volume/geometry/buildAndDumpDensityImage output/density-ffs-mhd.mhd
 
@@ -17,6 +15,8 @@
 /control/execute mac/detectors.mac
 
 /control/execute mac/initialisation.mac
+
+#/control/execute mac/visu.mac
 
 /control/execute mac/beam.mac
 

@@ -55,12 +55,12 @@
 /gate/physics/SetMaxStepSizeInRegion patient 1 mm
 /gate/physics/ActivateStepLimiter    proton
 
+/gate/run/initialize
+
 # Verbose and visualisation
 /control/execute mac/verbose.mac
 #/vis/disable
 #/control/execute mac/visu.mac
-
-/gate/run/initialize
 
 # Beam (10x10 cm2 square at detector, focus point at 1 m from center of box)
 /gate/source/addSource mybeam gps

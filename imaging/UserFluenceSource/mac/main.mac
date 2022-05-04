@@ -1,6 +1,6 @@
 
 #=====================================================
-# VERBOSE and VISUALISATION 
+# VERBOSE
 #=====================================================
 
 /gate/verbose Physic    0
@@ -17,8 +17,6 @@
 /gate/verbose Image     0
 /gate/verbose Geometry  0
 /tracking/verbose	0
-
-#/control/execute mac/visu.mac
 
 #=====================================================
 # GEOMETRY
@@ -63,6 +61,12 @@
 /gate/actor/detectorSensor/save                 output/sourceProjection.mhd
 
 /gate/run/initialize
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+
+#/control/execute mac/visu.mac
 
 #=====================================================
 # BEAM

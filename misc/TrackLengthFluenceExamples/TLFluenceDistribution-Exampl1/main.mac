@@ -27,42 +27,43 @@
 /control/execute Verbose.mac
 
 
-# 2/  V I S U A L I S A T I O N #################################
-#
-#/control/execute Visu.mac
-/vis/disable
-
-# 3/  MATERIALS #################################################
+# 2/  MATERIALS #################################################
 #
 /gate/geometry/setMaterialDatabase ./Data/GateMaterials.db
 
 
-# 4/  W O R L D #################################################
+# 3/  W O R L D #################################################
 #
 /gate/world/geometry/setXLength 30. cm
 /gate/world/geometry/setYLength 30. cm
 /gate/world/geometry/setZLength 30. cm
 /gate/world/setMaterial Vacuum
 
-# 5/  EXPERIMENT G E O M E T R Y ################################ 
+# 4/  EXPERIMENT G E O M E T R Y ################################ 
 #   
 /control/execute Geometry.mac
 
 
-# 6/  P H Y S I C S   D E S C R I P T I O N #####################
+# 5/  P H Y S I C S   D E S C R I P T I O N #####################
 #	
 /control/execute Physics.mac
 
 
-# 7/  DATA A C Q U I S I T I O N   ##############################
+# 6/  DATA A C Q U I S I T I O N   ##############################
 #
 /control/execute Acquisition.mac
 
 
-# 8/  I N I T I A L I Z E #######################################
+# 7/  I N I T I A L I Z E #######################################
 #
 /gate/run/initialize
 /geometry/test/run
+
+
+# 8/  V I S U A L I S A T I O N #################################
+#
+#/control/execute Visu.mac
+/vis/disable
 
 
 # 9/  R A N D O M   G E N E R A T O R ###########################

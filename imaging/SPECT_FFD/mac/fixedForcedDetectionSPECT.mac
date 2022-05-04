@@ -1,5 +1,3 @@
-#/vis/disable
-#/control/execute mac/visualisation.mac
 /control/execute mac/headSPECT.mac
 
 # Fixed forced detection detector
@@ -45,6 +43,9 @@
 
 # Initialize
 /gate/run/initialize
+
+#/vis/disable
+#/control/execute mac/visualisation.mac
 
 # Square source
 /gate/source/addSource gammaSource

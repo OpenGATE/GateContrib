@@ -1,11 +1,5 @@
 #================================================================
 
-  # VISUALISATION 
-#/control/execute mac/visu.mac
-##/vis/disable
-
-#================================================================
-
   # MATERIALS
 /gate/geometry/setMaterialDatabase 	    data/HFMaterials2014.db
 
@@ -122,6 +116,12 @@
 
   # INITIALISATION
 /gate/run/initialize
+
+#================================================================
+
+  # VISUALISATION 
+#/control/execute mac/visu.mac
+##/vis/disable
 
 #================================================================
 
