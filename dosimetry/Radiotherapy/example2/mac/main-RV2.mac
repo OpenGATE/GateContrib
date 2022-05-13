@@ -9,11 +9,10 @@
 
 
 #=====================================================
-# VERBOSE and VISUALISATION
+# VERBOSE
 #=====================================================
 
 /control/execute mac/verbose.mac
-#/control/execute mac/visu.mac
 
 #=====================================================
 # GEOMETRY

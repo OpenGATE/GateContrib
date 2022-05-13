@@ -16,8 +16,6 @@
 /gate/verbose Image     0
 /gate/verbose Geometry  0
 
-#/control/execute mac/visu.mac
-
 #=====================================================
 # GEOMETRY and ACTORS
 #=====================================================
@@ -170,6 +168,7 @@
 
 /gate/run/enableGlobalOutput true
 /gate/run/initialize
+#/control/execute mac/visu.mac
 
 #=====================================================
 # BEAM

@@ -5,12 +5,6 @@
 
 /control/execute mac/verbose.mac
 
-#=====================================================
-# VISUALISATION
-#=====================================================
-
-#/control/execute mac/visu.mac
-
 # =====================================================
 # GEOMETRY
 # =====================================================
@@ -106,6 +100,12 @@
 #=====================================================
 
 /gate/run/initialize
+
+#=====================================================
+# VISUALISATION
+#=====================================================
+
+/control/execute mac/visu.mac
 
 # Bremsstrahlung splitting : generate 100 photon (if below 100 MeV) with weight 1/100
 /process/em/setSecBiasing eBrem target 100 100 MeV

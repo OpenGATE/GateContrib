@@ -13,7 +13,6 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 /control/execute mac/verbose.mac
-/control/execute mac/visu.mac
 /gate/geometry/setMaterialDatabase data/Materials.db
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
@@ -134,6 +133,7 @@
 
 /gate/run/initialize
 
+/control/execute mac/visu.mac
 
 #=====================================================
 # INPUT BEAM

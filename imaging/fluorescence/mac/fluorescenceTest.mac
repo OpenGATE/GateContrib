@@ -1,5 +1,5 @@
 #=====================================================
-# VERBOSE and VISUALISATION 
+# VERBOSE 
 #=====================================================
 
 /gate/verbose Physic    3
@@ -17,7 +17,6 @@
 /gate/verbose Geometry  0
 /tracking/verbose	0
 
-#/control/execute mac/visu.mac
 
 #=====================================================
 # GEOMETRY and ACTORS
@@ -69,6 +68,13 @@
 /gate/physics/displayCuts
 
 /gate/run/initialize
+
+#=====================================================
+# VISUALISATION 
+#=====================================================
+
+#/control/execute mac/visu.mac
+
 #=====================================================
 # BEAM
 #=====================================================

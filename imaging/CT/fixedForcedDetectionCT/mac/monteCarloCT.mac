@@ -1,5 +1,3 @@
-#/control/execute mac/visu.mac
-#/vis/disable
 /control/execute mac/verbose.mac
 /gate/geometry/setMaterialDatabase data/ICRP_HUmaterials.db
 
@@ -51,6 +49,9 @@
 /gate/actor/stat/save output/statsMC.txt
 
 /gate/run/initialize
+
+#/control/execute mac/visu.mac
+#/vis/disable
 
 # Beam
 /gate/source/addSource mybeam gps

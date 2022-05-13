@@ -8,7 +8,6 @@
 # -----------------------------------------------------------------------------
 # Geometry definition
 
-#/control/execute mac/visu.mac
 /control/execute mac/verbose.mac
 /control/execute mac/world.mac
 /control/execute mac/waterbox.mac
@@ -32,6 +31,7 @@
 # INITIALISATION
 
 /gate/run/initialize
+#/control/execute mac/visu.mac
 
 # -----------------------------------------------------------------------------
 # SOURCE
