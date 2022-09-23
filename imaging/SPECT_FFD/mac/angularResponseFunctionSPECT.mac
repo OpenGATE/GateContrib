@@ -4,7 +4,7 @@
 /gate/systems/SPECThead/arf/setARFStage useTables
 /gate/systems/SPECThead/setProjectionPlane -2.555 cm
 /gate/systems/SPECThead/attachToARFSD
-/gate/systems/SPECThead/ARFTables/loadARFTablesFromBinaryFile data/ArfTable_Tc_Primary_100000000.bin
+/gate/systems/SPECThead/ARFTables/loadARFTablesFromBinaryFile data/ArfTable_Tc_Primary_1000000000.bin
 # Scatter window
 #/gate/systems/SPECThead/ARFTables/loadARFTablesFromBinaryFile data/ArfTable_Tc_Secondary_100000000.bin
 
