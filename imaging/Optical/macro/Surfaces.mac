@@ -1,0 +1,42 @@
+#  *********************************************************************
+#  * DISCLAIMER                                                        *
+#  *                                                                   *
+#  * Neither the authors of this software system, nor their employing  *
+#  * institutes, nor the agencies providing financial support for this *
+#  * work make any representation or warranty, express or implied,     *
+#  * regarding this software system or assume any liability for its    *
+#  * use.                                                              *
+#  *                                                                   *
+#  * This code implementation is the intellectual property of the      *
+#  * OpenGATE collaboration.                                           *
+#  * By copying, distributing or modifying the Program (or any work    *
+#  * based on the Program) you indicate your acceptance of this        *
+#  * statement, and all its terms.                                     *
+#  *********************************************************************
+
+
+#===============================================================
+# Optical photons Detection Surface should be DIELECTRIC-METAL
+#===============================================================
+
+#/gate/pixel/surfaces/name                           Detection1
+#/gate/pixel/surfaces/insert                         Electronics
+#/gate/pixel/surfaces/Detection1/setSurface          perfect_apd  
+
+#/gate/Electronics/surfaces/name                     Detection2
+#/gate/Electronics/surfaces/insert                   pixel
+#/gate/Electronics/surfaces/Detection2/setSurface    perfect_apd  
+
+
+/gate/crystal/surfaces/name                           Detection1
+/gate/crystal/surfaces/insert                         Electronics
+/gate/crystal/surfaces/Detection1/setSurface          perfect_apd  
+
+/gate/Electronics/surfaces/name                     Detection2
+/gate/Electronics/surfaces/insert                   crystal
+/gate/Electronics/surfaces/Detection2/setSurface    perfect_apd  
+
+
+
+
+
