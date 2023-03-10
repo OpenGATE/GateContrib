@@ -270,52 +270,51 @@
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 
 #	A D D E R
-/gate/digitizer/Singles/insert adder
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert adder
 
 
 #       R E A D O U T 
-/gate/digitizer/Singles/insert readout
-/gate/digitizer/Singles/readout/setDepth 1
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert readout
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/readout/setDepth 1
 
 
 #      E N E R G Y   B L U R R I N G
-/gate/digitizer/Singles/insert blurring
-/gate/digitizer/Singles/blurring/setResolution 0.26
-/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert energyResolution
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyResolution/fwhm 0.26
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyResolution/energyOfReference 511. keV
 
 
 #       E N E R G Y   C U T
-/gate/digitizer/Singles/insert thresholder
-/gate/digitizer/Singles/thresholder/setThreshold 250. keV
-/gate/digitizer/Singles/insert upholder
-/gate/digitizer/Singles/upholder/setUphold 750. keV
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert energyFraming
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyFraming/setMin 250. keV
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyFraming/setMax 750. keV
 
 
 #       D E A D    T I M E 
-/gate/digitizer/Singles/insert deadtime
-/gate/digitizer/Singles/deadtime/setDeadTime 3000000. ps
-/gate/digitizer/Singles/deadtime/setMode paralysable
-/gate/digitizer/Singles/deadtime/chooseDTVolume block
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert deadtime
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/deadtime/setDeadTime 3000000. ps
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/deadtime/setMode paralysable
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/deadtime/chooseDTVolume block
 
 
 #	C O I N C I    S O R T E R 
-/gate/digitizer/Coincidences/setWindow 10. ns
-/gate/digitizer/Coincidences/setOffset 0. ns
-/gate/digitizer/Coincidences/describe
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/setWindow 10. ns
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/setOffset 0. ns
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/describe
 
-/gate/digitizer/name delay
-/gate/digitizer/insert coincidenceSorter
-/gate/digitizer/delay/setWindow 10. ns
-/gate/digitizer/delay/setOffset 500. ns
-/gate/digitizer/delay/describe
+/gate/digitizerMgr/name delay
+/gate/digitizerMgr/insert CoincidenceSorter
+/gate/digitizerMgr/CoincidenceSorter/delay/setWindow 10. ns
+/gate/digitizerMgr/CoincidenceSorter/delay/setOffset 500. ns
+/gate/digitizerMgr/CoincidenceSorter/delay/describe
 
-
-/gate/digitizer/name finalCoinc
-/gate/digitizer/insert coincidenceChain
-/gate/digitizer/finalCoinc/addInputName delay
-/gate/digitizer/finalCoinc/addInputName Coincidences
-/gate/digitizer/finalCoinc/usePriority true
-/gate/digitizer/finalCoinc/describe
+# TODO OK GND
+#/gate/digitizerMgr/name finalCoinc
+#/gate/digitizerMgr/insert coincidenceChain
+#/gate/digitizerMgr/CoincidenceSorter/finalCoinc/addInputName delay
+#/gate/digitizerMgr/CoincidenceSorter/finalCoinc/addInputName Coincidences
+#/gate/digitizerMgr/CoincidenceSorter/finalCoinc/usePriority true
+#/gate/digitizerMgr/CoincidenceSorter/finalCoinc/describe
 
 
 
@@ -342,8 +341,8 @@
 #       S E T U P  - R O O T  F I L E
 /gate/output/root/enable
 /gate/output/root/setFileName YourPETSimu
-/gate/output/root/setRootSinglesAdderFlag 1
-/gate/output/root/setRootSinglesReadoutFlag 1
+/gate/output/root/setRootSingles_crystal_adderFlag 1
+/gate/output/root/setRootSingles_crystal_readoutFlag 1
 /gate/output/root/setRootHitFlag 1
 /gate/output/root/setRootSinglesFlag 1
 /gate/output/root/setRootCoincidencesFlag 1
@@ -376,7 +375,7 @@
 /gate/output/ecat7/span 9
 /gate/output/ecat7/maxringdiff 22
 /gate/output/ecat7/system 962
-/gate/output/ecat7/IsotopeCode F-18
+/gate/output/ecat7/IsotopeCode F/crystal/SinglesDigitizer-18
 /gate/output/ecat7/IsotopeHalflife 6586.2 second
 /gate/output/ecat7/IsotopeBranchingFraction 1.0
 

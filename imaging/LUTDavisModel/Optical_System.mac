@@ -145,8 +145,8 @@
 #===================================================== 
 
 
-/gate/digitizer/Singles/insert 						opticaladder 
-/gate/digitizer/Singles/insert                      readout 
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert 						opticaladder 
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert                      readout 
 
 #=====================================================
 #  S O U R C E

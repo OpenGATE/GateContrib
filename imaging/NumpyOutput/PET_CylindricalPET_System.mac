@@ -170,7 +170,7 @@
 /gate/phantom/geometry/setXLength             10 cm
 /gate/phantom/geometry/setYLength             10 cm
 /gate/phantom/geometry/setZLength             10 cm
-/gate/phantom/setMaterial                     Water
+/gate/phantom/setMaterial                     Air #Water
 #/gate/phantom/vis/forceSolid
 #/gate/phantom/vis/setColor                    blue
 
@@ -211,11 +211,19 @@
 
 #=====================================================
 #   D I G I T I Z E R: DETECTOR ELECTRONIC RESPONSE
-#===================================================== 
+#=====================================================
 
-/gate/digitizer/Singles/insert                        adder
-/gate/digitizer/Singles/insert                        readout
-/gate/digitizer/Singles/readout/setDepth              1
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/insert                        adder
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert                        adder
+
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert                        merger
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/merger/addInput  adder/Singles_LSO
+### !!!
+#After merger only Singles_BGO collection will be undated, thus, use only this collection in the following
+### !!!
+
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert                        readout
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/readout/setDepth              1
 
 
 # NOISE  
@@ -230,28 +238,28 @@
 /gate/distributions/insert Exponential 
 /gate/distributions/dt_distrib/setLambda 3 us
 
-/gate/digitizer/Singles/insert noise 
-/gate/digitizer/Singles/noise/setDeltaTDistribution dt_distrib 
-/gate/digitizer/Singles/noise/setEnergyDistribution energy_distrib
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert noise 
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/noise/setDeltaTDistribution dt_distrib 
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/noise/setEnergyDistribution energy_distrib
 
-/gate/digitizer/Singles/insert timeResolution
-/gate/digitizer/Singles/timeResolution/setTimeResolution 300.0 ps
-
-
-
-/gate/digitizer/Singles/insert                        blurring
-/gate/digitizer/Singles/blurring/setResolution        0.26
-/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert timeResolution
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/timeResolution/fwhm 300.0 ps
 
 
-/gate/digitizer/name LESingles
-/gate/digitizer/insert singleChain
-/gate/digitizer/LESingles/setInputName Singles
 
-/gate/digitizer/LESingles/insert                        thresholder
-/gate/digitizer/LESingles/thresholder/setThreshold      350. keV
-/gate/digitizer/LESingles/insert                        upholder
-/gate/digitizer/LESingles/upholder/setUphold            650. keV
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert                        energyResolution
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/energyResolution/fwhm        0.26
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/energyResolution/energyOfReference 511. keV
+
+
+/gate/digitizerMgr/name LESingles
+/gate/digitizerMgr/chooseSD BGO
+/gate/digitizerMgr/insert SinglesDigitizer
+/gate/digitizerMgr/BGO/SinglesDigitizer/LESingles/setInputCollection Singles_BGO
+
+/gate/digitizerMgr/BGO/SinglesDigitizer/LESingles/insert                        energyFraming
+/gate/digitizerMgr/BGO/SinglesDigitizer/LESingles/energyFraming/setMin      350. keV
+/gate/digitizerMgr/BGO/SinglesDigitizer/LESingles/energyFraming/setMax            650. keV
 
 
 
@@ -259,12 +267,17 @@
 #	C O I N C I D E N C E    S O R T E R
 #===================================================== 
 
-/gate/digitizer/Coincidences/setWindow          10. ns
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/setWindow          10. ns
+#
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/setInputCollection LESingles_BGO
 
-/gate/digitizer/name                            delay
-/gate/digitizer/insert                          coincidenceSorter
-/gate/digitizer/delay/setWindow                 100. ns
-/gate/digitizer/delay/setOffset                 500. ns
+
+/gate/digitizerMgr/name                            delay
+/gate/digitizerMgr/insert                          CoincidenceSorter
+/gate/digitizerMgr/CoincidenceSorter/delay/setInputCollection         LESingles_BGO
+
+/gate/digitizerMgr/CoincidenceSorter/delay/setWindow                 100. ns
+/gate/digitizerMgr/CoincidenceSorter/delay/setOffset                 500. ns
 
 #=====================================================
 #  P A R T I C L E   S O U R C E
