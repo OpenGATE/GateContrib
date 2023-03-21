@@ -58,22 +58,22 @@ if __name__ == '__main__':
     old_system = {}
     root = uproot.open("output/data_PET.root")
     old_system['Coincidences'] = root['Coincidences'].pandas.df().to_records()
-    old_system['Singles'] = root['Singles'].pandas.df().to_records()
-    old_system['Hits'] = root['Hits'].pandas.df().to_records()
-    old_system['LESingles'] = root['LESingles'].pandas.df().to_records()
+    old_system['Singles_BGO'] = root['Singles_BGO'].pandas.df().to_records()
+    old_system['Hits_BGO'] = root['Hits_BGO'].pandas.df().to_records()
+    old_system['LESingles_BGO'] = root['LESingles_BGO'].pandas.df().to_records()
 
     new_root_system = {}
 
     new_root_system['Coincidences'] = uproot.open("output/data_PET.Coincidences.root")['tree'].pandas.df().to_records()
-    new_root_system['Singles'] = uproot.open("output/data_PET.Singles.root")['tree'].pandas.df().to_records()
-    new_root_system['Hits'] = uproot.open("output/data_PET.hits.root")['tree'].pandas.df().to_records()
-    new_root_system['LESingles'] = uproot.open("output/data_PET.LESingles.root")['tree'].pandas.df().to_records()
+    new_root_system['Singles_BGO'] = uproot.open("output/data_PET.Singles_BGO.root")['tree'].pandas.df().to_records()
+    new_root_system['Hits_BGO'] = uproot.open("output/data_PET.hits_BGO.root")['tree'].pandas.df().to_records()
+    new_root_system['LESingles_BGO'] = uproot.open("output/data_PET.LESingles_BGO.root")['tree'].pandas.df().to_records()
 
     numpy_system = {}
     numpy_system['Coincidences'] = np.load("output/data_PET.Coincidences.npy")
-    numpy_system['Singles'] = np.load("output/data_PET.Singles.npy")
-    numpy_system['Hits'] = np.load("output/data_PET.hits.npy")
-    numpy_system['LESingles'] = np.load("output/data_PET.LESingles.npy")
+    numpy_system['Singles_BGO'] = np.load("output/data_PET.Singles_BGO.npy")
+    numpy_system['Hits_BGO'] = np.load("output/data_PET.hits_BGO.npy")
+    numpy_system['LESingles_BGO'] = np.load("output/data_PET.LESingles_BGO.npy")
 
 
     # ascii_system = {}
@@ -82,7 +82,7 @@ if __name__ == '__main__':
     # ascii_system['Singles'] = pandas.read_csv('output/data_PET.Singles.txt').to_records()
 
 
-    for output in ['Coincidences', 'Singles', 'Hits', 'LESingles']:
+    for output in ['Coincidences', 'Singles_BGO', 'Hits_BGO', 'LESingles_BGO']:
         print(color.BOLD, "Check output betwwen old ROOT and new ROOT for:", output, color.END)
         compare_two_array(old_system[output], new_root_system[output])
         print(color.BOLD, "Check output betwwen old ROOT and new numpy for:", output, color.END)

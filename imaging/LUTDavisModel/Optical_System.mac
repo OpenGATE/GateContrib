@@ -68,41 +68,14 @@
 #=====================================================
 
 
+/gate/physics/addPhysicsList emlivermore #Standard physics
 /gate/physics/addProcess OpticalAbsorption
 /gate/physics/addProcess OpticalRayleigh
 /gate/physics/addProcess OpticalBoundary
 /gate/physics/addProcess OpticalMie
 /gate/physics/addProcess OpticalWLS
 /gate/physics/addProcess Scintillation
-
-
-/gate/physics/addProcess PhotoElectric
-/gate/physics/processes/PhotoElectric/setModel StandardModel
-
-#/gate/physics/addProcess Compton
-#/gate/physics/processes/Compton/setModel StandardModel
-
-#/gate/physics/addProcess RayleighScattering
-#/gate/physics/processes/RayleighScattering/setModel PenelopeModel
-
-/gate/physics/addProcess ElectronIonisation
-/gate/physics/processes/ElectronIonisation/setModel StandardModel e-
-/gate/physics/processes/ElectronIonisation/setModel StandardModel e+
-
-/gate/physics/addProcess Bremsstrahlung
-/gate/physics/processes/Bremsstrahlung/setModel StandardModel e-
-/gate/physics/processes/Bremsstrahlung/setModel StandardModel e+
-
-#/gate/physics/addProcess PositronAnnihilation
-
-/gate/physics/addProcess eMultipleScattering e+
-/gate/physics/addProcess eMultipleScattering e-
-
-#/gate/physics/addProcess RadioactiveDecay
-
-/gate/physics/processList Enabled
-/gate/physics/processList Initialized
-
+/gate/physics/addProcess Cerenkov
 
 #/gate/actor/addActor PhaseSpaceActor MyActor
 #/gate/actor/MyActor/save MyOutputFile.root
@@ -145,8 +118,8 @@
 #===================================================== 
 
 
-/gate/digitizer/Singles/insert 						opticaladder 
-/gate/digitizer/Singles/insert                      readout 
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert 						opticaladder 
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert                      readout 
 
 #=====================================================
 #  S O U R C E

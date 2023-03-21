@@ -1,25 +1,31 @@
-#	D I G I T I Z E R 
-/gate/digitizer/Singles/insert adder
-/gate/digitizer/Singles/insert readout
-/gate/digitizer/Singles/readout/setDepth 1
-/gate/digitizer/Singles/insert blurring
-/gate/digitizer/Singles/blurring/setResolution 0.26
-/gate/digitizer/Singles/blurring/setEnergyOfReference 511. keV
-/gate/digitizer/Singles/insert thresholder
-/gate/digitizer/Singles/thresholder/setThreshold 350. keV
-/gate/digitizer/Singles/insert upholder
-/gate/digitizer/Singles/upholder/setUphold 650. keV
+#	D I G I T I Z E R
+/gate/digitizerMgr/LSO/SinglesDigitizer/Singles/insert adder
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert adder
+
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert                        merger
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/merger/addInput  adder/Singles_LSO
+
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert readout
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/readout/setDepth 1
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert energyResolution
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/energyResolution/fwhm 0.26
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/energyResolution/energyOfReference 511. keV
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/insert energyFraming
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/energyFraming/setMin 350. keV
+/gate/digitizerMgr/BGO/SinglesDigitizer/Singles/energyFraming/setMax 650. keV
 
 
 
-#	C O I N C I    S O R T E R 
-/gate/digitizer/Coincidences/setWindow 120. ns
-/gate/digitizer/Coincidences/MultiplesPolicy  takeWinnerOfGoods
+#	C O I N C I    S O R T E R
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/setInputCollection Singles_BGO
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/setWindow 120. ns
+/gate/digitizerMgr/CoincidenceSorter/Coincidences/MultiplesPolicy  takeWinnerOfGoods
 
-/gate/digitizer/name delay
-/gate/digitizer/insert coincidenceSorter
-/gate/digitizer/delay/setWindow 120. ns
-/gate/digitizer/delay/setOffset 500. ns
-/gate/digitizer/delay/MultiplesPolicy  takeWinnerOfGoods
+/gate/digitizerMgr/name delay
+/gate/digitizerMgr/insert CoincidenceSorter
+/gate/digitizerMgr/CoincidenceSorter/delay/setInputCollection Singles_BGO
+/gate/digitizerMgr/CoincidenceSorter/delay/setWindow 120. ns
+/gate/digitizerMgr/CoincidenceSorter/delay/setOffset 500. ns
+/gate/digitizerMgr/CoincidenceSorter/delay/MultiplesPolicy  takeWinnerOfGoods
 
 

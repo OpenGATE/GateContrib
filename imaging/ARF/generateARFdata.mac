@@ -164,17 +164,16 @@
 
 
 #	A D D E R
-/gate/digitizer/Singles/insert adder
+/gate/digitizerMgr/detector/SinglesDigitizer/Singles/insert adder
 
 #       R E A D O U T 
-/gate/digitizer/Singles/insert readout
-/gate/digitizer/Singles/readout/setDepth 2
+/gate/digitizerMgr/detector/SinglesDigitizer/Singles/insert readout
+/gate/digitizerMgr/detector/SinglesDigitizer/Singles/readout/setDepth 2
 
 #       E N E R G Y   C U T
-/gate/digitizer/Singles/insert thresholder
-/gate/digitizer/Singles/thresholder/setThreshold 50. keV
-/gate/digitizer/Singles/insert upholder
-/gate/digitizer/Singles/upholder/setUphold 400. keV
+/gate/digitizerMgr/detector/SinglesDigitizer/Singles/insert energyFraming
+/gate/digitizerMgr/detector/SinglesDigitizer/Singles/energyFraming/setMin 50. keV
+/gate/digitizerMgr/detector/SinglesDigitizer/Singles/energyFraming/setMax 400. keV
 
 # define the source
 

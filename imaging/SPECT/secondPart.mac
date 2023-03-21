@@ -45,17 +45,18 @@
 # D I G I T I Z E R
 #####
 
-/gate/digitizer/Singles/insert adder
-/gate/digitizer/Singles/insert blurring
-/gate/digitizer/Singles/blurring/setResolution 0.10
-/gate/digitizer/Singles/blurring/setEnergyOfReference 140. keV
-/gate/digitizer/Singles/insert spblurring
-/gate/digitizer/Singles/spblurring/setSpresolution 2.0 mm
-/gate/digitizer/Singles/spblurring/verbose 0
-/gate/digitizer/Singles/insert thresholder
-/gate/digitizer/Singles/thresholder/setThreshold 20. keV
-/gate/digitizer/Singles/insert upholder
-/gate/digitizer/Singles/upholder/setUphold 190. keV
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert adder
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert energyResolution
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyResolution/fwhm 0.10
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyResolution/energyOfReference 140. keV
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert spatialResolution
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/spatialResolution/fwhm 2.0 mm
+
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/spatialResolution/confineInsideOfSmallestElement true
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/spatialResolution/verbose 0
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/insert energyFraming
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyFraming/setMin 20. keV
+/gate/digitizerMgr/crystal/SinglesDigitizer/Singles/energyFraming/setMax 190. keV
 
 
 # O U T P U T
@@ -63,11 +64,11 @@
 
 /gate/output/root/enable
 /gate/output/root/setFileName benchSPECT
-/gate/output/root/setRootSinglesAdderFlag 1
-/gate/output/root/setRootSinglesBlurringFlag 1 
-/gate/output/root/setRootSinglesSpblurringFlag 1
-/gate/output/root/setRootSinglesThresholderFlag 1
-/gate/output/root/setRootSinglesUpholderFlag 1
+/gate/output/root/setRootSinglesFlag 1
+/gate/output/root/setRootSingles_crystal_adderFlag 1
+#/gate/output/root/setRootSingles_crystal_energyResolutionFlag 1 
+#/gate/output/root/setRootSingles_crystal_spatialResolutionFlag 1
+#/gate/output/root/setRootSingles_crystal_energyFramingFlag 1
 
 
 
@@ -111,7 +112,7 @@
 
 /gate/application/setTimeSlice      1  s
 /gate/application/setTimeStart      0.    s
-/gate/application/setTimeStop      2.  s
+/gate/application/setTimeStop       2.  s
 
 
 # V E R B O S I T Y
