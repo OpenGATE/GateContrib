@@ -116,11 +116,11 @@
 
 # B I O L U M I N E S C E N T   S O U R C E (VOXELIZED)
 /gate/source/addSource opt_tum voxel 
-/gate/source/opt_tum/reader/insert interfile 
-/gate/source/opt_tum/interfileReader/translator/insert range 
-/gate/source/opt_tum/interfileReader/rangeTranslator/readTable ./voxelized-source-phantom/photonflux.dat
-/gate/source/opt_tum/interfileReader/rangeTranslator/describe 1 
-/gate/source/opt_tum/interfileReader/readFile ./voxelized-source-phantom/optical_tumor.h33 
+/gate/source/opt_tum/reader/insert image 
+/gate/source/opt_tum/imageReader/translator/insert range 
+/gate/source/opt_tum/imageReader/rangeTranslator/readTable ./voxelized-source-phantom/photonflux.dat
+/gate/source/opt_tum/imageReader/rangeTranslator/describe 1 
+/gate/source/opt_tum/imageReader/readFile ./voxelized-source-phantom/optical_tumor.h33 
 /gate/source/opt_tum/setPosition   -6.559 -5.559 -88.0 mm 
 /gate/source/opt_tum/gps/particle opticalphoton 
 /gate/source/opt_tum/gps/energytype Mono 

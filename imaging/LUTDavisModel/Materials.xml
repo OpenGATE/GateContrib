@@ -2,92 +2,24 @@
 <materials>
   <material name="LSO">
     <propertiestable>
-      <property name="SCINTILLATIONYIELD" value="35" unit="1/keV"/>
+      <property name="SCINTILLATIONYIELD" value="26000" unit="1/MeV"/>
       <property name="RESOLUTIONSCALE" value="4.41"/>
-      <property name="FASTTIMECONSTANT" value="40" unit="ns"/>
-      <property name="YIELDRATIO" value="1"/>
-      <propertyvector name="FASTCOMPONENT" energyunit="eV">
-	​<ve energy="3.3740518" value="0.0483871"/>
-	<ve energy="3.32386493" value="0.09677419"/>
-	<ve energy="3.27514917" value="0.22580645"/>
-	<ve energy="3.22784078" value="0.43548387"/>
-	<ve energy="3.18187963" value="0.67741935"/>
-	<ve energy="3.13720898" value="0.87096774"/>
-	<ve energy="3.09377524" value="0.96774194"/>
-	<ve energy="3.05152774" value="0.98387097"/>
-	<ve energy="3.01041852" value="1"/>
-	<ve energy="2.9704022" value="0.98387097"/>
-	<ve energy="2.93143576" value="1"/>
-	<ve energy="2.89347843" value="0.91935484"/>
-	<ve energy="2.85649151" value="0.87096774"/>
-	<ve energy="2.82043825" value="0.79032258"/>
-	<ve energy="2.78528374" value="0.74193548"/>
-	<ve energy="2.75099478" value="0.62903226"/>
-	<ve energy="2.71753981" value="0.56451613"/>
-	<ve energy="2.68488875" value="0.48387097"/>
-	<ve energy="2.65301298" value="0.41935484"/>
-	<ve energy="2.62188521" value="0.37096774"/>
-	<ve energy="2.59147941" value="0.32258065"/>
-	<ve energy="2.56177075" value="0.30645161"/>
-	<ve energy="2.53273553" value="0.25806452"/>
-	<ve energy="2.50435111" value="0.24193548"/>
-	<ve energy="2.47659584" value="0.20967742"/>
-	<ve energy="2.44944905" value="0.19354839"/>
-	<ve energy="2.42289093" value="0.17741935"/>
-	<ve energy="2.39690254" value="0.14516129"/>
-	<ve energy="2.37146576" value="0.14516129"/>
-	<ve energy="2.34656319" value="0.12903226"/>
-	<ve energy="2.32217819" value="0.11290323"/>
-	<ve energy="2.29829478" value="0.09677419"/>
-	<ve energy="2.27489765" value="0.09677419"/>
-	<ve energy="2.25197209" value="0.08064516"/>
-	<ve energy="2.22950399" value="0.06451613"/>
-	<ve energy="2.2074798" value="0.06451613"/>
-	<ve energy="2.18588648" value="0.06451613"/>
-	<ve energy="2.16471152" value="0.0483871"/>
-	<ve energy="2.14394287" value="0.03225806"/>
-	<ve energy="2.12356895" value="0.0483871"/>
-	<ve energy="2.10357861" value="0.03225806"/>
-	<ve energy="2.08396113" value="0.03225806"/>
-	<ve energy="2.06470615" value="0.03225806"/>
-	<ve energy="2.04580374" value="0.01612903"/>
-	<ve energy="2.02724429" value="0.01612903"/>
-	<ve energy="2.00901856" value="0.01612903"/>
-	<ve energy="1.99111762" value="0.01612903"/>
-	<ve energy="1.97353286" value="0.03225806"/>
-	<ve energy="1.95625599" value="0.01612903"/>
-	<ve energy="1.93927899" value="0.01612903"/>
-      </propertyvector>
-      <propertyvector name="ABSLENGTH" unit="mm" energyunit="eV">
-	<ve energy="1.84" value="800"/>
-      </propertyvector>
-      <propertyvector name="RINDEX" energyunit="eV">
-	<ve energy="1.84" value="1.82"/>
-	      </propertyvector>
-    </propertiestable>
-  </material>
-  
-<material name="LYSO">
-    <propertiestable>
-      <property name="SCINTILLATIONYIELD" value="10000" unit="1/MeV"/>
-      <property name="RESOLUTIONSCALE" value="4.41"/>
-      <property name="FASTTIMECONSTANT" value="40" unit="ns"/>
-      <property name="YIELDRATIO" value="1"/>
-      <propertyvector name="FASTCOMPONENT" energyunit="eV">
+      <property name="SCINTILLATIONTIMECONSTANT1" value="40" unit="ns"/>
+      <property name="SCINTILLATIONYIELD1" value="1"/>
+      <propertyvector name="SCINTILLATIONCOMPONENT1" energyunit="eV">
 	<ve energy="2.95167" value="1"/>
       </propertyvector>
       <propertyvector name="ABSLENGTH" unit="m" energyunit="eV">
-	<ve energy="4.08" value="1.0"/>
-	<ve energy="1.84" value="1.0"/>
-	<ve energy="511000.0" value="0.001"/>
+	<ve energy="1.84" value="50"/>
+	<ve energy="4.08" value="50"/>
       </propertyvector>
       <propertyvector name="RINDEX" energyunit="eV">
-	<ve energy="4.08" value="1.81"/>
-	<ve energy="1.84" value="1.81"/>
+	<ve energy="1.84" value="1.82"/>
+	<ve energy="4.08" value="1.82"/>
       </propertyvector>
     </propertiestable>
   </material>
-  
+
   <material name="Air">  
     <propertiestable>
       <propertyvector name="ABSLENGTH" unit="m" energyunit="eV">
