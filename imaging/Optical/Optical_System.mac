@@ -25,13 +25,6 @@
 #-------------------oooooOOOOO00000OOOOOooooo---------------------#
 
 
-#=====================================================
-# VISUALISATION and VERBOSE
-#=====================================================
-
-#/vis/disable
-#/control/execute                    ./macro/Visualisation.mac
-/control/execute                    ./macro/Verbose.mac
 
 #=====================================================
 # GEOMETRY
@@ -106,6 +99,13 @@
 
 /gate/run/initialize
 
+#=====================================================
+# VISUALISATION and VERBOSE
+#=====================================================
+
+#/vis/disable
+#/control/execute                    ./macro/Visualisation.mac
+/control/execute                    ./macro/Verbose.mac
 
 #=====================================================
 # SURFACES
