@@ -1,0 +1,29 @@
+Authors:
+* L. Maigne, A. Pereda<br>
+Laboratoire de Physique de Clermont, CNRS/IN2P3 - Université Clermont Auvergne, France<br>
+Corresponding author: lydia.maigne@clermont.in2p3.fr
+
+!! Be careful you must use the so-called "G4_WATER" material while using Geant4 DNA processes and models !!
+
+## Description
+
+This example shows how to use standard and DNA physics list (in specific regions) in the same simulation.
+
+## Set-up
+
+The geometry consists in a world volume made of liquid water (G4_WATER material) including three boxes Target1, Target2, Target3
+made of liquid water (G4_WATER material) of thickness 50 micrometers aligned along the Z axis.
+Monoenergetic protons of 8 MeV are shot along the Z axis at 10 micrometers of the face of the first box Target1.
+
+## Physics
+
+Geant4 Standard option 4 physics list is assigned to the world volume with a cut of 4 micrometers (2.9 keV electrons in liquid water).
+Geant4 DNA physics list option 4 is assigned to Target1 and Target3 (note that cut is not active using Geant4 DNA processes and models).
+A KillActor is used to kill electrons with kinetic energy below 8 eV. It prevents electrons to be trapped into single scattering.
+
+## Output
+
+The production of secondary particles is scored in each Target via EnergySpectrumActor.
+To analyse the spectrum with ROOT, use the plot.C macro file.
+One can check the correct production of secondaries: from 2.9 keV in Target2, whereas the Geant4 DNA models in
+Target1 and Target3 are able to produce secondaries below 2.9 keV.
