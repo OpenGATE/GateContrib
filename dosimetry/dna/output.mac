@@ -1,0 +1,33 @@
+#Energy Spectrum Target1
+
+/gate/actor/addActor EnergySpectrumActor MyActor1
+/gate/actor/MyActor1/save output/target1.root
+/gate/actor/MyActor1/attachTo	Target1
+/gate/actor/MyActor1/energySpectrum/setEmin 0 eV
+/gate/actor/MyActor1/energySpectrum/setEmax 10.0 keV
+/gate/actor/MyActor1/energySpectrum/setNumberOfBins 50
+/gate/actor/MyActor1/energyLossHisto/setEdepMin 0 eV
+/gate/actor/MyActor1/energyLossHisto/setEdepMax 10.0 keV
+/gate/actor/MyActor1/energyLossHisto/setNumberOfEdepBins 50
+
+#Energy Spectrum Target2
+/gate/actor/addActor EnergySpectrumActor MyActor2
+/gate/actor/MyActor2/save output/target2.root
+/gate/actor/MyActor2/attachTo	Target2
+/gate/actor/MyActor2/energySpectrum/setEmin 0 eV
+/gate/actor/MyActor2/energySpectrum/setEmax 10.0 keV
+/gate/actor/MyActor2/energySpectrum/setNumberOfBins 50
+/gate/actor/MyActor1/energyLossHisto/setEdepMin 0 eV
+/gate/actor/MyActor1/energyLossHisto/setEdepMax 10.0 keV
+/gate/actor/MyActor1/energyLossHisto/setNumberOfEdepBins 50
+
+#Energy Spectrum Target3
+/gate/actor/addActor EnergySpectrumActor MyActor3
+/gate/actor/MyActor3/save output/target3.root
+/gate/actor/MyActor3/attachTo	Target3
+/gate/actor/MyActor3/energySpectrum/setEmin 0 eV
+/gate/actor/MyActor3/energySpectrum/setEmax 10.0 keV
+/gate/actor/MyActor3/energySpectrum/setNumberOfBins 50
+/gate/actor/MyActor1/energyLossHisto/setEdepMin 0 eV
+/gate/actor/MyActor1/energyLossHisto/setEdepMax 10.0 keV
+/gate/actor/MyActor1/energyLossHisto/setNumberOfEdepBins 50

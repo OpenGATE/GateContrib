@@ -2,13 +2,11 @@
 # PHYSICS 
 #======================================================
 
-/gate/physics/addPhysicsListMixed emstandard_opt3_mixed_emdna
-#/gate/physics/addPhysicsListMixed emlivermore_mixed_emdna
-
-/gate/physics/SetDNAInRegion Target1
-/gate/physics/SetDNAInRegion Target3
-
-/gate/physics/ConstructProcessMixed
+/gate/physics/addPhysicsList emstandard_opt4
+# possible values for the line after:
+# DNA_Opt0, DNA_Opt2, DNA_Opt4, DNA_Opt4a, DNA_Opt6, DNA_Opt6a, DNA_Opt7
+/process/em/AddDNARegion Target1 DNA_Opt4
+/process/em/AddDNARegion Target3 DNA_Opt4
 
 /gate/physics/Gamma/SetCutInRegion    world 4 um
 /gate/physics/Electron/SetCutInRegion   world 4 um
