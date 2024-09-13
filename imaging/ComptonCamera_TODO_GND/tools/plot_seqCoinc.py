@@ -67,20 +67,20 @@ IsIdealdata=True
 #================================================================
 #------load seq coincidences-----------------------------
 pSeqCoincidence = file_SeqCoinc['sequenceCoincidence']
-coincID_SeqCoinc=pSeqCoincidence.array('coincID')
-evtID_SeqCoinc=pSeqCoincidence.array('eventID')
-edep_SeqCoinc=pSeqCoincidence.array('energy')*1000#keV
-posZ_SeqCoinc=pSeqCoincidence.array('globalPosZ')
-posX_SeqCoinc=pSeqCoincidence.array('globalPosX')
-posY_SeqCoinc=pSeqCoincidence.array('globalPosY')
-posZ_SeqCoinc=pSeqCoincidence.array('globalPosZ')
+arrays=pSeqCoincidence.arrays(
+    ['coincID', 'eventID', 'energy', 'globalPosZ', 'globalPosX', 'globalPosY', 'energyIni', 'energyFinal'])
+coincID_SeqCoinc=arrays['coincID']
+evtID_SeqCoinc=arrays['eventID']
+edep_SeqCoinc=arrays['energy']*1000#keV
+posZ_SeqCoinc=arrays['globalPosZ']
+posX_SeqCoinc=arrays['globalPosX']
+posY_SeqCoinc=arrays['globalPosY']
 Eini_SeqCoinc=[]
 EFin_SeqCoinc=[]
 if IsIdealdata==True:
     print("Ideal data selected")
-    Eini_SeqCoinc=pSeqCoincidence.array('energyIni')*1000#keV
-    EFin_SeqCoinc=pSeqCoincidence.array('energyFinal')*1000#keV
-
+    Eini_SeqCoinc=arrays['energyIni']*1000#keV
+    EFin_SeqCoinc=arrays['energyFinal']*1000#keV
 
 Emin=0#keV
 Emax=800#keV
@@ -144,9 +144,9 @@ ESum=np.asarray(ESum, dtype=np.float32)
 
 
 fig = plt.figure()
-plt.hist(E1, bins=nbinsE,range=(Emin,Emax), histtype='step',lw='2',color='r',label='E1')
-plt.hist(ER, bins=nbinsE,range=(Emin,Emax), histtype='step',lw='2',color='b',label='ER')
-plt.hist(ESum, bins=nbinsE,range=(Emin,Emax), histtype='step',lw='2',color='k',label='ESum')
+plt.hist(E1, bins=nbinsE,range=(Emin,Emax), histtype='step',lw=2,color='r',label='E1')
+plt.hist(ER, bins=nbinsE,range=(Emin,Emax), histtype='step',lw=2,color='b',label='ER')
+plt.hist(ESum, bins=nbinsE,range=(Emin,Emax), histtype='step',lw=2,color='k',label='ESum')
 plt.xlabel("E (keV)", fontsize=12)
 plt.legend()
 plt.savefig(path+"E.png", bbox_inches="tight", facecolor='white', edgecolor='none')
@@ -175,7 +175,7 @@ textstr = '\n'.join((
     r'$\mathrm{median}=%.2f$' % (median, ),
     r'$\sigma=%.2f$' % (sigma, )))
 fig, ax = plt.subplots()
-plt.hist(E1, bins=nbinsE,range=(Emin,Emax), histtype='step',lw='2',color='r')
+plt.hist(E1, bins=nbinsE,range=(Emin,Emax), histtype='step',lw=2,color='r')
 plt.xlabel("E1 (keV)", fontsize=12)
 props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 ax.text(0.65, 0.95, textstr, transform=ax.transAxes, fontsize=14,
@@ -191,7 +191,7 @@ textstr = '\n'.join((
     r'$\mathrm{median}=%.2f$' % (median, ),
     r'$\sigma=%.2f$' % (sigma, )))
 fig, ax = plt.subplots()
-plt.hist(ESum, bins=nbinsE,range=(Emin,Emax), histtype='step',lw='2',color='k')
+plt.hist(ESum, bins=nbinsE,range=(Emin,Emax), histtype='step',lw=2,color='k')
 plt.xlabel(r'$E_{sum}$ (keV)', fontsize=12)
 props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 ax.text(0.05, 0.95, textstr, transform=ax.transAxes, fontsize=14,
